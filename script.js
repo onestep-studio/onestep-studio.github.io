@@ -9,7 +9,9 @@ function setMenu(open) {
   if (!menuToggle || !primaryNav) return;
 
   menuToggle.setAttribute("aria-expanded", String(open));
-  menuToggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+  const openLabel = menuToggle.dataset.labelOpen || "Open menu";
+  const closeLabel = menuToggle.dataset.labelClose || "Close menu";
+  menuToggle.setAttribute("aria-label", open ? closeLabel : openLabel);
   primaryNav.classList.toggle("is-open", open);
   document.body.classList.toggle("menu-open", open);
 }
@@ -62,6 +64,12 @@ function moveGallery(direction) {
 
 galleryPrev?.addEventListener("click", () => moveGallery(-1));
 galleryNext?.addEventListener("click", () => moveGallery(1));
+galleryTrack?.addEventListener("keydown", (event) => {
+  if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+
+  event.preventDefault();
+  moveGallery(event.key === "ArrowLeft" ? -1 : 1);
+});
 galleryTrack?.addEventListener("scroll", updateGalleryControls, { passive: true });
 window.addEventListener("resize", updateGalleryControls);
 updateGalleryControls();
