@@ -17,9 +17,14 @@
       backUrl: "/games/tiny-defense/",
       shareUrl: "https://onestep-games.github.io/games/tiny-defense/#axe-challenge",
       cardUrl: "onestep-games.github.io/games/tiny-defense",
-      canvasLabel: "Tiny Defense 도끼질 챌린지. 황금 존에 마커가 들어왔을 때 화면이나 도끼질 버튼을 누르세요.",
+      canvasLabel: "Tiny Defense 도끼질 챌린지. 게임 시작을 누른 뒤, 황금 존에 마커가 들어왔을 때 화면이나 도끼질 버튼을 누르세요.",
       hudLabel: "현재 기록",
       woodLabel: "나무",
+      startKicker: "준비되면",
+      startLabel: "게임 시작",
+      readyMessage: "게임 시작을 눌러주세요",
+      readyStatus: "게임 시작을 누르면 마커가 움직입니다.",
+      startStatus: "도전이 시작됐습니다. 최고 기록 {best}개.",
       chopKicker: "황금 존에 맞춰",
       chopLabel: "도끼질!",
       hintHtml: "명중 +1 · 중앙 PERFECT +2 · 성공할수록 빨라집니다.<br>한 번 빗나가면 끝 · <kbd>스페이스</kbd> / 화면 탭",
@@ -41,12 +46,20 @@
       hitJudgement: "명중.",
       perfectJudgement: "퍼펙트.",
       gameOverStatus: "게임 오버. 최종 기록 나무 {score}개, 최고 {best}개.",
-      resultCopies: [
-        "첫 도끼는 과감했습니다. 다음엔 황금빛만 노려보세요.",
-        "감이 오기 시작했어요. 한 번 더 리듬을 이어보세요.",
-        "손끝이 숲의 박자를 탔습니다. 기록은 이제부터예요.",
-        "이 정도면 노련한 벌목꾼. 어디까지 이어갈 수 있을까요?",
-        "숲이 당신의 이름을 기억합니다. 이 기록을 세상에 알려보세요."
+      tiers: [
+        { title: "도끼 새싹", copy: "첫 도끼는 과감했습니다. 황금 존에 시선을 고정해보세요." },
+        { title: "숲길 견습생", copy: "감각을 깨우는 중입니다. 다음 다섯 개를 이어보세요." },
+        { title: "리듬 나무꾼", copy: "손끝에 리듬이 붙었습니다. 속도가 올라가도 흔들리지 마세요." },
+        { title: "노련한 벌목꾼", copy: "짧아진 황금 존도 읽어내는 노련함이 보입니다." },
+        { title: "황금손 벌목장인", copy: "황금 타이밍을 다룹니다. 이제부터는 기록 싸움입니다." },
+        { title: "숲의 개척자", copy: "도끼 한 자루로 새로운 숲길을 열고 있습니다." },
+        { title: "숲의 수호자", copy: "속도보다 먼저 움직입니다. 전설이 가까워졌어요." },
+        { title: "전설의 벌목꾼", copy: "숲 전체가 당신의 도끼 소리를 기억합니다." },
+        { title: "황금 숲의 영웅", copy: "황금 존이 오히려 당신을 따라오는 듯합니다." },
+        { title: "도끼질의 달인", copy: "흔들림 없는 연속 기록. 달인의 경지입니다." },
+        { title: "숲이 기억한 이름", copy: "숲이 당신의 이름을 새겼습니다. 기록을 공유해보세요." },
+        { title: "세계수의 챔피언", copy: "세계수 앞에서도 멈추지 않는 챔피언입니다." },
+        { title: "Tiny Defense의 전설", copy: "누구도 쉽게 닿지 못할 전설적인 기록입니다." }
       ],
       timingGold: "GOLDEN ZONE",
       timingScore: "SCORE",
@@ -73,9 +86,14 @@
       backUrl: "/en/games/tiny-defense/",
       shareUrl: "https://onestep-games.github.io/en/games/tiny-defense/#axe-challenge",
       cardUrl: "onestep-games.github.io/en/games/tiny-defense",
-      canvasLabel: "Tiny Defense Axe Challenge. Tap the screen or press the Chop button when the marker enters the gold zone.",
+      canvasLabel: "Tiny Defense Axe Challenge. Press Start Game, then tap the screen or press the Chop button when the marker enters the gold zone.",
       hudLabel: "Current score",
       woodLabel: "WOOD",
+      startKicker: "WHEN YOU'RE READY",
+      startLabel: "START GAME",
+      readyMessage: "PRESS START GAME",
+      readyStatus: "Press Start Game to set the marker in motion.",
+      startStatus: "Challenge started. Best: {best} wood.",
       chopKicker: "TIME THE GOLD ZONE",
       chopLabel: "CHOP!",
       hintHtml: "HIT +1 · CENTER PERFECT +2 · FASTER WITH EVERY HIT<br>ONE MISS ENDS THE RUN · <kbd>SPACE</kbd> / TAP",
@@ -97,12 +115,20 @@
       hitJudgement: "Hit.",
       perfectJudgement: "Perfect.",
       gameOverStatus: "Game over. Final score: {score} wood. Best: {best}.",
-      resultCopies: [
-        "Bold first swing. Aim for the gold next time.",
-        "You're finding the rhythm. Give it one more run.",
-        "You've caught the forest's beat. The real run starts now.",
-        "That's seasoned lumberjack territory. How long can you keep it going?",
-        "The forest will remember your name. Share this run with the world."
+      tiers: [
+        { title: "Axe Rookie", copy: "A bold first swing. Keep your eyes fixed on the gold zone." },
+        { title: "Forest Apprentice", copy: "Your instincts are waking up. Chain together the next five." },
+        { title: "Rhythm Lumberjack", copy: "You've found the rhythm. Stay steady as the pace climbs." },
+        { title: "Seasoned Lumberjack", copy: "You can read the shrinking gold zone like a veteran." },
+        { title: "Golden-Handed Master", copy: "You command the golden timing. Now the record chase begins." },
+        { title: "Forest Pioneer", copy: "You're carving a new trail through the forest, one swing at a time." },
+        { title: "Guardian of the Grove", copy: "You're moving ahead of the marker. Legend is getting close." },
+        { title: "Legendary Lumberjack", copy: "The whole forest remembers the sound of your axe." },
+        { title: "Hero of the Golden Grove", copy: "It feels as though the gold zone is following you now." },
+        { title: "Master of the Axe", copy: "An unbroken streak with no hesitation. True mastery." },
+        { title: "The Name the Forest Remembers", copy: "The forest has carved your name into legend. Share the record." },
+        { title: "World Tree Champion", copy: "Not even the World Tree can stop this champion." },
+        { title: "Tiny Defense Legend", copy: "A legendary score that few challengers will ever reach." }
       ],
       timingGold: "GOLD ZONE",
       timingScore: "SCORE",
@@ -129,9 +155,14 @@
       backUrl: "/ja/games/tiny-defense/",
       shareUrl: "https://onestep-games.github.io/ja/games/tiny-defense/#axe-challenge",
       cardUrl: "onestep-games.github.io/ja/games/tiny-defense",
-      canvasLabel: "Tiny Defense 木こりチャレンジ。マーカーがゴールドゾーンに入っている間に、画面または「斧を振る」ボタンを押してください。",
+      canvasLabel: "Tiny Defense 木こりチャレンジ。「ゲーム開始」を押したあと、マーカーがゴールドゾーンに入っている間に、画面または「斧を振る」ボタンを押してください。",
       hudLabel: "現在のスコア",
       woodLabel: "丸太",
+      startKicker: "準備ができたら",
+      startLabel: "ゲーム開始",
+      readyMessage: "ゲーム開始を押してください",
+      readyStatus: "「ゲーム開始」を押すとマーカーが動きます。",
+      startStatus: "チャレンジ開始。ベストスコアは{best}本です。",
       chopKicker: "ゴールドゾーンに合わせて",
       chopLabel: "斧を振る！",
       hintHtml: "命中 +1 · 中央 PERFECT +2 · 成功するほど速くなります。<br>一度でも外せば終了 · <kbd>スペース</kbd> / 画面をタップ",
@@ -153,12 +184,20 @@
       hitJudgement: "命中。",
       perfectJudgement: "パーフェクト。",
       gameOverStatus: "ゲームオーバー。最終スコアは丸太{score}本、ベスト{best}本です。",
-      resultCopies: [
-        "最初の一振りは少し大胆すぎました。次はゴールドゾーンだけを狙いましょう。",
-        "コツをつかんできました。もう一度、リズムをつなげましょう。",
-        "指先が森のリズムを捉えました。本番はここからです。",
-        "もはや熟練の木こり。どこまで続けられるでしょうか？",
-        "森があなたの名を覚えました。この記録を世界に知らせましょう。"
+      tiers: [
+        { title: "斧のルーキー", copy: "大胆な最初の一振り。ゴールドゾーンに狙いを定めましょう。" },
+        { title: "森の見習い", copy: "感覚が目覚めてきました。次の5本をつなげましょう。" },
+        { title: "リズム木こり", copy: "指先がリズムを捉えました。速くなっても焦らずに。" },
+        { title: "熟練の木こり", copy: "狭くなるゴールドゾーンも、しっかり見切れています。" },
+        { title: "黄金の伐採名人", copy: "黄金のタイミングを操る名人。ここからは記録勝負です。" },
+        { title: "森の開拓者", copy: "斧一本で、新しい森の道を切り開いています。" },
+        { title: "森の守護者", copy: "マーカーより先に動けています。伝説はもうすぐです。" },
+        { title: "伝説の木こり", copy: "森じゅうが、あなたの斧の音を覚えています。" },
+        { title: "黄金の森の英雄", copy: "ゴールドゾーンのほうが、あなたを追っているようです。" },
+        { title: "斧の達人", copy: "迷いのない連続記録。まさに達人の境地です。" },
+        { title: "森に刻まれた名", copy: "森にその名が刻まれました。この記録をシェアしましょう。" },
+        { title: "世界樹の王者", copy: "世界樹を前にしても止まらない、真の王者です。" },
+        { title: "Tiny Defenseの伝説", copy: "誰もが簡単には届かない、伝説級の記録です。" }
       ],
       timingGold: "GOLDEN ZONE",
       timingScore: "SCORE",
@@ -192,12 +231,13 @@
   var BASE_ZONE_HW = 0.135;
   var ZONE_STEP = 0.0035;
   var MIN_ZONE_HW = 0.045;
+  var HIT_EDGE_GRACE = 4 / 496;
   var CHOP_DUR = 0.38;
   var TREE_X = 415;
   var TREE_BASE_Y = 700;
   var PAWN_X = 292;
   var PAWN_BASE_Y = 747;
-  var CHOP_AUDIO_URL = "./assets/sfx-chop.wav?v=score-attack-4";
+  var CHOP_AUDIO_URL = "./assets/sfx-chop.wav?v=score-attack-5";
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var canvas = document.getElementById("game");
@@ -211,6 +251,7 @@
   var resultOverlay = document.getElementById("resultOverlay");
   var resultScoreEl = document.getElementById("resultScore");
   var resultBestEl = document.getElementById("resultBest");
+  var resultTierEl = document.getElementById("resultTier");
   var resultCopyEl = document.getElementById("resultCopy");
   var newRecordEl = document.getElementById("newRecord");
   var retryBtn = document.getElementById("retryBtn");
@@ -244,7 +285,8 @@
   var speed = BASE_SPEED;
   var zoneC = 0.54;
   var zoneHW = BASE_ZONE_HW;
-  var running = true;
+  var started = false;
+  var running = false;
   var resultVisible = false;
   var inputLock = 0;
   var chopT = 0;
@@ -252,8 +294,8 @@
   var hitGlowT = 0;
   var shakeT = 0;
   var resultDelay = 0;
-  var message = copy.initialMessage;
-  var messageT = 1.15;
+  var message = copy.readyMessage;
+  var messageT = Number.POSITIVE_INFINITY;
   var messagePerfect = false;
   var particles = [];
   var floats = [];
@@ -264,7 +306,7 @@
   var shareGeneration = 0;
   var toastTimer = 0;
   var lastFrame = 0;
-  var canvasPointer = null;
+  var suppressPointerClick = false;
   var renderingActive = true;
   var chopSoundPlays = 0;
   var chopSoundMode = "loading";
@@ -313,8 +355,8 @@
     canvas.setAttribute("aria-label", copy.canvasLabel);
     document.getElementById("scoreHud").setAttribute("aria-label", copy.hudLabel);
     document.getElementById("woodLabel").textContent = copy.woodLabel;
-    document.getElementById("chopKicker").textContent = copy.chopKicker;
-    document.getElementById("chopLabel").textContent = copy.chopLabel;
+    document.getElementById("chopKicker").textContent = copy.startKicker;
+    document.getElementById("chopLabel").textContent = copy.startLabel;
     document.getElementById("gameHint").innerHTML = copy.hintHtml;
     document.getElementById("resultEyebrow").textContent = copy.resultEyebrow;
     document.getElementById("newRecordLabel").textContent = copy.newRecord;
@@ -325,7 +367,29 @@
     retryBtn.textContent = copy.retry;
     setShareButton(copy.share, true);
     document.getElementById("storeButtonLabel").textContent = copy.store;
-    resultCopyEl.textContent = copy.resultCopies[1];
+    resultTierEl.textContent = copy.tiers[0].title;
+    resultCopyEl.textContent = copy.tiers[0].copy;
+  }
+
+  function setChopButtonMode() {
+    document.getElementById("chopKicker").textContent = started ? copy.chopKicker : copy.startKicker;
+    document.getElementById("chopLabel").textContent = started ? copy.chopLabel : copy.startLabel;
+    chopBtn.dataset.mode = started ? "chop" : "start";
+  }
+
+  function startGame() {
+    if (started || resultVisible) return;
+    started = true;
+    running = true;
+    inputLock = 0;
+    lastFrame = 0;
+    message = copy.initialMessage;
+    messageT = 1.05;
+    messagePerfect = false;
+    document.body.dataset.gameState = "running";
+    setChopButtonMode();
+    gameStatus.textContent = formatText(copy.startStatus, { best: best });
+    ensureChopAudio();
   }
 
   function readBest() {
@@ -386,6 +450,7 @@
     hitCount = 0;
     marker = 0.025;
     dir = 1;
+    started = true;
     running = true;
     resultVisible = false;
     inputLock = 0.16;
@@ -399,13 +464,14 @@
     messagePerfect = false;
     particles.length = 0;
     floats.length = 0;
-    canvasPointer = null;
     shareBlob = null;
     shareCardPromise = null;
     shareGeneration += 1;
     newRecordEl.hidden = true;
     document.body.dataset.shareState = "idle";
     resultOverlay.dataset.shareBytes = "0";
+    document.body.dataset.gameState = "running";
+    setChopButtonMode();
     updateDifficulty();
     rollZone();
     setHud();
@@ -587,19 +653,16 @@
     unlockChopAudio();
   }
 
-  function chop(judgement) {
+  function chop() {
     if (!running || resultVisible || inputLock > 0 || chopT > 0) return;
 
-    var judgedMarker = judgement ? judgement.marker : marker;
-    var judgedZoneCenter = judgement ? judgement.zoneCenter : zoneC;
-    var judgedZoneHalfWidth = judgement ? judgement.zoneHalfWidth : zoneHW;
-    var distance = Math.abs(judgedMarker - judgedZoneCenter);
+    var distance = Math.abs(marker - zoneC);
     chopT = CHOP_DUR;
     inputLock = CHOP_DUR * 0.9;
     playChopSfx();
 
-    if (distance <= judgedZoneHalfWidth) {
-      var perfect = distance <= judgedZoneHalfWidth * 0.3;
+    if (distance <= zoneHW + HIT_EDGE_GRACE) {
+      var perfect = distance <= zoneHW * 0.3;
       var gainedWood = perfect ? 2 : 1;
       score += gainedWood;
       hitCount += 1;
@@ -634,7 +697,7 @@
 
   function gameOver() {
     running = false;
-    canvasPointer = null;
+    document.body.dataset.gameState = "ended";
     missFlashT = 0.42;
     resultDelay = 0.34;
     message = copy.missMessage;
@@ -655,18 +718,23 @@
     gameStatus.textContent = formatText(copy.gameOverStatus, { score: score, best: best });
   }
 
-  function resultCopy(value) {
-    if (value === 0) return copy.resultCopies[0];
-    if (value < 5) return copy.resultCopies[1];
-    if (value < 15) return copy.resultCopies[2];
-    if (value < 30) return copy.resultCopies[3];
-    return copy.resultCopies[4];
+  function tierForScore(value) {
+    var index = Math.min(copy.tiers.length - 1, Math.floor(Math.max(0, value) / 5));
+    return {
+      index: index,
+      title: copy.tiers[index].title,
+      copy: copy.tiers[index].copy
+    };
   }
 
   function populateResult(isRecord) {
+    var tier = tierForScore(score);
     resultScoreEl.textContent = String(score);
     resultBestEl.textContent = String(best);
-    resultCopyEl.textContent = resultCopy(score);
+    resultTierEl.textContent = tier.title;
+    resultCopyEl.textContent = tier.copy;
+    resultOverlay.dataset.tierIndex = String(tier.index);
+    resultOverlay.dataset.tierTitle = tier.title;
     newRecordEl.hidden = !isRecord;
     newRecordEl.classList.remove("record-arrive");
     if (isRecord) {
@@ -1072,6 +1140,7 @@
 
   function createShareCard(value, bestValue) {
     return Promise.all([imageReady(shareIcon), imageReady(shareWood)]).then(function () {
+      var tier = tierForScore(value);
       var card = document.createElement("canvas");
       card.width = 1080;
       card.height = 1350;
@@ -1148,6 +1217,10 @@
       cardCtx.fillStyle = "rgba(255,255,255,.72)";
       cardCtx.font = "800 42px " + FONT_STACK;
       cardCtx.fillText(formatText(copy.cardBest, { best: bestValue }), 540, 838);
+
+      cardCtx.fillStyle = "#e5b83e";
+      cardCtx.font = "950 34px " + FONT_STACK;
+      cardCtx.fillText(tier.title, 540, 888);
 
       var trackX = 156;
       var trackY = 994;
@@ -1314,49 +1387,48 @@
     });
   }
 
-  function handleChop(event) {
-    if (event) event.preventDefault();
+  function activateGameInput() {
+    if (!started) startGame();
+    else chop();
+  }
+
+  function handleChopPointerDown(event) {
+    if (event.isPrimary === false) return;
+    if (event.button !== undefined && event.button !== 0) return;
+    suppressPointerClick = true;
+    activateGameInput();
+  }
+
+  function handleChopClick(event) {
+    event.preventDefault();
+    if (suppressPointerClick) {
+      suppressPointerClick = false;
+      return;
+    }
+    activateGameInput();
+  }
+
+  function handleCanvasPointerDown(event) {
+    if (event.isPrimary === false) return;
+    if (event.button !== undefined && event.button !== 0) return;
+    if (!started) return;
+    event.preventDefault();
     chop();
   }
 
-  function beginCanvasTap(event) {
-    if (event.button !== undefined && event.button !== 0) return;
-    canvasPointer = {
-      id: event.pointerId,
-      x: event.clientX,
-      y: event.clientY,
-      marker: marker,
-      zoneCenter: zoneC,
-      zoneHalfWidth: zoneHW,
-      score: score,
-      eligible: running && !resultVisible && inputLock <= 0 && chopT <= 0
-    };
-  }
-
-  function finishCanvasTap(event) {
-    if (!canvasPointer || canvasPointer.id !== event.pointerId) return;
-    var pointer = canvasPointer;
-    var dx = event.clientX - pointer.x;
-    var dy = event.clientY - pointer.y;
-    canvasPointer = null;
-    if (!pointer.eligible || pointer.score !== score || Math.hypot(dx, dy) > 12) return;
-    event.preventDefault();
-    chop(pointer);
-  }
-
-  function cancelCanvasTap() {
-    canvasPointer = null;
-  }
-
-  chopBtn.addEventListener("click", handleChop);
-  chopBtn.addEventListener("keydown", function (event) {
-    if (event.repeat && (event.key === "Enter" || event.code === "Space" || event.key === " ")) {
-      event.preventDefault();
-    }
+  chopBtn.addEventListener("pointerdown", handleChopPointerDown);
+  chopBtn.addEventListener("pointerup", function () {
+    window.setTimeout(function () { suppressPointerClick = false; }, 0);
   });
-  canvas.addEventListener("pointerdown", beginCanvasTap);
-  canvas.addEventListener("pointerup", finishCanvasTap);
-  canvas.addEventListener("pointercancel", cancelCanvasTap);
+  chopBtn.addEventListener("pointercancel", function () { suppressPointerClick = false; });
+  chopBtn.addEventListener("click", handleChopClick);
+  chopBtn.addEventListener("keydown", function (event) {
+    if (event.key !== "Enter" && event.code !== "Space" && event.key !== " ") return;
+    event.preventDefault();
+    if (event.repeat) return;
+    activateGameInput();
+  });
+  canvas.addEventListener("pointerdown", handleCanvasPointerDown);
   window.addEventListener(window.PointerEvent ? "pointerdown" : "touchstart", unlockChopAudio, { capture: true, passive: true });
   window.addEventListener("keydown", unlockChopAudio, true);
   retryBtn.addEventListener("click", restart);
@@ -1393,7 +1465,7 @@
     if (!resultVisible && (canvasEnter || gameSpace)) {
       event.preventDefault();
       if (event.repeat) return;
-      chop();
+      activateGameInput();
     }
   });
 
@@ -1408,14 +1480,19 @@
     configurable: false,
     enumerable: false,
     value: function () {
+      var currentTier = tierForScore(score);
       return Object.freeze({
         locale: locale,
+        started: started,
         score: score,
         hitCount: hitCount,
         best: best,
+        tierIndex: currentTier.index,
+        tierTitle: currentTier.title,
         marker: marker,
         zoneCenter: zoneC,
         zoneHalfWidth: zoneHW,
+        hitEdgeGrace: HIT_EDGE_GRACE,
         speed: speed,
         minZoneHalfWidth: MIN_ZONE_HW,
         running: running,
@@ -1437,11 +1514,14 @@
   });
 
   bestTotalEl.textContent = String(best);
+  setChopButtonMode();
   setHud();
   updateDifficulty();
   rollZone();
   resize();
+  document.body.dataset.gameState = "ready";
   document.body.dataset.shareState = "idle";
+  gameStatus.textContent = copy.readyStatus;
   ensureChopAudio();
   loadSheets(function () {
     resize();

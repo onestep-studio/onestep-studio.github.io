@@ -294,6 +294,7 @@ kbd {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   place-items: center;
+  align-items: safe center;
   overflow-y: auto;
   padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom));
   background:
@@ -457,7 +458,7 @@ kbd {
   display: inline-flex;
   align-items: baseline;
   gap: 7px;
-  margin: 9px 0 15px;
+  margin: 9px 0 10px;
   padding: 5px 12px;
   border-radius: 999px;
   background: rgba(23, 32, 51, 0.06);
@@ -470,6 +471,17 @@ kbd {
   color: var(--ink);
   font-size: 1rem;
   font-variant-numeric: tabular-nums;
+}
+
+.result-tier {
+  max-width: 340px;
+  margin: 0 auto 8px;
+  color: var(--gold-deep);
+  font-size: clamp(1.08rem, 4.8vw, 1.38rem);
+  font-weight: 950;
+  line-height: 1.2;
+  text-wrap: balance;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.72);
 }
 
 .result-copy {

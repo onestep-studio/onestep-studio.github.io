@@ -25,7 +25,7 @@
       if (value === "en" || value === "ja" || value === "ko") document.documentElement.lang = value;
     }());
   </script>
-  <link rel="stylesheet" href="./styles.css?v=score-attack-4">
+  <link rel="stylesheet" href="./styles.css?v=score-attack-5">
 </head>
 <body>
   <header class="topbar">
@@ -40,7 +40,7 @@
   <main class="game-shell">
     <div class="stage">
       <canvas id="game" width="720" height="960" tabindex="0" role="button"
-        aria-label="Tiny Defense 도끼질 챌린지. 황금 존에 마커가 들어왔을 때 화면이나 도끼질 버튼을 누르세요."></canvas>
+        aria-label="Tiny Defense 도끼질 챌린지. 게임 시작을 누른 뒤, 황금 존에 마커가 들어왔을 때 화면이나 도끼질 버튼을 누르세요."></canvas>
 
       <div class="hud" id="scoreHud" aria-label="현재 기록">
         <div class="hud-pill best-pill">
@@ -57,8 +57,8 @@
 
     <div class="controls">
       <button class="chop-btn" id="chopBtn" type="button">
-        <span class="button-kicker" id="chopKicker">황금 존에 맞춰</span>
-        <span class="button-label" id="chopLabel">도끼질!</span>
+        <span class="button-kicker" id="chopKicker">준비되면</span>
+        <span class="button-label" id="chopLabel">게임 시작</span>
       </button>
       <p class="hint" id="gameHint">
         명중 +1 · 중앙 PERFECT +2 · 성공할수록 빨라집니다.<br>
@@ -70,7 +70,7 @@
   <p class="sr-only" id="gameStatus" aria-live="polite"></p>
 
   <div class="result-overlay" id="resultOverlay" role="dialog" aria-modal="true"
-    aria-labelledby="resultTitle" aria-describedby="resultCopy" aria-hidden="true" inert>
+    aria-labelledby="resultTitle" aria-describedby="resultTier resultCopy" aria-hidden="true" inert>
     <article class="result-card">
       <div class="card-shine" aria-hidden="true"></div>
       <div class="result-brand">
@@ -90,7 +90,8 @@
         <strong><span id="resultScorePrefix">나무 </span><span id="resultScore">0</span><small id="resultScoreSuffix">개</small></strong>
       </h1>
       <p class="result-best"><span id="resultBestLabel">최고</span> <strong id="resultBest">0</strong></p>
-      <p class="result-copy" id="resultCopy">한 번 더 리듬을 이어보세요.</p>
+      <p class="result-tier" id="resultTier">도끼 새싹</p>
+      <p class="result-copy" id="resultCopy">첫 도끼는 과감했습니다. 황금 존에 시선을 고정해보세요.</p>
 
       <div class="result-actions">
         <button class="action-btn retry-btn" id="retryBtn" type="button">다시 하기</button>
@@ -108,10 +109,10 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <audio id="chopSfx" preload="auto" aria-hidden="true">
-    <source src="./assets/sfx-chop.wav?v=score-attack-4" type="audio/wav">
-    <source src="./assets/sfx-chop.ogg?v=score-attack-4" type="audio/ogg; codecs=vorbis">
+    <source src="./assets/sfx-chop.wav?v=score-attack-5" type="audio/wav">
+    <source src="./assets/sfx-chop.ogg?v=score-attack-5" type="audio/ogg; codecs=vorbis">
   </audio>
 
-  <script src="./game.js?v=score-attack-4"></script>
+  <script src="./game.js?v=score-attack-5"></script>
 </body>
 </html>
