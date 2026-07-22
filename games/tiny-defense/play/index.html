@@ -19,16 +19,22 @@
   <title>도끼질 챌린지 · Tiny Defense | OneStep Games</title>
   <link rel="icon" href="/assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="./styles.css?v=score-attack-3">
+  <script>
+    (function () {
+      var value = new URLSearchParams(window.location.search).get("lang");
+      if (value === "en" || value === "ja" || value === "ko") document.documentElement.lang = value;
+    }());
+  </script>
+  <link rel="stylesheet" href="./styles.css?v=score-attack-4">
 </head>
 <body>
   <header class="topbar">
-    <a class="back-link" href="/games/tiny-defense/">
+    <a class="back-link" id="backLink" href="/games/tiny-defense/">
       <span aria-hidden="true">&larr;</span>
       <img src="/assets/app-icon.webp" alt="" width="30" height="30">
       <span>Tiny Defense</span>
     </a>
-    <span class="challenge-label">AXE CHALLENGE</span>
+    <span class="challenge-label" id="challengeLabel">AXE CHALLENGE</span>
   </header>
 
   <main class="game-shell">
@@ -36,14 +42,14 @@
       <canvas id="game" width="720" height="960" tabindex="0" role="button"
         aria-label="Tiny Defense 도끼질 챌린지. 황금 존에 마커가 들어왔을 때 화면이나 도끼질 버튼을 누르세요."></canvas>
 
-      <div class="hud" aria-label="현재 기록">
+      <div class="hud" id="scoreHud" aria-label="현재 기록">
         <div class="hud-pill best-pill">
           <span class="hud-label">BEST</span>
           <strong id="bestTotal">0</strong>
         </div>
         <div class="hud-pill wood-pill" id="woodBadge">
           <img src="./assets/wood.png" alt="" width="30" height="19">
-          <span class="hud-label">나무</span>
+          <span class="hud-label" id="woodLabel">나무</span>
           <strong id="woodTotal">0</strong>
         </div>
       </div>
@@ -51,10 +57,10 @@
 
     <div class="controls">
       <button class="chop-btn" id="chopBtn" type="button">
-        <span class="button-kicker">황금 존에 맞춰</span>
-        <span class="button-label">도끼질!</span>
+        <span class="button-kicker" id="chopKicker">황금 존에 맞춰</span>
+        <span class="button-label" id="chopLabel">도끼질!</span>
       </button>
-      <p class="hint">
+      <p class="hint" id="gameHint">
         명중 +1 · 중앙 PERFECT +2 · 성공할수록 빨라집니다.<br>
         한 번 빗나가면 끝 · <kbd>스페이스</kbd> / 화면 탭
       </p>
@@ -75,15 +81,15 @@
         </div>
       </div>
 
-      <p class="result-eyebrow">AXE CHALLENGE · RESULT</p>
+      <p class="result-eyebrow" id="resultEyebrow">AXE CHALLENGE · RESULT</p>
       <div class="new-record" id="newRecord" hidden>
-        <span aria-hidden="true">&#10022;</span> 신기록!
+        <span aria-hidden="true">&#10022;</span> <span id="newRecordLabel">신기록!</span>
       </div>
       <h1 id="resultTitle" class="result-score">
-        <span class="result-score-label">이번 기록</span>
-        <strong>나무 <span id="resultScore">0</span><small>개</small></strong>
+        <span class="result-score-label" id="resultScoreLabel">이번 기록</span>
+        <strong><span id="resultScorePrefix">나무 </span><span id="resultScore">0</span><small id="resultScoreSuffix">개</small></strong>
       </h1>
-      <p class="result-best">최고 <strong id="resultBest">0</strong></p>
+      <p class="result-best"><span id="resultBestLabel">최고</span> <strong id="resultBest">0</strong></p>
       <p class="result-copy" id="resultCopy">한 번 더 리듬을 이어보세요.</p>
 
       <div class="result-actions">
@@ -93,7 +99,7 @@
         </button>
         <a class="store-btn" href="https://m.onestore.co.kr/v2/ko-kr/app/0001007324"
           target="_blank" rel="noopener">
-          원스토어에서 플레이 <span aria-hidden="true">&rarr;</span>
+          <span id="storeButtonLabel">원스토어에서 플레이</span> <span aria-hidden="true">&rarr;</span>
         </a>
       </div>
     </article>
@@ -102,10 +108,10 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <audio id="chopSfx" preload="auto" aria-hidden="true">
-    <source src="./assets/sfx-chop.wav?v=score-attack-3" type="audio/wav">
-    <source src="./assets/sfx-chop.ogg?v=score-attack-3" type="audio/ogg; codecs=vorbis">
+    <source src="./assets/sfx-chop.wav?v=score-attack-4" type="audio/wav">
+    <source src="./assets/sfx-chop.ogg?v=score-attack-4" type="audio/ogg; codecs=vorbis">
   </audio>
 
-  <script src="./game.js?v=score-attack-3"></script>
+  <script src="./game.js?v=score-attack-4"></script>
 </body>
 </html>

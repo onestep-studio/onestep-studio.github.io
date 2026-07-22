@@ -25,6 +25,10 @@ body {
   margin: 0;
 }
 
+:lang(ja) body {
+  font-family: Inter, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, system-ui, sans-serif;
+}
+
 body {
   display: flex;
   min-width: 280px;

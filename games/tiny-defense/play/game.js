@@ -1,10 +1,190 @@
 (function () {
   "use strict";
 
+  var queryParameters = new URLSearchParams(window.location.search);
+  var requestedLocale = queryParameters.get("lang");
+  var locale = requestedLocale === "en" || requestedLocale === "ja" || requestedLocale === "ko"
+    ? requestedLocale
+    : "ko";
+  var LOCALES = {
+    ko: {
+      htmlLocale: "ko_KR",
+      title: "도끼질 챌린지 · Tiny Defense | OneStep Games",
+      description: "한 번의 실수로 끝나는 Tiny Defense 도끼질 점수 어택. 나무 최고 기록에 도전하고 결과를 공유하세요.",
+      ogTitle: "Tiny Defense 도끼질 챌린지 | 최고 기록에 도전",
+      ogDescription: "황금 존을 놓치는 순간 끝! 연속 도끼질로 나무 최고 기록에 도전하세요.",
+      pageUrl: "https://onestep-games.github.io/games/tiny-defense/",
+      backUrl: "/games/tiny-defense/",
+      shareUrl: "https://onestep-games.github.io/games/tiny-defense/#axe-challenge",
+      cardUrl: "onestep-games.github.io/games/tiny-defense",
+      canvasLabel: "Tiny Defense 도끼질 챌린지. 황금 존에 마커가 들어왔을 때 화면이나 도끼질 버튼을 누르세요.",
+      hudLabel: "현재 기록",
+      woodLabel: "나무",
+      chopKicker: "황금 존에 맞춰",
+      chopLabel: "도끼질!",
+      hintHtml: "명중 +1 · 중앙 PERFECT +2 · 성공할수록 빨라집니다.<br>한 번 빗나가면 끝 · <kbd>스페이스</kbd> / 화면 탭",
+      resultEyebrow: "AXE CHALLENGE · RESULT",
+      newRecord: "신기록!",
+      resultScoreLabel: "이번 기록",
+      scorePrefix: "나무 ",
+      scoreSuffix: "개",
+      bestLabel: "최고",
+      retry: "다시 하기",
+      share: "공유하기",
+      store: "원스토어에서 플레이",
+      initialMessage: "황금 존을 노려라",
+      hitMessage: "명중!",
+      perfectMessage: "PERFECT!",
+      missMessage: "빗나감!",
+      restartStatus: "새 도전이 시작됐습니다. 최고 기록 {best}개.",
+      hitStatus: "{judgement} 나무 {score}개, 최고 {best}개.",
+      hitJudgement: "명중.",
+      perfectJudgement: "퍼펙트.",
+      gameOverStatus: "게임 오버. 최종 기록 나무 {score}개, 최고 {best}개.",
+      resultCopies: [
+        "첫 도끼는 과감했습니다. 다음엔 황금빛만 노려보세요.",
+        "감이 오기 시작했어요. 한 번 더 리듬을 이어보세요.",
+        "손끝이 숲의 박자를 탔습니다. 기록은 이제부터예요.",
+        "이 정도면 노련한 벌목꾼. 어디까지 이어갈 수 있을까요?",
+        "숲이 당신의 이름을 기억합니다. 이 기록을 세상에 알려보세요."
+      ],
+      timingGold: "GOLDEN ZONE",
+      timingScore: "SCORE",
+      cardEyebrow: "AXE CHALLENGE · FINAL SCORE",
+      cardWood: "나무",
+      cardScore: "{score}개",
+      cardBest: "최고 기록  {best}",
+      cardCta: "당신은 몇 개까지 이어갈 수 있나요?",
+      sharePreparing: "카드 준비 중…",
+      shareRebuild: "카드 다시 만들기",
+      shareRebuilding: "결과 카드를 다시 만들고 있어요.",
+      fallbackSaved: "결과 PNG를 저장하고 도전 링크를 복사했어요.",
+      fallbackNoCopy: "결과 PNG를 저장했어요. 링크는 주소창에서 복사해 주세요.",
+      shareCancelled: "공유를 취소했어요.",
+      pngError: "PNG 카드 생성 실패"
+    },
+    en: {
+      htmlLocale: "en_US",
+      title: "Axe Challenge · Tiny Defense | OneStep Games",
+      description: "One miss ends the run in Tiny Defense's Axe Challenge. Chase a new high score and share the result.",
+      ogTitle: "Tiny Defense Axe Challenge | Beat Your Best",
+      ogDescription: "Miss the gold zone and it's over. Chain together clean chops and set a new high score.",
+      pageUrl: "https://onestep-games.github.io/en/games/tiny-defense/",
+      backUrl: "/en/games/tiny-defense/",
+      shareUrl: "https://onestep-games.github.io/en/games/tiny-defense/#axe-challenge",
+      cardUrl: "onestep-games.github.io/en/games/tiny-defense",
+      canvasLabel: "Tiny Defense Axe Challenge. Tap the screen or press the Chop button when the marker enters the gold zone.",
+      hudLabel: "Current score",
+      woodLabel: "WOOD",
+      chopKicker: "TIME THE GOLD ZONE",
+      chopLabel: "CHOP!",
+      hintHtml: "HIT +1 · CENTER PERFECT +2 · FASTER WITH EVERY HIT<br>ONE MISS ENDS THE RUN · <kbd>SPACE</kbd> / TAP",
+      resultEyebrow: "AXE CHALLENGE · RESULT",
+      newRecord: "NEW BEST!",
+      resultScoreLabel: "THIS RUN",
+      scorePrefix: "",
+      scoreSuffix: " WOOD",
+      bestLabel: "BEST",
+      retry: "Try Again",
+      share: "Share",
+      store: "Play on ONE store",
+      initialMessage: "Aim for the gold zone",
+      hitMessage: "HIT!",
+      perfectMessage: "PERFECT!",
+      missMessage: "MISS!",
+      restartStatus: "New challenge started. Best: {best} wood.",
+      hitStatus: "{judgement} {score} wood, best {best}.",
+      hitJudgement: "Hit.",
+      perfectJudgement: "Perfect.",
+      gameOverStatus: "Game over. Final score: {score} wood. Best: {best}.",
+      resultCopies: [
+        "Bold first swing. Aim for the gold next time.",
+        "You're finding the rhythm. Give it one more run.",
+        "You've caught the forest's beat. The real run starts now.",
+        "That's seasoned lumberjack territory. How long can you keep it going?",
+        "The forest will remember your name. Share this run with the world."
+      ],
+      timingGold: "GOLD ZONE",
+      timingScore: "SCORE",
+      cardEyebrow: "AXE CHALLENGE · FINAL SCORE",
+      cardWood: "WOOD",
+      cardScore: "{score}",
+      cardBest: "BEST  {best}",
+      cardCta: "How long can you keep the streak alive?",
+      sharePreparing: "Preparing card…",
+      shareRebuild: "Rebuild card",
+      shareRebuilding: "Rebuilding your result card.",
+      fallbackSaved: "Saved the result PNG and copied the challenge link.",
+      fallbackNoCopy: "Saved the result PNG. Copy the link from your address bar.",
+      shareCancelled: "Sharing canceled.",
+      pngError: "Could not generate the PNG card"
+    },
+    ja: {
+      htmlLocale: "ja_JP",
+      title: "木こりチャレンジ · Tiny Defense | OneStep Games",
+      description: "一度でも外せば即終了の『Tiny Defense』木こりスコアアタック。丸太のベストスコアに挑戦し、結果をシェアしよう。",
+      ogTitle: "Tiny Defense 木こりチャレンジ | ベストスコアに挑戦",
+      ogDescription: "ゴールドゾーンを外した瞬間ゲームオーバー！連続で斧を振り、丸太のベストスコアに挑戦しよう。",
+      pageUrl: "https://onestep-games.github.io/ja/games/tiny-defense/",
+      backUrl: "/ja/games/tiny-defense/",
+      shareUrl: "https://onestep-games.github.io/ja/games/tiny-defense/#axe-challenge",
+      cardUrl: "onestep-games.github.io/ja/games/tiny-defense",
+      canvasLabel: "Tiny Defense 木こりチャレンジ。マーカーがゴールドゾーンに入っている間に、画面または「斧を振る」ボタンを押してください。",
+      hudLabel: "現在のスコア",
+      woodLabel: "丸太",
+      chopKicker: "ゴールドゾーンに合わせて",
+      chopLabel: "斧を振る！",
+      hintHtml: "命中 +1 · 中央 PERFECT +2 · 成功するほど速くなります。<br>一度でも外せば終了 · <kbd>スペース</kbd> / 画面をタップ",
+      resultEyebrow: "AXE CHALLENGE · RESULT",
+      newRecord: "新記録！",
+      resultScoreLabel: "今回のスコア",
+      scorePrefix: "丸太 ",
+      scoreSuffix: "本",
+      bestLabel: "ベスト",
+      retry: "もう一度",
+      share: "シェアする",
+      store: "ONE storeでプレイ",
+      initialMessage: "ゴールドゾーンを狙え",
+      hitMessage: "命中！",
+      perfectMessage: "PERFECT!",
+      missMessage: "ミス！",
+      restartStatus: "新しいチャレンジが始まりました。ベストスコアは{best}本です。",
+      hitStatus: "{judgement} 丸太{score}本、ベスト{best}本。",
+      hitJudgement: "命中。",
+      perfectJudgement: "パーフェクト。",
+      gameOverStatus: "ゲームオーバー。最終スコアは丸太{score}本、ベスト{best}本です。",
+      resultCopies: [
+        "最初の一振りは少し大胆すぎました。次はゴールドゾーンだけを狙いましょう。",
+        "コツをつかんできました。もう一度、リズムをつなげましょう。",
+        "指先が森のリズムを捉えました。本番はここからです。",
+        "もはや熟練の木こり。どこまで続けられるでしょうか？",
+        "森があなたの名を覚えました。この記録を世界に知らせましょう。"
+      ],
+      timingGold: "GOLDEN ZONE",
+      timingScore: "SCORE",
+      cardEyebrow: "AXE CHALLENGE · FINAL SCORE",
+      cardWood: "丸太",
+      cardScore: "{score}",
+      cardBest: "ベストスコア  {best}本",
+      cardCta: "あなたは何本までつなげられますか？",
+      sharePreparing: "リザルトカードを準備中…",
+      shareRebuild: "カードを再作成",
+      shareRebuilding: "リザルトカードを再作成しています。",
+      fallbackSaved: "結果カードのPNGを保存し、チャレンジリンクをコピーしました。",
+      fallbackNoCopy: "結果カードのPNGを保存しました。リンクはアドレスバーからコピーしてください。",
+      shareCancelled: "シェアをキャンセルしました。",
+      pngError: "PNGカードの生成に失敗しました"
+    }
+  };
+  var copy = LOCALES[locale];
+  var FONT_STACK = locale === "ja"
+    ? 'Inter, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif'
+    : "Inter, Pretendard, Arial, sans-serif";
+
   var LW = 720;
   var LH = 960;
   var BEST_KEY = "td_demo_best";
-  var SHARE_URL = "https://onestep-games.github.io/games/tiny-defense/#axe-challenge";
+  var SHARE_URL = copy.shareUrl;
   var STORE_URL = "https://m.onestore.co.kr/v2/ko-kr/app/0001007324";
   var BASE_SPEED = 0.78;
   var SPEED_STEP = 0.065;
@@ -17,7 +197,7 @@
   var TREE_BASE_Y = 700;
   var PAWN_X = 292;
   var PAWN_BASE_Y = 747;
-  var CHOP_AUDIO_URL = "./assets/sfx-chop.wav?v=score-attack-3";
+  var CHOP_AUDIO_URL = "./assets/sfx-chop.wav?v=score-attack-4";
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var canvas = document.getElementById("game");
@@ -38,7 +218,9 @@
   var toast = document.getElementById("toast");
   var chopSfx = document.getElementById("chopSfx");
 
-  if (new URLSearchParams(window.location.search).has("embed")) {
+  applyLocalization();
+
+  if (queryParameters.has("embed")) {
     document.body.classList.add("is-embedded");
   }
 
@@ -70,7 +252,7 @@
   var hitGlowT = 0;
   var shakeT = 0;
   var resultDelay = 0;
-  var message = "황금 존을 노려라";
+  var message = copy.initialMessage;
   var messageT = 1.15;
   var messagePerfect = false;
   var particles = [];
@@ -91,6 +273,60 @@
   var chopAudioContext = null;
   var chopAudioBuffer = null;
   var chopAudioLoadPromise = null;
+
+  function formatText(template, values) {
+    return template.replace(/\{([a-z]+)\}/gi, function (match, key) {
+      return Object.prototype.hasOwnProperty.call(values, key) ? String(values[key]) : match;
+    });
+  }
+
+  function setShareButton(label, showIcon) {
+    shareBtn.textContent = "";
+    if (showIcon) {
+      var icon = document.createElement("span");
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = "↗";
+      shareBtn.appendChild(icon);
+      shareBtn.appendChild(document.createTextNode(" "));
+    }
+    shareBtn.appendChild(document.createTextNode(label));
+  }
+
+  function setMetaContent(selector, value) {
+    var element = document.querySelector(selector);
+    if (element) element.setAttribute("content", value);
+  }
+
+  function applyLocalization() {
+    document.documentElement.lang = locale;
+    document.body.dataset.locale = locale;
+    document.title = copy.title;
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", copy.pageUrl);
+    setMetaContent('meta[name="description"]', copy.description);
+    setMetaContent('meta[property="og:locale"]', copy.htmlLocale);
+    setMetaContent('meta[property="og:title"]', copy.ogTitle);
+    setMetaContent('meta[property="og:description"]', copy.ogDescription);
+    setMetaContent('meta[property="og:url"]', copy.pageUrl);
+
+    document.getElementById("backLink").setAttribute("href", copy.backUrl);
+    canvas.setAttribute("aria-label", copy.canvasLabel);
+    document.getElementById("scoreHud").setAttribute("aria-label", copy.hudLabel);
+    document.getElementById("woodLabel").textContent = copy.woodLabel;
+    document.getElementById("chopKicker").textContent = copy.chopKicker;
+    document.getElementById("chopLabel").textContent = copy.chopLabel;
+    document.getElementById("gameHint").innerHTML = copy.hintHtml;
+    document.getElementById("resultEyebrow").textContent = copy.resultEyebrow;
+    document.getElementById("newRecordLabel").textContent = copy.newRecord;
+    document.getElementById("resultScoreLabel").textContent = copy.resultScoreLabel;
+    document.getElementById("resultScorePrefix").textContent = copy.scorePrefix;
+    document.getElementById("resultScoreSuffix").textContent = copy.scoreSuffix;
+    document.getElementById("resultBestLabel").textContent = copy.bestLabel;
+    retryBtn.textContent = copy.retry;
+    setShareButton(copy.share, true);
+    document.getElementById("storeButtonLabel").textContent = copy.store;
+    resultCopyEl.textContent = copy.resultCopies[1];
+  }
 
   function readBest() {
     try {
@@ -158,7 +394,7 @@
     hitGlowT = 0;
     shakeT = 0;
     resultDelay = 0;
-    message = "황금 존을 노려라";
+    message = copy.initialMessage;
     messageT = 1.05;
     messagePerfect = false;
     particles.length = 0;
@@ -173,7 +409,7 @@
     updateDifficulty();
     rollZone();
     setHud();
-    gameStatus.textContent = "새 도전이 시작됐습니다. 최고 기록 " + best + "개.";
+    gameStatus.textContent = formatText(copy.restartStatus, { best: best });
   }
 
   function replayAnimation(element, className) {
@@ -368,7 +604,7 @@
       score += gainedWood;
       hitCount += 1;
       hitGlowT = perfect ? 0.48 : 0.34;
-      message = perfect ? "PERFECT!" : "명중!";
+      message = perfect ? copy.perfectMessage : copy.hitMessage;
       messageT = perfect ? 0.64 : 0.46;
       messagePerfect = perfect;
       if (perfect && !reducedMotion) shakeT = 0.13;
@@ -385,7 +621,11 @@
       updateDifficulty();
       rollZone();
       setHud();
-      gameStatus.textContent = (perfect ? "퍼펙트. " : "명중. ") + "나무 " + score + "개, 최고 " + best + "개.";
+      gameStatus.textContent = formatText(copy.hitStatus, {
+        judgement: perfect ? copy.perfectJudgement : copy.hitJudgement,
+        score: score,
+        best: best
+      });
       return;
     }
 
@@ -397,7 +637,7 @@
     canvasPointer = null;
     missFlashT = 0.42;
     resultDelay = 0.34;
-    message = "빗나감!";
+    message = copy.missMessage;
     messageT = 0.52;
     messagePerfect = false;
     if (!reducedMotion) shakeT = 0.18;
@@ -412,15 +652,15 @@
     setHud();
     populateResult(isRecord);
     prepareShareCard();
-    gameStatus.textContent = "게임 오버. 최종 기록 나무 " + score + "개, 최고 " + best + "개.";
+    gameStatus.textContent = formatText(copy.gameOverStatus, { score: score, best: best });
   }
 
   function resultCopy(value) {
-    if (value === 0) return "첫 도끼는 과감했습니다. 다음엔 황금빛만 노려보세요.";
-    if (value < 5) return "감이 오기 시작했어요. 한 번 더 리듬을 이어보세요.";
-    if (value < 15) return "손끝이 숲의 박자를 탔습니다. 기록은 이제부터예요.";
-    if (value < 30) return "이 정도면 노련한 벌목꾼. 어디까지 이어갈 수 있을까요?";
-    return "숲이 당신의 이름을 기억합니다. 이 기록을 세상에 알려보세요.";
+    if (value === 0) return copy.resultCopies[0];
+    if (value < 5) return copy.resultCopies[1];
+    if (value < 15) return copy.resultCopies[2];
+    if (value < 30) return copy.resultCopies[3];
+    return copy.resultCopies[4];
   }
 
   function populateResult(isRecord) {
@@ -684,13 +924,13 @@
     ctx.stroke();
 
     ctx.fillStyle = "#5f6672";
-    ctx.font = "900 16px Inter, Pretendard, sans-serif";
+    ctx.font = "900 16px " + FONT_STACK;
     ctx.textAlign = "left";
     ctx.letterSpacing = "1px";
-    ctx.fillText("GOLDEN ZONE", trackX, 782);
+    ctx.fillText(copy.timingGold, trackX, 782);
     ctx.textAlign = "right";
     ctx.fillStyle = "#a97713";
-    ctx.fillText("SCORE  " + score, trackX + trackW, 782);
+    ctx.fillText(copy.timingScore + "  " + score, trackX + trackW, 782);
 
     roundedPath(ctx, trackX, trackY, trackW, trackH, 12);
     ctx.fillStyle = "#dce4e5";
@@ -739,7 +979,7 @@
       ctx.save();
       ctx.globalAlpha = alpha;
       ctx.textAlign = "center";
-      ctx.font = "950 " + (item.perfect ? 46 : 40) + "px Inter, Pretendard, sans-serif";
+      ctx.font = "950 " + (item.perfect ? 46 : 40) + "px " + FONT_STACK;
       ctx.lineWidth = 7;
       ctx.strokeStyle = "rgba(249,246,236,.88)";
       ctx.strokeText(amountText, item.x, item.y);
@@ -754,7 +994,7 @@
     ctx.save();
     ctx.globalAlpha = Math.min(1, messageT * 3.2);
     ctx.textAlign = "center";
-    ctx.font = "950 " + (messagePerfect ? 47 : 40) + "px Inter, Pretendard, sans-serif";
+    ctx.font = "950 " + (messagePerfect ? 47 : 40) + "px " + FONT_STACK;
     ctx.lineWidth = 8;
     ctx.strokeStyle = "rgba(249,246,236,.84)";
     ctx.strokeText(message, LW / 2, 260);
@@ -871,11 +1111,11 @@
 
       drawRoundedImage(cardCtx, shareIcon, 90, 88, 148, 34);
       cardCtx.fillStyle = "#e5b83e";
-      cardCtx.font = "900 25px Inter, Arial, sans-serif";
+      cardCtx.font = "900 25px " + FONT_STACK;
       cardCtx.textAlign = "left";
       cardCtx.fillText("ONESTEP", 270, 132);
       cardCtx.fillStyle = "#fffaf0";
-      cardCtx.font = "950 55px Inter, Arial, sans-serif";
+      cardCtx.font = "950 55px " + FONT_STACK;
       cardCtx.fillText("TINY DEFENSE", 270, 198);
 
       cardCtx.fillStyle = "rgba(255,255,255,.12)";
@@ -886,28 +1126,28 @@
       cardCtx.stroke();
 
       cardCtx.fillStyle = "#e5b83e";
-      cardCtx.font = "900 29px Inter, Arial, sans-serif";
+      cardCtx.font = "900 29px " + FONT_STACK;
       cardCtx.textAlign = "center";
-      cardCtx.fillText("AXE CHALLENGE · FINAL SCORE", 540, 390);
+      cardCtx.fillText(copy.cardEyebrow, 540, 390);
 
       if (shareWood.naturalWidth) {
         cardCtx.imageSmoothingEnabled = false;
         cardCtx.drawImage(shareWood, 270, 468, 112, 70);
       }
       cardCtx.fillStyle = "#fffdf5";
-      cardCtx.font = "950 72px Inter, Pretendard, sans-serif";
+      cardCtx.font = "950 72px " + FONT_STACK;
       cardCtx.textAlign = "left";
-      cardCtx.fillText("나무", 405, 530);
+      cardCtx.fillText(copy.cardWood, 405, 530);
 
       var scoreFont = value >= 1000 ? 172 : value >= 100 ? 200 : 222;
       cardCtx.fillStyle = "#f7dc82";
-      cardCtx.font = "950 " + scoreFont + "px Inter, Pretendard, sans-serif";
+      cardCtx.font = "950 " + scoreFont + "px " + FONT_STACK;
       cardCtx.textAlign = "center";
-      cardCtx.fillText(value + "개", 540, 750);
+      cardCtx.fillText(formatText(copy.cardScore, { score: value }), 540, 750);
 
       cardCtx.fillStyle = "rgba(255,255,255,.72)";
-      cardCtx.font = "800 42px Inter, Pretendard, sans-serif";
-      cardCtx.fillText("최고 기록  " + bestValue, 540, 838);
+      cardCtx.font = "800 42px " + FONT_STACK;
+      cardCtx.fillText(formatText(copy.cardBest, { best: bestValue }), 540, 838);
 
       var trackX = 156;
       var trackY = 994;
@@ -925,20 +1165,20 @@
       cardCtx.fillRect(537, trackY - 11, 7, 64);
 
       cardCtx.fillStyle = "#fffaf0";
-      cardCtx.font = "900 33px Inter, Pretendard, sans-serif";
+      cardCtx.font = "900 33px " + FONT_STACK;
       cardCtx.textAlign = "center";
-      cardCtx.fillText("당신은 몇 개까지 이어갈 수 있나요?", 540, 1132);
+      cardCtx.fillText(copy.cardCta, 540, 1132);
       cardCtx.fillStyle = "rgba(255,255,255,.64)";
-      cardCtx.font = "700 24px Inter, Arial, sans-serif";
-      cardCtx.fillText("onestep-games.github.io/games/tiny-defense", 540, 1194);
+      cardCtx.font = "700 24px " + FONT_STACK;
+      cardCtx.fillText(copy.cardUrl, 540, 1194);
       cardCtx.fillStyle = "#e5b83e";
-      cardCtx.font = "900 22px Inter, Arial, sans-serif";
+      cardCtx.font = "900 22px " + FONT_STACK;
       cardCtx.fillText("PLAY · RISK · REPEAT", 540, 1250);
 
       return new Promise(function (resolve, reject) {
         card.toBlob(function (blob) {
           if (blob) resolve(blob);
-          else reject(new Error("PNG 카드 생성 실패"));
+          else reject(new Error(copy.pngError));
         }, "image/png");
       });
     });
@@ -950,14 +1190,14 @@
     var cardBest = shareBest;
     shareBlob = null;
     shareBtn.disabled = true;
-    shareBtn.innerHTML = "카드 준비 중&hellip;";
+    setShareButton(copy.sharePreparing, false);
     document.body.dataset.shareState = "generating";
     shareCardPromise = createShareCard(cardScore, cardBest)
       .then(function (blob) {
         if (generation !== shareGeneration) return null;
         shareBlob = blob;
         shareBtn.disabled = false;
-        shareBtn.innerHTML = '<span aria-hidden="true">&#8599;</span> 공유하기';
+        setShareButton(copy.share, true);
         document.body.dataset.shareState = "generated";
         resultOverlay.dataset.shareBytes = String(blob.size);
         window.dispatchEvent(new CustomEvent("tinydefense:sharecard", {
@@ -968,7 +1208,7 @@
       .catch(function () {
         if (generation !== shareGeneration) return null;
         shareBtn.disabled = false;
-        shareBtn.textContent = "카드 다시 만들기";
+        setShareButton(copy.shareRebuild, false);
         document.body.dataset.shareState = "error";
         return null;
       });
@@ -1023,15 +1263,15 @@
     copyText(SHARE_URL).then(function (copied) {
       document.body.dataset.shareState = "fallback";
       showToast(copied
-        ? "결과 PNG를 저장하고 도전 링크를 복사했어요."
-        : "결과 PNG를 저장했어요. 링크는 주소창에서 복사해 주세요.");
+        ? copy.fallbackSaved
+        : copy.fallbackNoCopy);
     });
   }
 
   function shareResult() {
     if (!shareBlob) {
       prepareShareCard();
-      showToast("결과 카드를 다시 만들고 있어요.");
+      showToast(copy.shareRebuilding);
       return;
     }
 
@@ -1044,7 +1284,7 @@
       }).catch(function (error) {
         if (error && error.name === "AbortError") {
           document.body.dataset.shareState = "cancelled";
-          showToast("공유를 취소했어요.");
+          showToast(copy.shareCancelled);
           return;
         }
         fallbackShare(shareBlob);
@@ -1169,6 +1409,7 @@
     enumerable: false,
     value: function () {
       return Object.freeze({
+        locale: locale,
         score: score,
         hitCount: hitCount,
         best: best,
@@ -1189,6 +1430,7 @@
         chopSoundError: chopSoundError,
         chopAudioContextState: chopAudioContext ? chopAudioContext.state : "unavailable",
         chopAudioBufferDuration: chopAudioBuffer ? chopAudioBuffer.duration : 0,
+        shareUrl: SHARE_URL,
         storeUrl: STORE_URL
       });
     }
