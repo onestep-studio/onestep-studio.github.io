@@ -70,13 +70,10 @@
       cardCta: "당신은 몇 개까지 이어갈 수 있나요?",
       shareTitle: "Tiny Defense 도끼질 챌린지",
       shareText: "Tiny Defense 도끼질 챌린지에서 나무 {score}개 기록! 당신은 몇 개까지 이어갈 수 있나요?",
-      savePng: "이미지 보기",
-      saveHint: "아래 결과 이미지를 길게 눌러 저장하거나 공유하세요.",
       sharePreparing: "카드 준비 중…",
       shareRebuild: "카드 다시 만들기",
       shareRebuilding: "결과 카드를 다시 만들고 있어요.",
-      fallbackSaved: "공유가 막혀 결과 이미지를 열었어요. 길게 눌러 저장하거나 공유하세요.",
-      fallbackNoCopy: "공유가 막혀 결과 이미지를 열었어요. 길게 눌러 저장하거나 공유하세요.",
+      shareBlocked: "앱 웹뷰에서는 공유가 막힐 수 있어요. 외부 브라우저에서 열어 다시 시도해주세요.",
       shareCancelled: "공유를 취소했어요.",
       pngError: "PNG 카드 생성 실패"
     },
@@ -143,13 +140,10 @@
       cardCta: "How long can you keep the streak alive?",
       shareTitle: "Tiny Defense Axe Challenge",
       shareText: "I scored {score} wood in the Tiny Defense Axe Challenge. How long can you keep the streak alive?",
-      savePng: "View Image",
-      saveHint: "Long-press the result image below to save or share it.",
       sharePreparing: "Preparing card…",
       shareRebuild: "Rebuild card",
       shareRebuilding: "Rebuilding your result card.",
-      fallbackSaved: "Sharing was blocked, so the result image is open. Long-press it to save or share.",
-      fallbackNoCopy: "Sharing was blocked, so the result image is open. Long-press it to save or share.",
+      shareBlocked: "Sharing may be blocked inside app webviews. Open this page in your browser and try again.",
       shareCancelled: "Sharing canceled.",
       pngError: "Could not generate the PNG card"
     },
@@ -216,13 +210,10 @@
       cardCta: "あなたは何本までつなげられますか？",
       shareTitle: "Tiny Defense 木こりチャレンジ",
       shareText: "Tiny Defense 木こりチャレンジで丸太{score}本を記録！あなたは何本までつなげられますか？",
-      savePng: "画像を表示",
-      saveHint: "下のリザルト画像を長押しして保存または共有してください。",
       sharePreparing: "リザルトカードを準備中…",
       shareRebuild: "カードを再作成",
       shareRebuilding: "リザルトカードを再作成しています。",
-      fallbackSaved: "共有がブロックされたため、リザルト画像を表示しました。長押しして保存または共有してください。",
-      fallbackNoCopy: "共有がブロックされたため、リザルト画像を表示しました。長押しして保存または共有してください。",
+      shareBlocked: "アプリ内ブラウザでは共有がブロックされる場合があります。外部ブラウザで開いてもう一度お試しください。",
       shareCancelled: "シェアをキャンセルしました。",
       pngError: "PNGカードの生成に失敗しました"
     }
@@ -249,7 +240,7 @@
   var TREE_BASE_Y = 700;
   var PAWN_X = 292;
   var PAWN_BASE_Y = 747;
-  var CHOP_AUDIO_URL = "./assets/sfx-chop.wav?v=score-attack-9";
+  var CHOP_AUDIO_URL = "./assets/sfx-chop.wav?v=score-attack-10";
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var canvas = document.getElementById("game");
@@ -268,10 +259,6 @@
   var newRecordEl = document.getElementById("newRecord");
   var retryBtn = document.getElementById("retryBtn");
   var shareBtn = document.getElementById("shareBtn");
-  var savePngBtn = document.getElementById("savePngBtn");
-  var savePanel = document.getElementById("savePanel");
-  var savePanelHint = document.getElementById("savePanelHint");
-  var savePreview = document.getElementById("savePreview");
   var toast = document.getElementById("toast");
   var chopSfx = document.getElementById("chopSfx");
 
@@ -320,7 +307,6 @@
   var shareScore = 0;
   var shareBest = 0;
   var shareGeneration = 0;
-  var savePreviewUrl = "";
   var toastTimer = 0;
   var lastFrame = 0;
   var suppressPointerClick = false;
@@ -383,9 +369,6 @@
     document.getElementById("resultBestLabel").textContent = copy.bestLabel;
     retryBtn.textContent = copy.retry;
     setShareButton(copy.share, true);
-    savePngBtn.textContent = copy.savePng;
-    savePanelHint.textContent = copy.saveHint;
-    savePreview.setAttribute("alt", copy.ogDescription);
     document.getElementById("storeButtonLabel").textContent = copy.store;
     resultTierEl.textContent = copy.tiers[0].title;
     resultCopyEl.textContent = copy.tiers[0].copy;
@@ -488,8 +471,6 @@
     shareCardPromise = null;
     shareGeneration += 1;
     newRecordEl.hidden = true;
-    savePngBtn.hidden = true;
-    hideSavePanel();
     document.body.dataset.shareState = "idle";
     resultOverlay.dataset.shareBytes = "0";
     document.body.dataset.gameState = "running";
@@ -1309,62 +1290,6 @@
       });
   }
 
-  function downloadPng(blob, value) {
-    var url = URL.createObjectURL(blob);
-    var link = document.createElement("a");
-    link.href = url;
-    link.download = "tiny-defense-axe-" + value + ".png";
-    link.style.display = "none";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    window.setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
-  }
-
-  function hideSavePanel() {
-    savePanel.hidden = true;
-    savePreview.removeAttribute("src");
-    if (savePreviewUrl) {
-      URL.revokeObjectURL(savePreviewUrl);
-      savePreviewUrl = "";
-    }
-  }
-
-  function showSavePanel(blob) {
-    if (savePreviewUrl) URL.revokeObjectURL(savePreviewUrl);
-    savePreviewUrl = URL.createObjectURL(blob);
-    savePreview.src = savePreviewUrl;
-    savePanel.hidden = false;
-    savePngBtn.hidden = false;
-    document.body.dataset.shareState = "fallback";
-    window.setTimeout(function () {
-      savePanel.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "nearest" });
-    }, 40);
-  }
-
-  function copyText(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(text).then(function () { return true; }).catch(function () {
-        return legacyCopy(text);
-      });
-    }
-    return Promise.resolve(legacyCopy(text));
-  }
-
-  function legacyCopy(text) {
-    var input = document.createElement("textarea");
-    input.value = text;
-    input.setAttribute("readonly", "");
-    input.style.position = "fixed";
-    input.style.opacity = "0";
-    document.body.appendChild(input);
-    input.select();
-    var copied = false;
-    try { copied = document.execCommand("copy"); } catch (error) { copied = false; }
-    input.remove();
-    return copied;
-  }
-
   function showToast(messageText) {
     window.clearTimeout(toastTimer);
     toast.textContent = messageText;
@@ -1374,14 +1299,9 @@
     }, 3000);
   }
 
-  function fallbackShare(blob) {
-    showSavePanel(blob);
-    downloadPng(blob, shareScore);
-    copyText(SHARE_URL).then(function (copied) {
-      showToast(copied
-        ? copy.fallbackSaved
-        : copy.fallbackNoCopy);
-    });
+  function fallbackShare() {
+    document.body.dataset.shareState = "blocked";
+    showToast(copy.shareBlocked);
   }
 
   function createSharePayload(files, options) {
@@ -1423,20 +1343,6 @@
     return variants.filter(canSharePayload);
   }
 
-  function saveCurrentPng() {
-    if (!shareBlob) {
-      prepareShareCard();
-      showToast(copy.shareRebuilding);
-      return;
-    }
-
-    showSavePanel(shareBlob);
-    downloadPng(shareBlob, shareScore);
-    copyText(SHARE_URL).then(function (copied) {
-      showToast(copied ? copy.fallbackSaved : copy.fallbackNoCopy);
-    });
-  }
-
   function shareResult() {
     if (!shareBlob) {
       prepareShareCard();
@@ -1458,12 +1364,12 @@
           showToast(copy.shareCancelled);
           return;
         }
-        fallbackShare(shareBlob);
+        fallbackShare();
       });
       return;
     }
 
-    fallbackShare(shareBlob);
+    fallbackShare();
   }
 
   function loadSheets(done) {
@@ -1531,7 +1437,6 @@
   window.addEventListener("keydown", unlockChopAudio, true);
   retryBtn.addEventListener("click", restart);
   shareBtn.addEventListener("click", shareResult);
-  savePngBtn.addEventListener("click", saveCurrentPng);
   window.addEventListener("resize", resize);
   window.addEventListener("storage", function (event) {
     if (event.key !== BEST_KEY) return;
