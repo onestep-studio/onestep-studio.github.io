@@ -36,7 +36,7 @@
       bestLabel: "최고",
       retry: "다시 하기",
       share: "공유하기",
-      store: "원스토어에서 플레이",
+      store: "스토어에서 플레이",
       initialMessage: "황금 존을 노려라",
       hitMessage: "명중!",
       perfectMessage: "PERFECT!",
@@ -111,7 +111,7 @@
       bestLabel: "BEST",
       retry: "Try Again",
       share: "Share",
-      store: "Play on ONE store",
+      store: "Play on stores",
       initialMessage: "Aim for the gold zone",
       hitMessage: "HIT!",
       perfectMessage: "PERFECT!",
@@ -186,7 +186,7 @@
       bestLabel: "ベスト",
       retry: "もう一度",
       share: "シェアする",
-      store: "ONE storeでプレイ",
+      store: "ストアでプレイ",
       initialMessage: "ゴールドゾーンを狙え",
       hitMessage: "命中！",
       perfectMessage: "PERFECT!",
@@ -242,7 +242,7 @@
   var LH = 960;
   var BEST_KEY = "td_demo_best";
   var SHARE_URL = copy.shareUrl;
-  var STORE_URL = "https://m.onestore.co.kr/v2/ko-kr/app/0001007324";
+  var STORE_URL = copy.backUrl + "#stores";
   var BASE_SPEED = 0.78;
   var SPEED_STEP = 0.065;
   var MAX_SPEED = 2.45;
