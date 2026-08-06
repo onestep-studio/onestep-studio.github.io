@@ -32,6 +32,9 @@ assert.match(script, /nemesisLastTrigger\.focus\(\)/, "closing restores card foc
 
 const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
 assert.match(css, /@media \(max-width: 1023px\)[\s\S]*?\.nemesis-grid\s*\{\s*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/, "tablet layout uses two Nemesis columns");
-assert.match(css, /@media \(max-width: 620px\)[\s\S]*?\.nemesis-grid\s*\{\s*grid-template-columns: 1fr/, "mobile layout uses one Nemesis column");
+assert.match(css, /\.nemesis-card\s*\{[\s\S]*?background: linear-gradient\(180deg, #3b2a1c, #1b1410\)/, "website cards use the standalone codex's wood-and-parchment palette");
+assert.match(css, /\.nemesis-dialog-copy h2\s*\{[\s\S]*?color: #ffe2a0;/, "Nemesis titles use high-contrast parchment gold");
+assert.match(css, /\.nemesis-dialog-close\s*\{[\s\S]*?place-items: center;[\s\S]*?padding: 0;[\s\S]*?line-height: 1;/, "the close glyph is centered inside its button");
+assert.match(css, /@media \(max-width: 899px\)[\s\S]*?\.nemesis-grid\s*\{\s*grid-template-columns: 1fr;[\s\S]*?\.nemesis-card\s*\{[\s\S]*?grid-template-columns: 126px minmax\(0, 1fr\)/, "mobile cards keep artwork left and information right");
 
 console.log("nemesis gallery contract ok");
