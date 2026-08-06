@@ -32,11 +32,11 @@ for (const name of names) assert.match(html, new RegExp(name), `${name} is prese
 for (const asset of assets) {
   const [width, height] = pngSize(path.join(root, "assets", "nemesis", `${asset}.png`));
   assert.deepEqual([width, height], [512, 512], `${asset} keeps the approved first frame`);
-  assert.equal(gifFrameCount(path.join(root, "assets", "nemesis", `${asset}-walk.gif`)), 6, `${asset} has all six walking frames`);
+  assert.equal(gifFrameCount(path.join(root, "assets", "nemesis", `${asset}-idle.gif`)), 6, `${asset} has all six idle frames`);
 }
 
 const script = fs.readFileSync(path.join(root, "script.js"), "utf8");
-for (const asset of assets) assert.match(script, new RegExp(`image: "/assets/nemesis/${asset}-walk\\.gif"`), `${asset} uses its walking animation in the detail view`);
+for (const asset of assets) assert.match(script, new RegExp(`image: "/assets/nemesis/${asset}-idle\\.gif"`), `${asset} uses its idle animation in the detail view`);
 assert.match(script, /function openNemesisDialog/, "the website opens a detail dialog");
 assert.match(script, /function closeNemesisDialog/, "the website closes a detail dialog");
 assert.match(script, /event\.key === "Escape"/, "Escape closes the detail dialog");
