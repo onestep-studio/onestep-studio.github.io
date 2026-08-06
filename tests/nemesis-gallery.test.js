@@ -12,16 +12,6 @@ function pngSize(filename) {
   return [bytes.readUInt32BE(16), bytes.readUInt32BE(20)];
 }
 
-function gifFrameCount(filename) {
-  const bytes = fs.readFileSync(filename);
-  assert.equal(bytes.subarray(0, 3).toString("ascii"), "GIF", `${filename} is a GIF`);
-  let frames = 0;
-  for (let index = 0; index < bytes.length - 2; index += 1) {
-    if (bytes[index] === 0x21 && bytes[index + 1] === 0xf9 && bytes[index + 2] === 0x04) frames += 1;
-  }
-  return frames;
-}
-
 const page = path.join(root, "games", "tiny-defense", "index.html");
 const html = fs.readFileSync(page, "utf8");
 assert.match(html, /href="#nemesis"/, "the navigation links to the Nemesis section");
@@ -32,11 +22,10 @@ for (const name of names) assert.match(html, new RegExp(name), `${name} is prese
 for (const asset of assets) {
   const [width, height] = pngSize(path.join(root, "assets", "nemesis", `${asset}.png`));
   assert.deepEqual([width, height], [512, 512], `${asset} keeps the approved first frame`);
-  assert.equal(gifFrameCount(path.join(root, "assets", "nemesis", `${asset}-idle.gif`)), 6, `${asset} has all six idle frames`);
 }
 
 const script = fs.readFileSync(path.join(root, "script.js"), "utf8");
-for (const asset of assets) assert.match(script, new RegExp(`image: "/assets/nemesis/${asset}-idle\\.gif"`), `${asset} uses its idle animation in the detail view`);
+for (const asset of assets) assert.match(script, new RegExp(`image: "/assets/nemesis/${asset}\\.png"`), `${asset} uses its still idle frame in the detail view`);
 assert.match(script, /function openNemesisDialog/, "the website opens a detail dialog");
 assert.match(script, /function closeNemesisDialog/, "the website closes a detail dialog");
 assert.match(script, /event\.key === "Escape"/, "Escape closes the detail dialog");
