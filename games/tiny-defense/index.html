@@ -74,6 +74,7 @@
       <nav class="primary-nav" id="primary-nav" aria-label="주요 메뉴">
         <a href="/">게임 목록</a>
         <a href="#features">특징</a>
+        <a href="#nemesis">네메시스</a>
         <a href="#gallery">갤러리</a>
         <a href="#stores">스토어</a>
         <span class="language-switcher" role="group" aria-label="언어 선택">
@@ -233,6 +234,67 @@
         </div>
       </div>
     </section>
+
+    <section class="nemesis section" id="nemesis" aria-labelledby="nemesis-title">
+      <div class="container">
+        <div class="nemesis-header reveal">
+          <div>
+            <p class="eyebrow">NEMESIS ARCHIVE</p>
+            <h2 id="nemesis-title">압도적인 존재들이<br>성을 찾아옵니다.</h2>
+          </div>
+          <p>계절과 회귀를 넘어 돌아오는 다섯 재앙. 보스를 선택해 기록을 펼치세요.</p>
+        </div>
+
+        <div class="nemesis-grid">
+          <button class="nemesis-card reveal" type="button" data-nemesis-card="elder" aria-label="태고의 트롤 상세 기록 열기">
+            <img src="/assets/nemesis/elder-troll.png" alt="태고의 트롤" width="512" height="512" loading="lazy">
+            <span>본편 네메시스</span><strong>태고의 트롤</strong><small>바위 · 원초 · 불굴</small>
+          </button>
+          <button class="nemesis-card reveal" type="button" data-nemesis-card="bloom" aria-label="개화의 폭군 상세 기록 열기">
+            <img src="/assets/nemesis/bloom-tyrant.png" alt="개화의 폭군" width="512" height="512" loading="lazy">
+            <span>봄 네메시스</span><strong>개화의 폭군</strong><small>꽃 · 증식 · 폭주</small>
+          </button>
+          <button class="nemesis-card reveal" type="button" data-nemesis-card="inferno" aria-label="작열의 화신 상세 기록 열기">
+            <img src="/assets/nemesis/blazing-avatar.png" alt="작열의 화신" width="512" height="512" loading="lazy">
+            <span>여름 네메시스</span><strong>작열의 화신</strong><small>화염 · 용암 · 파괴</small>
+          </button>
+          <button class="nemesis-card reveal" type="button" data-nemesis-card="reaper" aria-label="수확의 사신 상세 기록 열기">
+            <img src="/assets/nemesis/harvest-reaper.png" alt="수확의 사신" width="512" height="512" loading="lazy">
+            <span>가을 네메시스</span><strong>수확의 사신</strong><small>수확 · 추적 · 종말</small>
+          </button>
+          <button class="nemesis-card reveal" type="button" data-nemesis-card="frost" aria-label="혹한의 군주 상세 기록 열기">
+            <img src="/assets/nemesis/frost-monarch.png" alt="혹한의 군주" width="512" height="512" loading="lazy">
+            <span>겨울 네메시스</span><strong>혹한의 군주</strong><small>서리 · 군림 · 봉쇄</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="nemesis-dialog-backdrop" data-nemesis-dialog hidden aria-hidden="true">
+      <section class="nemesis-dialog" role="dialog" aria-modal="true" aria-labelledby="nemesis-dialog-title">
+        <button class="nemesis-dialog-close" type="button" data-nemesis-close aria-label="상세 기록 닫기">×</button>
+        <div class="nemesis-dialog-image"><img data-nemesis-image src="/assets/nemesis/elder-troll.png" alt="" width="512" height="512"></div>
+        <div class="nemesis-dialog-copy">
+          <p class="eyebrow" data-nemesis-region></p>
+          <h2 id="nemesis-dialog-title" data-nemesis-name></h2>
+          <p class="nemesis-dialog-epithet" data-nemesis-epithet></p>
+          <p data-nemesis-lore></p>
+          <ul class="nemesis-traits" data-nemesis-traits></ul>
+        </div>
+        <section class="nemesis-skill-record" aria-labelledby="nemesis-skill-title">
+          <h3 id="nemesis-skill-title">공통 전투 기록</h3>
+          <div>
+            <article><b>돌진</b><span>발을 구른 뒤 전열을 향해 폭발적으로 접근한다.</span></article>
+            <article><b>집중 추격</b><span>전투가 길어지면 영웅과 정령을 우선 표적으로 삼는다.</span></article>
+            <article><b>대지 강타</b><span>부채꼴 예고 뒤 전방을 내려쳐 전장을 뒤흔든다.</span></article>
+            <article><b>균열</b><span>밀집한 부대를 겨냥해 긴 균열을 일으킨다.</span></article>
+            <article><b>위험 지대</b><span>깊은 단계에서는 강타와 균열의 자리가 잠시 오염된다.</span></article>
+            <article><b>격노</b><span>체력이 줄면 예고와 공격 주기가 빨라진다.</span></article>
+          </div>
+          <p><strong>25 · 50 · 75 · 100번째 밤</strong>에 같은 존재가 더 강해져 돌아옵니다. 바닥의 예고를 읽고 부대를 흩으세요.</p>
+        </section>
+      </section>
+    </div>
 
     <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
       <div class="container gallery-header reveal">
