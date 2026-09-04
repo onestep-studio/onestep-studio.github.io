@@ -95,49 +95,283 @@ if ("IntersectionObserver" in window && !reduceMotion.matches) {
 const year = document.querySelector("[data-year]");
 if (year) year.textContent = String(new Date().getFullYear());
 
-const nemesisEntries = Object.freeze({
-  elder: { name: "태고의 트롤", region: "본편 네메시스", epithet: "짐승과 고블린이 따르는 가장 오래된 거인", lore: "산맥이 생기기 전부터 잠들어 있던 원초의 트롤. 이끼 낀 돌갑옷과 룬이 새겨진 주먹으로 성벽과 전열을 함께 짓누른다.", traits: ["태고의 거체", "석갑", "움직이는 산"], image: "/assets/nemesis/elder-troll.png" },
-  bloom: { name: "개화의 폭군", region: "봄 네메시스", epithet: "생명을 축복이 아닌 지배로 바꾸는 고목", lore: "끝없이 피어나는 봄의 생명력을 독점한 폭군. 찬란한 꽃 아래에는 침입자를 옥죄는 가시와 굶주린 뿌리가 꿈틀거린다.", traits: ["폭주하는 생명", "가시 갑주", "붉은 핵"], image: "/assets/nemesis/bloom-tyrant.png" },
-  inferno: { name: "작열의 화신", region: "여름 네메시스", epithet: "한낮의 열기를 갑주에 가둔 살아 있는 화산", lore: "검은 암석 갑주 사이로 용암이 흐르는 여름의 화신. 전장에 내딛는 모든 걸음이 열기를 퍼뜨리고, 분노는 불길이 되어 솟구친다.", traits: ["용암 심장", "흑요석 갑주", "불타는 압박"], image: "/assets/nemesis/blazing-avatar.png" },
-  reaper: { name: "수확의 사신", region: "가을 네메시스", epithet: "곡식과 생명을 구분하지 않는 마지막 수확자", lore: "황금 들판이 고개를 숙일 때 나타나는 침묵의 수확자. 초승달 낫과 외눈으로 가장 빛나는 생명을 골라 끝까지 뒤쫓는다.", traits: ["집요한 추적", "초승달 낫", "침묵의 수확"], image: "/assets/nemesis/harvest-reaper.png" },
-  frost: { name: "혹한의 군주", region: "겨울 네메시스", epithet: "겨울 왕관 아래 모든 숨결을 굴복시키는 군주", lore: "얼음 왕관과 결정의 주먹을 지닌 북방의 지배자. 그가 선 전장은 숨조차 무거워지고, 푸른 냉기가 물러설 길을 지운다.", traits: ["빙결의 위엄", "결정 주먹", "북방의 왕관"], image: "/assets/nemesis/frost-monarch.png" },
-});
+const daynightSection = document.querySelector("[data-daynight]");
 
-const nemesisDialog = document.querySelector("[data-nemesis-dialog]");
-const nemesisClose = document.querySelector("[data-nemesis-close]");
-let nemesisLastTrigger = null;
+function setupDayNight(section) {
+  const scroller = section.querySelector(".daynight-scroll");
+  const sticky = section.querySelector(".daynight-sticky");
+  const tabs = Array.from(section.querySelectorAll("[data-daynight-tab]"));
+  const panels = Array.from(section.querySelectorAll("[data-daynight-panel]"));
+  if (!scroller || !sticky || tabs.length < 2 || panels.length !== tabs.length) return;
 
-function closeNemesisDialog() {
-  if (!nemesisDialog || nemesisDialog.hidden) return;
-  nemesisDialog.hidden = true;
-  nemesisDialog.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("nemesis-dialog-open");
-  if (nemesisLastTrigger) nemesisLastTrigger.focus();
+  const keys = tabs.map((tab) => tab.dataset.daynightTab);
+  const panelFor = new Map(panels.map((panel) => [panel.dataset.daynightPanel, panel]));
+  const trackFor = new Map(panels.map((panel) => [panel.dataset.daynightPanel, panel.querySelector(".daynight-track")]));
+  const videos = Array.from(section.querySelectorAll(".daynight-video"));
+  let active = keys[0];
+  let stickyTop = 0;
+  let ticking = false;
+
+  if (reduceMotion.matches) {
+    videos.forEach((video) => video.setAttribute("controls", ""));
+    return;
+  }
+
+  function selectTab(key, options) {
+    if (!panelFor.has(key)) return;
+
+    active = key;
+    tabs.forEach((tab) => {
+      const on = tab.dataset.daynightTab === key;
+      tab.setAttribute("aria-selected", String(on));
+      tab.tabIndex = on ? 0 : -1;
+      if (on && options && options.focus) tab.focus();
+    });
+    panelFor.forEach((panel, panelKey) => {
+      panel.hidden = panelKey !== key;
+    });
+  }
+
+  function measure() {
+    const previous = active;
+    let longest = 0;
+
+    panelFor.forEach((panel, key) => {
+      panelFor.forEach((other, otherKey) => {
+        other.hidden = otherKey !== key;
+      });
+      const track = trackFor.get(key);
+      if (track) longest = Math.max(longest, track.scrollHeight - panel.clientHeight);
+    });
+    panelFor.forEach((panel, key) => {
+      panel.hidden = key !== previous;
+    });
+
+    stickyTop = Number.parseFloat(getComputedStyle(sticky).top) || 0;
+    const span = Math.max(longest, Math.round(window.innerHeight * 0.6));
+    const height = Math.round(sticky.getBoundingClientRect().height + span * keys.length);
+    section.style.setProperty("--daynight-scroll", height + "px");
+  }
+
+  function update() {
+    const rect = scroller.getBoundingClientRect();
+    const travel = rect.height - sticky.getBoundingClientRect().height;
+    const progress = travel > 0 ? Math.min(1, Math.max(0, (stickyTop - rect.top) / travel)) : 0;
+    const slot = Math.min(keys.length - 1, Math.floor(progress * keys.length));
+
+    if (keys[slot] !== active) selectTab(keys[slot]);
+
+    keys.forEach((key, index) => {
+      const track = trackFor.get(key);
+      const panel = panelFor.get(key);
+      if (!track || !panel || panel.hidden) return;
+
+      const overflow = Math.max(0, track.scrollHeight - panel.clientHeight);
+      const local = Math.min(1, Math.max(0, progress * keys.length - index));
+      track.style.transform = "translate3d(0, " + (-overflow * local).toFixed(2) + "px, 0)";
+    });
+  }
+
+  function scrollToTab(key) {
+    const index = keys.indexOf(key);
+    if (index < 0) return;
+
+    const rect = scroller.getBoundingClientRect();
+    const travel = Math.max(0, rect.height - sticky.getBoundingClientRect().height);
+    const top = rect.top + window.scrollY - stickyTop + (travel * index) / keys.length + 1;
+    window.scrollTo({ top: Math.round(top), behavior: "smooth" });
+  }
+
+  function onScroll() {
+    if (ticking) return;
+
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      ticking = false;
+      update();
+    });
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      selectTab(keys[index]);
+      scrollToTab(keys[index]);
+    });
+
+    tab.addEventListener("keydown", (event) => {
+      let next = -1;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (index + 1) % tabs.length;
+      else if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = (index - 1 + tabs.length) % tabs.length;
+      else if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = tabs.length - 1;
+      if (next < 0) return;
+
+      event.preventDefault();
+      selectTab(keys[next], { focus: true });
+      scrollToTab(keys[next]);
+    });
+  });
+
+  if ("IntersectionObserver" in window) {
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            const started = video.play();
+            if (started && typeof started.catch === "function") started.catch(() => {});
+          } else if (!video.paused) {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.35 },
+    );
+
+    videos.forEach((video) => videoObserver.observe(video));
+  }
+
+  section.classList.add("is-scroll-driven");
+  selectTab(keys[0]);
+  measure();
+  update();
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", () => {
+    measure();
+    update();
+  });
+  window.addEventListener("load", () => {
+    measure();
+    update();
+  });
 }
 
-function openNemesisDialog(card) {
-  const entry = nemesisEntries[card.dataset.nemesisCard];
-  if (!nemesisDialog || !entry) return;
-  nemesisLastTrigger = card;
-  const image = nemesisDialog.querySelector("[data-nemesis-image]");
-  image.src = entry.image;
-  image.alt = entry.name;
-  nemesisDialog.querySelector("[data-nemesis-region]").textContent = entry.region;
-  nemesisDialog.querySelector("[data-nemesis-name]").textContent = entry.name;
-  nemesisDialog.querySelector("[data-nemesis-epithet]").textContent = entry.epithet;
-  nemesisDialog.querySelector("[data-nemesis-lore]").textContent = entry.lore;
-  nemesisDialog.querySelector("[data-nemesis-traits]").replaceChildren(...entry.traits.map((trait) => {
-    const item = document.createElement("li");
-    item.textContent = trait;
-    return item;
-  }));
-  nemesisDialog.hidden = false;
-  nemesisDialog.setAttribute("aria-hidden", "false");
-  document.body.classList.add("nemesis-dialog-open");
-  nemesisClose?.focus();
+if (daynightSection) setupDayNight(daynightSection);
+
+const bgmPlayer = document.querySelector("[data-bgm]");
+
+function setupBgm(root) {
+  const audio = root.querySelector("[data-bgm-audio]");
+  if (!audio) return;
+
+  const PLAY_KEY = "onestep.bgm.playing";
+  const VOLUME_KEY = "onestep.bgm.volume";
+  const playLabel = root.dataset.bgmPlayLabel || "Play background music";
+  const pauseLabel = root.dataset.bgmPauseLabel || "Pause background music";
+  const trackName = root.dataset.bgmTitle || "Background music";
+  const volumeLabel = root.dataset.bgmVolumeLabel || "Volume";
+
+  function readStored(key) {
+    try {
+      return window.localStorage.getItem(key);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function writeStored(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (error) {
+      /* private browsing rejects writes; the player still works for this visit */
+    }
+  }
+
+  audio.removeAttribute("controls");
+
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "bgm-toggle";
+  toggle.setAttribute("aria-pressed", "false");
+  toggle.setAttribute("aria-label", playLabel);
+
+  const icon = document.createElement("span");
+  icon.className = "bgm-icon";
+  icon.setAttribute("aria-hidden", "true");
+  toggle.append(icon);
+
+  const name = document.createElement("span");
+  name.className = "bgm-name";
+  name.textContent = trackName;
+
+  const progress = document.createElement("progress");
+  progress.className = "bgm-progress";
+  progress.max = 1;
+  progress.value = 0;
+  progress.setAttribute("aria-hidden", "true");
+
+  const meta = document.createElement("div");
+  meta.className = "bgm-meta";
+  meta.append(name, progress);
+
+  const volume = document.createElement("input");
+  volume.type = "range";
+  volume.className = "bgm-volume";
+  volume.min = "0";
+  volume.max = "1";
+  volume.step = "0.05";
+  volume.setAttribute("aria-label", volumeLabel);
+
+  root.append(toggle, meta, volume);
+  root.classList.add("is-enhanced");
+
+  const storedVolume = Number.parseFloat(readStored(VOLUME_KEY));
+  audio.volume = Number.isFinite(storedVolume) ? Math.min(1, Math.max(0, storedVolume)) : 0.5;
+  volume.value = String(audio.volume);
+
+  function render() {
+    const playing = !audio.paused && !audio.ended;
+    toggle.setAttribute("aria-pressed", String(playing));
+    toggle.setAttribute("aria-label", playing ? pauseLabel : playLabel);
+    root.classList.toggle("is-playing", playing);
+  }
+
+  function requestPlay() {
+    const started = audio.play();
+    if (started && typeof started.catch === "function") started.catch(() => render());
+  }
+
+  toggle.addEventListener("click", () => {
+    if (audio.paused) requestPlay();
+    else audio.pause();
+  });
+
+  volume.addEventListener("input", () => {
+    audio.volume = Number(volume.value);
+    writeStored(VOLUME_KEY, volume.value);
+  });
+
+  audio.addEventListener("play", () => {
+    writeStored(PLAY_KEY, "1");
+    render();
+  });
+
+  audio.addEventListener("pause", () => {
+    writeStored(PLAY_KEY, "0");
+    render();
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+    progress.value = audio.currentTime / audio.duration;
+  });
+
+  window.addEventListener("pagehide", () => {
+    writeStored(PLAY_KEY, audio.paused ? "0" : "1");
+  });
+
+  render();
+
+  if (readStored(PLAY_KEY) === "1") {
+    const gestures = ["pointerdown", "keydown", "touchstart"];
+    const resume = () => {
+      gestures.forEach((type) => document.removeEventListener(type, resume));
+      requestPlay();
+    };
+
+    gestures.forEach((type) => document.addEventListener(type, resume, { passive: true }));
+  }
 }
 
-document.querySelectorAll("[data-nemesis-card]").forEach((card) => card.addEventListener("click", () => openNemesisDialog(card)));
-nemesisClose?.addEventListener("click", closeNemesisDialog);
-nemesisDialog?.addEventListener("click", (event) => { if (event.target === nemesisDialog) closeNemesisDialog(); });
-document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeNemesisDialog(); });
+if (bgmPlayer) setupBgm(bgmPlayer);

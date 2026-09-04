@@ -35,7 +35,7 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preload" as="image" href="/assets/hero-wide.webp" media="(min-width: 900px), (min-width: 700px) and (max-width: 899px) and (orientation: landscape)" type="image/webp">
   <link rel="preload" as="image" href="/assets/hero-mobile.webp" media="(max-width: 699px), (min-width: 700px) and (max-width: 899px) and (orientation: portrait)" type="image/webp">
-  <link rel="stylesheet" href="/styles.css?v=axe-share-1">
+  <link rel="stylesheet" href="/styles.css?v=daynight-1">
   <script defer src="/script.js"></script>
   <script type="application/ld+json">
     {
@@ -169,67 +169,161 @@
       </div>
     </section>
 
-    <section class="cycle" id="features" aria-labelledby="cycle-title">
-      <div class="container cycle-heading reveal">
+    <section class="daynight section" id="features" aria-labelledby="daynight-title" data-daynight>
+      <div class="container daynight-heading reveal">
         <p class="eyebrow">DAY &amp; NIGHT</p>
-        <h2 id="cycle-title">A day's choices<br>shape the next night.</h2>
+        <h2 id="daynight-title">A day's choices<br>shape the next night.</h2>
+        <p>Everything you gather and build by day becomes the line that holds at night. Follow one full cycle across ten scenes.</p>
       </div>
 
-      <div class="cycle-grid">
-        <article class="phase phase-day reveal">
-          <div class="phase-inner">
-            <span class="phase-number" aria-hidden="true">01</span>
-            <p class="phase-label">DAY / PREPARE</p>
-            <h3>Gather by day</h3>
-            <p>Collect wood, stone, iron, and food, then invest them where they matter most. The order in which you gather and upgrade lays the foundation for your defense.</p>
-            <ul>
-              <li>Four resources and tools</li>
-              <li>Build and grow your village</li>
-              <li>Scout for the next night</li>
-            </ul>
+      <div class="daynight-scroll">
+        <div class="daynight-sticky">
+          <div class="daynight-tabs" role="tablist" aria-label="Day and night">
+            <button class="daynight-tab" type="button" role="tab" id="tab-day" aria-controls="panel-day" aria-selected="true" data-daynight-tab="day">Day</button>
+            <button class="daynight-tab" type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false" data-daynight-tab="night">Night</button>
           </div>
-        </article>
 
-        <article class="phase phase-night reveal">
-          <div class="phase-inner">
-            <span class="phase-number" aria-hidden="true">02</span>
-            <p class="phase-label">NIGHT / DEFEND</p>
-            <h3>Defend by night</h3>
-            <p>Command spearmen, archers, and monks, and build towers. Hold back the oncoming hordes and push deeper into the night.</p>
-            <ul>
-              <li>Drag to command your units</li>
-              <li>Tower and bombardment tactics</li>
-              <li>An endless survival challenge that grows tougher</li>
-            </ul>
+          <div class="daynight-panel" role="tabpanel" id="panel-day" aria-labelledby="tab-day" data-daynight-panel="day" tabindex="0">
+            <p class="daynight-panel-title">Day — Prepare</p>
+            <ol class="daynight-track" data-daynight-track="day">
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-01-gather.webp"
+                    src="/assets/daynight/day-01-gather.mp4"
+                    aria-label="Gameplay video of the daytime wood-gathering timing minigame"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">01</span>
+                  <h3>Gathering Rhythm</h3>
+                  <p>Swing the moment the timing gauge reaches the green band. Land it perfectly and the streak builds, raising every harvest that follows.</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-02-memory.webp"
+                    src="/assets/daynight/day-02-memory.mp4"
+                    aria-label="Gameplay video of the ore memory gathering minigame"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">02</span>
+                  <h3>Ore Memory</h3>
+                  <p>Remember where the vein flashed, then strike the same spots again. Keep the order and deeper ore opens up.</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-03-tool.webp"
+                    src="/assets/daynight/day-03-tool.mp4"
+                    aria-label="Video of upgrading gathering tools with collected resources"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">03</span>
+                  <h3>Tool Growth</h3>
+                  <p>Pour resources into your axe and pickaxe so a single swing yields more. The shorter the day, the more your tools earn for you.</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-04-village.webp"
+                    src="/assets/daynight/day-04-village.mp4"
+                    aria-label="Video of the village on a spring afternoon with villagers moving about"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">04</span>
+                  <h3>A Day in the Village</h3>
+                  <p>Walk a spring afternoon while villagers go about their work. Every new building is one more reason the night holds.</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-05-relic.webp"
+                    src="/assets/daynight/day-05-relic.mp4"
+                    aria-label="Video of choosing one relic out of three"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">05</span>
+                  <h3>Relic Draft</h3>
+                  <p>Pick one of three relics. That single choice reshapes every night that comes after.</p>
+                </div>
+              </li>
+            </ol>
           </div>
-        </article>
-      </div>
-    </section>
 
-    <section class="features section" aria-labelledby="features-title">
-      <div class="container">
-        <div class="feature-header reveal">
-          <p class="eyebrow">BUILD YOUR RUN</p>
-          <h2 id="features-title">Defend your castle<br>your way, every run.</h2>
-          <p>From your unit composition to heroes, relics, and seasons, new choices open up the longer you survive.</p>
-        </div>
-
-        <div class="feature-list">
-          <article class="feature-item reveal">
-            <span class="feature-index">01</span>
-            <h3>Shape your defense line</h3>
-            <p>Send spearmen, archers, and monks exactly where you need them, then combine them with two tower types to hold off dense enemy waves.</p>
-          </article>
-          <article class="feature-item reveal">
-            <span class="feature-index">02</span>
-            <h3>One-on-one boss duels</h3>
-            <p>Every fifth night, chain the on-screen commands to face the boss head-on as your hero, or take it on alongside your army.</p>
-          </article>
-          <article class="feature-item reveal">
-            <span class="feature-index">03</span>
-            <h3>Survive beyond the seasons</h3>
-            <p>Combine relics, hero traits, and spirits, then take on a deeper survival run through spring, summer, fall, and winter.</p>
-          </article>
+          <div class="daynight-panel" role="tabpanel" id="panel-night" aria-labelledby="tab-night" data-daynight-panel="night" tabindex="0">
+            <p class="daynight-panel-title">Night — Defend</p>
+            <ol class="daynight-track" data-daynight-track="night">
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-01-deploy.webp"
+                    src="/assets/daynight/night-01-deploy.mp4"
+                    aria-label="Video of dragging units into position and building towers before the night"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">01</span>
+                  <h3>Forming the Line</h3>
+                  <p>Drag spearmen, archers, and monks into the positions you want, then close the gaps from the tower shop.</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-02-defense.webp"
+                    src="/assets/daynight/night-02-defense.mp4"
+                    aria-label="Night battle video of guardians and soldiers holding the line against a skeleton horde"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">02</span>
+                  <h3>Holding the Line</h3>
+                  <p>Guardians and soldiers meet the skeleton horde head-on. While the front rank holds, arrows fall from behind.</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-03-hero.webp"
+                    src="/assets/daynight/night-03-hero.mp4"
+                    aria-label="Battle video of the hero clearing enemies with a spinning area attack"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">03</span>
+                  <h3>Hero Skill</h3>
+                  <p>The hero's spin attack clears everything within reach. When you spend it decides where the wave breaks.</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-04-duel.webp"
+                    src="/assets/daynight/night-04-duel.mp4"
+                    aria-label="Video of a one-on-one boss duel driven by on-screen commands"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">04</span>
+                  <h3>Boss Duel</h3>
+                  <p>Every fifth night, chain the on-screen commands and face the boss yourself. Drop the input and the counterattack lands.</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-05-season.webp"
+                    src="/assets/daynight/night-05-season.mp4"
+                    aria-label="Video of a season unlocking and giving way to the next"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">05</span>
+                  <h3>Beyond the Season</h3>
+                  <p>Past spring waits summer, and past that, fall and winter. Every season turn pushes the night one step deeper.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
@@ -348,5 +442,9 @@
       </nav>
     </div>
   </footer>
+  <div class="bgm-player" data-bgm role="group" aria-label="Background music"
+    data-bgm-title="Lobby Theme" data-bgm-play-label="Play lobby theme" data-bgm-pause-label="Pause lobby theme" data-bgm-volume-label="Volume">
+    <audio class="bgm-audio" data-bgm-audio controls loop preload="none" src="/assets/audio/lobby-theme.mp3" aria-label="Tiny Defense lobby theme"></audio>
+  </div>
 </body>
 </html>

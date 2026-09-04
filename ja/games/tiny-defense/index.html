@@ -35,7 +35,7 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preload" as="image" href="/assets/hero-wide.webp" media="(min-width: 900px), (min-width: 700px) and (max-width: 899px) and (orientation: landscape)" type="image/webp">
   <link rel="preload" as="image" href="/assets/hero-mobile.webp" media="(max-width: 699px), (min-width: 700px) and (max-width: 899px) and (orientation: portrait)" type="image/webp">
-  <link rel="stylesheet" href="/styles.css?v=axe-share-1">
+  <link rel="stylesheet" href="/styles.css?v=daynight-1">
   <script defer src="/script.js"></script>
   <script type="application/ld+json">
     {
@@ -169,67 +169,161 @@
       </div>
     </section>
 
-    <section class="cycle" id="features" aria-labelledby="cycle-title">
-      <div class="container cycle-heading reveal">
+    <section class="daynight section" id="features" aria-labelledby="daynight-title" data-daynight>
+      <div class="container daynight-heading reveal">
         <p class="eyebrow">DAY &amp; NIGHT</p>
-        <h2 id="cycle-title">一日の選択が<br>次の夜を変える。</h2>
+        <h2 id="daynight-title">一日の選択が<br>次の夜を変える。</h2>
+        <p>昼に集めて育てたものが、そのまま夜の防衛線になります。10のシーンで一日を追ってみましょう。</p>
       </div>
 
-      <div class="cycle-grid">
-        <article class="phase phase-day reveal">
-          <div class="phase-inner">
-            <span class="phase-number" aria-hidden="true">01</span>
-            <p class="phase-label">DAY / PREPARE</p>
-            <h3>昼は集める</h3>
-            <p>木材、石、鉄、食料を自ら集め、必要な場所に投資しましょう。採集と強化の順番が、防衛線づくりの第一歩です。</p>
-            <ul>
-              <li>4種類の資源と道具</li>
-              <li>村の建設と成長</li>
-              <li>次の夜に向けた偵察</li>
-            </ul>
+      <div class="daynight-scroll">
+        <div class="daynight-sticky">
+          <div class="daynight-tabs" role="tablist" aria-label="昼と夜">
+            <button class="daynight-tab" type="button" role="tab" id="tab-day" aria-controls="panel-day" aria-selected="true" data-daynight-tab="day">昼</button>
+            <button class="daynight-tab" type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false" data-daynight-tab="night">夜</button>
           </div>
-        </article>
 
-        <article class="phase phase-night reveal">
-          <div class="phase-inner">
-            <span class="phase-number" aria-hidden="true">02</span>
-            <p class="phase-label">NIGHT / DEFEND</p>
-            <h3>夜は守る</h3>
-            <p>槍兵、弓兵、修道士を指揮し、タワーを建てましょう。押し寄せる敵を退け、さらに深い夜へと進みます。</p>
-            <ul>
-              <li>ドラッグ操作で部隊を指揮</li>
-              <li>タワーと砲撃を活かした戦術</li>
-              <li>激しさを増すエンドレスサバイバル</li>
-            </ul>
+          <div class="daynight-panel" role="tabpanel" id="panel-day" aria-labelledby="tab-day" data-daynight-panel="day" tabindex="0">
+            <p class="daynight-panel-title">昼 — 備える</p>
+            <ol class="daynight-track" data-daynight-track="day">
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-01-gather.webp"
+                    src="/assets/daynight/day-01-gather.mp4"
+                    aria-label="昼に木を採集するタイミングミニゲームのプレイ映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">01</span>
+                  <h3>採集リズム</h3>
+                  <p>タイミングゲージが緑の帯に重なった瞬間に斧を振り下ろします。完璧に決めるほど連続が積み重なり、収穫量が伸びていきます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-02-memory.webp"
+                    src="/assets/daynight/day-02-memory.mp4"
+                    aria-label="光った鉱脈の位置を記憶して採集するミニゲームのプレイ映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">02</span>
+                  <h3>鉱脈の記憶</h3>
+                  <p>一瞬光った鉱脈の位置を覚えて、もう一度なぞります。順番を守るほど、より深い鉱脈が開かれます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-03-tool.webp"
+                    src="/assets/daynight/day-03-tool.mp4"
+                    aria-label="集めた資源で採集道具を強化する画面の映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">03</span>
+                  <h3>道具の成長</h3>
+                  <p>集めた資源を斧とツルハシに注ぎ込み、一度の採集で得られる量を増やします。昼が短くなるほど、道具が代わりに稼いでくれます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-04-village.webp"
+                    src="/assets/daynight/day-04-village.mp4"
+                    aria-label="春の昼の村と行き交う住民を映した映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">04</span>
+                  <h3>村の一日</h3>
+                  <p>住民が行き交う春の村を歩いてみましょう。建物が増えるほど、夜を耐え抜く余裕も増えていきます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-05-relic.webp"
+                    src="/assets/daynight/day-05-relic.mp4"
+                    aria-label="3種類の遺物から1つを選ぶ画面の映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">05</span>
+                  <h3>遺物の選択</h3>
+                  <p>3枚の遺物から1つを選びます。このひとつの選択が、残りの夜すべての性格を変えます。</p>
+                </div>
+              </li>
+            </ol>
           </div>
-        </article>
-      </div>
-    </section>
 
-    <section class="features section" aria-labelledby="features-title">
-      <div class="container">
-        <div class="feature-header reveal">
-          <p class="eyebrow">BUILD YOUR RUN</p>
-          <h2 id="features-title">毎回異なる戦い方で、<br>城を守りましょう。</h2>
-          <p>部隊編成から英雄、遺物、季節まで。生き延びるほど、より多くの選択肢が開かれます。</p>
-        </div>
-
-        <div class="feature-list">
-          <article class="feature-item reveal">
-            <span class="feature-index">01</span>
-            <h3>自分で築く防衛線</h3>
-            <p>槍兵、弓兵、修道士を好きな位置へ送り、2種類のタワーとともに押し寄せる敵の波を防ぎましょう。</p>
-          </article>
-          <article class="feature-item reveal">
-            <span class="feature-index">02</span>
-            <h3>ボスとの一騎打ち</h3>
-            <p>5夜ごとに、画面のコマンドをつないで英雄で正面から挑むか、軍勢とともにボスを迎え撃ちましょう。</p>
-          </article>
-          <article class="feature-item reveal">
-            <span class="feature-index">03</span>
-            <h3>季節を越える挑戦</h3>
-            <p>遺物、英雄の特性、精霊を組み合わせ、春から冬まで続く、さらに奥深いサバイバルに挑みましょう。</p>
-          </article>
+          <div class="daynight-panel" role="tabpanel" id="panel-night" aria-labelledby="tab-night" data-daynight-panel="night" tabindex="0">
+            <p class="daynight-panel-title">夜 — 守る</p>
+            <ol class="daynight-track" data-daynight-track="night">
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-01-deploy.webp"
+                    src="/assets/daynight/night-01-deploy.mp4"
+                    aria-label="部隊をドラッグして配置し、タワーを建てる夜の準備映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">01</span>
+                  <h3>戦列の配置</h3>
+                  <p>槍兵、弓兵、修道士をドラッグして好きな位置に並べます。タワーショップで防衛線の隙間を埋めましょう。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-02-defense.webp"
+                    src="/assets/daynight/night-02-defense.mp4"
+                    aria-label="骸骨の群れと守護騎士・兵士の戦列がぶつかり、城を守り抜く夜の戦闘映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">02</span>
+                  <h3>密集防衛戦</h3>
+                  <p>骸骨の群れが押し寄せる場所で、守護騎士と兵士がぶつかり合います。前列が耐えているあいだ、後方から矢が降り注ぎます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-03-hero.webp"
+                    src="/assets/daynight/night-03-hero.mp4"
+                    aria-label="英雄が回転斬りの範囲技で敵を薙ぎ払う戦闘映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">03</span>
+                  <h3>英雄の技</h3>
+                  <p>英雄の回転斬りが周囲を一度に薙ぎ払います。技をいつ使うかで、波の向きが変わります。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-04-duel.webp"
+                    src="/assets/daynight/night-04-duel.mp4"
+                    aria-label="コマンドを入力しながらボスと一騎打ちを行う映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">04</span>
+                  <h3>ボス一騎打ち</h3>
+                  <p>5夜ごとに、画面のコマンドをつないでボスと正面から向き合います。入力が途切れれば、そのまま反撃を受けます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-05-season.webp"
+                    src="/assets/daynight/night-05-season.mp4"
+                    aria-label="季節が解放され、次の季節へ移る画面の映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">05</span>
+                  <h3>季節の先へ</h3>
+                  <p>春を越えれば夏が、その先には秋と冬が待っています。季節が変わるたび、夜はもう一段深くなります。</p>
+                </div>
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
@@ -348,5 +442,9 @@
       </nav>
     </div>
   </footer>
+  <div class="bgm-player" data-bgm role="group" aria-label="背景音楽"
+    data-bgm-title="ロビーテーマ" data-bgm-play-label="ロビーテーマを再生" data-bgm-pause-label="ロビーテーマを停止" data-bgm-volume-label="音量">
+    <audio class="bgm-audio" data-bgm-audio controls loop preload="none" src="/assets/audio/lobby-theme.mp3" aria-label="Tiny Defense ロビーテーマ"></audio>
+  </div>
 </body>
 </html>
