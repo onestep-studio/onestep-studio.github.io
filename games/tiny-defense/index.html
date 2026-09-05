@@ -176,16 +176,32 @@
         <p>낮에 모으고 키운 것이 그대로 밤의 방어선이 됩니다. 열 장면으로 하루를 따라가 보세요.</p>
       </div>
 
-      <div class="daynight-scroll">
-        <div class="daynight-sticky">
-          <div class="daynight-tabs" role="tablist" aria-label="낮과 밤">
-            <button class="daynight-tab" type="button" role="tab" id="tab-day" aria-controls="panel-day" aria-selected="true" data-daynight-tab="day">낮</button>
-            <button class="daynight-tab" type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false" data-daynight-tab="night">밤</button>
+      <div class="daynight-stage">
+        <div class="daynight-frame">
+          <div class="daynight-bar">
+            <div class="daynight-tabs" role="tablist" aria-label="낮과 밤">
+              <button class="daynight-tab" type="button" role="tab" id="tab-day" aria-controls="panel-day" aria-selected="true" data-daynight-tab="day">낮</button>
+              <button class="daynight-tab" type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false" data-daynight-tab="night">밤</button>
+            </div>
+
+            <div class="daynight-controls" role="group" aria-label="장면 이동" data-daynight-controls hidden>
+              <p class="daynight-status" aria-live="polite" data-daynight-status>01 / 05</p>
+              <button class="daynight-arrow" type="button" data-daynight-prev aria-label="이전 장면">
+                <span aria-hidden="true">&larr;</span>
+              </button>
+              <button class="daynight-arrow" type="button" data-daynight-next aria-label="다음 장면">
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+              <button class="daynight-cross" type="button" data-daynight-cross>
+                <span class="daynight-cross-face" data-daynight-cross-to="night">밤으로 <span aria-hidden="true">&rarr;</span></span>
+                <span class="daynight-cross-face" data-daynight-cross-to="day" hidden><span aria-hidden="true">&larr;</span> 낮으로</span>
+              </button>
+            </div>
           </div>
 
           <div class="daynight-panel" role="tabpanel" id="panel-day" aria-labelledby="tab-day" data-daynight-panel="day" tabindex="0">
             <p class="daynight-panel-title">낮 — 준비한다</p>
-            <ol class="daynight-track" data-daynight-track="day">
+            <ol class="daynight-track" data-daynight-track="day" tabindex="0" aria-label="낮 장면 목록">
               <li class="daynight-item">
                 <div class="daynight-media">
                   <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
@@ -251,12 +267,18 @@
                   <p>세 장의 유물 중 하나를 고릅니다. 이 한 번의 선택이 남은 밤 전부의 성격을 바꿉니다.</p>
                 </div>
               </li>
+              <li class="daynight-jump" data-daynight-jump="night" aria-hidden="true" hidden>
+                <p class="daynight-jump-label">밤으로 &rarr;</p>
+              </li>
             </ol>
           </div>
 
           <div class="daynight-panel" role="tabpanel" id="panel-night" aria-labelledby="tab-night" data-daynight-panel="night" tabindex="0">
             <p class="daynight-panel-title">밤 — 지켜낸다</p>
-            <ol class="daynight-track" data-daynight-track="night">
+            <ol class="daynight-track" data-daynight-track="night" tabindex="0" aria-label="밤 장면 목록">
+              <li class="daynight-jump" data-daynight-jump="day" aria-hidden="true" hidden>
+                <p class="daynight-jump-label">&larr; 낮으로</p>
+              </li>
               <li class="daynight-item">
                 <div class="daynight-media">
                   <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"

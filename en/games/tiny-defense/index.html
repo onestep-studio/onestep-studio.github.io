@@ -176,16 +176,32 @@
         <p>Everything you gather and build by day becomes the line that holds at night. Follow one full cycle across ten scenes.</p>
       </div>
 
-      <div class="daynight-scroll">
-        <div class="daynight-sticky">
-          <div class="daynight-tabs" role="tablist" aria-label="Day and night">
-            <button class="daynight-tab" type="button" role="tab" id="tab-day" aria-controls="panel-day" aria-selected="true" data-daynight-tab="day">Day</button>
-            <button class="daynight-tab" type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false" data-daynight-tab="night">Night</button>
+      <div class="daynight-stage">
+        <div class="daynight-frame">
+          <div class="daynight-bar">
+            <div class="daynight-tabs" role="tablist" aria-label="Day and night">
+              <button class="daynight-tab" type="button" role="tab" id="tab-day" aria-controls="panel-day" aria-selected="true" data-daynight-tab="day">Day</button>
+              <button class="daynight-tab" type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false" data-daynight-tab="night">Night</button>
+            </div>
+
+            <div class="daynight-controls" role="group" aria-label="Scene navigation" data-daynight-controls hidden>
+              <p class="daynight-status" aria-live="polite" data-daynight-status>01 / 05</p>
+              <button class="daynight-arrow" type="button" data-daynight-prev aria-label="Previous scene">
+                <span aria-hidden="true">&larr;</span>
+              </button>
+              <button class="daynight-arrow" type="button" data-daynight-next aria-label="Next scene">
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+              <button class="daynight-cross" type="button" data-daynight-cross>
+                <span class="daynight-cross-face" data-daynight-cross-to="night">To night <span aria-hidden="true">&rarr;</span></span>
+                <span class="daynight-cross-face" data-daynight-cross-to="day" hidden><span aria-hidden="true">&larr;</span> To day</span>
+              </button>
+            </div>
           </div>
 
           <div class="daynight-panel" role="tabpanel" id="panel-day" aria-labelledby="tab-day" data-daynight-panel="day" tabindex="0">
             <p class="daynight-panel-title">Day — Prepare</p>
-            <ol class="daynight-track" data-daynight-track="day">
+            <ol class="daynight-track" data-daynight-track="day" tabindex="0" aria-label="Day scenes">
               <li class="daynight-item">
                 <div class="daynight-media">
                   <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
@@ -251,12 +267,18 @@
                   <p>Pick one of three relics. That single choice reshapes every night that comes after.</p>
                 </div>
               </li>
+              <li class="daynight-jump" data-daynight-jump="night" aria-hidden="true" hidden>
+                <p class="daynight-jump-label">To night &rarr;</p>
+              </li>
             </ol>
           </div>
 
           <div class="daynight-panel" role="tabpanel" id="panel-night" aria-labelledby="tab-night" data-daynight-panel="night" tabindex="0">
             <p class="daynight-panel-title">Night — Defend</p>
-            <ol class="daynight-track" data-daynight-track="night">
+            <ol class="daynight-track" data-daynight-track="night" tabindex="0" aria-label="Night scenes">
+              <li class="daynight-jump" data-daynight-jump="day" aria-hidden="true" hidden>
+                <p class="daynight-jump-label">&larr; To day</p>
+              </li>
               <li class="daynight-item">
                 <div class="daynight-media">
                   <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"

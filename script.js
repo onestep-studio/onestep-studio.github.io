@@ -98,23 +98,188 @@ if (year) year.textContent = String(new Date().getFullYear());
 const daynightSection = document.querySelector("[data-daynight]");
 
 function setupDayNight(section) {
-  const scroller = section.querySelector(".daynight-scroll");
-  const sticky = section.querySelector(".daynight-sticky");
   const tabs = Array.from(section.querySelectorAll("[data-daynight-tab]"));
   const panels = Array.from(section.querySelectorAll("[data-daynight-panel]"));
-  if (!scroller || !sticky || tabs.length < 2 || panels.length !== tabs.length) return;
+  if (tabs.length < 2 || panels.length !== tabs.length) return;
 
   const keys = tabs.map((tab) => tab.dataset.daynightTab);
   const panelFor = new Map(panels.map((panel) => [panel.dataset.daynightPanel, panel]));
   const trackFor = new Map(panels.map((panel) => [panel.dataset.daynightPanel, panel.querySelector(".daynight-track")]));
+  const slidesFor = new Map();
+  const itemsFor = new Map();
+  trackFor.forEach((track, key) => {
+    slidesFor.set(key, track ? Array.from(track.children) : []);
+    itemsFor.set(key, track ? Array.from(track.querySelectorAll(".daynight-item")) : []);
+  });
+
+  const jumps = Array.from(section.querySelectorAll("[data-daynight-jump]"));
+  const controls = section.querySelector("[data-daynight-controls]");
+  const status = section.querySelector("[data-daynight-status]");
+  const prevButton = section.querySelector("[data-daynight-prev]");
+  const nextButton = section.querySelector("[data-daynight-next]");
+  const crossButton = section.querySelector("[data-daynight-cross]");
+  const crossFaces = Array.from(section.querySelectorAll("[data-daynight-cross-to]"));
   const videos = Array.from(section.querySelectorAll(".daynight-video"));
   let active = keys[0];
-  let stickyTop = 0;
+  let sectionVisible = true;
+  let crossing = false;
+  let handovers = 0;
   let ticking = false;
 
-  if (reduceMotion.matches) {
-    videos.forEach((video) => video.setAttribute("controls", ""));
-    return;
+  function pad(value) {
+    return value < 10 ? "0" + value : String(value);
+  }
+
+  /* Which slide sits closest to the middle of the track's own viewport. */
+  function nearest(track, list) {
+    if (!track || !list.length) return 0;
+
+    const center = track.scrollLeft + track.clientWidth / 2;
+    let best = 0;
+    let bestGap = Infinity;
+    list.forEach((node, index) => {
+      const gap = Math.abs(node.offsetLeft + node.offsetWidth / 2 - center);
+      if (gap < bestGap) {
+        bestGap = gap;
+        best = index;
+      }
+    });
+    return best;
+  }
+
+  /* `jump` has to land in one go. Passing behavior "auto" would not do it: that
+     means "whatever CSS says", and CSS says smooth, so the track would still be
+     gliding into place while the code below decides what it is parked on. */
+  function scrollToSlide(key, index, jump) {
+    const track = trackFor.get(key);
+    const slides = slidesFor.get(key);
+    if (!track || !slides.length) return;
+
+    const slide = slides[Math.min(slides.length - 1, Math.max(0, index))];
+    const left = Math.max(0, Math.round(slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2));
+    if (!jump && !reduceMotion.matches) {
+      track.scrollTo({ left, behavior: "smooth" });
+      return;
+    }
+
+    const inline = track.style.scrollBehavior;
+    track.style.scrollBehavior = "auto";
+    track.scrollLeft = left;
+    track.style.scrollBehavior = inline;
+  }
+
+  function scrollToItem(key, itemIndex, jump) {
+    const slides = slidesFor.get(key);
+    const items = itemsFor.get(key);
+    if (!items.length) return;
+
+    const item = items[Math.min(items.length - 1, Math.max(0, itemIndex))];
+    scrollToSlide(key, slides.indexOf(item), jump);
+  }
+
+  /* Exactly one clip runs: the scene the active track is snapped to. A slide
+     that merely peeks in from the side does not count, which is why this reads
+     the snapped index instead of an intersection ratio. */
+  function syncPlayback() {
+    const track = trackFor.get(active);
+    const items = itemsFor.get(active);
+    const snapped = track && items.length ? items[nearest(track, items)] : null;
+    const wanted = sectionVisible && !reduceMotion.matches && snapped ? snapped.querySelector(".daynight-video") : null;
+
+    videos.forEach((video) => {
+      if (video === wanted) {
+        if (!video.paused) return;
+        const started = video.play();
+        if (started && typeof started.catch === "function") started.catch(() => {});
+      } else if (!video.paused) {
+        video.pause();
+      }
+    });
+  }
+
+  /* The tab a sentinel slide hands over to, but only once the track has come to
+     rest on it. Reading the settled scroll position is what makes this reliable:
+     an IntersectionObserver reports the frame its threshold is crossed, which is
+     still mid-scroll, and then never reports the resting position at all. */
+  function edgeSentinel() {
+    const track = trackFor.get(active);
+    const slides = slidesFor.get(active);
+    if (!track || !slides.length) return null;
+
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    if (maxScroll <= 0) return null;
+
+    const slide = slides[nearest(track, slides)];
+    const toKey = slide && slide.dataset ? slide.dataset.daynightJump : null;
+    if (!toKey || !panelFor.has(toKey)) return null;
+
+    const forward = keys.indexOf(toKey) > keys.indexOf(active);
+    const parked = forward ? track.scrollLeft >= maxScroll - 4 : track.scrollLeft <= 4;
+    return parked ? toKey : null;
+  }
+
+  function updateControls() {
+    const track = trackFor.get(active);
+    const items = itemsFor.get(active);
+    if (!track) return;
+
+    /* The depth guard is insurance only: after a handover the incoming track is
+       parked on a scene, never on a sentinel, so this never nests twice. */
+    if (!crossing && handovers < 2) {
+      const handover = edgeSentinel();
+      if (handover) {
+        handovers += 1;
+        try {
+          jumpTo(handover, active);
+        } finally {
+          handovers -= 1;
+        }
+        return;
+      }
+    }
+
+    if (status && items.length) {
+      status.textContent = pad(nearest(track, items) + 1) + " / " + pad(items.length);
+    }
+
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    if (prevButton) prevButton.disabled = track.scrollLeft <= 2;
+    if (nextButton) nextButton.disabled = track.scrollLeft >= maxScroll - 2;
+    syncPlayback();
+  }
+
+  function onTrackScroll() {
+    if (ticking) return;
+
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      ticking = false;
+      updateControls();
+    });
+  }
+
+  function moveTrack(direction) {
+    const track = trackFor.get(active);
+    const slides = slidesFor.get(active);
+    if (!track || !slides.length) return;
+
+    scrollToSlide(active, nearest(track, slides) + direction);
+  }
+
+  /* Where the bar button hands over to: the next panel, or the previous one
+     once the last panel is showing. */
+  function crossTarget() {
+    const index = keys.indexOf(active);
+    return keys[index < keys.length - 1 ? index + 1 : index - 1];
+  }
+
+  /* One button, two faces: swapping the label rather than swapping buttons is
+     what lets it keep focus through a handover it triggered itself. */
+  function updateCross() {
+    const toKey = crossTarget();
+    crossFaces.forEach((face) => {
+      face.hidden = face.dataset.daynightCrossTo !== toKey;
+    });
   }
 
   function selectTab(key, options) {
@@ -130,73 +295,76 @@ function setupDayNight(section) {
     panelFor.forEach((panel, panelKey) => {
       panel.hidden = panelKey !== key;
     });
+    updateCross();
+    updateControls();
   }
 
-  function measure() {
-    const previous = active;
-    let longest = 0;
+  /* Showing a panel and placing its track is one step: in between, the incoming
+     track still sits wherever it was left, which for the night track is on its
+     own sentinel. `crossing` keeps that half-finished state from handing over
+     again and bouncing back where it came from. */
+  function showPanel(key, itemIndex, options) {
+    const incoming = panelFor.get(key);
+    const held = document.activeElement;
+    /* Hiding the outgoing panel drops whatever it held on <body>, so a visitor
+       who swiped or arrowed across would lose the caret. Carry it over. */
+    const focusLeaves = !!(held && incoming && !incoming.contains(held) && panels.some((panel) => panel.contains(held)));
 
-    panelFor.forEach((panel, key) => {
-      panelFor.forEach((other, otherKey) => {
-        other.hidden = otherKey !== key;
-      });
+    crossing = true;
+    selectTab(key, options);
+    scrollToItem(key, itemIndex, true);
+    crossing = false;
+
+    if (focusLeaves && !(options && options.focus)) {
       const track = trackFor.get(key);
-      if (track) longest = Math.max(longest, track.scrollHeight - panel.clientHeight);
-    });
-    panelFor.forEach((panel, key) => {
-      panel.hidden = key !== previous;
-    });
-
-    stickyTop = Number.parseFloat(getComputedStyle(sticky).top) || 0;
-    const span = Math.max(longest, Math.round(window.innerHeight * 0.6));
-    const height = Math.round(sticky.getBoundingClientRect().height + span * keys.length);
-    section.style.setProperty("--daynight-scroll", height + "px");
+      if (track) track.focus({ preventScroll: true });
+    }
+    updateControls();
   }
 
-  function update() {
-    const rect = scroller.getBoundingClientRect();
-    const travel = rect.height - sticky.getBoundingClientRect().height;
-    const progress = travel > 0 ? Math.min(1, Math.max(0, (stickyTop - rect.top) / travel)) : 0;
-    const slot = Math.min(keys.length - 1, Math.floor(progress * keys.length));
+  /* Clicking a tab always lands on the first scene of that panel. */
+  function openTab(key, options) {
+    showPanel(key, 0, options);
+  }
 
-    if (keys[slot] !== active) selectTab(keys[slot]);
+  /* A sentinel slide carried us across; enter the new track from the matching edge. */
+  function jumpTo(toKey, fromKey) {
+    if (crossing || !panelFor.has(toKey) || toKey === fromKey) return;
 
-    keys.forEach((key, index) => {
-      const track = trackFor.get(key);
-      const panel = panelFor.get(key);
-      if (!track || !panel || panel.hidden) return;
+    const forward = keys.indexOf(toKey) > keys.indexOf(fromKey);
+    showPanel(toKey, forward ? 0 : itemsFor.get(toKey).length - 1);
+  }
 
-      const overflow = Math.max(0, track.scrollHeight - panel.clientHeight);
-      const local = Math.min(1, Math.max(0, progress * keys.length - index));
-      track.style.transform = "translate3d(0, " + (-overflow * local).toFixed(2) + "px, 0)";
+  /* Swiping onto the sentinel is what crosses the boundary. The sentinel holds
+     no control of its own: anything focusable in there can only be reached by
+     scrolling the track onto the sentinel, and that scroll is the handover, so
+     the panel would be gone before the control could be pressed (WCAG 3.2.1).
+     The reachable way across is the button in the bar. */
+  jumps.forEach((jump) => {
+    jump.hidden = false;
+  });
+
+  /* Arrow keys only reach this handler when focus is inside the track; the
+     tablist lives outside it and keeps its own left/right handling. */
+  trackFor.forEach((track, key) => {
+    if (!track) return;
+
+    track.addEventListener("scroll", onTrackScroll, { passive: true });
+    track.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      if (key !== active) return;
+
+      event.preventDefault();
+      moveTrack(event.key === "ArrowLeft" ? -1 : 1);
     });
-  }
+  });
 
-  function scrollToTab(key) {
-    const index = keys.indexOf(key);
-    if (index < 0) return;
-
-    const rect = scroller.getBoundingClientRect();
-    const travel = Math.max(0, rect.height - sticky.getBoundingClientRect().height);
-    const top = rect.top + window.scrollY - stickyTop + (travel * index) / keys.length + 1;
-    window.scrollTo({ top: Math.round(top), behavior: "smooth" });
-  }
-
-  function onScroll() {
-    if (ticking) return;
-
-    ticking = true;
-    window.requestAnimationFrame(() => {
-      ticking = false;
-      update();
-    });
-  }
+  prevButton?.addEventListener("click", () => moveTrack(-1));
+  nextButton?.addEventListener("click", () => moveTrack(1));
+  crossButton?.addEventListener("click", () => jumpTo(crossTarget(), active));
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => {
-      selectTab(keys[index]);
-      scrollToTab(keys[index]);
-    });
+    tab.addEventListener("click", () => openTab(keys[index]));
 
     tab.addEventListener("keydown", (event) => {
       let next = -1;
@@ -207,44 +375,34 @@ function setupDayNight(section) {
       if (next < 0) return;
 
       event.preventDefault();
-      selectTab(keys[next], { focus: true });
-      scrollToTab(keys[next]);
+      openTab(keys[next], { focus: true });
     });
   });
 
-  if ("IntersectionObserver" in window) {
-    const videoObserver = new IntersectionObserver(
+  /* Which scene plays is decided by the snap position; this only says whether
+     the section is on screen at all, so nothing runs while the visitor is
+     somewhere else on the page. */
+  if (reduceMotion.matches) {
+    videos.forEach((video) => video.setAttribute("controls", ""));
+  } else if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const video = entry.target;
-          if (entry.isIntersecting) {
-            const started = video.play();
-            if (started && typeof started.catch === "function") started.catch(() => {});
-          } else if (!video.paused) {
-            video.pause();
-          }
+          sectionVisible = entry.isIntersecting;
         });
+        syncPlayback();
       },
-      { threshold: 0.35 },
+      { threshold: 0 },
     );
 
-    videos.forEach((video) => videoObserver.observe(video));
+    sectionObserver.observe(section);
   }
 
-  section.classList.add("is-scroll-driven");
-  selectTab(keys[0]);
-  measure();
-  update();
+  section.classList.add("is-swipe");
+  if (controls) controls.hidden = false;
+  showPanel(keys[0], 0);
 
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", () => {
-    measure();
-    update();
-  });
-  window.addEventListener("load", () => {
-    measure();
-    update();
-  });
+  window.addEventListener("resize", updateControls);
 }
 
 if (daynightSection) setupDayNight(daynightSection);

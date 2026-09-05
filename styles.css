@@ -767,37 +767,112 @@ html[lang="ja"] .axe-challenge h3 {
   font-size: 1.05rem;
 }
 
-.daynight-scroll {
+.daynight-stage {
   padding-bottom: 120px;
 }
 
-.daynight.is-scroll-driven .daynight-scroll {
-  height: var(--daynight-scroll, 300vh);
-  padding-bottom: 0;
-}
-
-.daynight-sticky {
-  display: flex;
+.daynight-frame {
   width: min(1200px, calc(100% - 64px));
-  flex-direction: column;
   margin-inline: auto;
 }
 
-.daynight.is-scroll-driven .daynight-sticky {
-  position: sticky;
-  top: var(--header-height);
-  height: calc(100dvh - var(--header-height));
+.daynight-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 20px 24px;
 }
 
 .daynight-tabs {
   display: none;
   flex: 0 0 auto;
   gap: 10px;
-  padding-block: 20px 24px;
 }
 
-.daynight.is-scroll-driven .daynight-tabs {
+.daynight.is-swipe .daynight-tabs {
   display: flex;
+}
+
+.daynight-controls {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.daynight-controls[hidden] {
+  display: none;
+}
+
+.daynight-status {
+  margin: 0 4px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.1em;
+}
+
+.daynight-arrow {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(23, 32, 51, 0.35);
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.daynight-arrow:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.daynight-arrow:disabled {
+  border-color: rgba(23, 32, 51, 0.14);
+  color: rgba(23, 32, 51, 0.28);
+  cursor: default;
+}
+
+.daynight-arrow:disabled:hover {
+  background: transparent;
+}
+
+.daynight-arrow:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.daynight-cross {
+  display: inline-flex;
+  height: 42px;
+  align-items: center;
+  gap: 6px;
+  padding: 0 18px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 900;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.daynight-cross:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.daynight-cross-face[hidden] {
+  display: none;
 }
 
 .daynight-tab {
@@ -831,42 +906,70 @@ html[lang="ja"] .axe-challenge h3 {
   display: none;
 }
 
-.daynight-panel + .daynight-panel {
+.daynight:not(.is-swipe) .daynight-panel + .daynight-panel {
   margin-top: 72px;
-}
-
-.daynight.is-scroll-driven .daynight-panel {
-  flex: 1 1 auto;
-  overflow: hidden;
-  padding-bottom: 20px;
 }
 
 .daynight-panel-title {
   max-width: 780px;
-  margin: 0 auto 28px;
+  margin: 0 0 20px;
   font-size: 1.6rem;
   font-weight: 900;
 }
 
-.daynight.is-scroll-driven .daynight-panel-title {
-  display: none;
+.daynight-track {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0 0 22px;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--green) transparent;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
 
-.daynight-track {
-  display: grid;
-  gap: 56px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.daynight-track:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+}
+
+.daynight-item,
+.daynight-jump {
+  flex: 0 0 min(72%, 640px);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 
 .daynight-item {
   display: grid;
-  max-width: 780px;
   grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
   gap: 44px;
   align-items: center;
-  margin-inline: auto;
+}
+
+.daynight-jump {
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+  border: 2px dashed rgba(23, 32, 51, 0.25);
+  border-radius: 18px;
+}
+
+.daynight-jump[hidden] {
+  display: none;
+}
+
+.daynight-jump-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 900;
+  text-align: center;
 }
 
 .daynight-media {
@@ -1361,6 +1464,11 @@ html[lang="ja"] .axe-challenge h3 {
 }
 
 @media (max-width: 1023px) {
+  .daynight-item,
+  .daynight-jump {
+    flex-basis: min(80%, 560px);
+  }
+
   .container {
     width: min(100% - 48px, 920px);
   }
@@ -1508,12 +1616,17 @@ html[lang="ja"] .axe-challenge h3 {
     padding-block: 96px 44px;
   }
 
-  .daynight-scroll {
+  .daynight-stage {
     padding-bottom: 96px;
   }
 
   .daynight-track {
-    gap: 44px;
+    gap: 20px;
+  }
+
+  .daynight-item,
+  .daynight-jump {
+    flex-basis: min(88%, 520px);
   }
 
   .daynight-item {
@@ -1726,26 +1839,45 @@ html[lang="ja"] .axe-challenge h3 {
     padding-block: 80px 36px;
   }
 
-  .daynight-scroll {
+  .daynight-stage {
     padding-bottom: 80px;
   }
 
-  .daynight-sticky {
+  .daynight-frame {
     width: calc(100% - 40px);
   }
 
-  .daynight-tabs {
+  .daynight-bar {
     padding-block: 14px 18px;
   }
 
+  .daynight-cross {
+    height: 38px;
+    padding: 0 12px;
+    font-size: 0.72rem;
+  }
+
+  .daynight-status {
+    margin-right: 0;
+  }
+
   .daynight-track {
-    gap: 34px;
+    gap: 16px;
+  }
+
+  .daynight-item,
+  .daynight-jump {
+    flex-basis: 100%;
   }
 
   .daynight-item {
     grid-template-columns: minmax(0, 132px) minmax(0, 1fr);
     gap: 18px;
     align-items: start;
+  }
+
+  .daynight-jump {
+    padding: 28px 16px;
   }
 
   .daynight-index {
@@ -1935,29 +2067,7 @@ html[lang="ja"] .axe-challenge h3 {
     transform: none;
   }
 
-  .daynight.is-scroll-driven .daynight-scroll {
-    height: auto;
-    padding-bottom: 120px;
-  }
-
-  .daynight.is-scroll-driven .daynight-sticky {
-    position: static;
-    height: auto;
-  }
-
-  .daynight.is-scroll-driven .daynight-tabs {
-    display: none;
-  }
-
-  .daynight.is-scroll-driven .daynight-panel {
-    overflow: visible;
-  }
-
-  .daynight.is-scroll-driven .daynight-panel-title {
-    display: block;
-  }
-
   .daynight-track {
-    transform: none !important;
+    scroll-behavior: auto;
   }
 }

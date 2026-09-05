@@ -176,16 +176,32 @@
         <p>昼に集めて育てたものが、そのまま夜の防衛線になります。10のシーンで一日を追ってみましょう。</p>
       </div>
 
-      <div class="daynight-scroll">
-        <div class="daynight-sticky">
-          <div class="daynight-tabs" role="tablist" aria-label="昼と夜">
-            <button class="daynight-tab" type="button" role="tab" id="tab-day" aria-controls="panel-day" aria-selected="true" data-daynight-tab="day">昼</button>
-            <button class="daynight-tab" type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false" data-daynight-tab="night">夜</button>
+      <div class="daynight-stage">
+        <div class="daynight-frame">
+          <div class="daynight-bar">
+            <div class="daynight-tabs" role="tablist" aria-label="昼と夜">
+              <button class="daynight-tab" type="button" role="tab" id="tab-day" aria-controls="panel-day" aria-selected="true" data-daynight-tab="day">昼</button>
+              <button class="daynight-tab" type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false" data-daynight-tab="night">夜</button>
+            </div>
+
+            <div class="daynight-controls" role="group" aria-label="シーンの移動" data-daynight-controls hidden>
+              <p class="daynight-status" aria-live="polite" data-daynight-status>01 / 05</p>
+              <button class="daynight-arrow" type="button" data-daynight-prev aria-label="前のシーン">
+                <span aria-hidden="true">&larr;</span>
+              </button>
+              <button class="daynight-arrow" type="button" data-daynight-next aria-label="次のシーン">
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+              <button class="daynight-cross" type="button" data-daynight-cross>
+                <span class="daynight-cross-face" data-daynight-cross-to="night">夜へ <span aria-hidden="true">&rarr;</span></span>
+                <span class="daynight-cross-face" data-daynight-cross-to="day" hidden><span aria-hidden="true">&larr;</span> 昼へ</span>
+              </button>
+            </div>
           </div>
 
           <div class="daynight-panel" role="tabpanel" id="panel-day" aria-labelledby="tab-day" data-daynight-panel="day" tabindex="0">
             <p class="daynight-panel-title">昼 — 備える</p>
-            <ol class="daynight-track" data-daynight-track="day">
+            <ol class="daynight-track" data-daynight-track="day" tabindex="0" aria-label="昼のシーン一覧">
               <li class="daynight-item">
                 <div class="daynight-media">
                   <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
@@ -251,12 +267,18 @@
                   <p>3枚の遺物から1つを選びます。このひとつの選択が、残りの夜すべての性格を変えます。</p>
                 </div>
               </li>
+              <li class="daynight-jump" data-daynight-jump="night" aria-hidden="true" hidden>
+                <p class="daynight-jump-label">夜へ &rarr;</p>
+              </li>
             </ol>
           </div>
 
           <div class="daynight-panel" role="tabpanel" id="panel-night" aria-labelledby="tab-night" data-daynight-panel="night" tabindex="0">
             <p class="daynight-panel-title">夜 — 守る</p>
-            <ol class="daynight-track" data-daynight-track="night">
+            <ol class="daynight-track" data-daynight-track="night" tabindex="0" aria-label="夜のシーン一覧">
+              <li class="daynight-jump" data-daynight-jump="day" aria-hidden="true" hidden>
+                <p class="daynight-jump-label">&larr; 昼へ</p>
+              </li>
               <li class="daynight-item">
                 <div class="daynight-media">
                   <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
