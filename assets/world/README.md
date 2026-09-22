@@ -1,5 +1,11 @@
 # Tiny Defense courtyard & storybook assets
 
+## Sketchbook reader revision
+
+The reading surface now uses a cloth-colored binding, inset illustrations, a central gutter and a curved, draggable paper leaf. Interaction reference: https://github.com/MengTo/sketchbook (Meng To; its README credits Matthew Yu's original concept). `book-turn.js` is an independent implementation for live HTML dialogue rather than image-only spreads; no reference artwork or fonts are bundled.
+
+Each of the ten illustrations appears only on its first story spread. The other nine spreads divide complete dialogue paragraphs between the left and right leaves, preserving speaker and reading order. On narrow screens the two leaves flow vertically. The text-only routes apply the same first-occurrence rule. Keyboard arrows, contents, sound, spoiler consent and saved progress are preserved; reduced motion skips the curl.
+
 Created 2026-09-22. Courtyard artwork uses the built-in image_gen tool with game illustrations and sprites as references. Active web assets are courtyard-day-v2.webp and courtyard-night-v2.webp (1536 × 1024); see the revision notes below. Generated PNG originals remain in the Codex generated_images directory.
 
 ## Existing game illustrations and text

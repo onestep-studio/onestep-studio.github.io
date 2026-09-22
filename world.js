@@ -23,7 +23,8 @@
   const storageKey = 'tiny-defense-storybook-v1';
   let story, loading, index = 0, allowed = false, pending = 2, showingGate = false, turning = false;
   let lastTrigger, paused = reduce.matches, enabled = false, volume = .35, fadeFrame = 0, audioEpoch = 0;
-  let openEpoch = 0, renderTimer = 0, turnTimer = 0;
+  let openEpoch = 0, activeTurn = null, drag = null;
+  const paper = window.StoryPaper;
   let saved = null;
   try { saved = JSON.parse(localStorage.getItem(storageKey)); } catch { /* Private browsing/storage disabled. */ }
   if (saved && (!Number.isInteger(saved.page) || saved.page < 0)) saved = null;
@@ -158,7 +159,7 @@
     button.addEventListener('click', callback);
     return button;
   }
-  function render() {
+  function render(save = true) {
     const data = story.pages[index];
     showingGate = false;
     gate.hidden = true; gate.replaceChildren(); lines.hidden = false; lines.replaceChildren();
@@ -167,17 +168,31 @@
     $('.reader-kicker').textContent = `TINY DEFENSE / CHAPTER ${chapter}`;
     $('.art-chapter b').textContent = chapter;
     $('[data-page-kicker]').textContent = index === 0 ? copy.prologue : `CHAPTER ${chapter} / ${copy.scene} ${String(data.scene).padStart(2,'0')}`;
-    const art = $('[data-story-art]'); art.src = `/assets/world/${data.art}.webp?v=story-3`;
+    const illustrated = paper.hasArt(story.pages, index);
+    spread.classList.toggle('text-spread', !illustrated);
+    $('.book-illustration').hidden = !illustrated;
+    $('[data-left-page]').hidden = illustrated;
+    const leftLines = $('[data-left-lines]'); leftLines.replaceChildren();
+    $('[data-left-title]').textContent = data.title;
+    $('[data-left-kicker]').textContent = $('[data-page-kicker]').textContent;
+    title.hidden = !illustrated;
+    $('[data-page-kicker]').hidden = !illustrated;
+    $('[data-folio-left]').textContent = String(index * 2 + 1).padStart(2, '0');
+    $('[data-folio-right]').textContent = String(index * 2 + 2).padStart(2, '0');
+    const split = illustrated ? 0 : paper.splitLines(data.lines);
+    const art = $('[data-story-art]');
+    if (illustrated) art.src = `/assets/world/${data.art}.webp?v=story-3`;
+    else art.removeAttribute('src');
     // The narration supplies the illustration's context; avoid repeating it in alt text.
     art.alt = '';
-    data.lines.forEach(line => {
+    data.lines.forEach((line, lineIndex) => {
       const p = document.createElement('p');
       if (line.speaker) {
         const speaker=document.createElement('span'); speaker.className='speaker';
         speaker.textContent=line.speaker===1 ? story.boy : copy.old;
         p.append(speaker);
       } else p.className='narration';
-      p.append(document.createTextNode(line.text)); lines.append(p);
+      p.append(document.createTextNode(line.text)); (lineIndex < split ? leftLines : lines).append(p);
     });
     prev.disabled = index === 0;
     next.disabled = false;
@@ -187,14 +202,15 @@
       gate.hidden=false;
       const a=document.createElement('a'); a.href=`${lang==='ko'?'':'/'+lang}/games/tiny-defense/#stores`; a.textContent=copy.game; gate.append(a);
     }
-    renderContents(); remember();
+    renderContents(); if (save) remember();
     // Cache only the next illustration, never unreached dialogue or audio requests.
-    if (index+1 < story.pages.length && (allowed || index < 1)) {
+    if (index+1 < story.pages.length && (allowed || index < 1) && paper.hasArt(story.pages, index+1)) {
       const image = new Image(); image.src=`/assets/world/${story.pages[index+1].art}.webp?v=story-3`;
     }
   }
   function spoilerGate(target) {
     pending = target; showingGate=true;
+    title.hidden=false; $('[data-page-kicker]').hidden=false;
     title.textContent=copy.fullTitle;
     $('[data-page-kicker]').textContent='CHAPTER 01–03';
     lines.hidden=true; gate.hidden=false; gate.replaceChildren();
@@ -204,21 +220,41 @@
     prev.disabled=false; next.disabled=true; progress.textContent=`03 / ${String(story.pages.length).padStart(2,'0')}`;
     page.focus({preventScroll:true});
   }
+  function snapshot() {
+    return { node:spread.cloneNode(true), height:spread.clientHeight };
+  }
+  function beginTurn(target) {
+    const from = index, before = snapshot();
+    index = target; render(false);
+    const after = snapshot();
+    index = from; render(false);
+    turning = true; prev.disabled = true; next.disabled = true;
+    activeTurn = paper.create(spread, before, after, target > from ? 1 : -1);
+    return target;
+  }
+  function settleTurn(target, commit) {
+    if (!activeTurn) return;
+    if (commit) effect(`page-${1+(target%3)}`);
+    activeTurn.settle(commit, accepted => {
+      activeTurn = null; turning = false;
+      if (accepted) index = target;
+      render(); page.focus({preventScroll:true});
+    });
+  }
   function navigate(target) {
     if (!story || turning) return;
     if (target >= story.pages.length) { closeBook(); return; }
     target=Math.max(0,target);
     if (target >= 2 && !allowed) { spoilerGate(target); return; }
-    const direction=target>=index ? 'turn-forward':'turn-back';
-    effect(`page-${1+(target%3)}`);
-    if (reduce.matches) { index=target; render(); page.focus({preventScroll:true}); dialog.scrollTop=0; return; }
-    turning=true; spread.classList.add(direction); prev.disabled=true; next.disabled=true;
-    renderTimer=setTimeout(() => { index=target; render(); prev.disabled=true; next.disabled=true; },225);
-    turnTimer=setTimeout(() => {
-      spread.classList.remove(direction); turning=false;
-      prev.disabled=index===0; next.disabled=false;
-      page.focus({preventScroll:true}); dialog.scrollTo({top:0,behavior:'instant'});
-    },510);
+    if (target === index && !showingGate) return;
+    // Narrow screens keep a readable continuous page, with a short fade.
+    if (reduce.matches || matchMedia('(max-width:699px)').matches) {
+      index=target; render(); effect(`page-${1+(target%3)}`);
+      if (!reduce.matches) spread.animate([{opacity:.35},{opacity:1}], {duration:220});
+      page.focus({preventScroll:true}); dialog.scrollTop=0; return;
+    }
+    if (showingGate) render(false);
+    beginTurn(target); settleTurn(target, true);
   }
   async function loadStory() {
     if (story) return story;
@@ -238,7 +274,9 @@
     contentsState(false);
     if (!dialog.open) dialog.showModal();
     syncMusic(); effect('book-open');
-    title.textContent=copy.loading; lines.replaceChildren(); gate.hidden=true;
+    title.hidden=false; title.textContent=copy.loading;
+    lines.replaceChildren(); $('[data-left-lines]').replaceChildren();
+    $('[data-left-page]').hidden=true; gate.hidden=true;
     prev.disabled=true; next.disabled=true;
     try {
       await loadStory();
@@ -255,8 +293,7 @@
   function closeBook() { dialog.close(); }
   dialog.addEventListener('close', () => {
     ++openEpoch;
-    clearTimeout(renderTimer); clearTimeout(turnTimer);
-    turning=false; spread.classList.remove('turn-forward','turn-back');
+    activeTurn?.dispose(); activeTurn = null; drag = null; turning = false;
     effect('book-close'); syncMusic(); contentsState(false);
     lastTrigger?.focus({preventScroll:true});
   });
@@ -275,15 +312,44 @@
     if(event.key==='ArrowRight') { event.preventDefault(); navigate(index+1); }
     if(event.key==='ArrowLeft') { event.preventDefault(); navigate(index-1); }
   });
-  let touch;
-  spread.addEventListener('touchstart',event => {
-    if (event.touches.length===1 && !event.target.closest('button,a,input')) touch={x:event.touches[0].clientX,y:event.touches[0].clientY};
-    else touch=null;
-  },{passive:true});
-  spread.addEventListener('touchend',event => {
-    if (!touch || showingGate) return;
-    const dx=event.changedTouches[0].clientX-touch.x,dy=event.changedTouches[0].clientY-touch.y;
-    touch=null;
-    if(Math.abs(dx)>65 && Math.abs(dx)>Math.abs(dy)*1.8) navigate(index+(dx<0?1:-1));
-  },{passive:true});
+  spread.addEventListener('pointerdown', event => {
+    if (!story || turning || showingGate || !contents.hidden || event.button !== 0 || event.target.closest('button,a,input')) return;
+    const rect = spread.getBoundingClientRect(), x = event.clientX - rect.left;
+    // Start at the outside edge, leaving dialogue selectable and vertical scrolling native.
+    if (x > rect.width * .22 && x < rect.width * .78) return;
+    const direction = x > rect.width / 2 ? 1 : -1;
+    const target = index + direction;
+    if (target < 0 || target >= story.pages.length) return;
+    drag = { id:event.pointerId, x:event.clientX, y:event.clientY, direction, target, width:rect.width / 2, started:false, progress:0, lastX:event.clientX, time:performance.now(), velocity:0 };
+  });
+  spread.addEventListener('pointermove', event => {
+    if (!drag || event.pointerId !== drag.id) return;
+    const dx = event.clientX-drag.x, dy = event.clientY-drag.y;
+    if (!drag.started) {
+      if (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx)) { drag=null; return; }
+      if (-drag.direction * dx < 10) return;
+      if (drag.target >= 2 && !allowed) { drag=null; spoilerGate(2); return; }
+      drag.started=true; spread.setPointerCapture(event.pointerId);
+      if (!reduce.matches && !matchMedia('(max-width:699px)').matches) beginTurn(drag.target);
+    }
+    const now = performance.now();
+    drag.velocity = -drag.direction * (event.clientX-drag.lastX) / Math.max(1,now-drag.time);
+    drag.lastX=event.clientX; drag.time=now;
+    drag.progress=Math.max(0,Math.min(1,-drag.direction*dx/(drag.width*1.7)));
+    activeTurn?.set(drag.progress);
+  });
+  function releasePage(event) {
+    if (!drag || event.pointerId !== drag.id) return;
+    const current=drag; drag=null;
+    const commit = event.type !== 'pointercancel' && (current.progress > .25 || (current.progress > .04 && current.velocity > .45 && performance.now()-current.time < 100));
+    if (spread.hasPointerCapture(event.pointerId)) spread.releasePointerCapture(event.pointerId);
+    if (activeTurn) settleTurn(current.target,commit);
+    else if (current.started && commit) navigate(current.target);
+  }
+  spread.addEventListener('pointerup',releasePage);
+  spread.addEventListener('pointercancel',releasePage);
+  window.addEventListener('resize', () => {
+    if (!activeTurn) return;
+    activeTurn.dispose(); activeTurn=null; drag=null; turning=false; render(false);
+  });
 })();

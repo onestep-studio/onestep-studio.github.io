@@ -125,11 +125,6 @@ body:has(.story-reader[open]) { overflow:hidden; }
 .story-gate { font-size:16px; line-height:1.8; }
 .story-gate button,.story-gate a { display:block; margin:16px 0 0; width:100%; padding:12px 15px; background:#273d43; color:#f7ead0; border:1px solid #273d43; text-align:center; cursor:pointer; font-size:15px; }
 .story-gate button.secondary { color:#51432e; background:transparent; border-color:#a39376; }
-.turning-leaf { pointer-events:none; position:absolute; left:46%; top:0; width:54%; height:100%; z-index:5; transform-origin:left center; backface-visibility:hidden; background:linear-gradient(90deg,#ad9875,#efe3c7 8%,#e0d0af 80%,#a58a60); opacity:0; box-shadow:10px 0 30px #34241633; }
-.book-spread.turn-forward .turning-leaf { animation:page-forward .5s ease-in-out; }
-.book-spread.turn-back .turning-leaf { animation:page-back .5s ease-in-out; }
-@keyframes page-forward { 0% { opacity:0; transform:rotateY(0); } 12% { opacity:1; } 90% { opacity:1; } 100% { opacity:0; transform:rotateY(-178deg); } }
-@keyframes page-back { 0% { opacity:0; transform:rotateY(-178deg); } 12% { opacity:1; } 90% { opacity:1; } 100% { opacity:0; transform:rotateY(0); } }
 .world a:focus-visible,.world button:focus-visible,.story-reader button:focus-visible,.story-reader a:focus-visible,.story-invitation a:focus-visible,.story-invitation button:focus-visible { outline:3px solid #ffe0a1; outline-offset:5px; }
 .story-text-page { background:#0b1720; color:#e7e0d0; }
 .story-text-page header,.story-text-page main,.story-text-page footer { max-width:1000px; margin:auto; padding:32px 24px; }
@@ -156,7 +151,74 @@ body:has(.story-reader[open]) { overflow:hidden; }
  .story-reader { padding:12px 12px 24px; } .reader-toolbar { position:sticky; top:-12px; z-index:10; background:#08151f; padding-top:12px; gap:8px; align-items:center; } .reader-toolbar h2 { font-size:14px; } .reader-kicker { font-size:9px; letter-spacing:.1em; } .reader-actions { gap:5px; } .reader-actions button { padding:7px 10px; font-size:12px; } .reader-sound span { display:none; }
  .book-spread { display:block; min-height:0; border-width:4px; } .book-illustration { height:180px; } .book-illustration>img { object-position:50% 42%; } .art-chapter { bottom:12px; left:18px; font-size:9px; } .art-chapter b { font-size:24px; }
  .story-art-shade { background:linear-gradient(0deg,#06131ba6,transparent 60%); } .book-page { padding:25px 22px; min-height:320px; } .book-page h3 { font-size:25px; margin-bottom:18px; } .page-eyebrow { font-size:10px; margin-bottom:10px; } .story-lines { font-size:16px; line-height:1.8; } .story-lines p { margin-bottom:17px; } .page-ornament { margin-top:18px; }
- .turning-leaf { left:0; width:100%; } .reader-footer { position:sticky; bottom:-24px; z-index:10; background:#08151ff5; padding:10px 0; margin-top:20px; gap:8px; } .reader-footer button { padding:9px 12px; font-size:13px; } .page-progress { font-size:11px; } .story-contents { grid-template-columns:1fr 1fr; }
+ .reader-footer { position:sticky; bottom:-24px; z-index:10; background:#08151ff5; padding:10px 0; margin-top:20px; gap:8px; } .reader-footer button { padding:9px 12px; font-size:13px; } .page-progress { font-size:11px; } .story-contents { grid-template-columns:1fr 1fr; }
  .story-text-page section { grid-template-columns:1fr; gap:16px; } .story-text-page section img { max-height:300px; }
 }
 @media(prefers-reduced-motion:reduce) { .world *, .world *::after,.story-reader * { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+
+/* Sketchbook: warm paper on the courtyard's dark reading desk. */
+.story-reader { background:radial-gradient(ellipse at 50% 35%,#334544f5,#08151bf9 78%); padding:28px 28px 36px; }
+.reader-shell { width:min(1180px,100%); }
+.book-spread { grid-template-columns:1fr 1fr; min-height:620px; border:7px solid #284446; border-radius:5px 12px 12px 5px; background:#f4edda; perspective:2200px; isolation:auto; box-shadow:0 0 0 1px #75908a,0 4px 0 -1px #d0c6ac,0 7px 0 -1px #ece3cb,0 10px 0 -1px #a59b81,0 14px 0 -2px #233b3e,0 30px 70px #0008; touch-action:pan-y; }
+.book-spread::after { content:''; position:absolute; z-index:2; pointer-events:none; top:0; bottom:0; left:calc(50% - 18px); width:36px; background:linear-gradient(90deg,transparent,#76634518 37%,#453c3430 49%,#fff9e55e 53%,transparent); }
+.book-left { position:relative; min-width:0; background:#f4edda; }
+.book-illustration { height:100%; min-height:560px; margin:0; background:#f4edda; }
+.book-illustration>img { inset:8% 7% 13%; width:86%; height:79%; object-fit:contain; filter:drop-shadow(0 4px 5px #493c2526); user-select:none; -webkit-user-drag:none; }
+.story-art-shade { display:none; }
+.art-chapter { left:8%; bottom:8%; color:#7a6544; font-size:11px; }
+.art-chapter b { font-size:23px; }
+.book-page { padding:52px 46px 60px; background:linear-gradient(90deg,#b6a78914,transparent 14%,#fffdf433 80%,#aa927412); box-shadow:none; min-width:0; }
+.left-page { min-height:100%; }
+.text-spread>.book-page { padding-top:100px; }
+.book-page h3 { font-size:clamp(25px,2.5vw,34px); line-height:1.5; letter-spacing:-.025em; }
+.story-lines { font-family:Georgia,'Batang','Yu Mincho',serif; font-size:17px; line-height:1.95; }
+.story-lines p { margin-bottom:24px; }
+.story-lines .speaker { font-family:system-ui,sans-serif; font-size:12px; color:#796844; margin-bottom:6px; }
+.folio { position:absolute; bottom:20px; right:26px; color:#99896a; font:italic 13px Georgia,serif; letter-spacing:.12em; }
+.book-left>.folio { right:auto; left:26px; }
+.book-gesture-hint { margin:25px 0 0; text-align:center; color:#b5bfb6; font-size:13px; }
+.reader-footer { margin-top:14px; }
+.reader-footer button { border-radius:24px; background:transparent; min-width:120px; }
+.story-contents { max-height:45vh; overflow-y:auto; }
+.story-text-page section.text-only { display:block; background:#f4edda; color:#403628; padding:40px; }
+.story-text-page .text-only .text-dialogue { columns:2; column-gap:60px; }
+.story-text-page .text-only p { break-inside:avoid; }
+.story-text-page .text-only strong { color:#796844; }
+.is-turning > .book-left,.is-turning > .book-page { visibility:hidden; }
+.is-turning::after { display:none; }
+.paper-turn { position:absolute; inset:0; z-index:5; perspective:2200px; pointer-events:none; }
+.paper-bed { position:absolute; top:0; height:100%; overflow:hidden; }
+.paper-curl { position:absolute; top:0; left:50%; width:50%; height:100%; transform-origin:left center; transform-style:preserve-3d; }
+.paper-strip { position:absolute; top:0; left:0; height:100%; transform-origin:left center; transform-style:preserve-3d; }
+.paper-strip>.paper-strip { left:100%; }
+.backward .paper-curl { left:auto; right:50%; transform-origin:right center; }
+.backward .paper-strip { left:auto; right:0; transform-origin:right center; }
+.backward .paper-strip>.paper-strip { left:auto; right:100%; }
+.paper-face { position:absolute; inset:0; overflow:hidden; background:#f4edda; backface-visibility:hidden; }
+.paper-strip>.paper-face { width:calc(100% + .6px); }
+.paper-back { transform:rotateY(180deg); }
+.paper-strip>.paper-face::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,#32251608,#322516); opacity:var(--paper-shadow,0); }
+.book-snapshot { position:absolute; top:0; margin:0; border:0; border-radius:0; box-shadow:none; perspective:none; pointer-events:none; }
+.book-snapshot::after { display:none; }
+@media(max-width:1000px) and (min-width:700px) {
+ .book-page { padding:36px 27px 55px; } .story-lines { font-size:16px; line-height:1.8; }
+ .text-spread>.book-page { padding-top:85px; }
+}
+@media(max-width:699px) {
+ .story-reader { padding:12px 12px 24px; }
+ .book-spread { display:block; min-height:0; border-width:4px; }
+ .book-spread::after { display:none; }
+ .book-illustration { min-height:0; height:260px; }
+ .book-illustration>img { inset:5% 8% 12%; width:84%; height:83%; }
+ .book-left>.folio { display:none; }
+ .art-chapter { left:7%; bottom:7%; font-size:9px; } .art-chapter b { font-size:18px; }
+ .book-page { padding:28px 25px 48px; min-height:0; }
+ .book-page h3 { font-size:27px; }
+ .story-lines { font-size:16px; line-height:1.9; }
+ .text-spread .left-page { padding-bottom:0; }
+ .text-spread>.book-page { padding-top:24px; }
+ .book-gesture-hint { font-size:12px; margin-top:20px; }
+ .reader-footer button { min-width:0; }
+ .story-text-page section.text-only { padding:26px 22px; }
+ .story-text-page .text-only .text-dialogue { columns:1; }
+}

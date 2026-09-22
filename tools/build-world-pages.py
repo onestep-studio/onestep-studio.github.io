@@ -50,10 +50,10 @@ def render(lang, c):
         <header class="reader-toolbar"><div><span class="reader-kicker">TINY DEFENSE / CHAPTER 01</span><h2 id="reader-title">{c['booktitle']}</h2></div><div class="reader-actions"><button type="button" class="reader-sound" data-sound aria-pressed="false">♫ <span>{c['sound']}</span></button><button type="button" data-contents aria-expanded="false" aria-controls="story-contents">{c['contents']}</button><button type="button" data-close-story aria-label="{c['close']}">✕</button></div></header>
         <nav class="story-contents" id="story-contents" aria-label="{c['contents']}" hidden></nav>
         <div class="book-spread" data-book-spread>
-          <div class="book-illustration"><img data-story-art src="/assets/world/prologue.webp" alt=""><div class="story-art-shade"></div><span class="art-chapter">CHAPTER <b>01</b></span></div>
-          <article class="book-page" data-book-page tabindex="-1"><p class="page-eyebrow" data-page-kicker></p><h3 data-page-title></h3><div class="story-lines" data-story-lines></div><div class="story-gate" data-story-gate hidden></div><div class="page-ornament" aria-hidden="true">✦</div></article>
-          <div class="turning-leaf" aria-hidden="true"></div>
+          <div class="book-left" data-book-left><div class="book-illustration"><img data-story-art src="/assets/world/prologue.webp" alt=""><div class="story-art-shade"></div><span class="art-chapter">CHAPTER <b>01</b></span></div><article class="book-page left-page" data-left-page hidden><p class="page-eyebrow" data-left-kicker></p><h3 data-left-title></h3><div class="story-lines" data-left-lines></div></article><span class="folio" data-folio-left></span></div>
+          <article class="book-page" data-book-page tabindex="-1"><p class="page-eyebrow" data-page-kicker></p><h3 data-page-title></h3><div class="story-lines" data-story-lines></div><div class="story-gate" data-story-gate hidden></div><div class="page-ornament" aria-hidden="true">✦</div><span class="folio" data-folio-right></span></article>
         </div>
+        <p class="book-gesture-hint">{ {'ko':'페이지 가장자리를 끌거나 화살표로 넘겨 보세요.', 'en':'Drag a page edge or use the arrows to turn.', 'ja':'ページの端をドラッグするか、矢印でめくれます。'}[lang] }</p>
         <footer class="reader-footer"><button type="button" data-story-prev>← <span>{c['prev']}</span></button><span class="page-progress" data-page-progress role="status" aria-live="polite"></span><button type="button" data-story-next><span>{c['next']}</span> →</button></footer>
         <div class="reader-settings"><label>♫ {c['volume']} <input data-volume aria-label="{c['volume']}" type="range" min="0" max="100" value="35"></label><a href="{base}/story/">{c['read']}</a></div>
       </div>
@@ -78,21 +78,28 @@ def main():
         text=text.replace('as="image" href="/assets/onestep-logo.webp"','as="image" href="/assets/world/courtyard-day.webp"')
         text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-v2.webp')
         text=text.replace('/world.css?v=world-1','/world.css?v=world-2').replace('/world.js?v=world-1','/world.js?v=world-2')
-        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-3', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-4', text)
+        if '/book-turn.js' not in text:
+            text=text.replace('<script defer src="/world.js', '<script defer src="/book-turn.js?v=1"></script>\n  <script defer src="/world.js')
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''
         chapter = None
+        seen_art = set()
         for page in story['pages']:
             if page['chapter'] != chapter:
                 chapter = page['chapter']
                 content += f'<h2 class="text-chapter">CHAPTER {chapter:02d}</h2>'
             lines=''.join('<p>'+('<strong>'+escape(story['boy'] if line['speaker']==1 else c['old'])+'</strong><br>' if line['speaker'] else '')+escape(line['text'])+'</p>' for line in page['lines'])
-            content+=f'<section><img src="/assets/world/{page["art"]}.webp?v=story-3" alt="" loading="lazy"><div><h2>{escape(page["title"])}</h2>{lines}</div></section>'
+            repeated = page['art'] in seen_art
+            seen_art.add(page['art'])
+            illustration = '' if repeated else f'<img src="/assets/world/{page["art"]}.webp?v=story-3" alt="" loading="lazy">'
+            layout = ' class="text-only"' if repeated else ''
+            content+=f'<section{layout}>{illustration}<div><h2>{escape(page["title"])}</h2><div class="text-dialogue">{lines}</div></div></section>'
         prefix='' if lang=='ko' else '/'+lang
         route=base/'story'
         route.mkdir(exist_ok=True)
-        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/world.css?v=world-3"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
+        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/world.css?v=world-4"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
         game=base/'games/tiny-defense/index.html'
         html=game.read_text(encoding='utf-8')
         if '#storybook' not in html:
