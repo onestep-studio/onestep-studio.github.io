@@ -1,0 +1,557 @@
+{
+  "ko": {
+    "title": "돌아올 성",
+    "boy": "소년",
+    "pages": [
+      {
+        "id": "prologue",
+        "art": "prologue",
+        "title": "봉인 위에 세운 성",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "오래전, 사람들은 잠든 괴물들의 봉인 위에 성을 세웠다. 그 아래는 누구도 들여다보지 않았다."
+          },
+          {
+            "speaker": 0,
+            "text": "어느 밤, 봉인이 갈라졌다. 새어 나온 괴물들이 성벽을 두드렸고, 성이 흔들릴 때마다 틈은 더 벌어졌다."
+          }
+        ]
+      },
+      {
+        "id": "supplies",
+        "art": "supplies",
+        "title": "빈 자루의 무게",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "소년이 가져온 나무로 성문을 덧댔다. 병사들은 따뜻한 밥을 먹고 다시 성벽에 올랐다."
+          },
+          {
+            "speaker": 1,
+            "text": "난 밖에서 나무만 주워 왔는데…"
+          },
+          {
+            "speaker": 2,
+            "text": "그 나무 덕에 문이 버텼단다. 너도 함께 지킨 게지."
+          },
+          {
+            "speaker": 2,
+            "text": "어제 배운 대로 자원을 구해 우리를 도와주겠니?"
+          },
+          {
+            "speaker": 1,
+            "text": "응, 해 볼게!"
+          }
+        ]
+      },
+      {
+        "id": "ring",
+        "art": "supplies",
+        "title": "혼자 막지 말거라",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "반지를 만들면, 나도 할아버지처럼 싸울 수 있을까?"
+          },
+          {
+            "speaker": 2,
+            "text": "그 힘을 빌릴 수는 있겠지. 그래도 혼자 막으려 들지는 말거라."
+          },
+          {
+            "speaker": 2,
+            "text": "내 검이 부러진 날에도 성은 버텼단다. 성벽 위에도, 아래에도 사람이 있었으니까."
+          }
+        ]
+      },
+      {
+        "id": "troll",
+        "art": "troll",
+        "title": "검이 부러진 다음",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "이빨 부러진 트롤을 물리친 아침, 노인은 말없이 성문을 쓸어 보았다."
+          },
+          {
+            "speaker": 1,
+            "text": "할아버지 검이 없어도, 우리가 막았어."
+          },
+          {
+            "speaker": 2,
+            "text": "그래. 이제야 마음 놓고 검을 내려놓겠구나."
+          }
+        ]
+      },
+      {
+        "id": "spring",
+        "art": "spring",
+        "title": "길을 거슬러",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "놈들이 온 길이라면, 끝에는 뭐가 있을까?"
+          },
+          {
+            "speaker": 2,
+            "text": "나도 모른단다. 평생 성문 앞만 지켰으니."
+          },
+          {
+            "speaker": 1,
+            "text": "그럼 같이 가 보자. 막을 방법이 있을지도 몰라."
+          }
+        ]
+      },
+      {
+        "id": "summer",
+        "art": "routes",
+        "title": "돌에 남은 길",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "봄을 지나온 길목에 오래된 표석이 있었다. 여러 갈래의 길 끝에 성 하나가 새겨져 있었다."
+          },
+          {
+            "speaker": 2,
+            "text": "봉인 하나만 지키면 되는 줄 알았거늘… 이렇게 많은 길이 이어져 있었구나."
+          },
+          {
+            "speaker": 1,
+            "text": "우리 성으로 가는 길부터 찾아보자."
+          }
+        ]
+      },
+      {
+        "id": "autumn",
+        "art": "routes",
+        "title": "물려주고 싶지 않은 것",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "낙엽 아래에도 같은 표식이 있었다. 노인은 성벽에서 보낸 지난날을 떠올렸다."
+          },
+          {
+            "speaker": 2,
+            "text": "네가 강해져서 기쁘단다. 허나 너마저 평생 성벽에 세워 두고 싶지는 않구나."
+          },
+          {
+            "speaker": 1,
+            "text": "나도 그래. 돌아가면 할아버지랑 쉬고 싶어."
+          }
+        ]
+      },
+      {
+        "id": "winter",
+        "art": "routes",
+        "title": "돌아가는 쪽에서",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "겨울의 표석에서 등불이 마지막 길을 비췄다. 고향의 봉인은 이쪽에서도 닫을 수 있었다."
+          },
+          {
+            "speaker": 2,
+            "text": "이 겨울을 넘기면 돌아갈 수 있겠구나. 우리가 지나간 뒤에 길을 닫자꾸나."
+          },
+          {
+            "speaker": 1,
+            "text": "응. 이번엔 우리 성에 쉴 틈을 만들어 주자."
+          }
+        ]
+      },
+      {
+        "id": "home",
+        "art": "home",
+        "title": "오늘은 쉬어도 된단다",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "둘이 돌아온 뒤, 정령의 빛이 길 하나를 봉했다. 성문 앞에 오랜만에 고요한 아침이 왔다."
+          },
+          {
+            "speaker": 1,
+            "text": "오늘은 뭘 구해 오면 돼?"
+          },
+          {
+            "speaker": 2,
+            "text": "오늘은 쉬어도 된단다."
+          },
+          {
+            "speaker": 0,
+            "text": "아직 다른 길들이 남아 있었다. 다시 밤이 오기 전, 둘은 나란히 앉아 빵을 나눠 먹었다."
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "A Castle to Come Home To",
+    "boy": "Boy",
+    "pages": [
+      {
+        "id": "prologue",
+        "art": "prologue",
+        "title": "A Castle Above the Seal",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "Long ago, people built a castle over the seal that held the sleeping monsters. No one looked beneath it."
+          },
+          {
+            "speaker": 0,
+            "text": "One night, the seal cracked. Monsters slipped out and battered the walls. Each tremor widened the breach."
+          }
+        ]
+      },
+      {
+        "id": "supplies",
+        "art": "supplies",
+        "title": "The Weight of an Empty Sack",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "The boy’s timber braced the gate. After a warm meal, the soldiers returned to the walls."
+          },
+          {
+            "speaker": 1,
+            "text": "But all I did was bring back wood…"
+          },
+          {
+            "speaker": 2,
+            "text": "That wood kept the gate standing. You helped defend us too."
+          },
+          {
+            "speaker": 2,
+            "text": "Will you gather supplies for us, like you learned yesterday?"
+          },
+          {
+            "speaker": 1,
+            "text": "Yes, I’ll try!"
+          }
+        ]
+      },
+      {
+        "id": "ring",
+        "art": "supplies",
+        "title": "You Need Not Stand Alone",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "If I make the ring, could I fight like you?"
+          },
+          {
+            "speaker": 2,
+            "text": "You could borrow that strength. But don’t try to hold them off alone."
+          },
+          {
+            "speaker": 2,
+            "text": "The castle held even when my sword broke. There were people on the walls, and people below them."
+          }
+        ]
+      },
+      {
+        "id": "troll",
+        "art": "troll",
+        "title": "After the Sword Broke",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "The morning after the broken-toothed troll fell, the old man quietly ran his hand over the gate."
+          },
+          {
+            "speaker": 1,
+            "text": "We held them off, even without your sword."
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. Perhaps I can finally lay that sword to rest."
+          }
+        ]
+      },
+      {
+        "id": "spring",
+        "art": "spring",
+        "title": "Against the Tide",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "If they came this way, what lies at the other end?"
+          },
+          {
+            "speaker": 2,
+            "text": "I don’t know, child. I spent my whole life guarding the gate."
+          },
+          {
+            "speaker": 1,
+            "text": "Then let’s find out together. There might be a way to stop them."
+          }
+        ]
+      },
+      {
+        "id": "summer",
+        "art": "routes",
+        "title": "Paths in the Stone",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "Beyond spring stood an old waystone. Its carved paths branched outward from a single castle."
+          },
+          {
+            "speaker": 2,
+            "text": "I thought there was only one seal to guard… I never knew so many paths led to it."
+          },
+          {
+            "speaker": 1,
+            "text": "Let’s find the path to our castle first."
+          }
+        ]
+      },
+      {
+        "id": "autumn",
+        "art": "routes",
+        "title": "What Must Not Be Passed On",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "The same mark lay beneath fallen leaves. The old man thought of his years on the walls."
+          },
+          {
+            "speaker": 2,
+            "text": "I’m glad you’ve grown stronger. But I don’t want you to spend your whole life on those walls too."
+          },
+          {
+            "speaker": 1,
+            "text": "Neither do I. When we get home, I want us both to rest."
+          }
+        ]
+      },
+      {
+        "id": "winter",
+        "art": "routes",
+        "title": "From the Other Side",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "At winter’s waystone, the lantern lit the last path. The seal at home could be closed from this side too."
+          },
+          {
+            "speaker": 2,
+            "text": "Once we weather this winter, we can go home. We’ll close the path behind us."
+          },
+          {
+            "speaker": 1,
+            "text": "Yes. This time, let’s give our castle a chance to rest."
+          }
+        ]
+      },
+      {
+        "id": "home",
+        "art": "home",
+        "title": "Today, You Can Rest",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "After they returned, the wisps’ light sealed one path. For once, a quiet morning came to the castle gates."
+          },
+          {
+            "speaker": 1,
+            "text": "What should I bring back today?"
+          },
+          {
+            "speaker": 2,
+            "text": "Today, you can rest."
+          },
+          {
+            "speaker": 0,
+            "text": "Other paths still remained. Before night came again, they sat together and shared a loaf of bread."
+          }
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "title": "帰る場所",
+    "boy": "少年",
+    "pages": [
+      {
+        "id": "prologue",
+        "art": "prologue",
+        "title": "封印の上に築いた城",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "遠い昔、人々は眠る魔物の封印の上に城を築いた。その下をのぞく者はいなかった。"
+          },
+          {
+            "speaker": 0,
+            "text": "ある夜、封印が裂けた。抜け出した魔物が城壁を叩き、城が揺れるたびに裂け目は広がった。"
+          }
+        ]
+      },
+      {
+        "id": "supplies",
+        "art": "supplies",
+        "title": "空の袋の重み",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "少年の運んだ木で門を補強した。兵士たちは温かい食事をとり、再び城壁へ上がった。"
+          },
+          {
+            "speaker": 1,
+            "text": "僕は外で木を集めてきただけなのに……"
+          },
+          {
+            "speaker": 2,
+            "text": "その木のおかげで門がもったのじゃ。お前も一緒に守ったんだよ。"
+          },
+          {
+            "speaker": 2,
+            "text": "昨日覚えたように、資源を集めてわしらを助けてくれるかい？"
+          },
+          {
+            "speaker": 1,
+            "text": "うん、やってみる！"
+          }
+        ]
+      },
+      {
+        "id": "ring",
+        "art": "supplies",
+        "title": "ひとりで守るな",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "指輪を作ったら、僕もおじいさんみたいに戦えるかな？"
+          },
+          {
+            "speaker": 2,
+            "text": "その力は借りられるじゃろう。だが、ひとりで食い止めようとはするなよ。"
+          },
+          {
+            "speaker": 2,
+            "text": "わしの剣が折れた日も、城は持ちこたえた。城壁の上にも下にも、人がおったからな。"
+          }
+        ]
+      },
+      {
+        "id": "troll",
+        "art": "troll",
+        "title": "剣が折れたあと",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "牙の折れたトロールを退けた朝、老人は黙って城門に手を触れた。"
+          },
+          {
+            "speaker": 1,
+            "text": "おじいさんの剣がなくても、みんなで守れたよ。"
+          },
+          {
+            "speaker": 2,
+            "text": "ああ。ようやく安心して、あの剣を置けるわい。"
+          }
+        ]
+      },
+      {
+        "id": "spring",
+        "art": "spring",
+        "title": "道をたどって",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "あいつらが来た道なら、その先には何があるんだろう？"
+          },
+          {
+            "speaker": 2,
+            "text": "わしにも分からん。ずっと城門の前を守ってきたからのう。"
+          },
+          {
+            "speaker": 1,
+            "text": "じゃあ、一緒に行こう。止める方法があるかもしれない。"
+          }
+        ]
+      },
+      {
+        "id": "summer",
+        "art": "routes",
+        "title": "石に残る道",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "春を越えた道に、古い道標があった。刻まれた幾筋もの道は、ひとつの城につながっていた。"
+          },
+          {
+            "speaker": 2,
+            "text": "守る封印はひとつだと思っておったが……これほど多くの道がつながっていたとは。"
+          },
+          {
+            "speaker": 1,
+            "text": "まずは、僕たちの城へ続く道を探そう。"
+          }
+        ]
+      },
+      {
+        "id": "autumn",
+        "art": "routes",
+        "title": "受け継がせたくないもの",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "落ち葉の下にも同じ印があった。老人は城壁で過ごした日々を思い返した。"
+          },
+          {
+            "speaker": 2,
+            "text": "強くなってくれて、うれしいよ。だが、お前まで一生あの城壁に立たせたくはない。"
+          },
+          {
+            "speaker": 1,
+            "text": "僕もだよ。帰ったら、おじいさんと一緒に休みたい。"
+          }
+        ]
+      },
+      {
+        "id": "winter",
+        "art": "routes",
+        "title": "帰り道の向こう側",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "冬の道標で、灯りが最後の道を照らした。故郷の封印は、こちら側からも閉じられた。"
+          },
+          {
+            "speaker": 2,
+            "text": "この冬を越えれば帰れるのう。通り抜けたら、後ろの道を閉じよう。"
+          },
+          {
+            "speaker": 1,
+            "text": "うん。今度は、僕たちの城にも休む時間をあげよう。"
+          }
+        ]
+      },
+      {
+        "id": "home",
+        "art": "home",
+        "title": "今日は休んでいい",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "ふたりが帰ると、精霊の光がひとつの道を封じた。城門に、久しぶりの静かな朝が訪れた。"
+          },
+          {
+            "speaker": 1,
+            "text": "今日は何を集めてくればいい？"
+          },
+          {
+            "speaker": 2,
+            "text": "今日は休んでいいんだよ。"
+          },
+          {
+            "speaker": 0,
+            "text": "ほかの道は、まだ残っていた。再び夜が来る前に、ふたりは並んで座り、パンを分け合った。"
+          }
+        ]
+      }
+    ]
+  }
+}

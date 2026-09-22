@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="昼は資源を集め、夜は城を守る。片手で遊べる縦画面のエンドレスサバイバルディフェンス『Tiny Defense』。">
+  <meta name="theme-color" content="#f9f8f3">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://onestep-studio.github.io/ja/games/tiny-defense/">
+  <link rel="alternate" hreflang="ko" href="https://onestep-studio.github.io/games/tiny-defense/">
+  <link rel="alternate" hreflang="en" href="https://onestep-studio.github.io/en/games/tiny-defense/">
+  <link rel="alternate" hreflang="ja" href="https://onestep-studio.github.io/ja/games/tiny-defense/">
+  <link rel="alternate" hreflang="x-default" href="https://onestep-studio.github.io/games/tiny-defense/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="OneStep Studio">
+  <meta property="og:title" content="Tiny Defense | OneStep Studio">
+  <meta property="og:description" content="昼は備え、夜を生き抜け。片手で遊べるエンドレスサバイバルディフェンス。">
+  <meta property="og:url" content="https://onestep-studio.github.io/ja/games/tiny-defense/">
+  <meta property="og:image" content="https://onestep-studio.github.io/assets/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://onestep-studio.github.io/assets/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="『Tiny Defense』の昼と夜、城とモンスターを描いたピクセルアート">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tiny Defense | OneStep Studio">
+  <meta name="twitter:description" content="昼は備え、夜を生き抜け。片手で遊べるエンドレスサバイバルディフェンス。">
+  <meta name="twitter:image" content="https://onestep-studio.github.io/assets/og-image.jpg">
+
+  <title>Tiny Defense | OneStep Studio</title>
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" as="image" href="/assets/hero-wide.webp" media="(min-width: 900px), (min-width: 700px) and (max-width: 899px) and (orientation: landscape)" type="image/webp">
+  <link rel="preload" as="image" href="/assets/hero-mobile.webp" media="(max-width: 699px), (min-width: 700px) and (max-width: 899px) and (orientation: portrait)" type="image/webp">
+  <link rel="stylesheet" href="/styles.css?v=daynight-1">
+  <script defer src="/script.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Tiny Defense",
+      "description": "昼は資源を集め、夜は城を守る。片手で遊べる縦画面のエンドレスサバイバルディフェンス。",
+      "genre": ["Defense", "Survival", "Casual"],
+      "gamePlatform": ["Android", "iOS"],
+      "inLanguage": "ja",
+      "publisher": {
+        "@type": "Organization",
+        "name": "OneStep Studio",
+        "url": "https://onestep-studio.github.io/"
+      },
+      "image": "https://onestep-studio.github.io/assets/og-image.jpg",
+      "sameAs": [
+        "https://play.google.com/store/apps/details?id=com.onestep.tinydefense",
+        "https://apps.apple.com/app/id6785383234",
+        "https://m.onestore.co.kr/v2/ko-kr/app/0001007324"
+      ],
+      "url": "https://onestep-studio.github.io/ja/games/tiny-defense/"
+    }
+  </script>
+</head>
+<body class="game-page">
+  <a class="skip-link" href="#main">メインコンテンツへ</a>
+
+  <header class="site-header" data-header>
+    <div class="header-inner">
+      <a class="wordmark" href="/ja/" aria-label="OneStep Studio ホーム">
+        <img class="wordmark-logo" src="/assets/onestep-logo.webp" alt="" width="512" height="512">
+        <span>onestep</span>
+      </a>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="メインメニュー">
+        <a href="/ja/">ゲーム一覧</a>
+        <a href="/ja/#storybook">物語を読む</a>
+        <a href="#features">特徴</a>
+        <a href="#gallery">ギャラリー</a>
+        <a href="#stores">ストア</a>
+        <span class="language-switcher" role="group" aria-label="言語を選択">
+          <a href="/games/tiny-defense/" lang="ko">KO</a>
+          <a href="/en/games/tiny-defense/" lang="en">EN</a>
+          <a href="/ja/games/tiny-defense/" lang="ja" aria-current="page">日本語</a>
+        </span>
+      </nav>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く" data-label-open="メニューを開く" data-label-close="メニューを閉じる">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <h1 class="sr-only" id="hero-title">Tiny Defense</h1>
+      <picture class="hero-picture">
+        <source media="(max-width: 699px), (min-width: 700px) and (max-width: 899px) and (orientation: portrait)" srcset="/assets/hero-mobile.webp">
+        <img src="/assets/hero-wide.webp" alt="昼と夜の境に立つ城、資源を集める英雄と押し寄せるモンスター" width="1024" height="500" fetchpriority="high">
+      </picture>
+
+      <div class="hero-mobile-content">
+        <p class="eyebrow">ONESTEP PRESENTS</p>
+        <p class="hero-mobile-title" aria-hidden="true">TINY<br>DEFENSE</p>
+        <p class="hero-tagline">昼は備え、<br>夜を生き抜け。</p>
+        <a class="button button-primary" href="#game">
+          ゲームを見る
+          <span aria-hidden="true">&darr;</span>
+        </a>
+      </div>
+
+      <div class="hero-desktop-status" aria-hidden="true">
+        <span>MOBILE STORES</span>
+        <strong>配信中</strong>
+      </div>
+    </section>
+
+    <section class="intro section" id="game">
+      <div class="container intro-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">THE GAME</p>
+          <h2>昼は備え、<br>夜を生き抜け。</h2>
+        </div>
+
+        <div class="intro-copy reveal">
+          <p class="lead">森で資源を集め、村と部隊を育て、毎晩押し寄せるモンスターから城を守りましょう。</p>
+          <p>片手で遊べる縦画面に、採集、配置、オートバトルを詰め込んだエンドレスサバイバルディフェンスです。昼の小さな選択が、次の夜の生存を左右します。</p>
+
+          <dl class="game-facts">
+            <div>
+              <dt>プレイ</dt>
+              <dd>片手で遊べる縦画面</dd>
+            </div>
+            <div>
+              <dt>目標</dt>
+              <dd>終わりなき夜を生き抜く</dd>
+            </div>
+            <div>
+              <dt>挑戦</dt>
+              <dd>グローバルランキング</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="container axe-challenge reveal" id="axe-challenge">
+        <div class="axe-challenge-copy">
+          <p class="eyebrow">PLAY IN BROWSER</p>
+          <h3>一度のミスで即終了<br>木こりチャレンジ</h3>
+          <p>ゴールドゾーンに命中すると丸太+1、ど真ん中でPERFECTなら+2。命中を重ねるほどマーカーは速くなり、ゾーンは狭くなります。</p>
+          <ul>
+            <li>待っていれば安全、斧を振れば勝負が始まる</li>
+            <li>ベストスコアはこの端末に自動保存</li>
+            <li>リザルトカードを作ってそのままシェア</li>
+          </ul>
+        </div>
+
+        <div class="axe-game-embed">
+          <div class="axe-frame-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <strong>LIVE CHALLENGE</strong>
+          </div>
+          <iframe class="axe-game-frame"
+            src="/games/tiny-defense/play/?embed=1&amp;lang=ja&amp;v=score-attack-19"
+            title="Tiny Defense 木こりスコアアタック"
+            allow="autoplay; web-share; clipboard-write"
+            loading="eager"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="daynight section" id="features" aria-labelledby="daynight-title" data-daynight>
+      <div class="container daynight-heading reveal">
+        <p class="eyebrow">DAY &amp; NIGHT</p>
+        <h2 id="daynight-title">一日の選択が<br>次の夜を変える。</h2>
+        <p>昼に集めて育てたものが、そのまま夜の防衛線になります。10のシーンで一日を追ってみましょう。</p>
+      </div>
+
+      <div class="daynight-stage">
+        <div class="daynight-frame">
+          <div class="daynight-bar">
+            <div class="daynight-tabs" role="tablist" aria-label="昼と夜">
+              <button class="daynight-tab" type="button" role="tab" id="tab-day" aria-controls="panel-day" aria-selected="true" data-daynight-tab="day">昼</button>
+              <button class="daynight-tab" type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false" data-daynight-tab="night">夜</button>
+            </div>
+
+            <div class="daynight-controls" role="group" aria-label="シーンの移動" data-daynight-controls hidden>
+              <p class="daynight-status" aria-live="polite" data-daynight-status>01 / 05</p>
+              <button class="daynight-arrow" type="button" data-daynight-prev aria-label="前のシーン">
+                <span aria-hidden="true">&larr;</span>
+              </button>
+              <button class="daynight-arrow" type="button" data-daynight-next aria-label="次のシーン">
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+              <button class="daynight-cross" type="button" data-daynight-cross>
+                <span class="daynight-cross-face" data-daynight-cross-to="night">夜へ <span aria-hidden="true">&rarr;</span></span>
+                <span class="daynight-cross-face" data-daynight-cross-to="day" hidden><span aria-hidden="true">&larr;</span> 昼へ</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="daynight-panel" role="tabpanel" id="panel-day" aria-labelledby="tab-day" data-daynight-panel="day" tabindex="0">
+            <p class="daynight-panel-title">昼 — 備える</p>
+            <ol class="daynight-track" data-daynight-track="day" tabindex="0" aria-label="昼のシーン一覧">
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-01-gather.webp"
+                    src="/assets/daynight/day-01-gather.mp4"
+                    aria-label="昼に木を採集するタイミングミニゲームのプレイ映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">01</span>
+                  <h3>採集リズム</h3>
+                  <p>タイミングゲージが緑の帯に重なった瞬間に斧を振り下ろします。完璧に決めるほど連続が積み重なり、収穫量が伸びていきます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-02-memory.webp"
+                    src="/assets/daynight/day-02-memory.mp4"
+                    aria-label="光った鉱脈の位置を記憶して採集するミニゲームのプレイ映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">02</span>
+                  <h3>鉱脈の記憶</h3>
+                  <p>一瞬光った鉱脈の位置を覚えて、もう一度なぞります。順番を守るほど、より深い鉱脈が開かれます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-03-tool.webp"
+                    src="/assets/daynight/day-03-tool.mp4"
+                    aria-label="集めた資源で採集道具を強化する画面の映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">03</span>
+                  <h3>道具の成長</h3>
+                  <p>集めた資源を斧とツルハシに注ぎ込み、一度の採集で得られる量を増やします。昼が短くなるほど、道具が代わりに稼いでくれます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-04-village.webp"
+                    src="/assets/daynight/day-04-village.mp4"
+                    aria-label="春の昼の村と行き交う住民を映した映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">04</span>
+                  <h3>村の一日</h3>
+                  <p>住民が行き交う春の村を歩いてみましょう。建物が増えるほど、夜を耐え抜く余裕も増えていきます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/day-05-relic.webp"
+                    src="/assets/daynight/day-05-relic.mp4"
+                    aria-label="3種類の遺物から1つを選ぶ画面の映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">05</span>
+                  <h3>遺物の選択</h3>
+                  <p>3枚の遺物から1つを選びます。このひとつの選択が、残りの夜すべての性格を変えます。</p>
+                </div>
+              </li>
+              <li class="daynight-jump" data-daynight-jump="night" aria-hidden="true" hidden>
+                <p class="daynight-jump-label">夜へ &rarr;</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="daynight-panel" role="tabpanel" id="panel-night" aria-labelledby="tab-night" data-daynight-panel="night" tabindex="0">
+            <p class="daynight-panel-title">夜 — 守る</p>
+            <ol class="daynight-track" data-daynight-track="night" tabindex="0" aria-label="夜のシーン一覧">
+              <li class="daynight-jump" data-daynight-jump="day" aria-hidden="true" hidden>
+                <p class="daynight-jump-label">&larr; 昼へ</p>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-01-deploy.webp"
+                    src="/assets/daynight/night-01-deploy.mp4"
+                    aria-label="部隊をドラッグして配置し、タワーを建てる夜の準備映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">01</span>
+                  <h3>戦列の配置</h3>
+                  <p>槍兵、弓兵、修道士をドラッグして好きな位置に並べます。タワーショップで防衛線の隙間を埋めましょう。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-02-defense.webp"
+                    src="/assets/daynight/night-02-defense.mp4"
+                    aria-label="骸骨の群れと守護騎士・兵士の戦列がぶつかり、城を守り抜く夜の戦闘映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">02</span>
+                  <h3>密集防衛戦</h3>
+                  <p>骸骨の群れが押し寄せる場所で、守護騎士と兵士がぶつかり合います。前列が耐えているあいだ、後方から矢が降り注ぎます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-03-hero.webp"
+                    src="/assets/daynight/night-03-hero.mp4"
+                    aria-label="英雄が回転斬りの範囲技で敵を薙ぎ払う戦闘映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">03</span>
+                  <h3>英雄の技</h3>
+                  <p>英雄の回転斬りが周囲を一度に薙ぎ払います。技をいつ使うかで、波の向きが変わります。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-04-duel.webp"
+                    src="/assets/daynight/night-04-duel.mp4"
+                    aria-label="コマンドを入力しながらボスと一騎打ちを行う映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">04</span>
+                  <h3>ボス一騎打ち</h3>
+                  <p>5夜ごとに、画面のコマンドをつないでボスと正面から向き合います。入力が途切れれば、そのまま反撃を受けます。</p>
+                </div>
+              </li>
+              <li class="daynight-item">
+                <div class="daynight-media">
+                  <video class="daynight-video" muted loop playsinline preload="none" width="540" height="960"
+                    poster="/assets/daynight/night-05-season.webp"
+                    src="/assets/daynight/night-05-season.mp4"
+                    aria-label="季節が解放され、次の季節へ移る画面の映像"></video>
+                </div>
+                <div class="daynight-copy">
+                  <span class="daynight-index" aria-hidden="true">05</span>
+                  <h3>季節の先へ</h3>
+                  <p>春を越えれば夏が、その先には秋と冬が待っています。季節が変わるたび、夜はもう一段深くなります。</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
+      <div class="container gallery-header reveal">
+        <div>
+          <p class="eyebrow">IN GAME</p>
+          <h2 id="gallery-title">『Tiny Defense』の世界を<br>ひと足先にご覧ください。</h2>
+        </div>
+        <div class="gallery-controls" role="group" aria-label="ギャラリー操作">
+          <button type="button" data-gallery-prev aria-label="前の画像">
+            <span aria-hidden="true">&larr;</span>
+          </button>
+          <button type="button" data-gallery-next aria-label="次の画像">
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="gallery-track" data-gallery-track tabindex="0" aria-label="ゲーム画面ギャラリー">
+        <figure class="gallery-item">
+          <img src="/assets/01_day_gather.webp" alt="昼に資源を採集する『Tiny Defense』のプレイ画面" width="720" height="1280" loading="lazy">
+          <figcaption>昼は集める</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="/assets/02_night_battle.webp" alt="兵士とタワーで城を守る夜の戦闘画面" width="720" height="1280" loading="lazy">
+          <figcaption>夜は守る</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="/assets/03_boss_duel.webp" alt="英雄とボスが一騎打ちする画面" width="720" height="1280" loading="lazy">
+          <figcaption>ボスとの一騎打ち</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="/assets/04_tower_fortress.webp" alt="2種類のタワーで要塞を築く画面" width="720" height="1280" loading="lazy">
+          <figcaption>タワーで完成させる要塞</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="/assets/05_relic_draft.webp" alt="3つの遺物から1つを選ぶ画面" width="720" height="1280" loading="lazy">
+          <figcaption>プレイごとに変わる遺物</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="/assets/06_season_spring.webp" alt="春を舞台に進行する『Tiny Defense』のプレイ画面" width="720" height="1280" loading="lazy">
+          <figcaption>四季を巡る終わりなき挑戦</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="release section" id="stores" aria-labelledby="release-title">
+      <div class="container release-grid">
+        <img class="release-icon reveal" src="/assets/app-icon.webp" alt="" width="512" height="512" loading="lazy">
+        <div class="release-copy reveal">
+          <p class="eyebrow">PLAY NOW</p>
+          <h2 id="release-title">あなたは何度目の夜まで<br>生き延びられますか？</h2>
+          <p>『Tiny Defense』はGoogle Play、App Store、ONE storeで配信中です。Steam版は現在準備中です。</p>
+          <ul class="store-grid">
+            <li class="store-item">
+              <a class="store-card is-live" href="https://play.google.com/store/apps/details?id=com.onestep.tinydefense" target="_blank" rel="noopener" aria-label="Google Playで『Tiny Defense』を見る">
+                <span class="store-name">Google Play</span>
+                <span class="store-state">配信中 <span aria-hidden="true">&rarr;</span></span>
+              </a>
+            </li>
+            <li class="store-item">
+              <a class="store-card is-live" href="https://apps.apple.com/app/id6785383234" target="_blank" rel="noopener" aria-label="App Storeで『Tiny Defense』を見る">
+                <span class="store-name">App Store</span>
+                <span class="store-state">配信中 <span aria-hidden="true">&rarr;</span></span>
+              </a>
+            </li>
+            <li class="store-item">
+              <a class="store-card is-live" href="https://m.onestore.co.kr/v2/ko-kr/app/0001007324" target="_blank" rel="noopener" aria-label="ONE storeで『Tiny Defense』を見る">
+                <span class="store-name">ONE store</span>
+                <span class="store-state">配信中 <span aria-hidden="true">&rarr;</span></span>
+              </a>
+            </li>
+            <li class="store-item">
+              <div class="store-card is-coming">
+                <span class="store-name">Steam</span>
+                <span class="store-state">準備中</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="studio section" id="studio" aria-labelledby="studio-title">
+      <div class="container studio-grid">
+        <div class="studio-title reveal">
+          <p class="eyebrow">THE STUDIO</p>
+          <img class="studio-section-logo" src="/assets/onestep-logo.webp" alt="" width="512" height="512" loading="lazy">
+          <h2 id="studio-title">onestep</h2>
+          <p>Small worlds,<br>one step at a time.</p>
+        </div>
+        <div class="studio-copy reveal">
+          <p class="lead">OneStep Studioは、小さな選択が大きな物語へとつながるゲームをつくります。</p>
+          <p>『Tiny Defense』の世界を一歩ずつ形にしながら、短い時間の中にも手応えのある選択と、長く続く挑戦を詰め込んでいます。</p>
+          <a class="text-link" href="mailto:chunsanet@gmail.com">
+            chunsanet@gmail.com
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="wordmark wordmark-footer" href="/ja/" aria-label="OneStep Studio ホーム">
+        <img class="wordmark-logo" src="/assets/onestep-logo.webp" alt="" width="512" height="512" loading="lazy">
+        <span>onestep</span>
+      </a>
+      <p>&copy; <span data-year>2026</span> OneStep Studio. All rights reserved.</p>
+      <nav aria-label="法的情報">
+        <a href="https://notedays.github.io/tinydefense-legal/privacy-policy.html">プライバシーポリシー</a>
+        <a href="https://notedays.github.io/tinydefense-legal/terms-of-service.html">利用規約</a>
+      </nav>
+    </div>
+  </footer>
+  <div class="bgm-player" data-bgm role="group" aria-label="背景音楽"
+    data-bgm-title="ロビーテーマ" data-bgm-play-label="ロビーテーマを再生" data-bgm-pause-label="ロビーテーマを停止" data-bgm-volume-label="音量">
+    <audio class="bgm-audio" data-bgm-audio controls loop preload="none" src="/assets/audio/lobby-theme.mp3" aria-label="Tiny Defense ロビーテーマ"></audio>
+  </div>
+</body>
+</html>

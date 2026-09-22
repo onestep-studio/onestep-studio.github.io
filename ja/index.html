@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="小さな世界を一歩ずつつくるゲームスタジオ、OneStep Studioの公式サイトです。">
+  <meta name="theme-color" content="#0b1720">
+  <meta name="color-scheme" content="dark light">
+  <link rel="canonical" href="https://onestep-studio.github.io/ja/">
+  <link rel="alternate" hreflang="ko" href="https://onestep-studio.github.io/">
+  <link rel="alternate" hreflang="en" href="https://onestep-studio.github.io/en/">
+  <link rel="alternate" hreflang="ja" href="https://onestep-studio.github.io/ja/">
+  <link rel="alternate" hreflang="x-default" href="https://onestep-studio.github.io/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="OneStep Studio">
+  <meta property="og:title" content="OneStep Studio">
+  <meta property="og:description" content="Small worlds, one step at a time. OneStep Studioが手がけるゲームをご紹介します。">
+  <meta property="og:url" content="https://onestep-studio.github.io/ja/">
+  <meta property="og:image" content="https://onestep-studio.github.io/assets/onestep-logo.png">
+  <meta property="og:image:width" content="1176">
+  <meta property="og:image:height" content="1176">
+  <meta property="og:image:alt" content="OneStep Studioのロゴ">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="OneStep Studio">
+  <meta name="twitter:description" content="Small worlds, one step at a time.">
+  <meta name="twitter:image" content="https://onestep-studio.github.io/assets/onestep-logo.png">
+
+  <title>OneStep Studio | 公式サイト</title>
+  <link rel="icon" href="/assets/onestep-favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/onestep-touch-icon.png">
+  <link rel="preload" as="image" href="/assets/world/courtyard-day.webp" type="image/webp">
+  <link rel="stylesheet" href="/styles.css?v=cb63b69">
+  <script defer src="/script.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://onestep-studio.github.io/#organization",
+          "name": "OneStep Studio",
+          "url": "https://onestep-studio.github.io/",
+          "logo": "https://onestep-studio.github.io/assets/onestep-logo.png",
+          "email": "chunsanet@gmail.com"
+        },
+        {
+          "@type": "WebSite",
+          "name": "OneStep Studio",
+          "url": "https://onestep-studio.github.io/ja/",
+          "inLanguage": "ja",
+          "publisher": {
+            "@id": "https://onestep-studio.github.io/#organization"
+          }
+        },
+        {
+          "@type": "ItemList",
+          "name": "OneStep Studio ゲーム一覧",
+          "numberOfItems": 1,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "url": "https://onestep-studio.github.io/ja/games/tiny-defense/",
+              "name": "Tiny Defense"
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+  <link rel="stylesheet" href="/world.css?v=world-1">
+  <script defer src="/world.js?v=world-1"></script>
+</head>
+<body class="home-page">
+  <a class="skip-link" href="#main">メインコンテンツへ</a>
+
+  <header class="site-header" data-header>
+    <div class="header-inner">
+      <a class="wordmark" href="#top" aria-label="OneStep Studio ホーム">
+        <img class="wordmark-logo" src="/assets/onestep-logo.webp" alt="" width="512" height="512">
+        <span>onestep</span>
+      </a>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="メインメニュー">
+        <a href="#games">ゲーム</a>
+        <a href="#studio">スタジオ</a>
+        <a href="mailto:chunsanet@gmail.com">お問い合わせ</a>
+        <span class="language-switcher" role="group" aria-label="言語を選択">
+          <a href="/" lang="ko">KO</a>
+          <a href="/en/" lang="en">EN</a>
+          <a href="/ja/" lang="ja" aria-current="page">日本語</a>
+        </span>
+      </nav>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く" data-label-open="メニューを開く" data-label-close="メニューを閉じる">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- WORLD EXPERIENCE START -->
+    <section class="world" id="top" aria-labelledby="world-title" data-world data-time="day">
+      <div class="world-heading">
+        <div><p class="world-eyebrow">TINY DEFENSE · 小さな世界へ</p><h1 id="world-title">城の中で、ひと休み。</h1><p class="world-intro">森で木を集め、夜にはみんなで城を守る場所。</p></div>
+        <div class="world-controls" data-world-controls hidden>
+          <div class="time-switch" role="group" aria-label="昼 / 夜"><button type="button" data-time-choice="day" aria-pressed="true">☀ <span>昼</span></button><button type="button" data-time-choice="night" aria-pressed="false">☾ <span>夜</span></button></div>
+          <button class="quiet-button" type="button" data-sound aria-pressed="false">♫ <span>音をオン</span></button>
+          <button class="quiet-button motion-button" type="button" data-motion aria-pressed="false" aria-label="動きを止める">Ⅱ</button>
+        </div>
+      </div>
+      <div class="world-stage">
+        <div class="world-landscape">
+          <img class="courtyard courtyard-day" src="/assets/world/courtyard-day.webp" width="1536" height="1024" alt="森で木を集め、夜にはみんなで城を守る場所。" fetchpriority="high">
+          <img class="courtyard courtyard-night" src="/assets/world/courtyard-night.webp" width="1536" height="1024" alt="" loading="lazy">
+          <div class="world-dust" aria-hidden="true"></div><div class="fire-glow" aria-hidden="true"></div><div class="lantern-glow" aria-hidden="true"></div>
+          <div class="courtyard-resident" aria-hidden="true"><div class="resident-sprite"></div></div>
+          <div class="world-motes" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i></div>
+          <a class="world-marker marker-forest" href="/games/tiny-defense/play/"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">薪割り体験</span></a>
+          <a class="world-marker marker-gate" href="/ja/games/tiny-defense/#stores"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">ゲームを見る</span></a>
+          <a class="world-marker marker-book" href="#storybook" data-open-story><span class="marker-point" aria-hidden="true">＋</span><span class="marker-label">物語を読む</span></a>
+        </div>
+        <div class="world-caption"><span class="world-place">TINY DEFENSE <span aria-hidden="true">/</span> ONESTEP STUDIO</span><span>光る目印を押して、城を巡ってみましょう。</span></div>
+      </div>
+      <div class="world-bottom"><a href="#storybook">01 <span>物語を読む</span> ↓</a><a href="/games/tiny-defense/play/">02 <span>薪割り体験</span> ↗</a><a href="/ja/games/tiny-defense/#stores">03 <span>ゲームを見る</span> ↗</a></div>
+      <p class="world-notice" data-world-notice role="status"></p>
+    </section>
+    <section class="story-invitation" id="storybook" aria-labelledby="invitation-title">
+      <div class="invitation-art"><img src="/assets/world/supplies.webp" alt="" loading="lazy" width="1024" height="1024"></div>
+      <div class="invitation-copy"><p class="world-eyebrow">CHAPTER 01 <span aria-hidden="true">—</span> STORYBOOK</p><h2 id="invitation-title">帰る場所</h2><p>少年と老人、そして帰る場所を守る人々の物語。</p><a class="book-cta" href="/ja/story/" data-open-story>本を開く <span aria-hidden="true">↗</span></a><button class="resume-link" data-resume-story hidden>続きから読む</button></div>
+    </section>
+    <dialog class="story-reader" id="story-reader" aria-labelledby="reader-title">
+      <div class="reader-shell">
+        <header class="reader-toolbar"><div><span class="reader-kicker">TINY DEFENSE / CHAPTER 01</span><h2 id="reader-title">帰る場所</h2></div><div class="reader-actions"><button type="button" class="reader-sound" data-sound aria-pressed="false">♫ <span>音をオン</span></button><button type="button" data-contents aria-expanded="false" aria-controls="story-contents">目次</button><button type="button" data-close-story aria-label="本を閉じる">✕</button></div></header>
+        <nav class="story-contents" id="story-contents" aria-label="目次" hidden></nav>
+        <div class="book-spread" data-book-spread>
+          <div class="book-illustration"><img data-story-art src="/assets/world/prologue.webp" alt=""><div class="story-art-shade"></div><span class="art-chapter">CHAPTER <b>01</b></span></div>
+          <article class="book-page" data-book-page tabindex="-1"><p class="page-eyebrow" data-page-kicker></p><h3 data-page-title></h3><div class="story-lines" data-story-lines></div><div class="story-gate" data-story-gate hidden></div><div class="page-ornament" aria-hidden="true">✦</div></article>
+          <div class="turning-leaf" aria-hidden="true"></div>
+        </div>
+        <footer class="reader-footer"><button type="button" data-story-prev>← <span>前のページ</span></button><span class="page-progress" data-page-progress role="status" aria-live="polite"></span><button type="button" data-story-next><span>次のページ</span> →</button></footer>
+        <div class="reader-settings"><label>♫ 音量 <input data-volume aria-label="音量" type="range" min="0" max="100" value="35"></label><a href="/ja/story/">文章で読む</a></div>
+      </div>
+    </dialog>
+    <details class="world-credits"><summary>音楽と素材</summary><p>“The Path of the Goblin King” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100873">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Web version: re-encoded, loudness adjusted.<br>Book sounds — <a href="https://kenney.nl/assets/rpg-audio">Kenney RPG Audio</a>, CC0.<br>“Hopeful Daylight” / “Secret of Beautiful Forest” — OneStep Studio. Illustrations — Tiny Defense / OneStep Studio. Courtyard art — AI-generated for OneStep Studio.</p></details>
+    <!-- WORLD EXPERIENCE END -->
+
+    <section class="game-library section" id="games" aria-labelledby="games-title">
+      <div class="container">
+        <div class="library-heading reveal">
+          <div>
+            <p class="eyebrow">OUR GAMES</p>
+            <h2 id="games-title">ゲーム一覧</h2>
+          </div>
+          <p>OneStep Studioがつくる世界をご覧ください。</p>
+        </div>
+
+        <div class="game-grid">
+          <a class="game-card reveal" href="/ja/games/tiny-defense/#stores" aria-label="ゲームページへ、Tiny Defenseのダウンロードストアへ移動">
+            <div class="game-card-media">
+              <img src="/assets/hero-wide.webp" alt="昼と夜の境に立つ『Tiny Defense』の城、英雄、モンスター" width="1024" height="500">
+            </div>
+            <div class="game-card-body">
+              <div class="game-card-meta">
+                <span>01</span>
+                <span class="game-status is-live"><span aria-hidden="true"></span>モバイルストアで配信中</span>
+              </div>
+              <h3>Tiny Defense</h3>
+              <p>昼は資源を集め、夜は城を守る。片手で遊べるエンドレスサバイバルディフェンス。</p>
+              <span class="game-card-link">
+                ゲームページへ
+                <span aria-hidden="true">&rarr;</span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="studio-summary section" id="studio" aria-labelledby="studio-summary-title">
+      <div class="container studio-summary-grid">
+        <div class="reveal">
+          <p class="eyebrow">OUR WAY</p>
+          <h2 id="studio-summary-title">一歩ずつ、<br>確かに。</h2>
+        </div>
+        <div class="studio-summary-copy reveal">
+          <p class="lead">OneStep Studioは、小さな選択が大きな物語へとつながるゲームをつくります。</p>
+          <p>『Tiny Defense』の世界を一歩ずつ形にしながら、短い時間の中にも手応えのある選択と、長く続く挑戦を詰め込んでいます。</p>
+          <a class="text-link" href="mailto:chunsanet@gmail.com">
+            chunsanet@gmail.com
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="wordmark wordmark-footer" href="#top" aria-label="ページトップへ">
+        <img class="wordmark-logo" src="/assets/onestep-logo.webp" alt="" width="512" height="512" loading="lazy">
+        <span>onestep</span>
+      </a>
+      <p>&copy; <span data-year>2026</span> OneStep Studio. All rights reserved.</p>
+      <nav aria-label="法的情報">
+        <a href="https://notedays.github.io/tinydefense-legal/privacy-policy.html">Tiny Defense プライバシーポリシー</a>
+        <a href="https://notedays.github.io/tinydefense-legal/terms-of-service.html">Tiny Defense 利用規約</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

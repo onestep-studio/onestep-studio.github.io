@@ -1,0 +1,32 @@
+Lobby theme source:
+Tiny Defense title / loading BGM "secret_of_beautiful_forest"
+Origin: AI Custom / 자체 제작 (self-produced, AI-generated)
+Original file: C:\OneStep\tiny_defense\Assets\Resources\TinyDefense\Audio\secret_of_beautiful_forest.mp3
+
+License:
+Self-produced. Commercial use permitted. Attribution not required.
+
+Evidence, quoted verbatim from C:\OneStep\tiny_defense\docs\asset-credits.md
+
+line 100:
+| `AI Custom/` (`secret_of_beautiful_forest.mp3`=타이틀/로딩 BGM, `hopeful_daylight.mp3`) | 자체 제작 | ✅ | — | AI 자체 생성 |
+
+line 111:
+| 타이틀·로딩 | `bgm_loading.wav` | AI Custom `secret_of_beautiful_forest` | 자체 제작 | ✅ | `LoadingScreen.cs` 주석에 소스 명시 |
+
+Both rows mark this track 상업적 사용 ✅ and 출처 표기 — (not required). Unlike the
+Kevin MacLeod tracks in the same ledger (CC BY 4.0, attribution mandatory) and
+bgm_night.ogg (source URL lost), this track carries no conditions for web publication.
+
+Source files used:
+- secret_of_beautiful_forest.mp3 (MP3 192 kbps / 48 kHz / stereo / 91.56 s / 2,199,213 B)
+  -> lobby-theme.mp3 (MP3 128 kbps / 44.1 kHz / stereo / 91.56 s / 1,466,243 B)
+
+Conversion:
+  pwsh -File tools/build-daynight-media.ps1 -Only audio
+No fade-in/fade-out was applied. Measured: the track already ends with 2.70 s of
+digital silence (silencedetect -60 dB: silence_start 88.86 -> EOF) and its first
+28 ms sit below -60 dBFS, so the loop seam has no amplitude step to smooth.
+
+The project stores the re-encoded web copy, not the original studio file.
+Credit is not required by the license, but the origin is recorded here for traceability.

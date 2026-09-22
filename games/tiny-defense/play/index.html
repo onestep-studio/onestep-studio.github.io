@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="한 번의 실수로 끝나는 Tiny Defense 도끼질 점수 어택. 나무 최고 기록에 도전하고 결과를 공유하세요.">
+  <meta name="theme-color" content="#b9dfec">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://onestep-studio.github.io/games/tiny-defense/play/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="OneStep Studio">
+  <meta property="og:title" content="Tiny Defense 도끼질 챌린지 | 최고 기록에 도전">
+  <meta property="og:description" content="황금 존을 놓치는 순간 끝! 연속 도끼질로 나무 최고 기록에 도전하세요.">
+  <meta property="og:url" content="https://onestep-studio.github.io/games/tiny-defense/play/">
+  <meta property="og:image" content="https://onestep-studio.github.io/assets/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://onestep-studio.github.io/assets/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tiny Defense 도끼질 챌린지 결과 공유 이미지">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tiny Defense 도끼질 챌린지 | 최고 기록에 도전">
+  <meta name="twitter:description" content="황금 존을 놓치는 순간 끝! 연속 도끼질로 나무 최고 기록에 도전하세요.">
+  <meta name="twitter:image" content="https://onestep-studio.github.io/assets/og-image.jpg">
+
+  <title>도끼질 챌린지 · Tiny Defense | OneStep Studio</title>
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <script>
+    (function () {
+      var value = new URLSearchParams(window.location.search).get("lang");
+      if (value === "en" || value === "ja" || value === "ko") document.documentElement.lang = value;
+    }());
+  </script>
+  <link rel="stylesheet" href="./styles.css?v=score-attack-14">
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" id="backLink" href="/games/tiny-defense/">
+      <span aria-hidden="true">&larr;</span>
+      <img src="/assets/app-icon.webp" alt="" width="30" height="30">
+      <span>Tiny Defense</span>
+    </a>
+    <span class="challenge-label" id="challengeLabel">AXE CHALLENGE</span>
+  </header>
+
+  <main class="game-shell">
+    <div class="stage">
+      <canvas id="game" width="720" height="960"
+        aria-label="Tiny Defense 도끼질 챌린지. 게임 시작을 누른 뒤, 황금 존에 마커가 들어왔을 때 도끼질 버튼을 누르세요."></canvas>
+
+      <div class="hud" id="scoreHud" aria-label="현재 기록">
+        <div class="hud-pill best-pill">
+          <span class="hud-label">BEST</span>
+          <strong id="bestTotal">0</strong>
+        </div>
+        <div class="hud-pill wood-pill" id="woodBadge">
+          <img src="./assets/wood.png" alt="" width="30" height="19">
+          <span class="hud-label" id="woodLabel">나무</span>
+          <strong id="woodTotal">0</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="chop-btn" id="chopBtn" type="button">
+        <span class="button-kicker" id="chopKicker">준비되면</span>
+        <span class="button-label" id="chopLabel">게임 시작</span>
+      </button>
+      <p class="hint" id="gameHint">
+        명중 +1 · 중앙 PERFECT +2 · 성공할수록 빨라집니다.<br>
+        한 번 빗나가면 끝 · 도끼질 버튼을 누르세요
+      </p>
+    </div>
+  </main>
+
+  <p class="sr-only" id="gameStatus" aria-live="polite"></p>
+
+  <div class="result-overlay" id="resultOverlay" role="dialog" aria-modal="true"
+    aria-labelledby="resultTitle" aria-describedby="resultTier resultCopy" aria-hidden="true" inert>
+    <article class="result-card">
+      <div class="card-shine" aria-hidden="true"></div>
+      <div class="result-brand">
+        <img src="/assets/app-icon.webp" alt="" width="58" height="58">
+        <div>
+          <span>ONESTEP</span>
+          <strong>TINY DEFENSE</strong>
+        </div>
+      </div>
+
+      <p class="result-eyebrow" id="resultEyebrow">AXE CHALLENGE · RESULT</p>
+      <div class="new-record" id="newRecord" hidden>
+        <span aria-hidden="true">&#10022;</span> <span id="newRecordLabel">신기록!</span>
+      </div>
+      <h1 id="resultTitle" class="result-score">
+        <span class="result-score-label" id="resultScoreLabel">이번 기록</span>
+        <strong><span id="resultScorePrefix">나무 </span><span id="resultScore">0</span><small id="resultScoreSuffix">개</small></strong>
+      </h1>
+      <p class="result-best"><span id="resultBestLabel">최고</span> <strong id="resultBest">0</strong></p>
+      <p class="result-tier" id="resultTier">도끼 새싹</p>
+      <p class="result-copy" id="resultCopy">첫 도끼는 과감했습니다. 황금 존에 시선을 고정해보세요.</p>
+
+      <div class="result-actions">
+        <button class="action-btn retry-btn" id="retryBtn" type="button">다시 하기</button>
+        <button class="action-btn share-btn" id="shareBtn" type="button">
+          <span aria-hidden="true">&#8599;</span> 공유하기
+        </button>
+        <button class="action-btn image-btn" id="imageViewBtn" type="button" disabled>이미지 보기</button>
+        <a class="store-btn" href="/games/tiny-defense/#stores"
+          target="_blank" rel="noopener">
+          <span id="storeButtonLabel">스토어에서 플레이</span> <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="image-panel" id="imagePanel" hidden>
+        <p id="imagePanelHint">아래 결과 이미지를 길게 눌러 저장하거나 공유하세요.</p>
+        <img id="imagePreview" alt="Tiny Defense 도끼질 챌린지 결과 이미지">
+      </div>
+    </article>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <audio id="chopSfx" preload="auto" aria-hidden="true">
+    <source src="./assets/sfx-chop.wav?v=score-attack-14" type="audio/wav">
+    <source src="./assets/sfx-chop.ogg?v=score-attack-14" type="audio/ogg; codecs=vorbis">
+  </audio>
+
+  <script src="./result-sfx.js?v=result-music-4"></script>
+  <script src="./game.js?v=score-attack-19"></script>
+</body>
+</html>
