@@ -256,7 +256,7 @@
   }
   async function loadStory() {
     if (story) return story;
-    if (!loading) loading=fetch('/assets/world/story.json?v=story-5').then(r => {
+    if (!loading) loading=fetch('/assets/world/story.json?v=story-6').then(r => {
       if (!r.ok) throw new Error('Story HTTP '+r.status);
       return r.json();
     }).then(data => {

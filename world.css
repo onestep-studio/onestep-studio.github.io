@@ -664,3 +664,22 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 }
 .story-copy>h3,.story-copy>.page-eyebrow,.story-copy>.story-lines,.story-copy>.story-gate { width:min(100%,760px); max-width:none; margin-inline:auto; }
 .story-copy .story-lines p { max-width:none; }
+
+/* A single reading surface on phones: prose is no longer a nested scroll box. */
+.story-lines,.text-dialogue { white-space:pre-line; }
+:lang(ko) .story-lines,:lang(ko) .text-dialogue { word-break:keep-all; overflow-wrap:break-word; }
+@media(max-width:699px), (max-height:500px) {
+ .reader-pages { padding:0; scroll-padding-top:12px; }
+ .book-spread:not(.text-spread) .book-illustration { background:#08131b; }
+ .story-text-toggle { position:sticky; top:0; z-index:2; }
+ .book-spread:not(.text-spread)>.book-page { position:relative; bottom:auto; align-self:start; margin-top:clamp(130px,28dvh,260px); background:linear-gradient(#08131be8,#08131b 180px); }
+ .book-spread:not(.text-spread) .story-copy { max-height:none; overflow:visible; padding:20px 20px 32px; }
+ .book-spread:not(.text-spread):has(.story-copy[hidden])>.book-page { align-self:end; margin-top:0; }
+ .story-lines { font-size:19px; line-height:1.9; }
+ .story-lines p { margin-bottom:26px; }
+ .story-lines .speaker { font-size:14px; margin-bottom:4px; }
+ .story-copy>h3 { font-size:25px; margin-bottom:24px; }
+ .reader-kicker { display:none; }
+ .reader-toolbar { padding-block:4px; }
+ .reader-footer { padding-block:5px; }
+}

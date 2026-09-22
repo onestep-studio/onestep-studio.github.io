@@ -89,9 +89,16 @@ test('cinematic prose survives export and appears in every localized text editio
         assert.equal(paragraphs.length,narration.ko[id][position].length);
         for (const text of paragraphs) {
           assert.ok(text.trim());
-          assert.ok(html.includes(text),`${lang}/${id}: missing cinematic prose`);
+          assert.ok(html.replace(/\r\n/g, '\n').includes(text),`${lang}/${id}: missing cinematic prose`);
         }
       }
     }
   }
+});
+
+test('Korean story contains no accidentally pasted Japanese prose', () => {
+  const narration = require('../assets/world/story-narration.json');
+  assert.doesNotMatch(JSON.stringify(data.ko), /[\u3040-\u30ff]/);
+  assert.doesNotMatch(JSON.stringify(narration.ko), /[\u3040-\u30ff]/);
+  assert.doesNotMatch(fs.readFileSync(path.join(root,'story/index.html'),'utf8'), /[\u3040-\u30ff]/);
 });
