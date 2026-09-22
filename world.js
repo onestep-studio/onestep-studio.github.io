@@ -5,7 +5,7 @@
   const lang = ['ko', 'en', 'ja'].includes(document.documentElement.lang) ? document.documentElement.lang : 'ko';
   const copy = {
     ko: { on:'소리 켜기', off:'소리 끄기', pause:'움직임 멈추기', move:'움직임 재생', old:'노인', prologue:'프롤로그', scene:'장면', fullTitle:'그다음 이야기도 펼칠까요?', spoiler:'이제부터 챕터 1–3의 결말까지 이어집니다. 게임에서 직접 만나고 싶다면 여기서 책을 덮어 두세요.', full:'전체 이야기 읽기', back:'도입부로 돌아가기', close:'성 안으로', next:'다음 장', loading:'책을 펼치고 있어요…', error:'이야기를 불러오지 못했어요. 다시 시도해 주세요.', retry:'다시 불러오기', audioError:'소리를 재생하지 못했어요. 소리 켜기를 다시 눌러 주세요.', game:'게임에서 여정 이어가기', continue:'이어서 읽기', saved:'읽던 곳을 기억해 둘게요.' },
-    en: { on:'Sound on', off:'Sound off', pause:'Pause motion', move:'Resume motion', old:'Old man', prologue:'Prologue', scene:'Scene', fullTitle:'Turn to the rest of the story?', spoiler:'The following pages include the endings of Chapters 1–3. Close the book here if you would rather discover it in the game.', full:'Read the full story', back:'Back to the opening', close:'Courtyard', next:'Next page', loading:'Opening the book…', error:'The story could not be loaded. Please try again.', retry:'Try again', audioError:'Audio could not start. Select Sound on to try again.', game:'Continue the journey in the game', continue:'Continue reading', saved:'Your place in the book is saved.' },
+    en: { on:'Sound on', off:'Sound off', pause:'Pause motion', move:'Resume motion', old:'Old man', prologue:'Prologue', scene:'Scene', fullTitle:'Turn to the rest of the story?', spoiler:'The following pages include the endings of Chapters 1–3. Close the book here if you would rather discover it in the game.', full:'Read the full story', back:'Back to the opening', close:'Courtyard', next:'Next', loading:'Opening the book…', error:'The story could not be loaded. Please try again.', retry:'Try again', audioError:'Audio could not start. Select Sound on to try again.', game:'Continue the journey in the game', continue:'Continue reading', saved:'Your place in the book is saved.' },
     ja: { on:'音をオン', off:'音をオフ', pause:'動きを止める', move:'動きを再開', old:'老人', prologue:'プロローグ', scene:'場面', fullTitle:'物語の続きを開きますか？', spoiler:'この先はチャプター1〜3の結末まで描かれています。ゲームで出会いたい方は、ここで本を閉じてください。', full:'物語をすべて読む', back:'冒頭に戻る', close:'城の中へ', next:'次のページ', loading:'本を開いています…', error:'物語を読み込めませんでした。もう一度お試しください。', retry:'再読み込み', audioError:'音を再生できませんでした。音をオンにして、もう一度お試しください。', game:'ゲームで旅を続ける', continue:'続きから読む', saved:'読んだ場所を覚えておきます。' }
   }[lang];
   const $ = (selector) => document.querySelector(selector);
@@ -22,7 +22,7 @@
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const storageKey = 'tiny-defense-storybook-v1';
   let story, loading, index = 0, allowed = false, pending = 2, showingGate = false, turning = false;
-  let lastTrigger, paused = reduce.matches, enabled = false, volume = .35, fadeFrame = 0, audioEpoch = 0;
+  let lastTrigger, paused = reduce.matches, enabled = false, volume = .35, audioEpoch = 0;
   let openEpoch = 0, activeTurn = null, entrance = null, opening = false;
   const paper = window.StoryPaper;
   let saved = null;
@@ -40,8 +40,7 @@
     });
   }
   function stopAudio() {
-    cancelAnimationFrame(fadeFrame);
-    if (music) Object.values(music).forEach(audio => { audio.pause(); audio.volume = 0; });
+    music?.stop();
     activeEffects.forEach(audio => audio.pause());
     activeEffects.clear();
   }
@@ -56,32 +55,11 @@
   function syncMusic() {
     const epoch = ++audioEpoch;
     if (!enabled || document.hidden || document.querySelector('[data-map-dialog][open]')) { stopAudio(); return; }
-    if (!music) {
-      music = Object.fromEntries(Object.entries({ day:'/assets/audio/lobby-theme.mp3', night:'/assets/world/audio/night.mp3', story:'/assets/world/audio/story.mp3' }).map(([key,src]) => {
-        const audio = new Audio(); audio.preload = 'none'; audio.loop = true; audio.volume = 0; audio.src = src;
-        return [key,audio];
-      }));
-    }
+    if (!music) music = new window.CourtyardMusic({ day:'/assets/audio/lobby-theme.mp3', night:'/assets/world/audio/night.mp3', story:'/assets/world/audio/story.mp3' });
     const selected = dialog.open ? 'story' : world.dataset.time;
-    // Start on the user action. Crossfades never create additional players.
-    const selectedAudio = music[selected];
-    if (selectedAudio.paused) selectedAudio.play().catch(() => audioError(epoch));
-    cancelAnimationFrame(fadeFrame);
-    const from = Object.fromEntries(Object.entries(music).map(([key,a]) => [key,a.volume]));
-    const start = performance.now();
-    function fade(now) {
-      if (epoch !== audioEpoch) return;
-      const p = Math.min(1,(now-start)/900);
-      const eased = p*p*(3-2*p);
-      Object.entries(music).forEach(([key,audio]) => {
-        const target = key === selected ? volume * (dialog.open ? .65 : .8) : 0;
-        audio.volume = Math.max(0,Math.min(1,from[key]+(target-from[key])*eased));
-        if (p === 1 && key !== selected) audio.pause();
-      });
-      if (p < 1) fadeFrame = requestAnimationFrame(fade);
-    }
-    fadeFrame = requestAnimationFrame(fade);
+    music.select(selected,volume * (dialog.open ? .65 : .8),3).catch(() => audioError(epoch));
   }
+
   function effect(name) {
     if (!enabled || document.hidden || volume === 0) return;
     if (!effects.has(name)) { const audio = new Audio(`/assets/world/audio/${name}.mp3`); audio.preload='none'; effects.set(name,audio); }
@@ -269,7 +247,7 @@
     return loading;
   }
   function enterFromMap(origin) {
-    if (reduce.matches || typeof Animation === 'undefined') return Promise.resolve();
+    if (reduce.matches || matchMedia('(max-width:699px)').matches || typeof Animation === 'undefined') return Promise.resolve();
     return new Promise(resolve => {
       const rect = spread.getBoundingClientRect();
       const mobile = matchMedia('(max-width:699px)').matches;
@@ -382,6 +360,7 @@
   spread.addEventListener('pointercancel', () => { tapStart=null; });
   spread.addEventListener('click', event => {
     if (!story || turning || opening || showingGate || !contents.hidden || event.target.closest('button,a,input')) return;
+    if (matchMedia('(max-width:699px)').matches) return;
     const start=tapStart; tapStart=null;
     if (start && (Math.hypot(event.clientX-start.x,event.clientY-start.y)>12 || Math.abs($('[data-reader-pages]').scrollTop-start.scroll)>8)) return;
     if (window.getSelection()?.toString()) return;

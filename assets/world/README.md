@@ -76,3 +76,12 @@ Do Hyeon is exported losslessly to WOFF2 from the game's Fonts/DoHyeon.ttf. The 
 The mobile reader keeps its toolbar and navigation visible while the book contents scroll independently. Browser layout checks covered 360×740, 390×844, 430×932 and 844×390. Horizontal overflow was absent at those sizes; left/right taps and the loaded font were checked in the browser. This is responsive browser QA, not a claim of testing physical iOS/Android hardware.
 
 Latest sync: all 26 illustrations re-exported from the current game sources. Saved reading positions migrate by stable scene ID. The preview includes all five prologue cuts and supplies; the remainder remains behind the spoiler prompt.
+
+
+## Mobile layout and audio transition update
+
+The game courtyard now uses `courtyard-audio.js`: media sources feed separate Web Audio GainNodes. A three-second equal-power fade starts after the incoming audio playback promise resolves; the outgoing track is paused only when its gain reaches zero. New selections continue from current levels, and page hiding / explicit mute cancels pending work. This avoids depending on HTML media volume support on iOS ([Apple media notes](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html)); gain automation follows the [AudioParam API](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/linearRampToValueAtTime).
+
+At widths below 700px the map is scenery, with a full-width story button and a two-column destination menu below it. The reader uses 20px body text and fixed, separate navigation controls; text taps do not turn pages on phones. Game-description panels use full-screen sheets and two-column scene selection. Desktop keeps the map hotspots and book interaction.
+
+Verified: real browser GainNode readings during the day/night transition (day 0.280 → 0.201 → 0.000, night 0.000 → 0.195 → 0.280), delayed playback and rapid reversal unit tests, 320px and 355px responsive browser layouts in KO/EN/JA. Native iPhone/Safari hardware playback was not tested.

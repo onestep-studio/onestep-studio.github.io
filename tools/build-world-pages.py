@@ -8,7 +8,7 @@ from world_panels import panels, LABELS
 ROOT = Path(__file__).resolve().parents[1]
 COPY = {
  'ko': dict(kicker='TINY DEFENSE · 작은 세계로의 초대',title='잠시, 성 안에 머물러요.',intro='숲에서 나무를 모으고, 밤에는 함께 성을 지키는 곳.',day='낮',night='밤',sound='소리 켜기',motion='움직임 멈추기',book='이야기 읽기',forest='도끼질 체험',gate='게임 만나기',hint='빛나는 표식을 눌러 둘러보세요.',chapter='CHAPTER 01–03',booktitle='돌아올 성',bookdesc='소년과 노인, 그리고 돌아갈 곳을 지키는 사람들의 이야기.',open='책 펼치기',resume='이어서 읽기',close='책 덮기',contents='목차',prev='이전 장',next='다음 장',volume='음량',credits='음악과 리소스',home='성 안으로',old='노인',read='글로 읽기'),
- 'en': dict(kicker='TINY DEFENSE · A SMALL WORLD AWAITS',title='Stay a while, within the walls.',intro='Gather wood in the forest. Stand together when night falls.',day='Day',night='Night',sound='Sound on',motion='Pause motion',book='Read the story',forest='Try woodcutting',gate='Discover the game',hint='Follow the glowing markers to explore.',chapter='CHAPTER 01–03',booktitle='A Castle to Come Home To',bookdesc='A boy, an old man, and the people who keep a home worth returning to.',open='Open the book',resume='Continue reading',close='Close book',contents='Contents',prev='Previous page',next='Next page',volume='Volume',credits='Music & assets',home='Courtyard',old='Old man',read='Read as text'),
+ 'en': dict(kicker='TINY DEFENSE · A SMALL WORLD AWAITS',title='Stay a while, within the walls.',intro='Gather wood in the forest. Stand together when night falls.',day='Day',night='Night',sound='Sound on',motion='Pause motion',book='Read the story',forest='Try woodcutting',gate='Discover the game',hint='Follow the glowing markers to explore.',chapter='CHAPTER 01–03',booktitle='A Castle to Come Home To',bookdesc='A boy, an old man, and the people who keep a home worth returning to.',open='Open the book',resume='Continue reading',close='Close book',contents='Contents',prev='Previous',next='Next',volume='Volume',credits='Music & assets',home='Courtyard',old='Old man',read='Read as text'),
  'ja': dict(kicker='TINY DEFENSE · 小さな世界へ',title='城の中で、ひと休み。',intro='森で木を集め、夜にはみんなで城を守る場所。',day='昼',night='夜',sound='音をオン',motion='動きを止める',book='物語を読む',forest='薪割り体験',gate='ゲームを見る',hint='光る目印を押して、城を巡ってみましょう。',chapter='CHAPTER 01–03',booktitle='帰る場所',bookdesc='少年と老人、そして帰る場所を守る人々の物語。',open='本を開く',resume='続きから読む',close='本を閉じる',contents='目次',prev='前のページ',next='次のページ',volume='音量',credits='音楽と素材',home='城の中へ',old='老人',read='文章で読む'),
 }
 
@@ -16,6 +16,7 @@ def render(lang, c):
     base = '' if lang=='ko' else '/'+lang
     game = base+'/games/tiny-defense/'
     m = LABELS[lang]
+    mobile_hint = {'ko':'아래 메뉴에서 성 안을 둘러보세요.', 'en':'Explore the courtyard using the menu below.', 'ja':'下のメニューから城を巡ってみましょう。'}[lang]
     return f'''<!-- WORLD EXPERIENCE START -->
     <section class="world" id="top" aria-labelledby="world-title" data-world data-time="day">
       <div class="world-heading">
@@ -40,7 +41,7 @@ def render(lang, c):
           <a class="world-marker marker-guard" href="{game}#features" data-map-open="night"><span class="marker-point" aria-hidden="true">☾</span><span class="marker-label">{m['night']}</span></a>
           <a class="world-marker marker-book" href="#storybook" data-open-story><span class="marker-point" aria-hidden="true">＋</span><span class="marker-label">{c['book']}</span></a>
         </div>
-        <div class="world-caption"><span class="world-place">TINY DEFENSE <span aria-hidden="true">/</span> ONESTEP STUDIO</span><span>{c['hint']}</span></div>
+        <div class="world-caption"><span class="world-place">TINY DEFENSE <span aria-hidden="true">/</span> ONESTEP STUDIO</span><span class="desktop-hint">{c['hint']}</span><span class="mobile-hint">{mobile_hint}</span></div>
       </div>
       <nav class="world-bottom" aria-label="Tiny Defense"><a href="{game}#features" data-map-open="day"><span>{m['day']}</span></a><a href="{game}#features" data-map-open="night"><span>{m['night']}</span></a><a href="#storybook" data-open-story><span>{c['book']}</span></a><a href="/games/tiny-defense/play/" data-map-open="game"><span>{c['forest']}</span></a><a href="{game}#stores" data-map-open="stores"><span>{m['stores']}</span></a><button class="resume-link" data-resume-story hidden>{c['resume']}</button></nav>
       <p class="world-notice" data-world-notice role="status"></p>
@@ -85,7 +86,9 @@ def main():
         text=text.replace('as="image" href="/assets/onestep-logo.webp"','as="image" href="/assets/world/courtyard-day.webp"')
         text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-v2.webp')
         text=text.replace('/world.css?v=world-1','/world.css?v=world-2').replace('/world.js?v=world-1','/world.js?v=world-2')
-        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-9', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-10', text)
+        if '/courtyard-audio.js' not in text:
+            text=text.replace('<script defer src="/world.js', '<script defer src="/courtyard-audio.js?v=1"></script>\n  <script defer src="/world.js')
         if '/book-turn.js' not in text:
             text=text.replace('<script defer src="/world.js', '<script defer src="/book-turn.js?v=2"></script>\n  <script defer src="/world.js')
         text=text.replace('/book-turn.js?v=1','/book-turn.js?v=2')
@@ -113,7 +116,7 @@ def main():
         prefix='' if lang=='ko' else '/'+lang
         route=base/'story'
         route.mkdir(exist_ok=True)
-        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=font-1"><link rel="stylesheet" href="/world.css?v=world-9"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
+        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=font-1"><link rel="stylesheet" href="/world.css?v=world-10"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
         game=base/'games/tiny-defense/index.html'
         html=game.read_text(encoding='utf-8')
         if '#storybook' not in html:
