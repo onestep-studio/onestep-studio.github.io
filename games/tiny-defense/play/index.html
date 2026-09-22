@@ -35,7 +35,7 @@
       if (value === "en" || value === "ja" || value === "ko") document.documentElement.lang = value;
     }());
   </script>
-  <link rel="stylesheet" href="./styles.css?v=courtyard-1">
+  <link rel="stylesheet" href="./styles.css?v=ui-2">
 </head>
 <body>
   <header class="topbar">
@@ -44,7 +44,7 @@
       <img src="/assets/app-icon.webp" alt="" width="30" height="30">
       <span>Tiny Defense</span>
     </a>
-    <span class="challenge-label" id="challengeLabel">AXE CHALLENGE</span>
+    <h1 class="challenge-label" id="challengeLabel">AXE CHALLENGE</h1>
   </header>
 
   <main class="game-shell">
@@ -95,10 +95,10 @@
       <div class="new-record" id="newRecord" hidden>
         <span aria-hidden="true">&#10022;</span> <span id="newRecordLabel">신기록!</span>
       </div>
-      <h1 id="resultTitle" class="result-score">
+      <h2 id="resultTitle" class="result-score">
         <span class="result-score-label" id="resultScoreLabel">이번 기록</span>
         <strong><span id="resultScorePrefix">나무 </span><span id="resultScore">0</span><small id="resultScoreSuffix">개</small></strong>
-      </h1>
+      </h2>
       <p class="result-best"><span id="resultBestLabel">최고</span> <strong id="resultBest">0</strong></p>
       <p class="result-tier" id="resultTier">도끼 새싹</p>
       <p class="result-copy" id="resultCopy">첫 도끼는 과감했습니다. 황금 존에 시선을 고정해보세요.</p>
@@ -130,6 +130,6 @@
   </audio>
 
   <script src="./result-sfx.js?v=result-music-4"></script>
-  <script src="./game.js?v=courtyard-1"></script>
+  <script src="./game.js?v=ui-2"></script>
 </body>
 </html>

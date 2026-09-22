@@ -67,9 +67,10 @@
     if (!link) return;
     let kind=link.dataset.mapOpen;
     const url=new URL(link.href,location.href);
-    if (!kind && url.origin===location.origin) {
+    if (!kind && url.origin===location.origin && !link.closest('.language-switcher') && !link.hasAttribute('target')) {
       if (/\/games\/tiny-defense\/play\/$/.test(url.pathname)) kind='game';
-      else if (/\/games\/tiny-defense\/$/.test(url.pathname)) kind=url.hash==='#stores'?'stores':'day';
+      else if (url.pathname===location.pathname && url.hash==='#stores') kind='stores';
+      else if (url.pathname===location.pathname && url.hash==='#features') kind='day';
     }
     if (kind) { event.preventDefault(); open(kind,link); }
   });
@@ -94,5 +95,11 @@
   document.addEventListener('visibilitychange',()=>{
     content.querySelectorAll('video').forEach(video=>{ if(document.hidden) video.pause(); });
   });
+  function openLinkedPanel() {
+    const kind = location.hash === '#stores' ? 'stores' : location.hash === '#features' ? 'day' : null;
+    if (kind) open(kind, document.querySelector(`[data-map-open="${kind}"]`));
+  }
+  window.addEventListener('hashchange',openLinkedPanel);
   document.body.classList.add('world-ready');
+  openLinkedPanel();
 })();

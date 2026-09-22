@@ -242,10 +242,12 @@ canvas {
   transition: transform 70ms ease, box-shadow 70ms ease, filter 140ms ease;
   user-select: none;
 }
+@media (hover:hover) and (pointer:fine) {
 
 .chop-btn:hover {
   filter: saturate(1.08) brightness(1.02);
-}
+}}
+
 
 .chop-btn:active {
   transform: translateY(4px);
@@ -515,11 +517,13 @@ kbd {
   text-decoration: none;
   transition: transform 120ms ease, background-color 120ms ease, filter 120ms ease;
 }
+@media (hover:hover) and (pointer:fine) {
 
 .action-btn:hover,
 .store-btn:hover {
   transform: translateY(-1px);
-}
+}}
+
 
 .action-btn:active,
 .store-btn:active {
@@ -722,3 +726,9 @@ body.is-embedded {
     transition-duration: 0.01ms !important;
   }
 }
+
+.back-link,.action-btn,.store-btn { min-height:44px; }
+button,a { touch-action:manipulation; }
+h1.challenge-label { margin:0; font-size:.72rem; line-height:1.5; text-align:right; }
+.result-overlay { overscroll-behavior:contain; }
+.result-score,.hud-pill strong { font-variant-numeric:tabular-nums; }

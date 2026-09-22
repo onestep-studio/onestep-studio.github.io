@@ -86,6 +86,10 @@ def export(game, sounds, story_only=False):
                               'title':strings[f'story.{ident}.title'][col], **group})
         data[lang] = {'title':strings['story.title'][col], 'boy':strings['story.boy'][col],
                       'previewCount':panel_count + 1, 'pages':pages}
+    narration = json.loads((out / 'story-narration.json').read_text(encoding='utf-8'))
+    for lang, story in data.items():
+        for page in story['pages']:
+            page.update(narration[lang].get(page['id'], {}))
     (out / 'story.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     if story_only:
         print(f'Exported {len(mapping)} illustrations and {len(pages)} spreads in 3 languages.')

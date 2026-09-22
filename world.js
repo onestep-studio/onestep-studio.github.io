@@ -4,9 +4,9 @@
   if (!world) return;
   const lang = ['ko', 'en', 'ja'].includes(document.documentElement.lang) ? document.documentElement.lang : 'ko';
   const copy = {
-    ko: { on:'소리 켜기', off:'소리 끄기', pause:'움직임 멈추기', move:'움직임 재생', old:'노인', prologue:'프롤로그', scene:'장면', fullTitle:'그다음 이야기도 펼칠까요?', spoiler:'이제부터 챕터 1–3의 결말까지 이어집니다. 게임에서 직접 만나고 싶다면 여기서 책을 덮어 두세요.', full:'전체 이야기 읽기', back:'도입부로 돌아가기', close:'성 안으로', next:'다음 장', loading:'책을 펼치고 있어요…', error:'이야기를 불러오지 못했어요. 다시 시도해 주세요.', retry:'다시 불러오기', audioError:'소리를 재생하지 못했어요. 소리 켜기를 다시 눌러 주세요.', game:'게임에서 여정 이어가기', continue:'이어서 읽기', saved:'읽던 곳을 기억해 둘게요.' },
-    en: { on:'Sound on', off:'Sound off', pause:'Pause motion', move:'Resume motion', old:'Old man', prologue:'Prologue', scene:'Scene', fullTitle:'Turn to the rest of the story?', spoiler:'The following pages include the endings of Chapters 1–3. Close the book here if you would rather discover it in the game.', full:'Read the full story', back:'Back to the opening', close:'Courtyard', next:'Next', loading:'Opening the book…', error:'The story could not be loaded. Please try again.', retry:'Try again', audioError:'Audio could not start. Select Sound on to try again.', game:'Continue the journey in the game', continue:'Continue reading', saved:'Your place in the book is saved.' },
-    ja: { on:'音をオン', off:'音をオフ', pause:'動きを止める', move:'動きを再開', old:'老人', prologue:'プロローグ', scene:'場面', fullTitle:'物語の続きを開きますか？', spoiler:'この先はチャプター1〜3の結末まで描かれています。ゲームで出会いたい方は、ここで本を閉じてください。', full:'物語をすべて読む', back:'冒頭に戻る', close:'城の中へ', next:'次のページ', loading:'本を開いています…', error:'物語を読み込めませんでした。もう一度お試しください。', retry:'再読み込み', audioError:'音を再生できませんでした。音をオンにして、もう一度お試しください。', game:'ゲームで旅を続ける', continue:'続きから読む', saved:'読んだ場所を覚えておきます。' }
+    ko: { fold:'본문 접기 ▾', unfold:'본문 펼치기 ▴', on:'소리 켜기', off:'소리 끄기', pause:'움직임 멈추기', move:'움직임 재생', old:'노인', prologue:'프롤로그', scene:'장면', fullTitle:'그다음 이야기도 펼칠까요?', spoiler:'이제부터 챕터 1–3의 결말까지 이어집니다. 게임에서 직접 만나고 싶다면 여기서 책을 덮어 두세요.', full:'전체 이야기 읽기', back:'도입부로 돌아가기', close:'성 안으로', next:'다음 장', loading:'책을 펼치고 있어요…', error:'이야기를 불러오지 못했어요. 다시 시도해 주세요.', retry:'다시 불러오기', audioError:'소리를 재생하지 못했어요. 소리 켜기를 다시 눌러 주세요.', game:'게임에서 여정 이어가기', continue:'이어서 읽기', saved:'읽던 곳을 기억해 둘게요.' },
+    en: { fold:'Hide text ▾', unfold:'Show text ▴', on:'Sound on', off:'Sound off', pause:'Pause motion', move:'Resume motion', old:'Old man', prologue:'Prologue', scene:'Scene', fullTitle:'Turn to the rest of the story?', spoiler:'The following pages include the endings of Chapters 1–3. Close the book here if you would rather discover it in the game.', full:'Read the full story', back:'Back to the opening', close:'Courtyard', next:'Next', loading:'Opening the book…', error:'The story could not be loaded. Please try again.', retry:'Try again', audioError:'Audio could not start. Select Sound on to try again.', game:'Continue the journey in the game', continue:'Continue reading', saved:'Your place in the book is saved.' },
+    ja: { fold:'本文を閉じる ▾', unfold:'本文を開く ▴', on:'音をオン', off:'音をオフ', pause:'動きを止める', move:'動きを再開', old:'老人', prologue:'プロローグ', scene:'場面', fullTitle:'物語の続きを開きますか？', spoiler:'この先はチャプター1〜3の結末まで描かれています。ゲームで出会いたい方は、ここで本を閉じてください。', full:'物語をすべて読む', back:'冒頭に戻る', close:'城の中へ', next:'次のページ', loading:'本を開いています…', error:'物語を読み込めませんでした。もう一度お試しください。', retry:'再読み込み', audioError:'音を再生できませんでした。音をオンにして、もう一度お試しください。', game:'ゲームで旅を続ける', continue:'続きから読む', saved:'読んだ場所を覚えておきます。' }
   }[lang];
   const $ = (selector) => document.querySelector(selector);
   const dialog = $('#story-reader');
@@ -17,7 +17,23 @@
   const contents = $('#story-contents');
   const gate = $('[data-story-gate]');
   const lines = $('[data-story-lines]');
+  const textToggle = document.createElement('button');
+  textToggle.type = 'button'; textToggle.className = 'story-text-toggle';
+  textToggle.hidden = true; textToggle.textContent = copy.fold;
+  textToggle.setAttribute('aria-controls', 'story-copy');
+  const storyCopy = document.createElement('div'); storyCopy.className = 'story-copy'; storyCopy.id = 'story-copy';
+  storyCopy.append(...page.childNodes); page.append(textToggle, storyCopy);
+  let textCollapsed = false;
+  function textState(illustrated, forceOpen = false) {
+    textToggle.hidden = !illustrated || forceOpen;
+    storyCopy.hidden = illustrated && textCollapsed && !forceOpen;
+    textToggle.setAttribute('aria-expanded', String(!storyCopy.hidden));
+    textToggle.textContent = storyCopy.hidden ? copy.unfold : copy.fold;
+  }
+  textToggle.addEventListener('click', () => { textCollapsed = !textCollapsed; textState(true); });
   const title = $('[data-page-title]');
+  title.id = 'story-scene-title';
+  storyCopy.tabIndex = 0; storyCopy.setAttribute('role','region'); storyCopy.setAttribute('aria-labelledby',title.id);
   const progress = $('[data-page-progress]');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const storageKey = 'tiny-defense-storybook-v1';
@@ -149,6 +165,7 @@
     $('[data-page-kicker]').textContent = (data.sourceId === 'prologue' ? copy.prologue : `CHAPTER ${chapter} / ${copy.scene} ${String(data.scene).padStart(2,'0')}`) + (data.parts > 1 ? ` · ${data.part}/${data.parts}` : '');
     const illustrated = paper.hasArt(story.pages, index);
     spread.classList.toggle('text-spread', !illustrated);
+    textState(illustrated); storyCopy.scrollTop = 0;
     $('.book-illustration').hidden = !illustrated;
     $('[data-left-page]').hidden = illustrated;
     const leftLines = $('[data-left-lines]'); leftLines.replaceChildren();
@@ -158,13 +175,14 @@
     $('[data-page-kicker]').hidden = !illustrated;
     $('[data-folio-left]').textContent = String(index * 2 + 1).padStart(2, '0');
     $('[data-folio-right]').textContent = String(index * 2 + 2).padStart(2, '0');
-    const split = illustrated ? 0 : paper.splitLines(data.lines);
+    const readingLines = [...(data.before || []).map(text => ({speaker:0,text})), ...data.lines, ...(data.after || []).map(text => ({speaker:0,text}))];
+    const split = illustrated ? 0 : paper.splitLines(readingLines);
     const art = $('[data-story-art]');
     if (illustrated) art.src = `/assets/world/${data.art}.webp?v=story-4`;
     else art.removeAttribute('src');
     // The narration supplies the illustration's context; avoid repeating it in alt text.
     art.alt = '';
-    data.lines.forEach((line, lineIndex) => {
+    readingLines.forEach((line, lineIndex) => {
       const p = document.createElement('p');
       if (line.speaker) {
         const speaker=document.createElement('span'); speaker.className='speaker';
@@ -189,6 +207,7 @@
   }
   function spoilerGate(target) {
     pending = target; showingGate=true;
+    textState(true, true);
     title.hidden=false; $('[data-page-kicker]').hidden=false;
     title.textContent=copy.fullTitle;
     $('[data-page-kicker]').textContent='CHAPTER 01–03';
@@ -227,7 +246,7 @@
     if (target >= story.previewCount && !allowed) { spoilerGate(target); return; }
     if (target === index && !showingGate) return;
     // Narrow screens keep a readable continuous page, with a short fade.
-    if (reduce.matches || matchMedia('(max-width:699px)').matches) {
+    if (reduce.matches || matchMedia('(max-width:699px)').matches || !spread.classList.contains('text-spread') || paper.hasArt(story.pages,target)) {
       index=target; render(); effect(`page-${1+(target%3)}`);
       if (!reduce.matches) spread.animate([{opacity:.35},{opacity:1}], {duration:220});
       page.focus({preventScroll:true}); dialog.scrollTop=0; $('[data-reader-pages]').scrollTop=0; return;
@@ -237,7 +256,7 @@
   }
   async function loadStory() {
     if (story) return story;
-    if (!loading) loading=fetch('/assets/world/story.json?v=story-4').then(r => {
+    if (!loading) loading=fetch('/assets/world/story.json?v=story-5').then(r => {
       if (!r.ok) throw new Error('Story HTTP '+r.status);
       return r.json();
     }).then(data => {
@@ -308,6 +327,7 @@
     contentsState(false);
     if (!dialog.open) dialog.showModal();
     syncMusic(); effect('book-open');
+    textState(false, true);
     title.hidden=false; title.textContent=copy.loading;
     lines.replaceChildren(); $('[data-left-lines]').replaceChildren();
     $('[data-left-page]').hidden=true; gate.hidden=true;
@@ -322,7 +342,7 @@
       render(); dialog.scrollTop=0; $('[data-reader-pages]').scrollTop=0;
       if (opening) await enterFromMap(origin);
       if (!dialog.open || epoch !== openEpoch) return;
-      opening=false; dialog.classList.remove('book-arriving','arrival-ready'); $('[data-close-story]').focus();
+      opening=false; dialog.classList.remove('book-arriving','arrival-ready'); page.focus({preventScroll:true});
     } catch {
       if (!dialog.open || epoch !== openEpoch) return;
       entrance?.cancel(); opening=false; dialog.classList.remove('book-arriving','arrival-ready');
@@ -345,6 +365,11 @@
   $('[data-resume-story]').hidden = !saved || saved.page === 0;
   $('[data-resume-story]').addEventListener('click',event => openBook(event.currentTarget,true));
   $('[data-close-story]').addEventListener('click',closeBook);
+  function openLinkedStory() {
+    if (location.hash === '#storybook' && !dialog.open) openBook($('[data-open-story]'));
+  }
+  window.addEventListener('hashchange',openLinkedStory);
+  openLinkedStory();
   $('[data-contents]').addEventListener('click', () => { if(story) contentsState(contents.hidden); });
   prev.addEventListener('click', () => navigate(showingGate ? story.previewCount-1:index-1));
   next.addEventListener('click', () => navigate(index+1));
@@ -359,7 +384,7 @@
   },{passive:true});
   spread.addEventListener('pointercancel', () => { tapStart=null; });
   spread.addEventListener('click', event => {
-    if (!story || turning || opening || showingGate || !contents.hidden || event.target.closest('button,a,input')) return;
+    if (!story || turning || opening || showingGate || !contents.hidden || event.target.closest('button,a,input,.story-copy')) return;
     if (matchMedia('(max-width:699px)').matches) return;
     const start=tapStart; tapStart=null;
     if (start && (Math.hypot(event.clientX-start.x,event.clientY-start.y)>12 || Math.abs($('[data-reader-pages]').scrollTop-start.scroll)>8)) return;

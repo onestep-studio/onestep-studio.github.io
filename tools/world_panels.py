@@ -5,9 +5,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LABELS = {
-    'ko': dict(day='낮의 준비', night='밤의 수비', stores='나가기', storetitle='모험을 이어갈 곳', storeintro='Tiny Defense를 스토어에서 만나보세요.', close='맵으로 돌아가기', game='도끼질 체험', studio='OneStep Studio', prev='이전', next='다음', reset='닫으면 이번 도전은 끝나고 최고 기록은 남아요.'),
-    'en': dict(day='Prepare by day', night='Defend at night', stores='Leave the gate', storetitle='Continue your adventure', storeintro='Find Tiny Defense in your app store.', close='Back to the courtyard', game='Try woodcutting', studio='OneStep Studio', prev='Previous', next='Next', reset='Closing ends this attempt. Your best score stays saved.'),
-    'ja': dict(day='昼の備え', night='夜の守り', stores='城の外へ', storetitle='冒険の続きへ', storeintro='ストアでTiny Defenseを見つけよう。', close='城の中へ戻る', game='薪割り体験', studio='OneStep Studio', prev='前へ', next='次へ', reset='閉じると今回の挑戦は終了します。最高記録は残ります。'),
+    'ko': dict(day='낮의 준비', night='밤의 수비', stores='게임 받기', storetitle='모험을 이어갈 곳', storeintro='Tiny Defense를 스토어에서 만나보세요.', close='맵으로 돌아가기', game='도끼질 체험', studio='OneStep Studio', prev='이전', next='다음', reset='닫으면 이번 도전은 끝나고 최고 기록은 남아요.'),
+    'en': dict(day='Prepare by day', night='Defend at night', stores='Get the game', storetitle='Continue your adventure', storeintro='Find Tiny Defense in your app store.', close='Back to the courtyard', game='Try woodcutting', studio='OneStep Studio', prev='Previous', next='Next', reset='Closing ends this attempt. Your best score stays saved.'),
+    'ja': dict(day='昼の備え', night='夜の守り', stores='ゲームを入手', storetitle='冒険の続きへ', storeintro='ストアでTiny Defenseを見つけよう。', close='城の中へ戻る', game='薪割り体験', studio='OneStep Studio', prev='前へ', next='次へ', reset='閉じると今回の挑戦は終了します。最高記録は残ります。'),
 }
 
 def panels(lang):

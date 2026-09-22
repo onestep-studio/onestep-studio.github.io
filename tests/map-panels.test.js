@@ -28,3 +28,37 @@ test('map panels preserve all ten localized game descriptions and defer media lo
     assert.match(home, /<iframe[^>]+data-src="\/games\/tiny-defense\/play\//);
   }
 });
+const vm = require('node:vm');
+
+test('map interception preserves language navigation and new-tab links', () => {
+  const handlers = {};
+  const leaf = { addEventListener() {}, querySelectorAll: () => [] };
+  const dialog = { ...leaf, querySelector: () => leaf };
+  const document = {
+    querySelector: selector => selector === '[data-map-dialog]' ? dialog : null,
+    addEventListener: (type, fn) => { handlers[type] = fn; },
+    body: { classList: { add() {} } }
+  };
+  vm.runInNewContext(fs.readFileSync(path.join(root,'map-panels.js'),'utf8'), {
+    document, window: { addEventListener() {} }, URL,
+    matchMedia: () => ({matches:true}),
+    location: { origin:'https://example.test', pathname:'/games/tiny-defense/', href:'https://example.test/games/tiny-defense/', hash:'' }
+  });
+  function click(href, opts={}) {
+    let prevented = false;
+    const link = {
+      href, dataset:opts.kind ? {mapOpen:opts.kind} : {},
+      closest: selector => selector === '.language-switcher' && opts.language ? {} : null,
+      hasAttribute: name => name === 'target' && !!opts.target
+    };
+    handlers.click({target:{closest:()=>link},preventDefault(){prevented=true;},ctrlKey:opts.ctrl});
+    return prevented;
+  }
+  assert.equal(click('https://example.test/en/games/tiny-defense/',{language:true}),false);
+  assert.equal(click('https://example.test/games/tiny-defense/',{language:true}),false);
+  assert.equal(click('https://example.test/games/tiny-defense/#stores',{target:true}),false);
+  assert.equal(click('https://example.test/games/tiny-defense/#stores',{ctrl:true}),false);
+  assert.equal(click('https://example.test/games/tiny-defense/#stores'),true);
+  assert.equal(click('https://example.test/games/tiny-defense/#features'),true);
+  assert.equal(click('https://example.test/ja/games/tiny-defense/#stores'),false);
+});

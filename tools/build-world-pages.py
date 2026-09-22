@@ -2,6 +2,7 @@
 import json
 import re
 from pathlib import Path
+from PIL import Image
 from html import escape
 from world_panels import panels, LABELS
 
@@ -56,7 +57,7 @@ def render(lang, c):
         <nav class="story-contents" id="story-contents" aria-label="{c['contents']}" hidden></nav>
         <div class="reader-pages" data-reader-pages>
         <div class="book-spread" data-book-spread>
-          <div class="book-left" data-book-left><div class="book-illustration"><img data-story-art src="/assets/world/prologue.webp" alt=""><div class="story-art-shade"></div><span class="art-chapter">CHAPTER <b>01</b></span></div><article class="book-page left-page" data-left-page hidden><p class="page-eyebrow" data-left-kicker></p><h3 data-left-title></h3><div class="story-lines" data-left-lines></div></article><span class="folio" data-folio-left></span></div>
+          <div class="book-left" data-book-left><div class="book-illustration"><img data-story-art src="/assets/world/prologue.webp" width="1024" height="1024" alt=""><div class="story-art-shade"></div><span class="art-chapter">CHAPTER <b>01</b></span></div><article class="book-page left-page" data-left-page hidden><p class="page-eyebrow" data-left-kicker></p><h3 data-left-title></h3><div class="story-lines" data-left-lines></div></article><span class="folio" data-folio-left></span></div>
           <article class="book-page" data-book-page tabindex="-1"><p class="page-eyebrow" data-page-kicker></p><h3 data-page-title></h3><div class="story-lines" data-story-lines></div><div class="story-gate" data-story-gate hidden></div><div class="page-ornament" aria-hidden="true">✦</div><span class="folio" data-folio-right></span></article>
         </div>
         <p class="book-gesture-hint">{ {'ko':'왼쪽을 누르면 이전 장, 오른쪽을 누르면 다음 장.', 'en':'Tap left to go back, right to turn the page.', 'ja':'左をタップで前へ、右をタップで次へ。'}[lang] }</p>
@@ -86,7 +87,7 @@ def main():
         text=text.replace('as="image" href="/assets/onestep-logo.webp"','as="image" href="/assets/world/courtyard-day.webp"')
         text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-v2.webp')
         text=text.replace('/world.css?v=world-1','/world.css?v=world-2').replace('/world.js?v=world-1','/world.js?v=world-2')
-        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-10', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-12', text)
         if '/courtyard-audio.js' not in text:
             text=text.replace('<script defer src="/world.js', '<script defer src="/courtyard-audio.js?v=1"></script>\n  <script defer src="/world.js')
         if '/book-turn.js' not in text:
@@ -94,7 +95,9 @@ def main():
         text=text.replace('/book-turn.js?v=1','/book-turn.js?v=2')
         if '/assets/fonts/DoHyeon.woff2' not in text:
             text=text.replace('</head>', '<link rel="preload" href="/assets/fonts/DoHyeon.woff2" as="font" type="font/woff2" crossorigin>\n</head>')
-        text=re.sub(r'/styles\.css(?:\?[^"\s]*)?"', '/styles.css?v=font-1"', text)
+        text=re.sub(r'/styles\.css(?:\?[^"\s]*)?"', '/styles.css?v=ui-2"', text)
+        text=re.sub(r'(<a href="(?:[^"]*/games/tiny-defense/)?#storybook")(?! data-open-story)', r'\1 data-open-story', text)
+        text=re.sub(r'/map-panels.js\?v=map-\d+', '/map-panels.js?v=map-2', text)
         if '/map-panels.js' not in text:
             text=text.replace('</head>', '<script defer src="/map-panels.js?v=map-1"></script>\n</head>')
         text=re.sub(r'href="#(games|studio)"(?: data-map-open="[^"]*")*', lambda m: 'href="#'+m[1]+'" data-map-open="'+('day' if m[1]=='games' else 'studio')+'"', text)
@@ -106,17 +109,22 @@ def main():
         for page in story['pages']:
             if page['chapter'] != chapter:
                 chapter = page['chapter']
-                content += f'<h2 class="text-chapter">CHAPTER {chapter:02d}</h2>'
-            lines=''.join('<p>'+('<strong>'+escape(story['boy'] if line['speaker']==1 else c['old'])+'</strong><br>' if line['speaker'] else '')+escape(line['text'])+'</p>' for line in page['lines'])
+                content += f'<h2 class="text-chapter" id="chapter-{chapter}">CHAPTER {chapter:02d}</h2>'
+            lines=''.join('<p>'+('<strong>'+escape(story['boy'] if line['speaker']==1 else c['old'])+'</strong><br>' if line['speaker'] else '')+escape(line['text'])+'</p>' for line in ([{'speaker':0,'text':t} for t in page.get('before',[])]+page['lines']+[{'speaker':0,'text':t} for t in page.get('after',[])]))
             repeated = page['art'] in seen_art
             seen_art.add(page['art'])
-            illustration = '' if repeated else f'<img src="/assets/world/{page["art"]}.webp?v=story-4" alt="" loading="lazy">'
+            with Image.open(ROOT / f'assets/world/{page["art"]}.webp') as art:
+                art_width, art_height = art.size
+            illustration = '' if repeated else f'<img src="/assets/world/{page["art"]}.webp?v=story-4" alt="" width="{art_width}" height="{art_height}" loading="lazy">'
             layout = ' class="text-only"' if repeated else ''
-            content+=f'<section{layout}>{illustration}<div><h2>{escape(page["title"])}</h2><div class="text-dialogue">{lines}</div></div></section>'
+            content+=f'<section{layout}>{illustration}<div><h3>{escape(page["title"])}</h3><div class="text-dialogue">{lines}</div></div></section>'
         prefix='' if lang=='ko' else '/'+lang
         route=base/'story'
         route.mkdir(exist_ok=True)
-        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=font-1"><link rel="stylesheet" href="/world.css?v=world-10"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
+        skip={'ko':'본문 바로가기','en':'Skip to story','ja':'本文へ移動'}[lang]
+        chapters={'ko':['1장','2장','3장'],'en':['Chapter 1','Chapter 2','Chapter 3'],'ja':['第1章','第2章','第3章']}[lang]
+        chapter_links=''.join(f'<a href="#chapter-{i}">{label}</a>' for i,label in enumerate(chapters,1))
+        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1c24"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=ui-2"><link rel="stylesheet" href="/world.css?v=world-12"><meta name="robots" content="noindex"></head><body class="story-text-page"><a class="skip-link" href="#main">{skip}</a><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><nav class="reading-nav" aria-label="{c['contents']}"><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a>{chapter_links}</nav><main id="main">{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
         game=base/'games/tiny-defense/index.html'
         html=game.read_text(encoding='utf-8')
         if '#storybook' not in html:

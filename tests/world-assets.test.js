@@ -74,3 +74,24 @@ test('courtyard day uses the game lobby track and night uses the current battle 
     assert.doesNotMatch(html,/courtyard-(?:day|night)\.webp/);
   }
 });
+
+test('cinematic prose survives export and appears in every localized text edition', () => {
+  const narration = require('../assets/world/story-narration.json');
+  for (const lang of ['ko','en','ja']) {
+    const html = fs.readFileSync(path.join(root,`${lang==='ko'?'':lang+'/'}story/index.html`),'utf8');
+    const story = data[lang];
+    assert.deepEqual(Object.keys(narration[lang]),Object.keys(narration.ko));
+    for (const [id, additions] of Object.entries(narration[lang])) {
+      const page = story.pages.find(p=>p.id===id);
+      assert.ok(page,`${lang}: unknown narration page ${id}`);
+      for (const [position, paragraphs] of Object.entries(additions)) {
+        assert.deepEqual(page[position],paragraphs);
+        assert.equal(paragraphs.length,narration.ko[id][position].length);
+        for (const text of paragraphs) {
+          assert.ok(text.trim());
+          assert.ok(html.includes(text),`${lang}/${id}: missing cinematic prose`);
+        }
+      }
+    }
+  }
+});

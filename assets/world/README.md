@@ -85,3 +85,15 @@ The game courtyard now uses `courtyard-audio.js`: media sources feed separate We
 At widths below 700px the map is scenery, with a full-width story button and a two-column destination menu below it. The reader uses 20px body text and fixed, separate navigation controls; text taps do not turn pages on phones. Game-description panels use full-screen sheets and two-column scene selection. Desktop keeps the map hotspots and book interaction.
 
 Verified: real browser GainNode readings during the day/night transition (day 0.280 → 0.201 → 0.000, night 0.000 → 0.195 → 0.280), delayed playback and rapid reversal unit tests, 320px and 355px responsive browser layouts in KO/EN/JA. Native iPhone/Safari hardware playback was not tested.
+
+## 2026-09-22 illustrated reading overlay and cinematic prose
+
+Illustrated spreads now fill the reader width; the dimmed text overlay can be collapsed without turning the page. Long passages scroll within the overlay. Text-only spreads keep their two-leaf reading order. Touch devices no longer receive persistent hover colors; keyboard focus outlines remain available.
+
+Website-only prose lives in story-narration.json and is merged into story.json by build-world-assets.py. Existing game dialogue, IDs, scene ordering and save positions remain intact. KO/EN/JA adaptations cover the prologue duel (PrologueDuelCinematic.cs and Loc.Season.cs), ring forging (AwakenCutscene.cs), discovery and seasonal transitions (SeasonGateSequence*.cs), castle collapse (CastleFallSequence.cs), the spirit's last light and regression (IntroSequence.cs and AwakenSequence.cs), and narrative transitions through the historical scenes in StorySequence.cs / Loc.Story.cs. Conditional defeat and awakening events are described as recurring possibilities, not as a mandatory defeat at a fixed chapter. The original game sources are unchanged.
+
+## UI review with frontend-design + web-design-guidelines
+
+Reviewed all 11 HTML routes (KO/EN/JA home, game and text story; minigame; 404). The reader preserves full-width artwork at its natural ratio, with a sticky dimmed reading panel and persistent navigation; prose uses a separate readable system-font stack. Text editions have chapter anchors and intrinsic image dimensions. Shared touch targets, mobile menu overflow, dark native controls and homepage spacing were refined. Language links now navigate normally instead of opening map panels; story/store hash entry points open their corresponding views, and the minigame's store link preserves the chosen language.
+
+Validation: all 11 routes inspected at a narrow browser viewport without horizontal document overflow; KO/EN/JA reader footers remain inside the viewport. Story navigation, fold/unfold, spoiler consent, chapter jumps, language switching, day/night guide navigation and minigame start/result were exercised in Chrome. Physical iOS/Android devices were not used. No deployment was performed.

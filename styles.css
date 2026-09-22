@@ -37,7 +37,7 @@ html {
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 0;
   overflow-x: hidden;
   background: var(--paper);
   color: var(--ink);
@@ -173,30 +173,36 @@ h3 {
   line-height: 1;
   transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .button:hover {
   transform: translateY(-2px);
-}
+}}
+
 
 .button-primary {
   background: var(--ink);
   color: var(--white);
 }
+@media (hover: hover) and (pointer: fine) {
 
 .button-primary:hover {
   background: var(--blue);
-}
+}}
+
 
 .button-light {
   border-color: rgba(255, 255, 255, 0.55);
   color: var(--white);
 }
+@media (hover: hover) and (pointer: fine) {
 
 .button-light:hover {
   border-color: var(--white);
   background: var(--white);
   color: var(--blue-dark);
-}
+}}
+
 
 :focus-visible {
   outline: 3px solid var(--orange);
@@ -277,12 +283,20 @@ h3 {
   transform-origin: right;
   transition: transform 180ms ease;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .primary-nav a:hover::after,
 .primary-nav a:focus-visible::after {
   transform: scaleX(1);
   transform-origin: left;
+}}
+
+
+.primary-nav a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
+
 
 .language-switcher {
   display: inline-flex;
@@ -306,12 +320,20 @@ h3 {
 .primary-nav .language-switcher a::after {
   display: none;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .primary-nav .language-switcher a:hover,
 .primary-nav .language-switcher a:focus-visible {
   background: var(--green-light);
   color: var(--ink);
+}}
+
+
+.primary-nav .language-switcher a:focus-visible {
+  background: var(--green-light);
+  color: var(--ink);
 }
+
 
 .primary-nav .language-switcher a[aria-current="page"] {
   background: var(--ink);
@@ -409,12 +431,14 @@ h3 {
   box-shadow: 0 14px 36px rgba(23, 32, 51, 0.09);
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .game-card:hover {
   transform: translateY(-4px);
   border-color: var(--blue);
   box-shadow: 0 20px 46px rgba(23, 32, 51, 0.14);
-}
+}}
+
 
 .game-card-media {
   display: grid;
@@ -488,10 +512,12 @@ h3 {
   font-size: 0.9rem;
   font-weight: 850;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .game-card:hover .game-card-link {
   color: var(--orange);
-}
+}}
+
 
 .studio-summary {
   background: var(--gold-light);
@@ -837,21 +863,25 @@ html[lang="ja"] .axe-challenge h3 {
   cursor: pointer;
   transition: background-color 180ms ease, color 180ms ease;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .daynight-arrow:hover {
   background: var(--ink);
   color: var(--white);
-}
+}}
+
 
 .daynight-arrow:disabled {
   border-color: rgba(23, 32, 51, 0.14);
   color: rgba(23, 32, 51, 0.28);
   cursor: default;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .daynight-arrow:disabled:hover {
   background: transparent;
-}
+}}
+
 
 .daynight-arrow:focus-visible {
   outline: 3px solid var(--blue);
@@ -1153,21 +1183,25 @@ html[lang="ja"] .axe-challenge h3 {
   font-size: 1.3rem;
   transition: background-color 180ms ease, color 180ms ease;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .gallery-controls button:hover {
   background: var(--ink);
   color: var(--white);
-}
+}}
+
 
 .gallery-controls button:disabled {
   border-color: rgba(23, 32, 51, 0.14);
   color: rgba(23, 32, 51, 0.28);
   cursor: default;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .gallery-controls button:disabled:hover {
   background: transparent;
-}
+}}
+
 
 .gallery-track {
   display: flex;
@@ -1291,12 +1325,14 @@ html[lang="ja"] .axe-challenge h3 {
 .store-card.is-live .store-state {
   color: var(--ink);
 }
+@media (hover: hover) and (pointer: fine) {
 
 .store-card.is-live:hover {
   transform: translateY(-2px);
   border-color: var(--gold-light);
   background: var(--gold-light);
-}
+}}
+
 
 .release-actions {
   display: flex;
@@ -1367,11 +1403,13 @@ html[lang="ja"] .axe-challenge h3 {
   font-size: 0.94rem;
   font-weight: 800;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .text-link:hover {
   border-color: var(--orange);
   color: var(--orange);
-}
+}}
+
 
 .site-footer {
   border-top: 1px solid #303744;
@@ -1411,12 +1449,14 @@ html[lang="ja"] .axe-challenge h3 {
   color: #c8ccd3;
   font-size: 0.78rem;
 }
+@media (hover: hover) and (pointer: fine) {
 
 .footer-inner nav a:hover {
   color: var(--white);
   text-decoration: underline;
   text-underline-offset: 4px;
-}
+}}
+
 
 .reveal {
   opacity: 1;
@@ -2079,4 +2119,30 @@ html[lang="ja"] .axe-challenge h3 {
   .daynight-track {
     scroll-behavior: auto;
   }
+}
+
+/* Shared interaction and reading rhythm. */
+a,button,summary,input { touch-action:manipulation; }
+h1,h2,h3 { text-wrap:balance; }
+[id] { scroll-margin-top:calc(var(--header-height) + 20px); }
+.primary-nav a,.footer-inner nav a { min-height:44px; display:inline-flex; align-items:center; }
+.footer-inner nav { flex-wrap:wrap; }
+.studio-intro { height:auto; min-height:0; padding-block:64px; }
+.studio-logo { width:96px; height:96px; margin-bottom:20px; }
+.studio-intro h1 { font-size:clamp(34px,5vw,64px); line-height:1.12; }
+.studio-intro-inner>p:last-child,.game-card-body>p,.studio-summary-copy>p { font-family:'Apple SD Gothic Neo','Malgun Gothic','Yu Gothic',system-ui,sans-serif; font-weight:400; line-height:1.85; }
+.game-card:focus-visible { outline-offset:5px; }
+.page-progress,[data-guide-progress] { font-variant-numeric:tabular-nums; }
+@media(max-width:899px) {
+ .primary-nav { min-height:0; max-height:calc(100dvh - var(--header-height)); overflow-y:auto; overscroll-behavior:contain; padding-bottom:max(20px,env(safe-area-inset-bottom)); }
+}
+@media(max-width:699px) {
+ .studio-intro { height:auto; min-height:0; max-height:none; padding-block:40px; }
+ .studio-logo { width:64px; height:64px; margin-bottom:16px; }
+ .studio-intro h1 { font-size:clamp(30px,8.5vw,40px); line-height:1.12; }
+ .studio-intro .eyebrow { margin-bottom:12px; }
+ .game-library.section { padding-block:40px 56px; }
+ .library-heading { gap:12px; margin-bottom:24px; }
+ .game-card-meta { flex-wrap:wrap; gap:8px; }
+ .studio-summary.section { padding-block:48px; }
 }

@@ -403,6 +403,7 @@
     imagePanelHint.textContent = copy.imageHint;
     imagePreview.setAttribute("alt", copy.ogDescription);
     document.getElementById("storeButtonLabel").textContent = copy.store;
+    document.querySelector(".store-btn").setAttribute("href", STORE_URL);
     resultTierEl.textContent = copy.tiers[0].title;
     resultCopyEl.textContent = copy.tiers[0].copy;
   }
