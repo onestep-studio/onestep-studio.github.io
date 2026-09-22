@@ -38,7 +38,7 @@ test('all three chapters retain scene order, dedicated art and translated dialog
 test('all local homepage/story references exist, including the no-JavaScript reading route', () => {
   for (const lang of ['ko','en','ja']) {
     const base = lang==='ko' ? '' : lang+'/';
-    for (const page of [`${base}index.html`,`${base}story/index.html`]) {
+    for (const page of [`${base}index.html`,`${base}games/tiny-defense/index.html`,`${base}story/index.html`]) {
       const html=fs.readFileSync(path.join(root,page),'utf8');
       for (const [,url] of html.matchAll(/(?:src|href)="(\/[^"#?]*)(?:[?#][^"]*)?"/g)) {
         let target=path.join(root,url);
@@ -56,7 +56,7 @@ test('every authored audio source exists and no homepage starts audible media au
     assert.ok(fs.statSync(path.join(root,`assets/world/audio/${file}.mp3`)).size>1000);
   }
   for (const lang of ['','en/','ja/']) {
-    const html=fs.readFileSync(path.join(root,lang,'index.html'),'utf8');
+    const html=fs.readFileSync(path.join(root,lang,'games/tiny-defense/index.html'),'utf8');
     assert.doesNotMatch(html,/<audio[^>]*autoplay/);
     assert.match(html,/incompetech\.com/);
     assert.match(html,/creativecommons\.org\/licenses\/by\/4\.0/);
@@ -68,7 +68,7 @@ test('courtyard day uses the game lobby track and night uses the current battle 
   assert.match(script,/day:'\/assets\/audio\/lobby-theme\.mp3'/);
   assert.match(script,/night:'\/assets\/world\/audio\/night\.mp3'/);
   for (const lang of ['','en/','ja/']) {
-    const html=fs.readFileSync(path.join(root,lang,'index.html'),'utf8');
+    const html=fs.readFileSync(path.join(root,lang,'games/tiny-defense/index.html'),'utf8');
     assert.match(html,/Crossing the Chasm/);
     assert.match(html,/USUAN1700026/);
     assert.doesNotMatch(html,/courtyard-(?:day|night)\.webp/);

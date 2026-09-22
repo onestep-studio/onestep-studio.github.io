@@ -1,19 +1,19 @@
 /* Tiny Defense — the courtyard and its book. No external fonts or runtime dependencies. */
-.home-page { --paper:#0b1720; --ink:#f1ebda; --muted:#acb9ba; --line:#304047; background:#0b1720; color:#f1ebda; }
-.home-page .site-header { background:#0b1720f5; border-bottom:1px solid #ffffff14; color:#e9e5d7; }
-.home-page .primary-nav, .home-page .menu-toggle { color:#e9e5d7; }
-.home-page .primary-nav>a { color:#d4dedb; }
-.home-page .primary-nav>a:hover { color:#f2cf92; }
-.home-page .language-switcher a[aria-current=page] { background:#e3c38a; color:#14222b; }
-.home-page .menu-toggle span { background:#e9e5d7; }
-.home-page .wordmark-logo { border-radius:50%; background:#e9e5d7; }
-.home-page .site-footer { background:#081219; color:#b9c3c1; border-color:#2b3940; }
-.home-page .game-card { background:#11232d; color:#eee8d8; border-color:#34454b; }
-.home-page .game-card-body p,.home-page .library-heading p { color:#b3c1c0; }
-.home-page .game-status { color:#b9d5b7; }
-.home-page .studio-summary { background:#0d1c26; }
-.home-page .eyebrow { color:#d3b77e; }
-.home-page .game-library { padding-top:72px; }
+.courtyard-page { --paper:#0b1720; --ink:#f1ebda; --muted:#acb9ba; --line:#304047; background:#0b1720; color:#f1ebda; }
+.courtyard-page .site-header { background:#0b1720f5; border-bottom:1px solid #ffffff14; color:#e9e5d7; }
+.courtyard-page .primary-nav, .courtyard-page .menu-toggle { color:#e9e5d7; }
+.courtyard-page .primary-nav>a { color:#d4dedb; }
+.courtyard-page .primary-nav>a:hover { color:#f2cf92; }
+.courtyard-page .language-switcher a[aria-current=page] { background:#e3c38a; color:#14222b; }
+.courtyard-page .menu-toggle span { background:#e9e5d7; }
+.courtyard-page .wordmark-logo { border-radius:50%; background:#e9e5d7; }
+.courtyard-page .site-footer { background:#081219; color:#b9c3c1; border-color:#2b3940; }
+.courtyard-page .game-card { background:#11232d; color:#eee8d8; border-color:#34454b; }
+.courtyard-page .game-card-body p,.courtyard-page .library-heading p { color:#b3c1c0; }
+.courtyard-page .game-status { color:#b9d5b7; }
+.courtyard-page .studio-summary { background:#0d1c26; }
+.courtyard-page .eyebrow { color:#d3b77e; }
+.courtyard-page .game-library { padding-top:72px; }
 .world { max-width:1600px; margin:0 auto; padding:48px 48px 0; }
 .world-heading { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; padding:0 0 30px; }
 .world-eyebrow { font-size:12px; font-weight:600; letter-spacing:.19em; color:#d6b77c; margin:0 0 12px; }
@@ -137,7 +137,7 @@ body:has(.story-reader[open]) { overflow:hidden; }
 @media(min-width:1600px) { .world-landscape { aspect-ratio:2.1; } }
 @media(max-width:1000px) { .world { padding:32px 24px 0; } .world-heading { align-items:flex-start; flex-direction:column; gap:20px; } .world-landscape { aspect-ratio:1.6; } .marker-forest { top:59%; } .marker-gate { top:39%; } .marker-book { top:77%; } .story-invitation { padding:48px 32px; gap:40px; } .book-page { padding:30px 26px; } .book-spread { min-height:560px; } .book-page h3 { font-size:27px; } .world-caption { flex-wrap:wrap; } }
 @media(max-width:699px) {
- .home-page .primary-nav { background:#0c1c27; border-color:#304047; }
+ .courtyard-page .primary-nav { background:#0c1c27; border-color:#304047; }
  .world { padding:28px 16px 0; } .world h1 { font-size:30px; } .world-eyebrow { font-size:10px; letter-spacing:.12em; } .world-intro { font-size:14px; max-width:29em; }
  .world-heading { padding-bottom:22px; } .world-controls { width:100%; gap:7px; } .time-switch button { padding:7px 14px; } .quiet-button { font-size:13px; padding:8px 12px; } .motion-button { margin-left:auto; width:44px; }
  .world-stage { margin:0 -16px; border-left:0; border-right:0; } .world-landscape { aspect-ratio:1.25; } .courtyard { object-fit:cover; object-position:52% 50%; }
@@ -429,3 +429,6 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
  .map-popup[data-panel=game] .map-panel-toolbar { padding-top:max(10px,env(safe-area-inset-top)); }
 }
 @media(prefers-reduced-motion:reduce) { .map-popup * { transition:none !important; } }
+
+.courtyard-page .game-details { --paper:#f9f8f3; --ink:#172033; --muted:#5f6672; --line:#d8d9d5; background:var(--paper); color:var(--ink); }
+.courtyard-page.world-ready .bgm-player { display:none; }

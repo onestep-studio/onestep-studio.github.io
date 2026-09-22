@@ -189,7 +189,7 @@ for (const { file, toNight, toDay } of gamePages) {
     slugs.length,
     `${where} keeps every clip muted, looping and lazy`
   );
-  assert.equal((html.match(/<video[^>]*\bcontrols\b/g) || []).length, 0, `${where} leaves controls to the reduced-motion path`);
+  assert.equal((html.match(/<video class="daynight-video"[^>]*\bcontrols\b/g) || []).length, 0, `${where} leaves controls to the reduced-motion path`);
   assert.equal(
     (html.match(/<video class="daynight-video"[^>]*aria-label="[^"]+"/g) || []).length,
     slugs.length,

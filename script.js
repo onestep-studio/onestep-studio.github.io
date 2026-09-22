@@ -532,4 +532,4 @@ function setupBgm(root) {
   }
 }
 
-if (bgmPlayer) setupBgm(bgmPlayer);
+if (bgmPlayer && !document.querySelector('[data-world]')) setupBgm(bgmPlayer);

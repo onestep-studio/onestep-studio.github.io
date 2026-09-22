@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="小さな世界を一歩ずつつくるゲームスタジオ、OneStep Studioの公式サイトです。">
-  <meta name="theme-color" content="#0b1720">
-  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#f9f8f3">
+  <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://onestep-studio.github.io/ja/">
   <link rel="alternate" hreflang="ko" href="https://onestep-studio.github.io/">
   <link rel="alternate" hreflang="en" href="https://onestep-studio.github.io/en/">
@@ -31,7 +31,7 @@
   <title>OneStep Studio | 公式サイト</title>
   <link rel="icon" href="/assets/onestep-favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/onestep-touch-icon.png">
-  <link rel="preload" as="image" href="/assets/world/courtyard-day-v2.webp" type="image/webp">
+  <link rel="preload" as="image" href="/assets/onestep-logo.webp" type="image/webp">
   <link rel="stylesheet" href="/styles.css?v=font-1">
   <script defer src="/script.js"></script>
   <script type="application/ld+json">
@@ -71,11 +71,6 @@
       ]
     }
   </script>
-  <link rel="stylesheet" href="/world.css?v=world-8">
-  <script defer src="/book-turn.js?v=2"></script>
-  <script defer src="/world.js?v=world-8"></script>
-<link rel="preload" href="/assets/fonts/DoHyeon.woff2" as="font" type="font/woff2" crossorigin>
-<script defer src="/map-panels.js?v=map-1"></script>
 </head>
 <body class="home-page">
   <a class="skip-link" href="#main">メインコンテンツへ</a>
@@ -88,8 +83,8 @@
       </a>
 
       <nav class="primary-nav" id="primary-nav" aria-label="メインメニュー">
-        <a href="#games" data-map-open="day">ゲーム</a>
-        <a href="#studio" data-map-open="studio">スタジオ</a>
+        <a href="#games">ゲーム</a>
+        <a href="#studio">スタジオ</a>
         <a href="mailto:chunsanet@gmail.com">お問い合わせ</a>
         <span class="language-switcher" role="group" aria-label="言語を選択">
           <a href="/" lang="ko">KO</a>
@@ -107,107 +102,14 @@
   </header>
 
   <main id="main">
-    <!-- WORLD EXPERIENCE START -->
-    <section class="world" id="top" aria-labelledby="world-title" data-world data-time="day">
-      <div class="world-heading">
-        <div><p class="world-eyebrow">TINY DEFENSE · 小さな世界へ</p><h1 id="world-title">城の中で、ひと休み。</h1><p class="world-intro">森で木を集め、夜にはみんなで城を守る場所。</p></div>
-        <div class="world-controls" data-world-controls hidden>
-          <div class="time-switch" role="group" aria-label="昼 / 夜"><button type="button" data-time-choice="day" aria-pressed="true">☀ <span>昼</span></button><button type="button" data-time-choice="night" aria-pressed="false">☾ <span>夜</span></button></div>
-          <button class="quiet-button" type="button" data-sound aria-pressed="false">♫ <span>音をオン</span></button>
-          <button class="quiet-button motion-button" type="button" data-motion aria-pressed="false" aria-label="動きを止める">Ⅱ</button>
-        </div>
+    <section class="studio-intro" id="top" aria-labelledby="studio-home-title">
+      <div class="container studio-intro-inner reveal">
+        <img class="studio-logo" src="/assets/onestep-logo.webp" alt="" width="512" height="512" fetchpriority="high">
+        <p class="eyebrow">ONESTEP STUDIO</p>
+        <h1 id="studio-home-title">Small worlds,<br>one step at a time.</h1>
+        <p>小さな選択を積み重ね、いつまでも心に残る世界をつくります。</p>
       </div>
-      <div class="world-stage">
-        <div class="world-landscape">
-          <img class="courtyard courtyard-day" src="/assets/world/courtyard-day-v2.webp" width="1536" height="1024" alt="森で木を集め、夜にはみんなで城を守る場所。" fetchpriority="high">
-          <img class="courtyard courtyard-night" src="/assets/world/courtyard-night-v2.webp" width="1536" height="1024" alt="" loading="lazy">
-          <div class="courtyard-actors" aria-hidden="true" hidden><div class="gate-guard guard-left"><div class="lancer-sprite"></div></div><div class="gate-guard guard-right"><div class="lancer-sprite"></div></div></div>
-          <div class="world-dust" aria-hidden="true"></div><div class="fire-glow" aria-hidden="true"></div><div class="lantern-glow" aria-hidden="true"></div>
-          <div class="courtyard-resident" aria-hidden="true"><div class="resident-sprite"></div></div>
-          <div class="world-motes" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i></div>
-          <a class="world-marker marker-forest" href="/games/tiny-defense/play/" data-map-open="game"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">薪割り体験</span></a>
-          <a class="world-marker marker-gate" href="/ja/games/tiny-defense/#stores" data-map-open="stores"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">城の外へ</span></a>
-          <a class="world-marker marker-fire" href="/ja/games/tiny-defense/#features" data-map-open="day"><span class="marker-point" aria-hidden="true">☀</span><span class="marker-label">昼の備え</span></a>
-          <a class="world-marker marker-guard" href="/ja/games/tiny-defense/#features" data-map-open="night"><span class="marker-point" aria-hidden="true">☾</span><span class="marker-label">夜の守り</span></a>
-          <a class="world-marker marker-book" href="#storybook" data-open-story><span class="marker-point" aria-hidden="true">＋</span><span class="marker-label">物語を読む</span></a>
-        </div>
-        <div class="world-caption"><span class="world-place">TINY DEFENSE <span aria-hidden="true">/</span> ONESTEP STUDIO</span><span>光る目印を押して、城を巡ってみましょう。</span></div>
-      </div>
-      <nav class="world-bottom" aria-label="Tiny Defense"><a href="/ja/games/tiny-defense/#features" data-map-open="day"><span>昼の備え</span></a><a href="/ja/games/tiny-defense/#features" data-map-open="night"><span>夜の守り</span></a><a href="#storybook" data-open-story><span>物語を読む</span></a><a href="/games/tiny-defense/play/" data-map-open="game"><span>薪割り体験</span></a><a href="/ja/games/tiny-defense/#stores" data-map-open="stores"><span>城の外へ</span></a><button class="resume-link" data-resume-story hidden>続きから読む</button></nav>
-      <p class="world-notice" data-world-notice role="status"></p>
     </section>
-    <section class="story-invitation" id="storybook" aria-labelledby="invitation-title">
-      <div class="invitation-art"><img src="/assets/world/supplies.webp?v=story-4" alt="" loading="lazy" width="1024" height="1024"></div>
-      <div class="invitation-copy"><p class="world-eyebrow">CHAPTER 01–03 <span aria-hidden="true">—</span> STORYBOOK</p><h2 id="invitation-title">帰る場所</h2><p>少年と老人、そして帰る場所を守る人々の物語。</p><a class="book-cta" href="/ja/story/" data-open-story>本を開く <span aria-hidden="true">↗</span></a></div>
-    </section>
-    <dialog class="story-reader" id="story-reader" aria-labelledby="reader-title">
-      <div class="reader-shell">
-        <header class="reader-toolbar"><div><span class="reader-kicker">TINY DEFENSE / CHAPTER 01</span><h2 id="reader-title">帰る場所</h2></div><div class="reader-actions"><button type="button" class="reader-sound" data-sound aria-pressed="false">♫ <span>音をオン</span></button><button type="button" data-contents aria-expanded="false" aria-controls="story-contents">目次</button><button type="button" data-close-story aria-label="本を閉じる">✕</button></div></header>
-        <nav class="story-contents" id="story-contents" aria-label="目次" hidden></nav>
-        <div class="reader-pages" data-reader-pages>
-        <div class="book-spread" data-book-spread>
-          <div class="book-left" data-book-left><div class="book-illustration"><img data-story-art src="/assets/world/prologue.webp" alt=""><div class="story-art-shade"></div><span class="art-chapter">CHAPTER <b>01</b></span></div><article class="book-page left-page" data-left-page hidden><p class="page-eyebrow" data-left-kicker></p><h3 data-left-title></h3><div class="story-lines" data-left-lines></div></article><span class="folio" data-folio-left></span></div>
-          <article class="book-page" data-book-page tabindex="-1"><p class="page-eyebrow" data-page-kicker></p><h3 data-page-title></h3><div class="story-lines" data-story-lines></div><div class="story-gate" data-story-gate hidden></div><div class="page-ornament" aria-hidden="true">✦</div><span class="folio" data-folio-right></span></article>
-        </div>
-        <p class="book-gesture-hint">左をタップで前へ、右をタップで次へ。</p>
-        </div>
-        <footer class="reader-footer"><button type="button" data-story-prev>← <span>前のページ</span></button><span class="page-progress" data-page-progress role="status" aria-live="polite"></span><button type="button" data-story-next><span>次のページ</span> →</button></footer>
-        <div class="reader-settings"><label>♫ 音量 <input data-volume aria-label="音量" type="range" min="0" max="100" value="35"></label><a href="/ja/story/">文章で読む</a></div>
-      </div>
-    </dialog>
-    <details class="world-credits"><summary>音楽と素材</summary><p>“The Path of the Goblin King” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100873">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.<br>“Crossing the Chasm” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700026">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Web versions: re-encoded, loudness adjusted.<br>Book sounds — <a href="https://kenney.nl/assets/rpg-audio">Kenney RPG Audio</a>, CC0.<br>“Secret of Beautiful Forest” — OneStep Studio. Illustrations and characters — Tiny Defense / OneStep Studio. Courtyard art — AI-generated for OneStep Studio.</p></details>
-    <dialog class="map-popup" data-map-dialog aria-labelledby="map-panel-title"><div class="map-panel-shell"><header class="map-panel-toolbar"><div><p class="world-eyebrow">TINY DEFENSE</p><h2 id="map-panel-title"></h2></div><button type="button" data-map-close aria-label="城の中へ戻る">✕ <span>城の中へ戻る</span></button></header><div class="map-panel-content" data-map-content></div></div></dialog><template data-map-template="day" data-title="昼の備え">
-          <div class="guide-tabs"><button type="button" data-map-switch="day" aria-pressed="true">☀ 昼の備え</button><button type="button" data-map-switch="night" aria-pressed="false">☾ 夜の守り</button></div>
-          <div class="guide-scenes"><article class="guide-scene" data-guide-scene ><video controls muted loop playsinline preload="none" poster="/assets/daynight/day-01-gather.webp" data-src="/assets/daynight/day-01-gather.mp4" aria-label="採集リズム"></video><div><p class="world-eyebrow">TINY DEFENSE / DAY 01</p><h3>採集リズム</h3><p>タイミングゲージが緑の帯に重なった瞬間に斧を振り下ろします。完璧に決めるほど連続が積み重なり、収穫量が伸びていきます。</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/day-02-memory.webp" data-src="/assets/daynight/day-02-memory.mp4" aria-label="鉱脈の記憶"></video><div><p class="world-eyebrow">TINY DEFENSE / DAY 02</p><h3>鉱脈の記憶</h3><p>一瞬光った鉱脈の位置を覚えて、もう一度なぞります。順番を守るほど、より深い鉱脈が開かれます。</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/day-03-tool.webp" data-src="/assets/daynight/day-03-tool.mp4" aria-label="道具の成長"></video><div><p class="world-eyebrow">TINY DEFENSE / DAY 03</p><h3>道具の成長</h3><p>集めた資源を斧とツルハシに注ぎ込み、一度の採集で得られる量を増やします。昼が短くなるほど、道具が代わりに稼いでくれます。</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/day-04-village.webp" data-src="/assets/daynight/day-04-village.mp4" aria-label="村の一日"></video><div><p class="world-eyebrow">TINY DEFENSE / DAY 04</p><h3>村の一日</h3><p>住民が行き交う春の村を歩いてみましょう。建物が増えるほど、夜を耐え抜く余裕も増えていきます。</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/day-05-relic.webp" data-src="/assets/daynight/day-05-relic.mp4" aria-label="遺物の選択"></video><div><p class="world-eyebrow">TINY DEFENSE / DAY 05</p><h3>遺物の選択</h3><p>3枚の遺物から1つを選びます。このひとつの選択が、残りの夜すべての性格を変えます。</p></div></article></div>
-          <nav class="guide-index" aria-label="昼の備え"><button type="button" data-guide-jump="0" aria-pressed="true"><span>01</span> 採集リズム</button><button type="button" data-guide-jump="1" aria-pressed="false"><span>02</span> 鉱脈の記憶</button><button type="button" data-guide-jump="2" aria-pressed="false"><span>03</span> 道具の成長</button><button type="button" data-guide-jump="3" aria-pressed="false"><span>04</span> 村の一日</button><button type="button" data-guide-jump="4" aria-pressed="false"><span>05</span> 遺物の選択</button></nav>
-          <div class="guide-navigation"><button type="button" data-guide-prev>← 前の場面</button><span data-guide-progress role="status">1 / 5</span><button type="button" data-guide-next>次の場面 →</button></div>
-        </template><template data-map-template="night" data-title="夜の守り">
-          <div class="guide-tabs"><button type="button" data-map-switch="day" aria-pressed="false">☀ 昼の備え</button><button type="button" data-map-switch="night" aria-pressed="true">☾ 夜の守り</button></div>
-          <div class="guide-scenes"><article class="guide-scene" data-guide-scene ><video controls muted loop playsinline preload="none" poster="/assets/daynight/night-01-deploy.webp" data-src="/assets/daynight/night-01-deploy.mp4" aria-label="戦列の配置"></video><div><p class="world-eyebrow">TINY DEFENSE / NIGHT 01</p><h3>戦列の配置</h3><p>槍兵、弓兵、修道士をドラッグして好きな位置に並べます。タワーショップで防衛線の隙間を埋めましょう。</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/night-02-defense.webp" data-src="/assets/daynight/night-02-defense.mp4" aria-label="密集防衛戦"></video><div><p class="world-eyebrow">TINY DEFENSE / NIGHT 02</p><h3>密集防衛戦</h3><p>骸骨の群れが押し寄せる場所で、守護騎士と兵士がぶつかり合います。前列が耐えているあいだ、後方から矢が降り注ぎます。</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/night-03-hero.webp" data-src="/assets/daynight/night-03-hero.mp4" aria-label="英雄の技"></video><div><p class="world-eyebrow">TINY DEFENSE / NIGHT 03</p><h3>英雄の技</h3><p>英雄の回転斬りが周囲を一度に薙ぎ払います。技をいつ使うかで、波の向きが変わります。</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/night-04-duel.webp" data-src="/assets/daynight/night-04-duel.mp4" aria-label="ボス一騎打ち"></video><div><p class="world-eyebrow">TINY DEFENSE / NIGHT 04</p><h3>ボス一騎打ち</h3><p>5夜ごとに、画面のコマンドをつないでボスと正面から向き合います。入力が途切れれば、そのまま反撃を受けます。</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/night-05-season.webp" data-src="/assets/daynight/night-05-season.mp4" aria-label="季節の先へ"></video><div><p class="world-eyebrow">TINY DEFENSE / NIGHT 05</p><h3>季節の先へ</h3><p>春を越えれば夏が、その先には秋と冬が待っています。季節が変わるたび、夜はもう一段深くなります。</p></div></article></div>
-          <nav class="guide-index" aria-label="夜の守り"><button type="button" data-guide-jump="0" aria-pressed="true"><span>01</span> 戦列の配置</button><button type="button" data-guide-jump="1" aria-pressed="false"><span>02</span> 密集防衛戦</button><button type="button" data-guide-jump="2" aria-pressed="false"><span>03</span> 英雄の技</button><button type="button" data-guide-jump="3" aria-pressed="false"><span>04</span> ボス一騎打ち</button><button type="button" data-guide-jump="4" aria-pressed="false"><span>05</span> 季節の先へ</button></nav>
-          <div class="guide-navigation"><button type="button" data-guide-prev>← 前の場面</button><span data-guide-progress role="status">1 / 5</span><button type="button" data-guide-next>次の場面 →</button></div>
-        </template><template data-map-template="stores" data-title="冒険の続きへ"><div class="store-banner"><img src="/assets/app-icon.webp" width="96" height="96" alt=""><div><p class="world-eyebrow">TINY DEFENSE</p><p>ストアでTiny Defenseを見つけよう。</p></div></div><ul class="store-grid">
-            <li class="store-item">
-              <a class="store-card is-live" href="https://play.google.com/store/apps/details?id=com.onestep.tinydefense" target="_blank" rel="noopener" aria-label="Google Playで『Tiny Defense』を見る">
-                <span class="store-name">Google Play</span>
-                <span class="store-state">配信中 <span aria-hidden="true">&rarr;</span></span>
-              </a>
-            </li>
-            <li class="store-item">
-              <a class="store-card is-live" href="https://apps.apple.com/app/id6785383234" target="_blank" rel="noopener" aria-label="App Storeで『Tiny Defense』を見る">
-                <span class="store-name">App Store</span>
-                <span class="store-state">配信中 <span aria-hidden="true">&rarr;</span></span>
-              </a>
-            </li>
-            <li class="store-item">
-              <a class="store-card is-live" href="https://m.onestore.co.kr/v2/ko-kr/app/0001007324" target="_blank" rel="noopener" aria-label="ONE storeで『Tiny Defense』を見る">
-                <span class="store-name">ONE store</span>
-                <span class="store-state">配信中 <span aria-hidden="true">&rarr;</span></span>
-              </a>
-            </li>
-            <li class="store-item">
-              <div class="store-card is-coming">
-                <span class="store-name">Steam</span>
-                <span class="store-state">準備中</span>
-              </div>
-            </li>
-          </ul></template><template data-map-template="game" data-title="薪割り体験"><p class="mini-note">閉じると今回の挑戦は終了します。最高記録は残ります。</p><iframe class="map-minigame" title="薪割り体験" data-src="/games/tiny-defense/play/?embed=1&amp;courtyard=1&amp;lang=ja&amp;v=map-1" allow="autoplay; web-share; clipboard-write"></iframe></template><template data-map-template="studio" data-title="OneStep Studio"><section class="studio-summary section">
-      <div class="container studio-summary-grid">
-        <div class="reveal">
-          <p class="eyebrow">OUR WAY</p>
-          <h2>一歩ずつ、<br>確かに。</h2>
-        </div>
-        <div class="studio-summary-copy">
-          <p class="lead">OneStep Studioは、小さな選択が大きな物語へとつながるゲームをつくります。</p>
-          <p>『Tiny Defense』の世界を一歩ずつ形にしながら、短い時間の中にも手応えのある選択と、長く続く挑戦を詰め込んでいます。</p>
-          <a class="text-link" href="mailto:chunsanet@gmail.com">
-            chunsanet@gmail.com
-            <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-      </div>
-    </section></template>
-    <!-- WORLD EXPERIENCE END -->
 
     <section class="game-library section" id="games" aria-labelledby="games-title">
       <div class="container">
@@ -220,7 +122,7 @@
         </div>
 
         <div class="game-grid">
-          <a class="game-card reveal" href="/ja/games/tiny-defense/#stores" aria-label="ゲームページへ、Tiny Defenseのダウンロードストアへ移動">
+          <a class="game-card reveal" href="/ja/games/tiny-defense/" aria-label="Tiny Defense のゲームページを見る">
             <div class="game-card-media">
               <img src="/assets/hero-wide.webp" alt="昼と夜の境に立つ『Tiny Defense』の城、英雄、モンスター" width="1024" height="500">
             </div>

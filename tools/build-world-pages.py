@@ -1,4 +1,4 @@
-"""Build the three localized courtyard entry points into the existing static homes."""
+"""Build the localized game courtyards; keep studio homepages independent."""
 import json
 import re
 from pathlib import Path
@@ -72,20 +72,20 @@ def main():
     stories=json.loads((ROOT/'assets/world/story.json').read_text(encoding='utf-8'))
     for lang,c in COPY.items():
         base=ROOT if lang=='ko' else ROOT/lang
-        file=base/'index.html'
+        file=base/'games/tiny-defense/index.html'
         text=file.read_text(encoding='utf-8')
         world=render(lang,c)
         if '<!-- WORLD EXPERIENCE START -->' in text:
             text=re.sub(r'<!-- WORLD EXPERIENCE START -->.*?<!-- WORLD EXPERIENCE END -->',lambda _:world,text,flags=re.S)
         else:
-            text=re.sub(r'<section class="studio-intro".*?</section>',lambda _:world,text,flags=re.S)
+            text=re.sub(r'<section class="hero".*?</section>',lambda _:world,text,flags=re.S)
         if '/world.css' not in text:
             text=text.replace('</head>','  <link rel="stylesheet" href="/world.css?v=world-1">\n  <script defer src="/world.js?v=world-1"></script>\n</head>')
         text=text.replace('content="#f9f8f3"','content="#0b1720"').replace('content="light"','content="dark light"')
         text=text.replace('as="image" href="/assets/onestep-logo.webp"','as="image" href="/assets/world/courtyard-day.webp"')
         text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-v2.webp')
         text=text.replace('/world.css?v=world-1','/world.css?v=world-2').replace('/world.js?v=world-1','/world.js?v=world-2')
-        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-8', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-9', text)
         if '/book-turn.js' not in text:
             text=text.replace('<script defer src="/world.js', '<script defer src="/book-turn.js?v=2"></script>\n  <script defer src="/world.js')
         text=text.replace('/book-turn.js?v=1','/book-turn.js?v=2')
@@ -113,11 +113,11 @@ def main():
         prefix='' if lang=='ko' else '/'+lang
         route=base/'story'
         route.mkdir(exist_ok=True)
-        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=font-1"><link rel="stylesheet" href="/world.css?v=world-8"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
+        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=font-1"><link rel="stylesheet" href="/world.css?v=world-9"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
         game=base/'games/tiny-defense/index.html'
         html=game.read_text(encoding='utf-8')
         if '#storybook' not in html:
-            html=html.replace('<a href="#features">',f'<a href="{prefix}/#storybook">{c["book"]}</a>\n        <a href="#features">',1)
+            html=html.replace('<a href="#features">',f'<a href="{prefix}/games/tiny-defense/#storybook">{c["book"]}</a>\n        <a href="#features">',1)
             game.write_text(html,encoding='utf-8')
     print('Built KO/EN/JA courtyard, reader and accessible story text pages.')
 

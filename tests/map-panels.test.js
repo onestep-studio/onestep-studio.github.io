@@ -6,7 +6,7 @@ const root = path.resolve(__dirname, '..');
 
 test('map panels preserve all ten localized game descriptions and defer media loading', () => {
   for (const base of ['', 'en/', 'ja/']) {
-    const home = fs.readFileSync(path.join(root, base, 'index.html'), 'utf8');
+    const home = fs.readFileSync(path.join(root, base, 'games/tiny-defense/index.html'), 'utf8');
     const source = fs.readFileSync(path.join(root, base, 'games/tiny-defense/index.html'), 'utf8');
     const original = [...source.matchAll(/<li class="daynight-item">([\s\S]*?)<\/li>/g)];
     const guides = [...home.matchAll(/<template data-map-template="(?:day|night)"[\s\S]*?<\/template>/g)].map(m => m[0]).join('');

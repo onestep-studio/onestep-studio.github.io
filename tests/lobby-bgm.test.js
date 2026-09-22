@@ -53,7 +53,7 @@ for (const page of homePages) {
 
 /* script.js is shared with the home pages, so the player code must no-op when the markup is absent. */
 assert.match(script, /const bgmPlayer = document\.querySelector\("\[data-bgm\]"\)/, "the player is looked up by data attribute");
-assert.match(script, /if \(bgmPlayer\) setupBgm\(bgmPlayer\)/, "setup only runs when the player exists");
+assert.match(script, /if \(bgmPlayer && !document\.querySelector\('\[data-world\]'\)\) setupBgm\(bgmPlayer\)/, "setup only runs when the player exists");
 
 /* A rejected play() is swallowed: autoplay blocking must not reach the console. */
 assert.match(script, /started\.catch\(\(\) => render\(\)\)/, "a blocked play() quietly falls back to the stopped state");
