@@ -1,0 +1,50 @@
+[
+  {
+    "id": "pawn",
+    "source": "PawnRun.png",
+    "frames": 6,
+    "frameSize": 128
+  },
+  {
+    "id": "boy",
+    "source": "GathererBoy/PawnRun.png",
+    "frames": 6,
+    "frameSize": 128
+  },
+  {
+    "id": "girl",
+    "source": "GathererGirl/PawnRun.png",
+    "frames": 6,
+    "frameSize": 128
+  },
+  {
+    "id": "berserker",
+    "source": "NightSkins/berserker/Run.png",
+    "frames": 6,
+    "frameSize": 128
+  },
+  {
+    "id": "guardian",
+    "source": "NightSkins/guardian/Run.png",
+    "frames": 6,
+    "frameSize": 128
+  },
+  {
+    "id": "duelist",
+    "source": "NightSkins/duelist/Run.png",
+    "frames": 6,
+    "frameSize": 128
+  },
+  {
+    "id": "mage",
+    "source": "HeroMage/Run.png",
+    "frames": 6,
+    "frameSize": 128
+  },
+  {
+    "id": "dark-knight",
+    "source": "NightSkins/dark-knight/Run.png",
+    "frames": 6,
+    "frameSize": 128
+  }
+]

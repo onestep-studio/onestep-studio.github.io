@@ -34,7 +34,20 @@
 .world-landscape { position:relative; aspect-ratio:1.9; overflow:hidden; isolation:isolate; }
 .courtyard { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 60%; }
 .courtyard-night { opacity:0; transition:opacity 1.8s ease; }
-.courtyard-actors { position:absolute; pointer-events:none; }
+.courtyard-actors { position:absolute; z-index:1; pointer-events:none; }
+.courtyard-walker { position:absolute; width:9.5%; aspect-ratio:1; left:var(--x1); top:var(--y1); transform:translate(-50%,-90.625%); animation:courtyard-roam var(--trip) linear var(--phase) infinite; }
+.walker-facing { width:100%; height:100%; animation:courtyard-facing var(--trip) steps(1,end) var(--phase) infinite; }
+.walker-sprite { width:100%; height:100%; background-size:600% 100%; background-repeat:no-repeat; animation:resident-steps .85s steps(6) var(--phase) infinite; filter:drop-shadow(0 3px 2px #0006); }
+[data-time=night] .walker-sprite { filter:brightness(.75) drop-shadow(0 3px 2px #0008); }
+@keyframes courtyard-roam {
+ 0%,100% { left:var(--x1); top:var(--y1); }
+ 25%,75% { left:var(--x2); top:var(--y2); }
+ 50% { left:var(--x3); top:var(--y3); }
+}
+@keyframes courtyard-facing { 0% { transform:scaleX(1); } 50% { transform:scaleX(-1); } }
+@media(prefers-reduced-motion:reduce) {
+ .courtyard-walker { left:var(--x2); top:var(--y2); }
+}
 .gate-guard { position:absolute; top:56.5%; left:48%; width:18%; aspect-ratio:1; transform:translate(-50%,-61.875%); }
 .guard-right { left:69%; }
 .lancer-sprite { width:100%; height:100%; background:url('/assets/world/lancer-idle.webp') 0 0 / 1200% 100%; animation:lancer-idle 1.5s steps(12) infinite; filter:drop-shadow(0 2px 2px #0005); transition:filter 1.8s; }

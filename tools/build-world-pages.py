@@ -17,6 +17,17 @@ def render(lang, c):
     base = '' if lang=='ko' else '/'+lang
     game = base+'/games/tiny-defense/'
     m = LABELS[lang]
+    cast = json.loads((ROOT / 'assets/world/cast/manifest.json').read_text(encoding='utf-8'))
+    routes = [
+        (28,65,40,63,61,58,38,3), (21,77,28,81,38,84,43,16),
+        (61,65,67,68,73,70,47,32), (35,68,51,64,72,62,52,12),
+        (33,62,48,59,61,56,46,8), (29,67,46,64,67,60,36,26),
+        (35,65,52,62,70,59,50,35), (30,71,52,67,73,64,55,20),
+    ]
+    walkers = ''
+    for actor, (x1,y1,x2,y2,x3,y3,duration,phase) in zip(cast, routes):
+        style = f'--x1:{x1}%;--y1:{y1}%;--x2:{x2}%;--y2:{y2}%;--x3:{x3}%;--y3:{y3}%;--trip:{duration}s;--phase:-{phase}s;z-index:{y1}'
+        walkers += f'<div class="courtyard-walker" data-character="{actor["id"]}" style="{style}"><div class="walker-facing"><div class="walker-sprite" style="background-image:url(/assets/world/cast/{actor["id"]}.webp)"></div></div></div>'
     mobile_hint = {'ko':'아래 메뉴에서 성 안을 둘러보세요.', 'en':'Explore the courtyard using the menu below.', 'ja':'下のメニューから城を巡ってみましょう。'}[lang]
     return f'''<!-- WORLD EXPERIENCE START -->
     <section class="world" id="top" aria-labelledby="world-title" data-world data-time="day">
@@ -32,9 +43,8 @@ def render(lang, c):
         <div class="world-landscape">
           <img class="courtyard courtyard-day" src="/assets/world/courtyard-day-v2.webp" width="1536" height="1024" alt="{c['intro']}" fetchpriority="high">
           <img class="courtyard courtyard-night" src="/assets/world/courtyard-night-v2.webp" width="1536" height="1024" alt="" loading="lazy">
-          <div class="courtyard-actors" aria-hidden="true" hidden><div class="gate-guard guard-left"><div class="lancer-sprite"></div></div><div class="gate-guard guard-right"><div class="lancer-sprite"></div></div></div>
+          <div class="courtyard-actors" aria-hidden="true" hidden><div class="gate-guard guard-left"><div class="lancer-sprite"></div></div><div class="gate-guard guard-right"><div class="lancer-sprite"></div></div>{walkers}</div>
           <div class="world-dust" aria-hidden="true"></div><div class="fire-glow" aria-hidden="true"></div><div class="lantern-glow" aria-hidden="true"></div>
-          <div class="courtyard-resident" aria-hidden="true"><div class="resident-sprite"></div></div>
           <div class="world-motes" aria-hidden="true">{''.join(f'<i style="--i:{i}"></i>' for i in range(14))}</div>
           <a class="world-marker marker-forest" href="/games/tiny-defense/play/" data-map-open="game"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">{c['forest']}</span></a>
           <a class="world-marker marker-gate" href="{game}#stores" data-map-open="stores"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">{m['stores']}</span></a>
@@ -87,7 +97,7 @@ def main():
         text=text.replace('as="image" href="/assets/onestep-logo.webp"','as="image" href="/assets/world/courtyard-day.webp"')
         text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-v2.webp')
         text=text.replace('/world.css?v=world-1','/world.css?v=world-2').replace('/world.js?v=world-1','/world.js?v=world-2')
-        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-13', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-14', text)
         if '/courtyard-audio.js' not in text:
             text=text.replace('<script defer src="/world.js', '<script defer src="/courtyard-audio.js?v=1"></script>\n  <script defer src="/world.js')
         if '/book-turn.js' not in text:
@@ -124,7 +134,7 @@ def main():
         skip={'ko':'본문 바로가기','en':'Skip to story','ja':'本文へ移動'}[lang]
         chapters={'ko':['1장','2장','3장'],'en':['Chapter 1','Chapter 2','Chapter 3'],'ja':['第1章','第2章','第3章']}[lang]
         chapter_links=''.join(f'<a href="#chapter-{i}">{label}</a>' for i,label in enumerate(chapters,1))
-        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1c24"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=ui-2"><link rel="stylesheet" href="/world.css?v=world-13"><meta name="robots" content="noindex"></head><body class="story-text-page"><a class="skip-link" href="#main">{skip}</a><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><nav class="reading-nav" aria-label="{c['contents']}"><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a>{chapter_links}</nav><main id="main">{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
+        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1c24"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=ui-2"><link rel="stylesheet" href="/world.css?v=world-14"><meta name="robots" content="noindex"></head><body class="story-text-page"><a class="skip-link" href="#main">{skip}</a><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><nav class="reading-nav" aria-label="{c['contents']}"><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a>{chapter_links}</nav><main id="main">{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
         game=base/'games/tiny-defense/index.html'
         html=game.read_text(encoding='utf-8')
         if '#storybook' not in html:
