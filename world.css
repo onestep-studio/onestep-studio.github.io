@@ -231,3 +231,38 @@ body:has(.story-reader[open]) { overflow:hidden; }
 .paper-face.text-leaf>.book-page { padding-top:100px; }
 @media(max-width:1000px) and (min-width:700px) { .paper-face.text-leaf>.book-page { padding-top:85px; } }
 body:has(.story-reader[open]) .world * { animation-play-state:paused !important; }
+
+/* The map's book becomes the reading surface, without cloning its story DOM. */
+.book-arriving { background:transparent; }
+.book-arriving::backdrop { backdrop-filter:none; background:#061119ed; animation:reading-desk 1.2s ease both; }
+.book-arriving .reader-shell { perspective:1800px; }
+.book-arriving .book-spread { opacity:0; }
+.book-arriving.arrival-ready .book-spread { opacity:1; will-change:transform; }
+.book-arriving .book-spread { background:transparent; border-color:transparent; box-shadow:none; }
+.book-arriving .book-page { background-color:#f4edda; }
+.book-arriving .reader-toolbar>div:first-child,
+.book-arriving .reader-actions>button:not([data-close-story]),
+.book-arriving .reader-footer,.book-arriving .reader-settings,
+.book-arriving .book-gesture-hint { opacity:0; pointer-events:none; }
+.book-arriving .reader-toolbar { background:transparent; }
+.book-arriving .book-left { opacity:0; }
+.book-arriving.arrival-ready .book-left { animation:arrival-left .55s .78s ease both; }
+.arrival-cover,.arrival-leaf { position:absolute; z-index:20; left:50%; top:0; width:50%; height:100%; transform-origin:left center; backface-visibility:hidden; pointer-events:none; will-change:transform; }
+.arrival-cover { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; padding:12%; color:#e3c789; background:linear-gradient(100deg,#183a40,#28545a 15%,#1b424a 90%,#112d35); border:2px solid #ac935b; border-radius:0 8px 8px 0; box-shadow:inset 0 0 0 12px #1b4147,inset 0 0 0 13px #b9a16d80,8px 8px 18px #0004; }
+.arrival-cover span { font-family:Georgia,'Batang','Yu Mincho',serif; text-align:center; font-size:clamp(24px,3.5vw,48px); font-weight:400; line-height:1.6; word-break:keep-all; }
+.arrival-cover small { font-size:11px; letter-spacing:.24em; white-space:nowrap; }
+.arrival-leaf { z-index:16; background:linear-gradient(90deg,#c4b696,#f4edda 8%,#fbf5e6 88%,#b9a783); border-right:1px solid #b7a58a; }
+.arrival-leaf:nth-last-child(3) { z-index:17; }
+.arrival-leaf:nth-last-child(4) { z-index:18; }
+@keyframes reading-desk { from { opacity:0; } to { opacity:1; } }
+@keyframes arrival-left { from { opacity:0; } to { opacity:1; } }
+@media(max-width:699px) {
+ .arrival-cover,.arrival-leaf { left:0; width:100%; }
+ .arrival-cover { padding:12%; }
+ .book-arriving .book-left { opacity:1; }
+ .book-arriving.arrival-ready .book-left { animation:none; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .book-arriving .book-spread,.book-arriving .book-left { opacity:1; }
+ .arrival-cover,.arrival-leaf { display:none; }
+}

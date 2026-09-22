@@ -23,7 +23,7 @@
   const storageKey = 'tiny-defense-storybook-v1';
   let story, loading, index = 0, allowed = false, pending = 2, showingGate = false, turning = false;
   let lastTrigger, paused = reduce.matches, enabled = false, volume = .35, fadeFrame = 0, audioEpoch = 0;
-  let openEpoch = 0, activeTurn = null, drag = null;
+  let openEpoch = 0, activeTurn = null, drag = null, entrance = null, opening = false;
   const paper = window.StoryPaper;
   let saved = null;
   try { saved = JSON.parse(localStorage.getItem(storageKey)); } catch { /* Private browsing/storage disabled. */ }
@@ -242,7 +242,7 @@
     });
   }
   function navigate(target) {
-    if (!story || turning) return;
+    if (!story || turning || opening) return;
     if (target >= story.pages.length) { closeBook(); return; }
     target=Math.max(0,target);
     if (target >= 2 && !allowed) { spoilerGate(target); return; }
@@ -267,9 +267,64 @@
     }).finally(() => { loading=null; });
     return loading;
   }
+  function enterFromMap(origin) {
+    if (reduce.matches || typeof Animation === 'undefined') return Promise.resolve();
+    return new Promise(resolve => {
+      const rect = spread.getBoundingClientRect();
+      const mobile = matchMedia('(max-width:699px)').matches;
+      const anchor = mobile ? .5 : .75;
+      const scale = Math.max(.055, Math.min(.22, origin.width / (rect.width * (mobile ? 1 : .5))));
+      const dx = origin.x - (rect.left + rect.width * anchor);
+      const dy = origin.y - (rect.top + Math.min(rect.height, innerHeight * .75) * .5);
+      const cover = document.createElement('div'); cover.className='arrival-cover'; cover.setAttribute('aria-hidden','true');
+      const name = document.createElement('span'); name.textContent=$('#reader-title').textContent;
+      const imprint=document.createElement('small'); imprint.textContent='TINY DEFENSE';
+      cover.append(imprint,name);
+      const leaves = Array.from({length:3}, () => {
+        const leaf=document.createElement('div'); leaf.className='arrival-leaf'; leaf.setAttribute('aria-hidden','true');
+        spread.append(leaf); return leaf;
+      });
+      spread.append(cover);
+      dialog.classList.add('arrival-ready');
+      const animations=[], sounds=[]; let finished=false;
+      const finish = () => {
+        if (finished) return; finished=true;
+        animations.forEach(animation=>animation.cancel());
+        sounds.forEach(clearTimeout);
+        leaves.forEach(leaf=>leaf.remove()); cover.remove();
+        dialog.classList.remove('book-arriving','arrival-ready'); spread.style.transformOrigin='';
+        opening=false; entrance=null; resolve();
+      };
+      entrance={cancel:finish};
+      spread.style.transformOrigin=`${anchor*100}% ${Math.min(rect.height,innerHeight*.75)*.5}px`;
+      const flight=spread.animate([
+        {transform:`translate(${dx}px,${dy}px) scale(${scale}) rotateX(48deg) rotateZ(-24deg)`,offset:0},
+        {transform:`translate(${dx*.62}px,${dy*.62-55}px) scale(${Math.max(.3,scale*2)}) rotateX(24deg) rotateZ(-12deg)`,offset:.36},
+        {transform:'translate(0,0) scale(1.025) rotateX(0deg) rotateZ(0deg)',offset:.8},
+        {transform:'translate(0,0) scale(1) rotateX(0deg) rotateZ(0deg)',offset:1}
+      ],{duration:1100,easing:'cubic-bezier(.2,.65,.25,1)',fill:'both'});
+      animations.push(flight);
+      animations.push(cover.animate([
+        {transform:'rotateY(0deg)',opacity:1},
+        {transform:'rotateY(-165deg)',opacity:1,offset:.9},
+        {transform:'rotateY(-180deg)',opacity:0}
+      ],{delay:720,duration:630,easing:'cubic-bezier(.3,.1,.2,1)',fill:'both'}));
+      leaves.forEach((leaf,i)=>animations.push(leaf.animate([
+        {transform:'rotateY(0deg)',opacity:1},
+        {transform:'rotateY(-95deg)',opacity:1,offset:.55},
+        {transform:'rotateY(-179deg)',opacity:0}
+      ],{delay:900+i*95,duration:430,easing:'ease-in-out',fill:'both'})));
+      sounds.push(setTimeout(()=>effect('page-1'),900),setTimeout(()=>effect('page-2'),1090));
+      animations.at(-1).onfinish=finish;
+    });
+  }
   async function openBook(trigger, resume = false) {
-    if (turning) return;
+    if (turning || opening) return;
     const epoch = ++openEpoch;
+    const source=(trigger.querySelector('.marker-point') || trigger).getBoundingClientRect();
+    const origin={x:source.left+source.width/2,y:source.top+source.height/2,width:Math.max(55,source.width*.65)};
+    opening=!reduce.matches && typeof Animation !== 'undefined';
+    dialog.classList.toggle('book-arriving',opening);
     lastTrigger=trigger;
     contentsState(false);
     if (!dialog.open) dialog.showModal();
@@ -283,9 +338,13 @@
       if (!dialog.open || epoch !== openEpoch) return;
       allowed=Boolean(resume && saved?.full);
       index=resume && saved ? Math.min(saved.page,allowed ? story.pages.length-1 : 1) : 0;
-      render(); dialog.scrollTop=0; $('[data-close-story]').focus();
+      render(); dialog.scrollTop=0;
+      if (opening) await enterFromMap(origin);
+      if (!dialog.open || epoch !== openEpoch) return;
+      opening=false; dialog.classList.remove('book-arriving','arrival-ready'); $('[data-close-story]').focus();
     } catch {
       if (!dialog.open || epoch !== openEpoch) return;
+      entrance?.cancel(); opening=false; dialog.classList.remove('book-arriving','arrival-ready');
       title.textContent=copy.error; gate.hidden=false; gate.replaceChildren(makeButton(copy.retry,() => openBook(lastTrigger,resume)));
       progress.textContent='';
     }
@@ -293,6 +352,7 @@
   function closeBook() { dialog.close(); }
   dialog.addEventListener('close', () => {
     ++openEpoch;
+    entrance?.cancel(); opening=false; dialog.classList.remove('book-arriving','arrival-ready');
     activeTurn?.dispose(); activeTurn = null; drag = null; turning = false;
     effect('book-close'); syncMusic(); contentsState(false);
     lastTrigger?.focus({preventScroll:true});
@@ -313,7 +373,7 @@
     if(event.key==='ArrowLeft') { event.preventDefault(); navigate(index-1); }
   });
   spread.addEventListener('pointerdown', event => {
-    if (!story || turning || showingGate || !contents.hidden || event.button !== 0 || event.target.closest('button,a,input')) return;
+    if (!story || turning || opening || showingGate || !contents.hidden || event.button !== 0 || event.target.closest('button,a,input')) return;
     const rect = spread.getBoundingClientRect(), x = event.clientX - rect.left;
     // Start at the outside edge, leaving dialogue selectable and vertical scrolling native.
     if (x > rect.width * .22 && x < rect.width * .78) return;
@@ -349,6 +409,7 @@
   spread.addEventListener('pointerup',releasePage);
   spread.addEventListener('pointercancel',releasePage);
   window.addEventListener('resize', () => {
+    entrance?.cancel();
     if (!activeTurn) return;
     activeTurn.dispose(); activeTurn=null; drag=null; turning=false; render(false);
   });
