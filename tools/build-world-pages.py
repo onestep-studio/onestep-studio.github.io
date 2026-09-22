@@ -86,7 +86,7 @@ def main():
         text=text.replace('/book-turn.js?v=1','/book-turn.js?v=2')
         if '/assets/fonts/DoHyeon.woff2' not in text:
             text=text.replace('</head>', '<link rel="preload" href="/assets/fonts/DoHyeon.woff2" as="font" type="font/woff2" crossorigin>\n</head>')
-        text=text.replace('/styles.css"','/styles.css?v=font-1"')
+        text=re.sub(r'/styles\.css(?:\?[^"\s]*)?"', '/styles.css?v=font-1"', text)
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''
