@@ -222,3 +222,12 @@ body:has(.story-reader[open]) { overflow:hidden; }
  .story-text-page section.text-only { padding:26px 22px; }
  .story-text-page .text-only .text-dialogue { columns:1; }
 }
+
+/* Promote only the two moving faces, not dozens of full spread copies. */
+.paper-curl { will-change:transform; }
+.paper-curl>.paper-face { contain:paint; }
+.paper-curl>.paper-face::after { content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg,#43331b20,transparent 12%,transparent 88%,#fff8e530); }
+.paper-face>.leaf-content { margin:0; box-sizing:border-box; }
+.paper-face.text-leaf>.book-page { padding-top:100px; }
+@media(max-width:1000px) and (min-width:700px) { .paper-face.text-leaf>.book-page { padding-top:85px; } }
+body:has(.story-reader[open]) .world * { animation-play-state:paused !important; }

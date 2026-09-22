@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
-const { hasArt, splitLines, geometry } = require('../book-turn.js');
+const { hasArt, splitLines, paperTransform } = require('../book-turn.js');
 const stories = require('../assets/world/story.json');
 
 test('each illustration appears once, and text fills both leaves without dropping dialogue', () => {
@@ -21,13 +21,11 @@ test('each illustration appears once, and text fills both leaves without droppin
   }
 });
 
-test('paper settles flat at both ends and bends smoothly during a turn', () => {
-  assert.deepEqual(geometry(0), {angle:0, step:0});
-  assert.equal(geometry(1).angle, 180);
-  assert.ok(Math.abs(geometry(1).step) < 1e-10);
-  assert.ok(geometry(.5).step > 0);
-  for (let t=0; t<=1; t+=.01) {
-    const value=geometry(t);
-    assert.ok(Number.isFinite(value.angle) && value.step >= 0);
-  }
+test('compositor transforms start and settle at the correct page edge', () => {
+  assert.equal(paperTransform(0, 1), 'rotateY(0deg) skewY(0deg)');
+  assert.match(paperTransform(1, 1), /^rotateY\(-180deg\)/);
+  assert.match(paperTransform(1, -1), /^rotateY\(180deg\)/);
+  assert.match(paperTransform(.5, 1), /skewY\(1.6deg\)/);
+  assert.equal(paperTransform(-1,1),paperTransform(0,1));
+  assert.equal(paperTransform(2,1),paperTransform(1,1));
 });

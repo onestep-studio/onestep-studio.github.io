@@ -202,7 +202,7 @@
       gate.hidden=false;
       const a=document.createElement('a'); a.href=`${lang==='ko'?'':'/'+lang}/games/tiny-defense/#stores`; a.textContent=copy.game; gate.append(a);
     }
-    renderContents(); if (save) remember();
+    if (save) { renderContents(); remember(); }
     // Cache only the next illustration, never unreached dialogue or audio requests.
     if (index+1 < story.pages.length && (allowed || index < 1) && paper.hasArt(story.pages, index+1)) {
       const image = new Image(); image.src=`/assets/world/${story.pages[index+1].art}.webp?v=story-3`;
