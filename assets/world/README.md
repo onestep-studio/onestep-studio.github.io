@@ -2,9 +2,9 @@
 
 ## Sketchbook reader revision
 
-The reading surface now uses a cloth-colored binding, inset illustrations, a central gutter and a curved, draggable paper leaf. Interaction reference: https://github.com/MengTo/sketchbook (Meng To; its README credits Matthew Yu's original concept). `book-turn.js` is an independent implementation for live HTML dialogue rather than image-only spreads; no reference artwork or fonts are bundled.
+The reading surface now uses a cloth-colored binding, inset illustrations, a central gutter and a animated paper leaf. Interaction reference: https://github.com/MengTo/sketchbook (Meng To; its README credits Matthew Yu's original concept). `book-turn.js` is an independent implementation for live HTML dialogue rather than image-only spreads; no reference artwork or fonts are bundled.
 
-Each of the ten illustrations appears only on its first story spread. The other nine spreads divide complete dialogue paragraphs between the left and right leaves, preserving speaker and reading order. On narrow screens the two leaves flow vertically. The text-only routes apply the same first-occurrence rule. Keyboard arrows, contents, sound, spoiler consent and saved progress are preserved; reduced motion skips the curl.
+Each of the ten illustrations appears only on its first story spread. The other nine spreads divide complete dialogue paragraphs between the left and right leaves, preserving speaker and reading order. On narrow screens the two leaves flow vertically. The text-only routes apply the same first-occurrence rule. Tap the left/right page (or the left/right half on mobile) to navigate; vertical scrolling does not turn pages. Keyboard arrows, contents, sound, spoiler consent and saved progress are preserved; reduced motion skips the curl.
 
 Created 2026-09-22. Courtyard artwork uses the built-in image_gen tool with game illustrations and sprites as references. Active web assets are courtyard-day-v2.webp and courtyard-night-v2.webp (1536 × 1024); see the revision notes below. Generated PNG originals remain in the Codex generated_images directory.
 
@@ -68,3 +68,9 @@ Create a finished wide 1536x1024 storybook pixel-art illustration for the Tiny D
 
 ## Night illustration prompt
 Edit the supplied Tiny Defense castle courtyard image into its NIGHT version for an exact aligned website day/night crossfade. Preserve ALL architecture, object positions, perspective, crop, book, table, axe, tree, soldiers, fire, and lanterns exactly. Change ONLY lighting, sky, atmosphere: deep navy and indigo moonlit sky with delicate stars, cool blue shadows over the courtyard and forest, warm amber luminous lanterns/windows and campfire, soft moonlight tracing slate roofs and stone walls. The blue leather book is still visible from lantern light. Magical quiet nighttime sanctuary, distant forest a little mysterious, never horror. Preserve the detailed pixel-textured storybook art. No words, no UI, no new foreground objects. 1536x1024 landscape, composition matches reference perfectly.
+
+## Mobile layout and font
+
+Do Hyeon is exported losslessly to WOFF2 from the game's Fonts/DoHyeon.ttf. The original SIL OFL license is included at ../fonts/DoHyeon-OFL.txt. The website serves the font locally; Japanese glyphs use the existing system fallback.
+
+The mobile reader keeps its toolbar and navigation visible while the book contents scroll independently. Browser layout checks covered 360×740, 390×844, 430×932 and 844×390. Horizontal overflow was absent at those sizes; left/right taps and the loaded font were checked in the browser. This is responsive browser QA, not a claim of testing physical iOS/Android hardware.

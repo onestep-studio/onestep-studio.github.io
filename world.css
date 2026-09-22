@@ -266,3 +266,74 @@ body:has(.story-reader[open]) .world * { animation-play-state:paused !important;
  .book-arriving .book-spread,.book-arriving .book-left { opacity:1; }
  .arrival-cover,.arrival-leaf { display:none; }
 }
+
+/* Match the game's typeface, including book text and its cover. */
+.world h1,.invitation-copy h2,.book-page h3,.story-lines,
+.story-lines .speaker,.story-text-page h1,.story-text-page h2,
+.arrival-cover span,.art-chapter b,.folio { font-family:var(--game-font); font-weight:400; font-style:normal; }
+.story-lines { line-height:1.8; }
+.story-lines .speaker { font-size:14px; letter-spacing:.02em; }
+.reader-pages { min-width:0; }
+@media(max-width:699px) {
+ .story-reader { height:100dvh; overflow:hidden; padding:max(8px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(6px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left)); }
+ .reader-shell { display:flex; flex-direction:column; height:100%; min-height:0; }
+ .reader-toolbar { position:relative; top:auto; flex-shrink:0; padding:4px 0 10px; gap:8px; }
+ .reader-toolbar>div:first-child { min-width:0; flex:1; }
+ .reader-toolbar h2 { font-size:16px; line-height:1.3; overflow-wrap:anywhere; }
+ .reader-kicker { font-size:10px; letter-spacing:.04em; }
+ .reader-actions { flex-shrink:0; gap:4px; }
+ .reader-actions button { min-width:44px; min-height:44px; font-size:14px; padding:8px; }
+ .reader-pages { min-height:0; flex:1; overflow-y:auto; overscroll-behavior:contain; padding:2px 2px 20px; scrollbar-width:thin; }
+ .book-arriving .reader-pages { overflow:visible; }
+ .book-illustration { height:clamp(170px,28dvh,245px); }
+ .book-page { padding:22px 22px 40px; }
+ .book-page h3 { font-size:26px; margin-bottom:18px; line-height:1.4; }
+ .story-lines { font-size:18px; line-height:1.75; }
+ .story-lines p { margin-bottom:20px; }
+ .page-eyebrow { font-size:11px; letter-spacing:.07em; }
+ .reader-footer { position:relative; bottom:auto; flex-shrink:0; margin:0; padding:10px 0 4px; background:#08151f; gap:8px; }
+ .reader-footer button { min-height:46px; font-size:15px; padding:8px 14px; }
+ .page-progress { font-size:13px; }
+ .reader-settings { flex-shrink:0; padding:4px 2px 0; font-size:14px; gap:12px; }
+ .reader-settings input { min-height:32px; }
+ .story-contents { flex-shrink:0; max-height:32dvh; margin-bottom:10px; padding:6px; gap:3px; }
+ .story-contents button { min-height:44px; padding:8px; line-height:1.45; }
+ .book-gesture-hint { font-size:13px; }
+ .arrival-cover,.arrival-leaf { max-height:calc(100dvh - 155px); }
+ .world-controls { flex-wrap:wrap; }
+ .world h1 { font-size:32px; }
+ .world-intro { font-size:16px; }
+ .marker-point { width:44px; height:44px; }
+ .marker-label { font-size:14px; }
+ .world-bottom a span { font-size:14px; }
+ .world-caption { font-size:14px; }
+ .world-place { font-size:11px; }
+}
+@media(max-width:374px) {
+ .reader-toolbar h2 { font-size:14px; }
+ .reader-kicker { font-size:9px; }
+ .book-page { padding-inline:18px; }
+ .reader-settings input { width:75px; }
+}
+@media(max-height:500px) and (min-width:700px) {
+ .story-reader { height:100dvh; overflow:hidden; padding:6px max(16px,env(safe-area-inset-right)) 6px max(16px,env(safe-area-inset-left)); }
+ .reader-shell { height:100%; display:flex; flex-direction:column; min-height:0; }
+ .reader-toolbar { flex-shrink:0; padding-bottom:6px; }
+ .reader-toolbar h2 { font-size:14px; }
+ .reader-actions button { min-height:44px; }
+ .reader-pages { flex:1; min-height:0; overflow-y:auto; padding:2px 2px 18px; overscroll-behavior:contain; }
+ .book-arriving .reader-pages { overflow:visible; }
+ .reader-footer { flex-shrink:0; margin-top:4px; }
+ .reader-footer button { min-height:40px; padding:6px 16px; }
+ .reader-settings { flex-shrink:0; padding:0; }
+ .reader-settings input { min-height:26px; }
+ .book-gesture-hint { display:none; }
+ .story-contents { flex-shrink:0; max-height:25dvh; margin-bottom:4px; }
+ .book-spread { min-height:360px; }
+ .book-illustration { min-height:360px; }
+ .book-page { padding:24px 28px 45px; }
+ .story-lines { font-size:16px; }
+}
+
+.book-spread { cursor:pointer; }
+.book-spread button,.book-spread a,.book-spread input { cursor:auto; }

@@ -71,9 +71,10 @@
       ]
     }
   </script>
-  <link rel="stylesheet" href="/world.css?v=world-6">
+  <link rel="stylesheet" href="/world.css?v=world-7">
   <script defer src="/book-turn.js?v=2"></script>
-  <script defer src="/world.js?v=world-6"></script>
+  <script defer src="/world.js?v=world-7"></script>
+<link rel="preload" href="/assets/fonts/DoHyeon.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body class="home-page">
   <a class="skip-link" href="#main">본문 바로가기</a>
@@ -140,11 +141,13 @@
       <div class="reader-shell">
         <header class="reader-toolbar"><div><span class="reader-kicker">TINY DEFENSE / CHAPTER 01</span><h2 id="reader-title">돌아올 성</h2></div><div class="reader-actions"><button type="button" class="reader-sound" data-sound aria-pressed="false">♫ <span>소리 켜기</span></button><button type="button" data-contents aria-expanded="false" aria-controls="story-contents">목차</button><button type="button" data-close-story aria-label="책 덮기">✕</button></div></header>
         <nav class="story-contents" id="story-contents" aria-label="목차" hidden></nav>
+        <div class="reader-pages" data-reader-pages>
         <div class="book-spread" data-book-spread>
           <div class="book-left" data-book-left><div class="book-illustration"><img data-story-art src="/assets/world/prologue.webp" alt=""><div class="story-art-shade"></div><span class="art-chapter">CHAPTER <b>01</b></span></div><article class="book-page left-page" data-left-page hidden><p class="page-eyebrow" data-left-kicker></p><h3 data-left-title></h3><div class="story-lines" data-left-lines></div></article><span class="folio" data-folio-left></span></div>
           <article class="book-page" data-book-page tabindex="-1"><p class="page-eyebrow" data-page-kicker></p><h3 data-page-title></h3><div class="story-lines" data-story-lines></div><div class="story-gate" data-story-gate hidden></div><div class="page-ornament" aria-hidden="true">✦</div><span class="folio" data-folio-right></span></article>
         </div>
-        <p class="book-gesture-hint">페이지 가장자리를 끌거나 화살표로 넘겨 보세요.</p>
+        <p class="book-gesture-hint">왼쪽을 누르면 이전 장, 오른쪽을 누르면 다음 장.</p>
+        </div>
         <footer class="reader-footer"><button type="button" data-story-prev>← <span>이전 장</span></button><span class="page-progress" data-page-progress role="status" aria-live="polite"></span><button type="button" data-story-next><span>다음 장</span> →</button></footer>
         <div class="reader-settings"><label>♫ 음량 <input data-volume aria-label="음량" type="range" min="0" max="100" value="35"></label><a href="/story/">글로 읽기</a></div>
       </div>

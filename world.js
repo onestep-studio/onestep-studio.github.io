@@ -23,7 +23,7 @@
   const storageKey = 'tiny-defense-storybook-v1';
   let story, loading, index = 0, allowed = false, pending = 2, showingGate = false, turning = false;
   let lastTrigger, paused = reduce.matches, enabled = false, volume = .35, fadeFrame = 0, audioEpoch = 0;
-  let openEpoch = 0, activeTurn = null, drag = null, entrance = null, opening = false;
+  let openEpoch = 0, activeTurn = null, entrance = null, opening = false;
   const paper = window.StoryPaper;
   let saved = null;
   try { saved = JSON.parse(localStorage.getItem(storageKey)); } catch { /* Private browsing/storage disabled. */ }
@@ -251,7 +251,7 @@
     if (reduce.matches || matchMedia('(max-width:699px)').matches) {
       index=target; render(); effect(`page-${1+(target%3)}`);
       if (!reduce.matches) spread.animate([{opacity:.35},{opacity:1}], {duration:220});
-      page.focus({preventScroll:true}); dialog.scrollTop=0; return;
+      page.focus({preventScroll:true}); dialog.scrollTop=0; $('[data-reader-pages]').scrollTop=0; return;
     }
     if (showingGate) render(false);
     beginTurn(target); settleTurn(target, true);
@@ -338,7 +338,7 @@
       if (!dialog.open || epoch !== openEpoch) return;
       allowed=Boolean(resume && saved?.full);
       index=resume && saved ? Math.min(saved.page,allowed ? story.pages.length-1 : 1) : 0;
-      render(); dialog.scrollTop=0;
+      render(); dialog.scrollTop=0; $('[data-reader-pages]').scrollTop=0;
       if (opening) await enterFromMap(origin);
       if (!dialog.open || epoch !== openEpoch) return;
       opening=false; dialog.classList.remove('book-arriving','arrival-ready'); $('[data-close-story]').focus();
@@ -353,7 +353,7 @@
   dialog.addEventListener('close', () => {
     ++openEpoch;
     entrance?.cancel(); opening=false; dialog.classList.remove('book-arriving','arrival-ready');
-    activeTurn?.dispose(); activeTurn = null; drag = null; turning = false;
+    activeTurn?.dispose(); activeTurn = null; turning = false;
     effect('book-close'); syncMusic(); contentsState(false);
     lastTrigger?.focus({preventScroll:true});
   });
@@ -372,45 +372,22 @@
     if(event.key==='ArrowRight') { event.preventDefault(); navigate(index+1); }
     if(event.key==='ArrowLeft') { event.preventDefault(); navigate(index-1); }
   });
+  let tapStart = null;
   spread.addEventListener('pointerdown', event => {
-    if (!story || turning || opening || showingGate || !contents.hidden || event.button !== 0 || event.target.closest('button,a,input')) return;
-    const rect = spread.getBoundingClientRect(), x = event.clientX - rect.left;
-    // Start at the outside edge, leaving dialogue selectable and vertical scrolling native.
-    if (x > rect.width * .22 && x < rect.width * .78) return;
-    const direction = x > rect.width / 2 ? 1 : -1;
-    const target = index + direction;
-    if (target < 0 || target >= story.pages.length) return;
-    drag = { id:event.pointerId, x:event.clientX, y:event.clientY, direction, target, width:rect.width / 2, started:false, progress:0, lastX:event.clientX, time:performance.now(), velocity:0 };
+    tapStart = {x:event.clientX,y:event.clientY,scroll:$('[data-reader-pages]').scrollTop};
+  },{passive:true});
+  spread.addEventListener('pointercancel', () => { tapStart=null; });
+  spread.addEventListener('click', event => {
+    if (!story || turning || opening || showingGate || !contents.hidden || event.target.closest('button,a,input')) return;
+    const start=tapStart; tapStart=null;
+    if (start && (Math.hypot(event.clientX-start.x,event.clientY-start.y)>12 || Math.abs($('[data-reader-pages]').scrollTop-start.scroll)>8)) return;
+    if (window.getSelection()?.toString()) return;
+    const rect=spread.getBoundingClientRect();
+    navigate(index+(event.clientX < rect.left+rect.width/2 ? -1 : 1));
   });
-  spread.addEventListener('pointermove', event => {
-    if (!drag || event.pointerId !== drag.id) return;
-    const dx = event.clientX-drag.x, dy = event.clientY-drag.y;
-    if (!drag.started) {
-      if (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx)) { drag=null; return; }
-      if (-drag.direction * dx < 10) return;
-      if (drag.target >= 2 && !allowed) { drag=null; spoilerGate(2); return; }
-      drag.started=true; spread.setPointerCapture(event.pointerId);
-      if (!reduce.matches && !matchMedia('(max-width:699px)').matches) beginTurn(drag.target);
-    }
-    const now = performance.now();
-    drag.velocity = -drag.direction * (event.clientX-drag.lastX) / Math.max(1,now-drag.time);
-    drag.lastX=event.clientX; drag.time=now;
-    drag.progress=Math.max(0,Math.min(1,-drag.direction*dx/(drag.width*1.7)));
-    activeTurn?.set(drag.progress);
-  });
-  function releasePage(event) {
-    if (!drag || event.pointerId !== drag.id) return;
-    const current=drag; drag=null;
-    const commit = event.type !== 'pointercancel' && (current.progress > .25 || (current.progress > .04 && current.velocity > .45 && performance.now()-current.time < 100));
-    if (spread.hasPointerCapture(event.pointerId)) spread.releasePointerCapture(event.pointerId);
-    if (activeTurn) settleTurn(current.target,commit);
-    else if (current.started && commit) navigate(current.target);
-  }
-  spread.addEventListener('pointerup',releasePage);
-  spread.addEventListener('pointercancel',releasePage);
   window.addEventListener('resize', () => {
     entrance?.cancel();
     if (!activeTurn) return;
-    activeTurn.dispose(); activeTurn=null; drag=null; turning=false; render(false);
+    activeTurn.dispose(); activeTurn=null; turning=false; render(false);
   });
 })();

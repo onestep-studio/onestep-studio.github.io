@@ -49,11 +49,13 @@ def render(lang, c):
       <div class="reader-shell">
         <header class="reader-toolbar"><div><span class="reader-kicker">TINY DEFENSE / CHAPTER 01</span><h2 id="reader-title">{c['booktitle']}</h2></div><div class="reader-actions"><button type="button" class="reader-sound" data-sound aria-pressed="false">♫ <span>{c['sound']}</span></button><button type="button" data-contents aria-expanded="false" aria-controls="story-contents">{c['contents']}</button><button type="button" data-close-story aria-label="{c['close']}">✕</button></div></header>
         <nav class="story-contents" id="story-contents" aria-label="{c['contents']}" hidden></nav>
+        <div class="reader-pages" data-reader-pages>
         <div class="book-spread" data-book-spread>
           <div class="book-left" data-book-left><div class="book-illustration"><img data-story-art src="/assets/world/prologue.webp" alt=""><div class="story-art-shade"></div><span class="art-chapter">CHAPTER <b>01</b></span></div><article class="book-page left-page" data-left-page hidden><p class="page-eyebrow" data-left-kicker></p><h3 data-left-title></h3><div class="story-lines" data-left-lines></div></article><span class="folio" data-folio-left></span></div>
           <article class="book-page" data-book-page tabindex="-1"><p class="page-eyebrow" data-page-kicker></p><h3 data-page-title></h3><div class="story-lines" data-story-lines></div><div class="story-gate" data-story-gate hidden></div><div class="page-ornament" aria-hidden="true">✦</div><span class="folio" data-folio-right></span></article>
         </div>
-        <p class="book-gesture-hint">{ {'ko':'페이지 가장자리를 끌거나 화살표로 넘겨 보세요.', 'en':'Drag a page edge or use the arrows to turn.', 'ja':'ページの端をドラッグするか、矢印でめくれます。'}[lang] }</p>
+        <p class="book-gesture-hint">{ {'ko':'왼쪽을 누르면 이전 장, 오른쪽을 누르면 다음 장.', 'en':'Tap left to go back, right to turn the page.', 'ja':'左をタップで前へ、右をタップで次へ。'}[lang] }</p>
+        </div>
         <footer class="reader-footer"><button type="button" data-story-prev>← <span>{c['prev']}</span></button><span class="page-progress" data-page-progress role="status" aria-live="polite"></span><button type="button" data-story-next><span>{c['next']}</span> →</button></footer>
         <div class="reader-settings"><label>♫ {c['volume']} <input data-volume aria-label="{c['volume']}" type="range" min="0" max="100" value="35"></label><a href="{base}/story/">{c['read']}</a></div>
       </div>
@@ -78,10 +80,13 @@ def main():
         text=text.replace('as="image" href="/assets/onestep-logo.webp"','as="image" href="/assets/world/courtyard-day.webp"')
         text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-v2.webp')
         text=text.replace('/world.css?v=world-1','/world.css?v=world-2').replace('/world.js?v=world-1','/world.js?v=world-2')
-        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-6', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-7', text)
         if '/book-turn.js' not in text:
             text=text.replace('<script defer src="/world.js', '<script defer src="/book-turn.js?v=2"></script>\n  <script defer src="/world.js')
         text=text.replace('/book-turn.js?v=1','/book-turn.js?v=2')
+        if '/assets/fonts/DoHyeon.woff2' not in text:
+            text=text.replace('</head>', '<link rel="preload" href="/assets/fonts/DoHyeon.woff2" as="font" type="font/woff2" crossorigin>\n</head>')
+        text=text.replace('/styles.css"','/styles.css?v=font-1"')
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''
@@ -100,7 +105,7 @@ def main():
         prefix='' if lang=='ko' else '/'+lang
         route=base/'story'
         route.mkdir(exist_ok=True)
-        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/world.css?v=world-6"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
+        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=font-1"><link rel="stylesheet" href="/world.css?v=world-7"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
         game=base/'games/tiny-defense/index.html'
         html=game.read_text(encoding='utf-8')
         if '#storybook' not in html:
