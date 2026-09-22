@@ -28,6 +28,7 @@ def export(game, sounds):
         im.thumbnail((1100, 1500))
         im.save(out / f'{name}.webp', quality=86)
     Image.open(game/'Assets/Resources/TinyDefense/Units/Characters/GathererBoy/PawnRun.png').save(out/'resident-run.webp',lossless=True)
+    Image.open(game/'Assets/Resources/TinyDefense/Units/Characters/LancerIdle.png').save(out/'lancer-idle.webp',lossless=True)
     source = game / 'Assets/Scripts/TinyDefense'
     def table(file):
         text = (source / file).read_text(encoding='utf-8-sig')
@@ -49,7 +50,7 @@ def export(game, sounds):
     (out / 'story.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     audio = out / 'audio'
     audio.mkdir(exist_ok=True)
-    files = {'day':sounds/'AI Custom/hopeful_daylight.mp3',
+    files = {'night':game/'Assets/Resources/TinyDefense/Audio/bgm_nemesis_night.ogg',
              'story':sounds/'Kevin MacLeod/The Path of the Goblin King.mp3',
              'book-open':sounds/'Kenney/rpg-audio/Audio/bookOpen.ogg',
              'book-close':sounds/'Kenney/rpg-audio/Audio/bookClose.ogg',
@@ -58,7 +59,7 @@ def export(game, sounds):
              'page-3':sounds/'Kenney/rpg-audio/Audio/bookFlip3.ogg'}
     for name, src in files.items():
         subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(src),
-                        '-af','loudnorm=I=-23:TP=-3:LRA=11' if name in ('day','story') else 'volume=0.5',
+                        '-af',('volume=-8.3dB' if name=='night' else 'loudnorm=I=-23:TP=-3:LRA=11' if name=='story' else 'volume=0.5'),
                         '-ar','44100','-codec:a','libmp3lame','-b:a','128k',str(audio/f'{name}.mp3')],check=True)
     print(f'Exported {len(mapping)} illustrations, 3 story languages, {len(files)} audio files.')
 

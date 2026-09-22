@@ -56,7 +56,7 @@
     const epoch = ++audioEpoch;
     if (!enabled || document.hidden) { stopAudio(); return; }
     if (!music) {
-      music = Object.fromEntries(Object.entries({ day:'/assets/world/audio/day.mp3', night:'/assets/audio/lobby-theme.mp3', story:'/assets/world/audio/story.mp3' }).map(([key,src]) => {
+      music = Object.fromEntries(Object.entries({ day:'/assets/audio/lobby-theme.mp3', night:'/assets/world/audio/night.mp3', story:'/assets/world/audio/story.mp3' }).map(([key,src]) => {
         const audio = new Audio(); audio.preload = 'none'; audio.loop = true; audio.volume = 0; audio.src = src;
         return [key,audio];
       }));
@@ -116,6 +116,22 @@
   motionState();
   soundLabels();
   $('[data-world-controls]').hidden = false;
+  // Match the image's cover crop so the actual game sprites stay beside the gate
+  // at every aspect ratio, including the narrower mobile crop.
+  const landscape = $('.world-landscape');
+  const actors = $('.courtyard-actors');
+  function fitActors() {
+    const width=landscape.clientWidth, height=landscape.clientHeight;
+    const scale=Math.max(width/1536,height/1024);
+    const [px,py]=getComputedStyle($('.courtyard-day')).objectPosition.split(' ').map(parseFloat);
+    Object.assign(actors.style,{
+      width:`${1536*scale}px`,height:`${1024*scale}px`,
+      left:`${(width-1536*scale)*px/100}px`,top:`${(height-1024*scale)*py/100}px`
+    });
+    actors.hidden=false;
+  }
+  fitActors();
+  new ResizeObserver(fitActors).observe(landscape);
 
   function remember() {
     saved = {page:index, full:allowed};

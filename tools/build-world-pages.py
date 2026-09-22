@@ -26,8 +26,9 @@ def render(lang, c):
       </div>
       <div class="world-stage">
         <div class="world-landscape">
-          <img class="courtyard courtyard-day" src="/assets/world/courtyard-day.webp" width="1536" height="1024" alt="{c['intro']}" fetchpriority="high">
-          <img class="courtyard courtyard-night" src="/assets/world/courtyard-night.webp" width="1536" height="1024" alt="" loading="lazy">
+          <img class="courtyard courtyard-day" src="/assets/world/courtyard-day-v2.webp" width="1536" height="1024" alt="{c['intro']}" fetchpriority="high">
+          <img class="courtyard courtyard-night" src="/assets/world/courtyard-night-v2.webp" width="1536" height="1024" alt="" loading="lazy">
+          <div class="courtyard-actors" aria-hidden="true" hidden><div class="gate-guard guard-left"><div class="lancer-sprite"></div></div><div class="gate-guard guard-right"><div class="lancer-sprite"></div></div></div>
           <div class="world-dust" aria-hidden="true"></div><div class="fire-glow" aria-hidden="true"></div><div class="lantern-glow" aria-hidden="true"></div>
           <div class="courtyard-resident" aria-hidden="true"><div class="resident-sprite"></div></div>
           <div class="world-motes" aria-hidden="true">{''.join(f'<i style="--i:{i}"></i>' for i in range(14))}</div>
@@ -57,7 +58,7 @@ def render(lang, c):
         <div class="reader-settings"><label>♫ {c['volume']} <input data-volume aria-label="{c['volume']}" type="range" min="0" max="100" value="35"></label><a href="{base}/story/">{c['read']}</a></div>
       </div>
     </dialog>
-    <details class="world-credits"><summary>{c['credits']}</summary><p>“The Path of the Goblin King” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100873">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Web version: re-encoded, loudness adjusted.<br>Book sounds — <a href="https://kenney.nl/assets/rpg-audio">Kenney RPG Audio</a>, CC0.<br>“Hopeful Daylight” / “Secret of Beautiful Forest” — OneStep Studio. Illustrations — Tiny Defense / OneStep Studio. Courtyard art — AI-generated for OneStep Studio.</p></details>
+    <details class="world-credits"><summary>{c['credits']}</summary><p>“The Path of the Goblin King” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100873">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.<br>“Crossing the Chasm” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700026">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Web versions: re-encoded, loudness adjusted.<br>Book sounds — <a href="https://kenney.nl/assets/rpg-audio">Kenney RPG Audio</a>, CC0.<br>“Secret of Beautiful Forest” — OneStep Studio. Illustrations and characters — Tiny Defense / OneStep Studio. Courtyard art — AI-generated for OneStep Studio.</p></details>
     <!-- WORLD EXPERIENCE END -->'''
 
 def main():
@@ -75,6 +76,8 @@ def main():
             text=text.replace('</head>','  <link rel="stylesheet" href="/world.css?v=world-1">\n  <script defer src="/world.js?v=world-1"></script>\n</head>')
         text=text.replace('content="#f9f8f3"','content="#0b1720"').replace('content="light"','content="dark light"')
         text=text.replace('as="image" href="/assets/onestep-logo.webp"','as="image" href="/assets/world/courtyard-day.webp"')
+        text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-v2.webp')
+        text=text.replace('/world.css?v=world-1','/world.css?v=world-2').replace('/world.js?v=world-1','/world.js?v=world-2')
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''

@@ -37,7 +37,7 @@ test('all local homepage/story references exist, including the no-JavaScript rea
 });
 
 test('every authored audio source exists and no homepage starts audible media automatically', () => {
-  for (const file of ['day','story','book-open','book-close','page-1','page-2','page-3']) {
+  for (const file of ['night','story','book-open','book-close','page-1','page-2','page-3']) {
     assert.ok(fs.statSync(path.join(root,`assets/world/audio/${file}.mp3`)).size>1000);
   }
   for (const lang of ['','en/','ja/']) {
@@ -45,5 +45,17 @@ test('every authored audio source exists and no homepage starts audible media au
     assert.doesNotMatch(html,/<audio[^>]*autoplay/);
     assert.match(html,/incompetech\.com/);
     assert.match(html,/creativecommons\.org\/licenses\/by\/4\.0/);
+  }
+});
+
+test('courtyard day uses the game lobby track and night uses the current battle track', () => {
+  const script=fs.readFileSync(path.join(root,'world.js'),'utf8');
+  assert.match(script,/day:'\/assets\/audio\/lobby-theme\.mp3'/);
+  assert.match(script,/night:'\/assets\/world\/audio\/night\.mp3'/);
+  for (const lang of ['','en/','ja/']) {
+    const html=fs.readFileSync(path.join(root,lang,'index.html'),'utf8');
+    assert.match(html,/Crossing the Chasm/);
+    assert.match(html,/USUAN1700026/);
+    assert.doesNotMatch(html,/courtyard-(?:day|night)\.webp/);
   }
 });
