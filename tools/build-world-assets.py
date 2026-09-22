@@ -11,43 +11,56 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 
-def export(game, sounds):
+def export(game, sounds, story_only=False):
     out = ROOT / 'assets/world'
     out.mkdir(parents=True, exist_ok=True)
     ui = game / 'Assets/Resources/TinyDefense/UI'
     mapping = {
         'prologue': 'Prologue/prologue_panel_1.png',
-        'supplies': 'Prologue/prologue_panel_4.png',
-        'troll': 'Prologue/prologue_panel_3.png',
-        'spring': 'Ascension/season_gate_discovery.png',
-        'routes': 'Story/story_routes.png',
-        'home': 'Story/story_home.png',
     }
+    source = game / 'Assets/Scripts/TinyDefense'
+    sequence = (source / 'StorySequence.cs').read_text(encoding='utf-8-sig')
+    def array(name):
+        match = re.search(r'\b' + name + r'\s*=\s*\{(.*?)\};', sequence, re.S)
+        if not match:
+            raise ValueError(f'Missing story array: {name}')
+        return match.group(1)
+    ids = re.findall(r'"([^"]+)"', array('Chapters'))
+    art_paths = re.findall(r'"UI/([^"]+)"', array('Art'))
+    voices = [list(map(int, re.findall(r'\d+', row))) for row in re.findall(r'new\[\]\s*\{([^}]+)\}', array('Speakers'))]
+    if not ids or len(ids) != len(art_paths) or len(ids) != len(voices):
+        raise ValueError('Story scene, art and speaker arrays do not match')
+    arts = []
+    for path in art_paths:
+        name = 'prologue' if path == 'Prologue/prologue_panel_1' else Path(path).name.removeprefix('story_')
+        mapping[name] = path + '.png'
+        arts.append(name)
     for name, path in mapping.items():
         im = Image.open(ui / path).convert('RGB')
         im.thumbnail((1100, 1500))
         im.save(out / f'{name}.webp', quality=86)
     Image.open(game/'Assets/Resources/TinyDefense/Units/Characters/GathererBoy/PawnRun.png').save(out/'resident-run.webp',lossless=True)
     Image.open(game/'Assets/Resources/TinyDefense/Units/Characters/LancerIdle.png').save(out/'lancer-idle.webp',lossless=True)
-    source = game / 'Assets/Scripts/TinyDefense'
     def table(file):
         text = (source / file).read_text(encoding='utf-8-sig')
         pattern = r'\["([^"]+)"\]\s*=\s*new\[\]\s*\{\s*((?:"(?:[^"\\]|\\.)*"\s*,?\s*)+)\}'
         return {k: json.loads('[' + v.rstrip().rstrip(',') + ']') for k, v in re.findall(pattern, text)}
     strings = table('Loc.Story.cs')
     prologue = table('Loc.Season.cs')
-    ids = ['supplies', 'ring', 'troll', 'spring', 'summer', 'autumn', 'winter', 'home']
-    voices = [[0,1,2,2,1], [1,2,2], [0,1,2], [1,2,1], [0,2,1], [0,2,1], [0,2,1], [0,1,2,0]]
-    arts = ['supplies', 'supplies', 'troll', 'spring', 'routes', 'routes', 'routes', 'home']
     data = {}
     for lang, col in [('ko',0), ('en',1), ('ja',3)]:
-        pages = [{'id':'prologue', 'art':'prologue', 'title':{'ko':'봉인 위에 세운 성', 'en':'A Castle Above the Seal', 'ja':'封印の上に築いた城'}[lang],
+        pages = [{'id':'prologue', 'chapter':1, 'scene':0, 'art':'prologue', 'title':{'ko':'봉인 위에 세운 성', 'en':'A Castle Above the Seal', 'ja':'封印の上に築いた城'}[lang],
                   'lines':[{'speaker':0,'text':prologue[f'prologue.cut{i}'][col]} for i in [1,2]]}]
         for ident, speakers, art in zip(ids, voices, arts):
-            pages.append({'id':ident, 'art':art, 'title':strings[f'story.{ident}.title'][col],
+            chapter = int(ident[2]) if re.match(r'ch\d\.', ident) else 1
+            scene = 1 + sum(p['chapter'] == chapter and p['id'] != 'prologue' for p in pages)
+            pages.append({'id':ident, 'chapter':chapter, 'scene':scene, 'art':art, 'title':strings[f'story.{ident}.title'][col],
                           'lines':[{'speaker':speaker, 'text':strings[f'story.{ident}.{n}'][col]} for n,speaker in enumerate(speakers)]})
         data[lang] = {'title':strings['story.title'][col], 'boy':strings['story.boy'][col], 'pages':pages}
     (out / 'story.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    if story_only:
+        print(f'Exported {len(mapping)} illustrations and {len(pages)} spreads in 3 languages.')
+        return
     audio = out / 'audio'
     audio.mkdir(exist_ok=True)
     files = {'night':game/'Assets/Resources/TinyDefense/Audio/bgm_nemesis_night.ogg',
@@ -67,5 +80,6 @@ if __name__ == '__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--game-root',type=Path,required=True)
     parser.add_argument('--sound-root',type=Path,required=True)
+    parser.add_argument('--story-only',action='store_true',help='Refresh story art/text without re-encoding audio')
     args=parser.parse_args()
-    export(args.game_root,args.sound_root)
+    export(args.game_root,args.sound_root,args.story_only)

@@ -4,11 +4,15 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const data = JSON.parse(fs.readFileSync(path.join(root,'assets/world/story.json'),'utf8'));
-const ids = ['prologue','supplies','ring','troll','spring','summer','autumn','winter','home'];
+const ids = ['prologue','supplies','ring','troll','spring','summer','autumn','winter','home',
+  'ch2.return','ch2.rift','ch2.heroes','ch2.castle','ch2.seal',
+  'ch3.master','ch3.glory','ch3.breach','ch3.sword','ch3.watch'];
 
-test('Chapter 1 has all nine ordered spreads and the same speakers in every site language', () => {
+test('all three chapters retain scene order, dedicated art and translated dialogue', () => {
   for (const lang of ['ko','en','ja']) {
     assert.deepEqual(data[lang].pages.map(p=>p.id),ids);
+    assert.deepEqual(data[lang].pages.map(p=>p.chapter),[...Array(9).fill(1),...Array(5).fill(2),...Array(5).fill(3)]);
+    assert.deepEqual(data[lang].pages.slice(1,9).map(p=>p.art),ids.slice(1,9));
     assert.deepEqual(data[lang].pages.map(p=>p.lines.map(l=>l.speaker)),data.ko.pages.map(p=>p.lines.map(l=>l.speaker)));
     for (const page of data[lang].pages) {
       assert.ok(page.title.trim());
@@ -17,7 +21,9 @@ test('Chapter 1 has all nine ordered spreads and the same speakers in every site
     }
   }
   assert.equal(data.ko.pages[1].lines.length,5,'include the two latest supplies lines from the game');
-  assert.equal(data.ko.pages.at(-1).lines[2].text,'오늘은 쉬어도 된단다.');
+  assert.equal(data.ko.pages[8].lines[2].text,'오늘은 쉬어도 된단다.');
+  assert.deepEqual(data.ko.pages[2].lines.map(l=>l.speaker),[1,2,1,2,2]);
+  assert.equal(data.ko.pages.at(-1).lines[2].text,'그래. 네게 검 한 자루와 끝없는 밤만 물려줄 수는 없지. 내일도 함께 성문을 열자꾸나.');
 });
 
 test('all local homepage/story references exist, including the no-JavaScript reading route', () => {

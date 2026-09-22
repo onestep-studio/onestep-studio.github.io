@@ -6,9 +6,9 @@ from html import escape
 
 ROOT = Path(__file__).resolve().parents[1]
 COPY = {
- 'ko': dict(kicker='TINY DEFENSE · 작은 세계로의 초대',title='잠시, 성 안에 머물러요.',intro='숲에서 나무를 모으고, 밤에는 함께 성을 지키는 곳.',day='낮',night='밤',sound='소리 켜기',motion='움직임 멈추기',book='이야기 읽기',forest='도끼질 체험',gate='게임 만나기',hint='빛나는 표식을 눌러 둘러보세요.',chapter='CHAPTER 01',booktitle='돌아올 성',bookdesc='소년과 노인, 그리고 돌아갈 곳을 지키는 사람들의 이야기.',open='책 펼치기',resume='이어서 읽기',close='책 덮기',contents='목차',prev='이전 장',next='다음 장',volume='음량',credits='음악과 리소스',home='성 안으로',old='노인',read='글로 읽기'),
- 'en': dict(kicker='TINY DEFENSE · A SMALL WORLD AWAITS',title='Stay a while, within the walls.',intro='Gather wood in the forest. Stand together when night falls.',day='Day',night='Night',sound='Sound on',motion='Pause motion',book='Read the story',forest='Try woodcutting',gate='Discover the game',hint='Follow the glowing markers to explore.',chapter='CHAPTER 01',booktitle='A Castle to Come Home To',bookdesc='A boy, an old man, and the people who keep a home worth returning to.',open='Open the book',resume='Continue reading',close='Close book',contents='Contents',prev='Previous page',next='Next page',volume='Volume',credits='Music & assets',home='Courtyard',old='Old man',read='Read as text'),
- 'ja': dict(kicker='TINY DEFENSE · 小さな世界へ',title='城の中で、ひと休み。',intro='森で木を集め、夜にはみんなで城を守る場所。',day='昼',night='夜',sound='音をオン',motion='動きを止める',book='物語を読む',forest='薪割り体験',gate='ゲームを見る',hint='光る目印を押して、城を巡ってみましょう。',chapter='CHAPTER 01',booktitle='帰る場所',bookdesc='少年と老人、そして帰る場所を守る人々の物語。',open='本を開く',resume='続きから読む',close='本を閉じる',contents='目次',prev='前のページ',next='次のページ',volume='音量',credits='音楽と素材',home='城の中へ',old='老人',read='文章で読む'),
+ 'ko': dict(kicker='TINY DEFENSE · 작은 세계로의 초대',title='잠시, 성 안에 머물러요.',intro='숲에서 나무를 모으고, 밤에는 함께 성을 지키는 곳.',day='낮',night='밤',sound='소리 켜기',motion='움직임 멈추기',book='이야기 읽기',forest='도끼질 체험',gate='게임 만나기',hint='빛나는 표식을 눌러 둘러보세요.',chapter='CHAPTER 01–03',booktitle='돌아올 성',bookdesc='소년과 노인, 그리고 돌아갈 곳을 지키는 사람들의 이야기.',open='책 펼치기',resume='이어서 읽기',close='책 덮기',contents='목차',prev='이전 장',next='다음 장',volume='음량',credits='음악과 리소스',home='성 안으로',old='노인',read='글로 읽기'),
+ 'en': dict(kicker='TINY DEFENSE · A SMALL WORLD AWAITS',title='Stay a while, within the walls.',intro='Gather wood in the forest. Stand together when night falls.',day='Day',night='Night',sound='Sound on',motion='Pause motion',book='Read the story',forest='Try woodcutting',gate='Discover the game',hint='Follow the glowing markers to explore.',chapter='CHAPTER 01–03',booktitle='A Castle to Come Home To',bookdesc='A boy, an old man, and the people who keep a home worth returning to.',open='Open the book',resume='Continue reading',close='Close book',contents='Contents',prev='Previous page',next='Next page',volume='Volume',credits='Music & assets',home='Courtyard',old='Old man',read='Read as text'),
+ 'ja': dict(kicker='TINY DEFENSE · 小さな世界へ',title='城の中で、ひと休み。',intro='森で木を集め、夜にはみんなで城を守る場所。',day='昼',night='夜',sound='音をオン',motion='動きを止める',book='物語を読む',forest='薪割り体験',gate='ゲームを見る',hint='光る目印を押して、城を巡ってみましょう。',chapter='CHAPTER 01–03',booktitle='帰る場所',bookdesc='少年と老人、そして帰る場所を守る人々の物語。',open='本を開く',resume='続きから読む',close='本を閉じる',contents='目次',prev='前のページ',next='次のページ',volume='音量',credits='音楽と素材',home='城の中へ',old='老人',read='文章で読む'),
 }
 
 def render(lang, c):
@@ -42,7 +42,7 @@ def render(lang, c):
       <p class="world-notice" data-world-notice role="status"></p>
     </section>
     <section class="story-invitation" id="storybook" aria-labelledby="invitation-title">
-      <div class="invitation-art"><img src="/assets/world/supplies.webp" alt="" loading="lazy" width="1024" height="1024"></div>
+      <div class="invitation-art"><img src="/assets/world/supplies.webp?v=story-3" alt="" loading="lazy" width="1024" height="1024"></div>
       <div class="invitation-copy"><p class="world-eyebrow">{c['chapter']} <span aria-hidden="true">—</span> STORYBOOK</p><h2 id="invitation-title">{c['booktitle']}</h2><p>{c['bookdesc']}</p><a class="book-cta" href="{base}/story/" data-open-story>{c['open']} <span aria-hidden="true">↗</span></a><button class="resume-link" data-resume-story hidden>{c['resume']}</button></div>
     </section>
     <dialog class="story-reader" id="story-reader" aria-labelledby="reader-title">
@@ -78,16 +78,21 @@ def main():
         text=text.replace('as="image" href="/assets/onestep-logo.webp"','as="image" href="/assets/world/courtyard-day.webp"')
         text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-v2.webp')
         text=text.replace('/world.css?v=world-1','/world.css?v=world-2').replace('/world.js?v=world-1','/world.js?v=world-2')
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-3', text)
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''
+        chapter = None
         for page in story['pages']:
+            if page['chapter'] != chapter:
+                chapter = page['chapter']
+                content += f'<h2 class="text-chapter">CHAPTER {chapter:02d}</h2>'
             lines=''.join('<p>'+('<strong>'+escape(story['boy'] if line['speaker']==1 else c['old'])+'</strong><br>' if line['speaker'] else '')+escape(line['text'])+'</p>' for line in page['lines'])
-            content+=f'<section><img src="/assets/world/{page["art"]}.webp" alt="" loading="lazy"><div><h2>{escape(page["title"])}</h2>{lines}</div></section>'
+            content+=f'<section><img src="/assets/world/{page["art"]}.webp?v=story-3" alt="" loading="lazy"><div><h2>{escape(page["title"])}</h2>{lines}</div></section>'
         prefix='' if lang=='ko' else '/'+lang
         route=base/'story'
         route.mkdir(exist_ok=True)
-        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/world.css?v=world-1"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/#storybook">← {c['home']}</a><p>CHAPTER 01 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
+        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/world.css?v=world-3"><meta name="robots" content="noindex"></head><body class="story-text-page"><header><a href="{prefix}/#storybook">← {c['home']}</a><p>CHAPTER 01–03 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><main>{content}</main><footer><a href="{prefix}/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
         game=base/'games/tiny-defense/index.html'
         html=game.read_text(encoding='utf-8')
         if '#storybook' not in html:

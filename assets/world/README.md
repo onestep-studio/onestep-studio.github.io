@@ -6,14 +6,16 @@ Created 2026-09-22. Courtyard artwork uses the built-in image_gen tool with game
 
 Exported by tools/build-world-assets.py from C:/OneStep/tiny_defense; source game files are read-only.
 - prologue.webp: UI/Prologue/prologue_panel_1.png
-- supplies.webp: UI/Prologue/prologue_panel_4.png
-- troll.webp: UI/Prologue/prologue_panel_3.png
-- spring.webp: UI/Ascension/season_gate_discovery.png
+- supplies.webp: UI/Story/story_supplies.png
+- troll.webp: UI/Story/story_troll.png
+- spring.webp: UI/Story/story_spring.png
 - routes.webp: UI/Story/story_routes.png
 - home.webp: UI/Story/story_home.png
 - resident-run.webp: Units/Characters/GathererBoy/PawnRun.png (six original frames, lossless WebP). Courtyard resident animation reuses the actual game sprite.
 - story.json: Loc.Story.cs, plus prologue.cut1 / prologue.cut2 from Loc.Season.cs. KO/EN/JA are the actual game translations. All current dialogue lines retained, including supplies.3 and supplies.4.
-- Chapter grouping follows docs/story-chapter-plan.md: Chapter 1 is the eight existing scenes, not eight future chapters. No proposed Chapter 2/3 lore is published.
+- Chapters 1–3 now follow the implemented StorySequence.cs: 8 + 5 + 5 scenes, plus the web prologue (19 spreads). Scene order, illustrations and speakers are imported from its arrays. Ring now includes all five lines.
+- ring/summer/autumn/winter/records.webp: corresponding UI/Story/story_*.png. Chapter 2/3 reuse the same illustrations as the game.
+- Refresh only story content with --story-only to preserve existing audio encodes.
 
 ## Audio provenance and spotting
 

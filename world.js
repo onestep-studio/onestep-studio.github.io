@@ -4,9 +4,9 @@
   if (!world) return;
   const lang = ['ko', 'en', 'ja'].includes(document.documentElement.lang) ? document.documentElement.lang : 'ko';
   const copy = {
-    ko: { on:'소리 켜기', off:'소리 끄기', pause:'움직임 멈추기', move:'움직임 재생', old:'노인', prologue:'프롤로그', scene:'장면', fullTitle:'그다음 이야기도 펼칠까요?', spoiler:'이제부터 챕터 1의 결말까지 이어집니다. 게임에서 직접 만나고 싶다면 여기서 책을 덮어 두세요.', full:'챕터 1 전체 읽기', back:'도입부로 돌아가기', close:'성 안으로', next:'다음 장', loading:'책을 펼치고 있어요…', error:'이야기를 불러오지 못했어요. 다시 시도해 주세요.', retry:'다시 불러오기', audioError:'소리를 재생하지 못했어요. 소리 켜기를 다시 눌러 주세요.', game:'게임에서 여정 이어가기', continue:'이어서 읽기', saved:'읽던 곳을 기억해 둘게요.' },
-    en: { on:'Sound on', off:'Sound off', pause:'Pause motion', move:'Resume motion', old:'Old man', prologue:'Prologue', scene:'Scene', fullTitle:'Turn to the rest of the story?', spoiler:'The following pages include the ending of Chapter 1. Close the book here if you would rather discover it in the game.', full:'Read all of Chapter 1', back:'Back to the opening', close:'Courtyard', next:'Next page', loading:'Opening the book…', error:'The story could not be loaded. Please try again.', retry:'Try again', audioError:'Audio could not start. Select Sound on to try again.', game:'Continue the journey in the game', continue:'Continue reading', saved:'Your place in the book is saved.' },
-    ja: { on:'音をオン', off:'音をオフ', pause:'動きを止める', move:'動きを再開', old:'老人', prologue:'プロローグ', scene:'場面', fullTitle:'物語の続きを開きますか？', spoiler:'この先はチャプター1の結末まで描かれています。ゲームで出会いたい方は、ここで本を閉じてください。', full:'チャプター1をすべて読む', back:'冒頭に戻る', close:'城の中へ', next:'次のページ', loading:'本を開いています…', error:'物語を読み込めませんでした。もう一度お試しください。', retry:'再読み込み', audioError:'音を再生できませんでした。音をオンにして、もう一度お試しください。', game:'ゲームで旅を続ける', continue:'続きから読む', saved:'読んだ場所を覚えておきます。' }
+    ko: { on:'소리 켜기', off:'소리 끄기', pause:'움직임 멈추기', move:'움직임 재생', old:'노인', prologue:'프롤로그', scene:'장면', fullTitle:'그다음 이야기도 펼칠까요?', spoiler:'이제부터 챕터 1–3의 결말까지 이어집니다. 게임에서 직접 만나고 싶다면 여기서 책을 덮어 두세요.', full:'전체 이야기 읽기', back:'도입부로 돌아가기', close:'성 안으로', next:'다음 장', loading:'책을 펼치고 있어요…', error:'이야기를 불러오지 못했어요. 다시 시도해 주세요.', retry:'다시 불러오기', audioError:'소리를 재생하지 못했어요. 소리 켜기를 다시 눌러 주세요.', game:'게임에서 여정 이어가기', continue:'이어서 읽기', saved:'읽던 곳을 기억해 둘게요.' },
+    en: { on:'Sound on', off:'Sound off', pause:'Pause motion', move:'Resume motion', old:'Old man', prologue:'Prologue', scene:'Scene', fullTitle:'Turn to the rest of the story?', spoiler:'The following pages include the endings of Chapters 1–3. Close the book here if you would rather discover it in the game.', full:'Read the full story', back:'Back to the opening', close:'Courtyard', next:'Next page', loading:'Opening the book…', error:'The story could not be loaded. Please try again.', retry:'Try again', audioError:'Audio could not start. Select Sound on to try again.', game:'Continue the journey in the game', continue:'Continue reading', saved:'Your place in the book is saved.' },
+    ja: { on:'音をオン', off:'音をオフ', pause:'動きを止める', move:'動きを再開', old:'老人', prologue:'プロローグ', scene:'場面', fullTitle:'物語の続きを開きますか？', spoiler:'この先はチャプター1〜3の結末まで描かれています。ゲームで出会いたい方は、ここで本を閉じてください。', full:'物語をすべて読む', back:'冒頭に戻る', close:'城の中へ', next:'次のページ', loading:'本を開いています…', error:'物語を読み込めませんでした。もう一度お試しください。', retry:'再読み込み', audioError:'音を再生できませんでした。音をオンにして、もう一度お試しください。', game:'ゲームで旅を続ける', continue:'続きから読む', saved:'読んだ場所を覚えておきます。' }
   }[lang];
   const $ = (selector) => document.querySelector(selector);
   const dialog = $('#story-reader');
@@ -26,7 +26,7 @@
   let openEpoch = 0, renderTimer = 0, turnTimer = 0;
   let saved = null;
   try { saved = JSON.parse(localStorage.getItem(storageKey)); } catch { /* Private browsing/storage disabled. */ }
-  if (saved && (!Number.isInteger(saved.page) || saved.page < 0 || saved.page > 8)) saved = null;
+  if (saved && (!Number.isInteger(saved.page) || saved.page < 0)) saved = null;
   let music = null;
   const effects = new Map();
   const activeEffects = new Set();
@@ -146,7 +146,7 @@
     contents.replaceChildren();
     story.pages.forEach((p,i) => {
       const button = document.createElement('button'); button.type = 'button';
-      button.textContent = `${String(i).padStart(2,'0')}  ${i < 2 || allowed ? p.title : copy.scene+' '+i}`;
+      button.textContent = `${String(p.chapter).padStart(2,'0')}.${String(p.scene).padStart(2,'0')}  ${i < 2 || allowed ? p.title : copy.scene+' '+p.scene}`;
       if (i === index && !showingGate) button.setAttribute('aria-current','page');
       button.addEventListener('click', () => { contentsState(false); navigate(i); });
       contents.append(button);
@@ -163,8 +163,11 @@
     showingGate = false;
     gate.hidden = true; gate.replaceChildren(); lines.hidden = false; lines.replaceChildren();
     title.textContent = data.title;
-    $('[data-page-kicker]').textContent = index === 0 ? copy.prologue : `CHAPTER 01 / ${copy.scene} ${String(index).padStart(2,'0')}`;
-    const art = $('[data-story-art]'); art.src = `/assets/world/${data.art}.webp`;
+    const chapter = String(data.chapter).padStart(2,'0');
+    $('.reader-kicker').textContent = `TINY DEFENSE / CHAPTER ${chapter}`;
+    $('.art-chapter b').textContent = chapter;
+    $('[data-page-kicker]').textContent = index === 0 ? copy.prologue : `CHAPTER ${chapter} / ${copy.scene} ${String(data.scene).padStart(2,'0')}`;
+    const art = $('[data-story-art]'); art.src = `/assets/world/${data.art}.webp?v=story-3`;
     // The narration supplies the illustration's context; avoid repeating it in alt text.
     art.alt = '';
     data.lines.forEach(line => {
@@ -187,18 +190,18 @@
     renderContents(); remember();
     // Cache only the next illustration, never unreached dialogue or audio requests.
     if (index+1 < story.pages.length && (allowed || index < 1)) {
-      const image = new Image(); image.src=`/assets/world/${story.pages[index+1].art}.webp`;
+      const image = new Image(); image.src=`/assets/world/${story.pages[index+1].art}.webp?v=story-3`;
     }
   }
   function spoilerGate(target) {
     pending = target; showingGate=true;
     title.textContent=copy.fullTitle;
-    $('[data-page-kicker]').textContent='CHAPTER 01';
+    $('[data-page-kicker]').textContent='CHAPTER 01–03';
     lines.hidden=true; gate.hidden=false; gate.replaceChildren();
     const p=document.createElement('p'); p.textContent=copy.spoiler; gate.append(p);
     gate.append(makeButton(copy.full, () => { allowed=true; navigate(pending); }));
     gate.append(makeButton(copy.back, () => navigate(1),true));
-    prev.disabled=false; next.disabled=true; progress.textContent=copy.scene+' 02–08';
+    prev.disabled=false; next.disabled=true; progress.textContent=`03 / ${String(story.pages.length).padStart(2,'0')}`;
     page.focus({preventScroll:true});
   }
   function navigate(target) {
@@ -219,7 +222,7 @@
   }
   async function loadStory() {
     if (story) return story;
-    if (!loading) loading=fetch('/assets/world/story.json').then(r => {
+    if (!loading) loading=fetch('/assets/world/story.json?v=story-3').then(r => {
       if (!r.ok) throw new Error('Story HTTP '+r.status);
       return r.json();
     }).then(data => {

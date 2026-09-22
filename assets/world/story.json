@@ -1,10 +1,12 @@
 {
   "ko": {
     "title": "돌아올 성",
-    "boy": "소년",
+    "boy": "폰",
     "pages": [
       {
         "id": "prologue",
+        "chapter": 1,
+        "scene": 0,
         "art": "prologue",
         "title": "봉인 위에 세운 성",
         "lines": [
@@ -20,6 +22,8 @@
       },
       {
         "id": "supplies",
+        "chapter": 1,
+        "scene": 1,
         "art": "supplies",
         "title": "빈 자루의 무게",
         "lines": [
@@ -47,7 +51,9 @@
       },
       {
         "id": "ring",
-        "art": "supplies",
+        "chapter": 1,
+        "scene": 2,
+        "art": "ring",
         "title": "혼자 막지 말거라",
         "lines": [
           {
@@ -56,7 +62,15 @@
           },
           {
             "speaker": 2,
-            "text": "그 힘을 빌릴 수는 있겠지. 그래도 혼자 막으려 들지는 말거라."
+            "text": "영웅의 힘을 빌리는 게지. 네 몸을 맡기는 건 아니란다."
+          },
+          {
+            "speaker": 1,
+            "text": "그럼 영웅이 말을 걸기도 해?"
+          },
+          {
+            "speaker": 2,
+            "text": "그렇단다. 내 검에서도 목소리가 들렸지. 그래도 선택은 네 몫이란다."
           },
           {
             "speaker": 2,
@@ -66,6 +80,8 @@
       },
       {
         "id": "troll",
+        "chapter": 1,
+        "scene": 3,
         "art": "troll",
         "title": "검이 부러진 다음",
         "lines": [
@@ -79,12 +95,14 @@
           },
           {
             "speaker": 2,
-            "text": "그래. 이제야 마음 놓고 검을 내려놓겠구나."
+            "text": "그래. 검은 부러졌어도, 우리를 지키던 뜻은 남아 있었구나."
           }
         ]
       },
       {
         "id": "spring",
+        "chapter": 1,
+        "scene": 4,
         "art": "spring",
         "title": "길을 거슬러",
         "lines": [
@@ -104,7 +122,9 @@
       },
       {
         "id": "summer",
-        "art": "routes",
+        "chapter": 1,
+        "scene": 5,
+        "art": "summer",
         "title": "돌에 남은 길",
         "lines": [
           {
@@ -123,7 +143,9 @@
       },
       {
         "id": "autumn",
-        "art": "routes",
+        "chapter": 1,
+        "scene": 6,
+        "art": "autumn",
         "title": "물려주고 싶지 않은 것",
         "lines": [
           {
@@ -142,7 +164,9 @@
       },
       {
         "id": "winter",
-        "art": "routes",
+        "chapter": 1,
+        "scene": 7,
+        "art": "winter",
         "title": "돌아가는 쪽에서",
         "lines": [
           {
@@ -161,6 +185,8 @@
       },
       {
         "id": "home",
+        "chapter": 1,
+        "scene": 8,
         "art": "home",
         "title": "오늘은 쉬어도 된단다",
         "lines": [
@@ -181,15 +207,227 @@
             "text": "아직 다른 길들이 남아 있었다. 다시 밤이 오기 전, 둘은 나란히 앉아 빵을 나눠 먹었다."
           }
         ]
+      },
+      {
+        "id": "ch2.return",
+        "chapter": 2,
+        "scene": 1,
+        "art": "records",
+        "title": "봉인 아래의 역사",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "길 하나를 막았는데도 땅속에서 소리가 나. 봉인이 또 깨진 걸까?"
+          },
+          {
+            "speaker": 2,
+            "text": "우리가 막은 건 성으로 오는 길 하나란다. 그 아래의 큰 봉인은 아직 상처 입은 채지."
+          },
+          {
+            "speaker": 1,
+            "text": "그럼 처음엔 어떻게 막았는지 알아보자. 성에 남은 기록부터!"
+          }
+        ]
+      },
+      {
+        "id": "ch2.rift",
+        "chapter": 2,
+        "scene": 2,
+        "art": "records",
+        "title": "땅이 갈라진 날",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "오래된 기록에는 사람과 정령이 함께 살았다고 적혀 있단다. 그러던 어느 날 땅이 크게 흔들렸지."
+          },
+          {
+            "speaker": 1,
+            "text": "왜 그런 거야? 누가 땅을 갈라 놓았어?"
+          },
+          {
+            "speaker": 2,
+            "text": "그 까닭은 기록에도 없구나. 틈에서 괴수들이 쏟아져 나왔고, 병사들은 끝없는 싸움에 지쳐 갔단다."
+          }
+        ]
+      },
+      {
+        "id": "ch2.heroes",
+        "chapter": 2,
+        "scene": 3,
+        "art": "records",
+        "title": "나누어 준 힘",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "정령왕은 사람들을 돕고자 자신의 힘을 모두 모아, 왕국을 지키던 이들에게 나눠 주었단다."
+          },
+          {
+            "speaker": 1,
+            "text": "검을 쓰던 사람들만 받은 건 아니었구나?"
+          },
+          {
+            "speaker": 2,
+            "text": "그렇지. 방패를 든 기사도, 마법을 쓰던 이도 있었지. 힘을 받은 이들이 우리가 아는 영웅이 되었단다."
+          }
+        ]
+      },
+      {
+        "id": "ch2.castle",
+        "chapter": 2,
+        "scene": 4,
+        "art": "prologue",
+        "title": "성 아래에 남긴 것",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "영웅들은 힘을 합쳐 괴수들을 몰아내고 균열을 봉했단다. 왕국은 그 봉인을 지키려 이 성을 세웠지."
+          },
+          {
+            "speaker": 1,
+            "text": "우리가 성문을 고치는 것도, 그 봉인을 지키는 일이었네."
+          },
+          {
+            "speaker": 2,
+            "text": "그래. 성벽 위의 병사도, 자루를 메고 돌아오는 너도 같은 것을 지키는 게지."
+          }
+        ]
+      },
+      {
+        "id": "ch2.seal",
+        "chapter": 2,
+        "scene": 5,
+        "art": "records",
+        "title": "아직 남은 상처",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "처음엔 여러 영웅이 함께 봉했으니, 검 하나로는 전부 고칠 수 없었던 거구나."
+          },
+          {
+            "speaker": 2,
+            "text": "그렇단다. 그래도 네가 막은 길 덕분에 숨을 돌렸지. 이제 남은 기록도 살펴보자꾸나."
+          },
+          {
+            "speaker": 1,
+            "text": "오늘 밤도 잘 지켜야겠어. 이 성이 왜 여기 서 있는지 이제 알겠으니까."
+          }
+        ]
+      },
+      {
+        "id": "ch3.master",
+        "chapter": 3,
+        "scene": 1,
+        "art": "home",
+        "title": "노인이 꺼낸 이름",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "지난해 찾은 기록에 마르스라는 이름이 있었지. 이제 내 이야기도 들려주마. 나는 그분의 제자였단다."
+          },
+          {
+            "speaker": 1,
+            "text": "왕국에서 가장 강했다던 그 기사? 할아버지가 직접 배웠어?"
+          },
+          {
+            "speaker": 2,
+            "text": "그래. 검을 쥐는 법도, 쓰러졌다 일어나는 법도 배웠지. 존경하던 스승이었단다."
+          }
+        ]
+      },
+      {
+        "id": "ch3.glory",
+        "chapter": 3,
+        "scene": 2,
+        "art": "records",
+        "title": "영웅이 되고 싶었던 기사",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "스승님은 옛 영웅 이야기를 즐겨 하셨지. 자신도 왕국을 구할 날을 기다린다고 하셨단다."
+          },
+          {
+            "speaker": 1,
+            "text": "싸울 일이 없는 건 좋은 거잖아."
+          },
+          {
+            "speaker": 2,
+            "text": "나도 그렇게 생각한단다. 다만 스승님은 평화 속에서 자신의 노력이 잊힐까 두렵다고 하셨지."
+          }
+        ]
+      },
+      {
+        "id": "ch3.breach",
+        "chapter": 3,
+        "scene": 3,
+        "art": "troll",
+        "title": "두 번째 균열",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "그날 밤, 나는 스승님을 따라 지하로 내려갔다. 봉인에 검을 꽂는 모습을 보았지. 직접 막아 영웅이 되겠다고 하셨단다."
+          },
+          {
+            "speaker": 1,
+            "text": "자기가 연 틈에서 트롤이 나온 거야…?"
+          },
+          {
+            "speaker": 2,
+            "text": "그래. 고대의 트롤은 스승님보다 강했지. 나는 사람들을 데리고 빠져나왔고, 무너진 돌 너머로 스승님을 놓쳤단다."
+          }
+        ]
+      },
+      {
+        "id": "ch3.sword",
+        "chapter": 3,
+        "scene": 4,
+        "art": "ring",
+        "title": "검이 응답한 날",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "그 뒤로도 밤마다 괴수들이 왔지. 무기고에서 낡은 검을 주워 들었을 때, 목소리가 들렸단다."
+          },
+          {
+            "speaker": 1,
+            "text": "수호기사였구나. 그분은 아직도 할아버지의 어릴 적 모습을 기억하겠네."
+          },
+          {
+            "speaker": 2,
+            "text": "그분의 힘으로 트롤을 몰아냈지. 검에 남은 의식이 내게 응답했지만, 성문 앞에 서기로 한 건 나였단다."
+          }
+        ]
+      },
+      {
+        "id": "ch3.watch",
+        "chapter": 3,
+        "scene": 5,
+        "art": "home",
+        "title": "함께 지킬 내일",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "내가 남은 건 스승님의 이름을 씻으려는 까닭만은 아니었단다. 이 문 안에 살아가는 사람들이 있었지. 그렇게 수십 년이 흘렀구나."
+          },
+          {
+            "speaker": 1,
+            "text": "검이 부러졌어도 할아버지는 여기 있잖아. 나도, 병사들도 있고. 이번엔 같이 지키자."
+          },
+          {
+            "speaker": 2,
+            "text": "그래. 네게 검 한 자루와 끝없는 밤만 물려줄 수는 없지. 내일도 함께 성문을 열자꾸나."
+          }
+        ]
       }
     ]
   },
   "en": {
     "title": "A Castle to Come Home To",
-    "boy": "Boy",
+    "boy": "Pawn",
     "pages": [
       {
         "id": "prologue",
+        "chapter": 1,
+        "scene": 0,
         "art": "prologue",
         "title": "A Castle Above the Seal",
         "lines": [
@@ -205,6 +443,8 @@
       },
       {
         "id": "supplies",
+        "chapter": 1,
+        "scene": 1,
         "art": "supplies",
         "title": "The Weight of an Empty Sack",
         "lines": [
@@ -232,7 +472,9 @@
       },
       {
         "id": "ring",
-        "art": "supplies",
+        "chapter": 1,
+        "scene": 2,
+        "art": "ring",
         "title": "You Need Not Stand Alone",
         "lines": [
           {
@@ -241,7 +483,15 @@
           },
           {
             "speaker": 2,
-            "text": "You could borrow that strength. But don’t try to hold them off alone."
+            "text": "You borrow a hero’s power, child. You do not give them control of your body."
+          },
+          {
+            "speaker": 1,
+            "text": "Can the hero speak to me, too?"
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. I heard a voice from my sword, too. But the choices are yours to make."
           },
           {
             "speaker": 2,
@@ -251,6 +501,8 @@
       },
       {
         "id": "troll",
+        "chapter": 1,
+        "scene": 3,
         "art": "troll",
         "title": "After the Sword Broke",
         "lines": [
@@ -264,12 +516,14 @@
           },
           {
             "speaker": 2,
-            "text": "Yes. Perhaps I can finally lay that sword to rest."
+            "text": "Yes. The sword broke, but the will that protected us lives on."
           }
         ]
       },
       {
         "id": "spring",
+        "chapter": 1,
+        "scene": 4,
         "art": "spring",
         "title": "Against the Tide",
         "lines": [
@@ -289,7 +543,9 @@
       },
       {
         "id": "summer",
-        "art": "routes",
+        "chapter": 1,
+        "scene": 5,
+        "art": "summer",
         "title": "Paths in the Stone",
         "lines": [
           {
@@ -308,7 +564,9 @@
       },
       {
         "id": "autumn",
-        "art": "routes",
+        "chapter": 1,
+        "scene": 6,
+        "art": "autumn",
         "title": "What Must Not Be Passed On",
         "lines": [
           {
@@ -327,7 +585,9 @@
       },
       {
         "id": "winter",
-        "art": "routes",
+        "chapter": 1,
+        "scene": 7,
+        "art": "winter",
         "title": "From the Other Side",
         "lines": [
           {
@@ -346,6 +606,8 @@
       },
       {
         "id": "home",
+        "chapter": 1,
+        "scene": 8,
         "art": "home",
         "title": "Today, You Can Rest",
         "lines": [
@@ -366,15 +628,227 @@
             "text": "Other paths still remained. Before night came again, they sat together and shared a loaf of bread."
           }
         ]
+      },
+      {
+        "id": "ch2.return",
+        "chapter": 2,
+        "scene": 1,
+        "art": "records",
+        "title": "Beneath the Seal",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "We closed a path, but I still hear something underground. Did the seal break again?"
+          },
+          {
+            "speaker": 2,
+            "text": "We closed one path to the castle. The great seal beneath it is still damaged."
+          },
+          {
+            "speaker": 1,
+            "text": "Then let’s find out how they sealed it the first time. We can start with the castle records!"
+          }
+        ]
+      },
+      {
+        "id": "ch2.rift",
+        "chapter": 2,
+        "scene": 2,
+        "art": "records",
+        "title": "When the Earth Split",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "The old records tell of people living alongside spirits. Then one day, the earth shook."
+          },
+          {
+            "speaker": 1,
+            "text": "Why? Did someone split the earth open?"
+          },
+          {
+            "speaker": 2,
+            "text": "The records do not say why. Monsters poured out of the cracks, and the soldiers grew weary of endless fighting."
+          }
+        ]
+      },
+      {
+        "id": "ch2.heroes",
+        "chapter": 2,
+        "scene": 3,
+        "art": "records",
+        "title": "A Power Shared",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "To help the people, the Spirit King gathered all his strength and shared it with the kingdom’s defenders."
+          },
+          {
+            "speaker": 1,
+            "text": "So it wasn’t just people who fought with swords?"
+          },
+          {
+            "speaker": 2,
+            "text": "That’s right. Knights with shields, and those who wielded magic. They became the heroes we know."
+          }
+        ]
+      },
+      {
+        "id": "ch2.castle",
+        "chapter": 2,
+        "scene": 4,
+        "art": "prologue",
+        "title": "What Lies Beneath",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "The heroes drove the monsters back and sealed the rift together. The kingdom built this castle to guard the seal."
+          },
+          {
+            "speaker": 1,
+            "text": "So when we repair the gate, we’re protecting the seal too."
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. The soldiers on the walls and you with your sack are protecting the same thing."
+          }
+        ]
+      },
+      {
+        "id": "ch2.seal",
+        "chapter": 2,
+        "scene": 5,
+        "art": "records",
+        "title": "The Wound Remains",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "It took several heroes to seal it. So one sword could never repair it all."
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. But the path you closed gave us time to breathe. Let’s look through the remaining records."
+          },
+          {
+            "speaker": 1,
+            "text": "I’ll help defend it tonight, too. Now I know why this castle stands here."
+          }
+        ]
+      },
+      {
+        "id": "ch3.master",
+        "chapter": 3,
+        "scene": 1,
+        "art": "home",
+        "title": "A Name Remembered",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "Last year’s records mentioned Mars. It is time I told you my part. I was his apprentice."
+          },
+          {
+            "speaker": 1,
+            "text": "The strongest knight in the kingdom? You learned from him?"
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. He taught me to hold a sword, and to get back up after a fall. I looked up to him."
+          }
+        ]
+      },
+      {
+        "id": "ch3.glory",
+        "chapter": 3,
+        "scene": 2,
+        "art": "records",
+        "title": "The Knight Who Sought Glory",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "My master often spoke of the old heroes. He said he was waiting for his chance to save the kingdom."
+          },
+          {
+            "speaker": 1,
+            "text": "But isn’t it good when there’s no need to fight?"
+          },
+          {
+            "speaker": 2,
+            "text": "I think so too. But he told me he feared that, in peace, all his efforts would be forgotten."
+          }
+        ]
+      },
+      {
+        "id": "ch3.breach",
+        "chapter": 3,
+        "scene": 3,
+        "art": "troll",
+        "title": "The Second Fracture",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "That night I followed him below the castle. I saw him drive his sword into the seal. He said he would stop the monsters himself and become a hero."
+          },
+          {
+            "speaker": 1,
+            "text": "The troll came through the crack he made…?"
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. The ancient troll was stronger than him. I led people out, then lost sight of my master beyond the falling stones."
+          }
+        ]
+      },
+      {
+        "id": "ch3.sword",
+        "chapter": 3,
+        "scene": 4,
+        "art": "ring",
+        "title": "When the Sword Answered",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "The monsters returned every night. When I picked up an old sword in the armoury, I heard a voice."
+          },
+          {
+            "speaker": 1,
+            "text": "It was the Guardian. He must still remember you as you were back then."
+          },
+          {
+            "speaker": 2,
+            "text": "With his power, I drove the troll back. His consciousness answered from the sword, but I chose to stand at the gate."
+          }
+        ]
+      },
+      {
+        "id": "ch3.watch",
+        "chapter": 3,
+        "scene": 5,
+        "art": "home",
+        "title": "Tomorrow, Together",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "I did not stay just to make amends for my master. People lived behind this gate. And so the decades passed."
+          },
+          {
+            "speaker": 1,
+            "text": "The sword broke, but you’re still here. So am I, and the soldiers. This time we’ll guard it together."
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. I won’t leave you with just a sword and endless nights. Tomorrow, we’ll open the gate together."
+          }
+        ]
       }
     ]
   },
   "ja": {
     "title": "帰る場所",
-    "boy": "少年",
+    "boy": "ポーン",
     "pages": [
       {
         "id": "prologue",
+        "chapter": 1,
+        "scene": 0,
         "art": "prologue",
         "title": "封印の上に築いた城",
         "lines": [
@@ -390,6 +864,8 @@
       },
       {
         "id": "supplies",
+        "chapter": 1,
+        "scene": 1,
         "art": "supplies",
         "title": "空の袋の重み",
         "lines": [
@@ -417,7 +893,9 @@
       },
       {
         "id": "ring",
-        "art": "supplies",
+        "chapter": 1,
+        "scene": 2,
+        "art": "ring",
         "title": "ひとりで守るな",
         "lines": [
           {
@@ -426,7 +904,15 @@
           },
           {
             "speaker": 2,
-            "text": "その力は借りられるじゃろう。だが、ひとりで食い止めようとはするなよ。"
+            "text": "英雄の力を借りるのじゃ。体を明け渡すわけではないぞ。"
+          },
+          {
+            "speaker": 1,
+            "text": "じゃあ、英雄が話しかけてくることもあるの？"
+          },
+          {
+            "speaker": 2,
+            "text": "ああ。わしの剣からも声が聞こえた。だが、どうするかはお前が決めるのじゃ。"
           },
           {
             "speaker": 2,
@@ -436,6 +922,8 @@
       },
       {
         "id": "troll",
+        "chapter": 1,
+        "scene": 3,
         "art": "troll",
         "title": "剣が折れたあと",
         "lines": [
@@ -449,12 +937,14 @@
           },
           {
             "speaker": 2,
-            "text": "ああ。ようやく安心して、あの剣を置けるわい。"
+            "text": "ああ。剣は折れても、わしらを守る意志は残っておったのじゃな。"
           }
         ]
       },
       {
         "id": "spring",
+        "chapter": 1,
+        "scene": 4,
         "art": "spring",
         "title": "道をたどって",
         "lines": [
@@ -474,7 +964,9 @@
       },
       {
         "id": "summer",
-        "art": "routes",
+        "chapter": 1,
+        "scene": 5,
+        "art": "summer",
         "title": "石に残る道",
         "lines": [
           {
@@ -493,7 +985,9 @@
       },
       {
         "id": "autumn",
-        "art": "routes",
+        "chapter": 1,
+        "scene": 6,
+        "art": "autumn",
         "title": "受け継がせたくないもの",
         "lines": [
           {
@@ -512,7 +1006,9 @@
       },
       {
         "id": "winter",
-        "art": "routes",
+        "chapter": 1,
+        "scene": 7,
+        "art": "winter",
         "title": "帰り道の向こう側",
         "lines": [
           {
@@ -531,6 +1027,8 @@
       },
       {
         "id": "home",
+        "chapter": 1,
+        "scene": 8,
         "art": "home",
         "title": "今日は休んでいい",
         "lines": [
@@ -549,6 +1047,216 @@
           {
             "speaker": 0,
             "text": "ほかの道は、まだ残っていた。再び夜が来る前に、ふたりは並んで座り、パンを分け合った。"
+          }
+        ]
+      },
+      {
+        "id": "ch2.return",
+        "chapter": 2,
+        "scene": 1,
+        "art": "records",
+        "title": "封印の下の歴史",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "道をひとつ閉じたのに、地下で音がする。また封印が壊れたの？"
+          },
+          {
+            "speaker": 2,
+            "text": "閉じたのは城へ来る道のひとつじゃ。その下の大きな封印は、まだ傷ついておる。"
+          },
+          {
+            "speaker": 1,
+            "text": "じゃあ、最初はどう封じたのか調べよう。城の記録から！"
+          }
+        ]
+      },
+      {
+        "id": "ch2.rift",
+        "chapter": 2,
+        "scene": 2,
+        "art": "records",
+        "title": "大地が裂けた日",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "古い記録には、人と精霊が共に暮らしていたとある。ある日、大地が大きく揺れたのじゃ。"
+          },
+          {
+            "speaker": 1,
+            "text": "どうして？ 誰かが大地を裂いたの？"
+          },
+          {
+            "speaker": 2,
+            "text": "理由は記録にもない。裂け目から魔物があふれ、兵士たちは終わらぬ戦いに疲れていった。"
+          }
+        ]
+      },
+      {
+        "id": "ch2.heroes",
+        "chapter": 2,
+        "scene": 3,
+        "art": "records",
+        "title": "分かち合った力",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "精霊王は人々を救おうと、すべての力を集め、王国を守る者たちに分け与えた。"
+          },
+          {
+            "speaker": 1,
+            "text": "剣で戦う人だけじゃなかったんだね？"
+          },
+          {
+            "speaker": 2,
+            "text": "そうじゃ。盾を持つ騎士も、魔法を使う者もいた。彼らが、今に伝わる英雄になったのじゃ。"
+          }
+        ]
+      },
+      {
+        "id": "ch2.castle",
+        "chapter": 2,
+        "scene": 4,
+        "art": "prologue",
+        "title": "城の下に残したもの",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "英雄たちは力を合わせて魔物を退け、裂け目を封じた。封印を守るために、この城が建てられたのじゃ。"
+          },
+          {
+            "speaker": 1,
+            "text": "門を直すことも、封印を守ることだったんだね。"
+          },
+          {
+            "speaker": 2,
+            "text": "そうじゃ。城壁の兵士も、袋を背負って帰るお前も、同じものを守っておる。"
+          }
+        ]
+      },
+      {
+        "id": "ch2.seal",
+        "chapter": 2,
+        "scene": 5,
+        "art": "records",
+        "title": "まだ残る傷",
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "最初は英雄たちが一緒に封じたから、剣一本では全部直せなかったんだね。"
+          },
+          {
+            "speaker": 2,
+            "text": "そうじゃ。だが、お前の閉じた道のおかげで一息つけた。残りの記録も調べよう。"
+          },
+          {
+            "speaker": 1,
+            "text": "今夜もしっかり守ろう。この城がここにある理由が分かったから。"
+          }
+        ]
+      },
+      {
+        "id": "ch3.master",
+        "chapter": 3,
+        "scene": 1,
+        "art": "home",
+        "title": "老人が語る名",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "去年の記録にマルスの名があったな。今度は、わしの話をしよう。わしはあの方の弟子だった。"
+          },
+          {
+            "speaker": 1,
+            "text": "王国でいちばん強かった騎士？ おじいさんの先生だったの？"
+          },
+          {
+            "speaker": 2,
+            "text": "ああ。剣の握り方も、倒れてから立ち上がることも教わった。尊敬する師だったよ。"
+          }
+        ]
+      },
+      {
+        "id": "ch3.glory",
+        "chapter": 3,
+        "scene": 2,
+        "art": "records",
+        "title": "英雄に憧れた騎士",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "師はよく昔の英雄を語った。自分も王国を救う日を待っている、と言っておった。"
+          },
+          {
+            "speaker": 1,
+            "text": "でも、戦わずにすむのはいいことだよね。"
+          },
+          {
+            "speaker": 2,
+            "text": "わしもそう思う。だが師は、平和の中では自分の努力が忘れられるのが怖い、と言っておった。"
+          }
+        ]
+      },
+      {
+        "id": "ch3.breach",
+        "chapter": 3,
+        "scene": 3,
+        "art": "troll",
+        "title": "二度目の亀裂",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "あの夜、師を追って地下へ下りた。封印に剣を突き立てるのを見た。自分で魔物を倒し、英雄になると言っていた。"
+          },
+          {
+            "speaker": 1,
+            "text": "自分で開けた隙間から、トロールが出てきたの……？"
+          },
+          {
+            "speaker": 2,
+            "text": "ああ。古のトロールは師より強かった。わしは人々を連れて逃げた。崩れる石の向こうに、師の姿を見失った。"
+          }
+        ]
+      },
+      {
+        "id": "ch3.sword",
+        "chapter": 3,
+        "scene": 4,
+        "art": "ring",
+        "title": "剣が応えた日",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "それから毎晩、魔物が来た。武器庫で古い剣を拾ったとき、声が聞こえたのじゃ。"
+          },
+          {
+            "speaker": 1,
+            "text": "守護騎士だったんだね。きっと今でも、若い頃のおじいさんを覚えているんだ。"
+          },
+          {
+            "speaker": 2,
+            "text": "その力でトロールを退けた。剣に残る意識が応えてくれたが、城門に立つと決めたのはわし自身じゃ。"
+          }
+        ]
+      },
+      {
+        "id": "ch3.watch",
+        "chapter": 3,
+        "scene": 5,
+        "art": "home",
+        "title": "共に守る明日",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "師の過ちを償うためだけに残ったのではない。この門の中には暮らす人々がいた。そうして何十年も過ぎた。"
+          },
+          {
+            "speaker": 1,
+            "text": "剣が折れても、おじいさんはここにいる。僕も兵士たちも。今度は一緒に守ろう。"
+          },
+          {
+            "speaker": 2,
+            "text": "ああ。剣一本と終わらぬ夜だけをお前に残しはしない。明日も一緒に門を開けよう。"
           }
         ]
       }
