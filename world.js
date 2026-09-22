@@ -55,7 +55,7 @@
   }
   function syncMusic() {
     const epoch = ++audioEpoch;
-    if (!enabled || document.hidden) { stopAudio(); return; }
+    if (!enabled || document.hidden || document.querySelector('[data-map-dialog][open]')) { stopAudio(); return; }
     if (!music) {
       music = Object.fromEntries(Object.entries({ day:'/assets/audio/lobby-theme.mp3', night:'/assets/world/audio/night.mp3', story:'/assets/world/audio/story.mp3' }).map(([key,src]) => {
         const audio = new Audio(); audio.preload = 'none'; audio.loop = true; audio.volume = 0; audio.src = src;
@@ -97,6 +97,7 @@
   }));
   $('[data-volume]').addEventListener('input', event => { volume = Number(event.target.value)/100; syncMusic(); });
   document.addEventListener('visibilitychange', syncMusic);
+  document.addEventListener('courtyard:panel', syncMusic);
   window.addEventListener('pagehide', () => { ++audioEpoch; stopAudio(); });
   window.addEventListener('pageshow', () => { if (enabled) syncMusic(); });
   document.querySelectorAll('[data-time-choice]').forEach(button => button.addEventListener('click', () => {
@@ -135,7 +136,7 @@
   new ResizeObserver(fitActors).observe(landscape);
 
   function remember() {
-    saved = {page:index, full:allowed};
+    saved = {page:index, id:story.pages[index].id, full:allowed};
     try { localStorage.setItem(storageKey,JSON.stringify(saved)); } catch { /* Reading remains available. */ }
     $('[data-resume-story]').hidden = index === 0;
   }
@@ -147,7 +148,7 @@
     contents.replaceChildren();
     story.pages.forEach((p,i) => {
       const button = document.createElement('button'); button.type = 'button';
-      button.textContent = `${String(p.chapter).padStart(2,'0')}.${String(p.scene).padStart(2,'0')}  ${i < 2 || allowed ? p.title : copy.scene+' '+p.scene}`;
+      button.textContent = `${String(p.chapter).padStart(2,'0')}.${String(p.scene).padStart(2,'0')}  ${i < story.previewCount || allowed ? p.title : copy.scene+' '+p.scene}${p.parts > 1 ? ` (${p.part}/${p.parts})` : ''}`;
       if (i === index && !showingGate) button.setAttribute('aria-current','page');
       button.addEventListener('click', () => { contentsState(false); navigate(i); });
       contents.append(button);
@@ -167,7 +168,7 @@
     const chapter = String(data.chapter).padStart(2,'0');
     $('.reader-kicker').textContent = `TINY DEFENSE / CHAPTER ${chapter}`;
     $('.art-chapter b').textContent = chapter;
-    $('[data-page-kicker]').textContent = index === 0 ? copy.prologue : `CHAPTER ${chapter} / ${copy.scene} ${String(data.scene).padStart(2,'0')}`;
+    $('[data-page-kicker]').textContent = (data.sourceId === 'prologue' ? copy.prologue : `CHAPTER ${chapter} / ${copy.scene} ${String(data.scene).padStart(2,'0')}`) + (data.parts > 1 ? ` · ${data.part}/${data.parts}` : '');
     const illustrated = paper.hasArt(story.pages, index);
     spread.classList.toggle('text-spread', !illustrated);
     $('.book-illustration').hidden = !illustrated;
@@ -181,7 +182,7 @@
     $('[data-folio-right]').textContent = String(index * 2 + 2).padStart(2, '0');
     const split = illustrated ? 0 : paper.splitLines(data.lines);
     const art = $('[data-story-art]');
-    if (illustrated) art.src = `/assets/world/${data.art}.webp?v=story-3`;
+    if (illustrated) art.src = `/assets/world/${data.art}.webp?v=story-4`;
     else art.removeAttribute('src');
     // The narration supplies the illustration's context; avoid repeating it in alt text.
     art.alt = '';
@@ -204,8 +205,8 @@
     }
     if (save) { renderContents(); remember(); }
     // Cache only the next illustration, never unreached dialogue or audio requests.
-    if (index+1 < story.pages.length && (allowed || index < 1) && paper.hasArt(story.pages, index+1)) {
-      const image = new Image(); image.src=`/assets/world/${story.pages[index+1].art}.webp?v=story-3`;
+    if (index+1 < story.pages.length && (allowed || index+1 < story.previewCount) && paper.hasArt(story.pages, index+1)) {
+      const image = new Image(); image.src=`/assets/world/${story.pages[index+1].art}.webp?v=story-4`;
     }
   }
   function spoilerGate(target) {
@@ -216,8 +217,8 @@
     lines.hidden=true; gate.hidden=false; gate.replaceChildren();
     const p=document.createElement('p'); p.textContent=copy.spoiler; gate.append(p);
     gate.append(makeButton(copy.full, () => { allowed=true; navigate(pending); }));
-    gate.append(makeButton(copy.back, () => navigate(1),true));
-    prev.disabled=false; next.disabled=true; progress.textContent=`03 / ${String(story.pages.length).padStart(2,'0')}`;
+    gate.append(makeButton(copy.back, () => navigate(story.previewCount-1),true));
+    prev.disabled=false; next.disabled=true; progress.textContent=`${String(target+1).padStart(2,'0')} / ${String(story.pages.length).padStart(2,'0')}`;
     page.focus({preventScroll:true});
   }
   function snapshot() {
@@ -245,7 +246,7 @@
     if (!story || turning || opening) return;
     if (target >= story.pages.length) { closeBook(); return; }
     target=Math.max(0,target);
-    if (target >= 2 && !allowed) { spoilerGate(target); return; }
+    if (target >= story.previewCount && !allowed) { spoilerGate(target); return; }
     if (target === index && !showingGate) return;
     // Narrow screens keep a readable continuous page, with a short fade.
     if (reduce.matches || matchMedia('(max-width:699px)').matches) {
@@ -258,7 +259,7 @@
   }
   async function loadStory() {
     if (story) return story;
-    if (!loading) loading=fetch('/assets/world/story.json?v=story-3').then(r => {
+    if (!loading) loading=fetch('/assets/world/story.json?v=story-4').then(r => {
       if (!r.ok) throw new Error('Story HTTP '+r.status);
       return r.json();
     }).then(data => {
@@ -337,7 +338,9 @@
       await loadStory();
       if (!dialog.open || epoch !== openEpoch) return;
       allowed=Boolean(resume && saved?.full);
-      index=resume && saved ? Math.min(saved.page,allowed ? story.pages.length-1 : 1) : 0;
+      const legacyIds=['prologue','supplies','ring','troll','spring','summer','autumn','winter','home','ch2.return','ch2.rift','ch2.heroes','ch2.castle','ch2.seal','ch3.master','ch3.glory','ch3.breach','ch3.sword','ch3.watch'];
+      const restored=resume && saved ? story.pages.findIndex(p=>p.id===(saved.id || legacyIds[saved.page])) : 0;
+      index=Math.max(0,Math.min(restored,allowed ? story.pages.length-1 : story.previewCount-1));
       render(); dialog.scrollTop=0; $('[data-reader-pages]').scrollTop=0;
       if (opening) await enterFromMap(origin);
       if (!dialog.open || epoch !== openEpoch) return;
@@ -365,7 +368,7 @@
   $('[data-resume-story]').addEventListener('click',event => openBook(event.currentTarget,true));
   $('[data-close-story]').addEventListener('click',closeBook);
   $('[data-contents]').addEventListener('click', () => { if(story) contentsState(contents.hidden); });
-  prev.addEventListener('click', () => navigate(showingGate ? 1:index-1));
+  prev.addEventListener('click', () => navigate(showingGate ? story.previewCount-1:index-1));
   next.addEventListener('click', () => navigate(index+1));
   dialog.addEventListener('keydown',event => {
     if (event.target.matches('input,select,textarea') || !contents.hidden || showingGate) return;

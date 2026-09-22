@@ -1885,3 +1885,13 @@
     window.requestAnimationFrame(frame);
   });
 }());
+
+// Return to the courtyard without leaving the parent map or trapping iframe focus.
+if (new URLSearchParams(location.search).has('courtyard')) {
+  window.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && window.parent !== window) {
+      window.parent.postMessage({type:'tiny-defense:close'},location.origin);
+    }
+  });
+  document.body.classList.add('in-courtyard');
+}

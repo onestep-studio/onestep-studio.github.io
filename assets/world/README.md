@@ -4,7 +4,7 @@
 
 The reading surface now uses a cloth-colored binding, inset illustrations, a central gutter and a animated paper leaf. Interaction reference: https://github.com/MengTo/sketchbook (Meng To; its README credits Matthew Yu's original concept). `book-turn.js` is an independent implementation for live HTML dialogue rather than image-only spreads; no reference artwork or fonts are bundled.
 
-Each of the ten illustrations appears only on its first story spread. The other nine spreads divide complete dialogue paragraphs between the left and right leaves, preserving speaker and reading order. On narrow screens the two leaves flow vertically. The text-only routes apply the same first-occurrence rule. Tap the left/right page (or the left/right half on mobile) to navigate; vertical scrolling does not turn pages. Keyboard arrows, contents, sound, spoiler consent and saved progress are preserved; reduced motion skips the curl.
+Each illustration appears only on its first story spread. Repeated illustrations become text-only spreads that divide complete dialogue paragraphs between the left and right leaves, preserving speaker and reading order. On narrow screens the two leaves flow vertically. The text-only routes apply the same first-occurrence rule. Tap the left/right page (or the left/right half on mobile) to navigate; vertical scrolling does not turn pages. Keyboard arrows, contents, sound, spoiler consent and saved progress are preserved; reduced motion skips the curl.
 
 Created 2026-09-22. Courtyard artwork uses the built-in image_gen tool with game illustrations and sprites as references. Active web assets are courtyard-day-v2.webp and courtyard-night-v2.webp (1536 × 1024); see the revision notes below. Generated PNG originals remain in the Codex generated_images directory.
 
@@ -18,9 +18,9 @@ Exported by tools/build-world-assets.py from C:/OneStep/tiny_defense; source gam
 - routes.webp: UI/Story/story_routes.png
 - home.webp: UI/Story/story_home.png
 - resident-run.webp: Units/Characters/GathererBoy/PawnRun.png (six original frames, lossless WebP). Courtyard resident animation reuses the actual game sprite.
-- story.json: Loc.Story.cs, plus prologue.cut1 / prologue.cut2 from Loc.Season.cs. KO/EN/JA are the actual game translations. All current dialogue lines retained, including supplies.3 and supplies.4.
-- Chapters 1–3 now follow the implemented StorySequence.cs: 8 + 5 + 5 scenes, plus the web prologue (19 spreads). Scene order, illustrations and speakers are imported from its arrays. Ring now includes all five lines.
-- ring/summer/autumn/winter/records.webp: corresponding UI/Story/story_*.png. Chapter 2/3 reuse the same illustrations as the game.
+- story.json: Loc.Story.cs, plus prologue.cut1 through prologue.cut5 from Loc.Season.cs. KO/EN/JA are the actual game translations. All current dialogue lines retained, including supplies.3 and supplies.4.
+- Chapters 1–3 now follow the implemented StorySequence.cs: 8 + 5 + 5 scenes, plus all five prologue cuts (26 spreads, 26 illustrations, 64 narration/dialogue entries per language). Scene order and speakers come from the game arrays; per-line illustrations follow ArtFor(scene, page). Three scenes split at an illustration change without duplicating or dropping dialogue. Ring now includes all five lines.
+- ring/summer/autumn/winter/records.webp: corresponding UI/Story/story_*.png. Chapter 2/3 use the latest dedicated game illustrations, including spirit_gift, seal_watch, mars_breaks_seal and together.
 - Refresh only story content with --story-only to preserve existing audio encodes.
 
 ## Audio provenance and spotting
@@ -74,3 +74,5 @@ Edit the supplied Tiny Defense castle courtyard image into its NIGHT version for
 Do Hyeon is exported losslessly to WOFF2 from the game's Fonts/DoHyeon.ttf. The original SIL OFL license is included at ../fonts/DoHyeon-OFL.txt. The website serves the font locally; Japanese glyphs use the existing system fallback.
 
 The mobile reader keeps its toolbar and navigation visible while the book contents scroll independently. Browser layout checks covered 360×740, 390×844, 430×932 and 844×390. Horizontal overflow was absent at those sizes; left/right taps and the loaded font were checked in the browser. This is responsive browser QA, not a claim of testing physical iOS/Android hardware.
+
+Latest sync: all 26 illustrations re-exported from the current game sources. Saved reading positions migrate by stable scene ID. The preview includes all five prologue cuts and supplies; the remainder remains behind the spoiler prompt.

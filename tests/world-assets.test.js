@@ -10,9 +10,12 @@ const ids = ['prologue','supplies','ring','troll','spring','summer','autumn','wi
 
 test('all three chapters retain scene order, dedicated art and translated dialogue', () => {
   for (const lang of ['ko','en','ja']) {
-    assert.deepEqual(data[lang].pages.map(p=>p.id),ids);
-    assert.deepEqual(data[lang].pages.map(p=>p.chapter),[...Array(9).fill(1),...Array(5).fill(2),...Array(5).fill(3)]);
-    assert.deepEqual(data[lang].pages.slice(1,9).map(p=>p.art),ids.slice(1,9));
+    assert.deepEqual([...new Set(data[lang].pages.map(p=>p.sourceId))],ids);
+    assert.equal(data[lang].pages.length,26);
+    assert.equal(data[lang].previewCount,6);
+    assert.equal(data[lang].pages.reduce((n,p)=>n+p.lines.length,0),64);
+    assert.deepEqual(data[lang].pages.slice(0,5).map(p=>p.art),['prologue','prologue_2','prologue_3','prologue_4','prologue_5']);
+    assert.deepEqual(data[lang].pages.map(p=>p.chapter),[...Array(14).fill(1),...Array(6).fill(2),...Array(6).fill(3)]);
     assert.deepEqual(data[lang].pages.map(p=>p.lines.map(l=>l.speaker)),data.ko.pages.map(p=>p.lines.map(l=>l.speaker)));
     for (const page of data[lang].pages) {
       assert.ok(page.title.trim());
@@ -20,10 +23,16 @@ test('all three chapters retain scene order, dedicated art and translated dialog
       for (const line of page.lines) assert.ok(line.text.trim());
     }
   }
-  assert.equal(data.ko.pages[1].lines.length,5,'include the two latest supplies lines from the game');
-  assert.equal(data.ko.pages[8].lines[2].text,'오늘은 쉬어도 된단다.');
-  assert.deepEqual(data.ko.pages[2].lines.map(l=>l.speaker),[1,2,1,2,2]);
-  assert.equal(data.ko.pages.at(-1).lines[2].text,'그래. 네게 검 한 자루와 끝없는 밤만 물려줄 수는 없지. 내일도 함께 성문을 열자꾸나.');
+  const scene=id=>data.ko.pages.filter(p=>p.sourceId===id);
+  assert.equal(scene('supplies')[0].lines.length,5,'include the two latest supplies lines from the game');
+  assert.deepEqual(scene('ring')[0].lines.map(l=>l.speaker),[1,2,1,2,2]);
+  for(const [id,arts,starts] of [['home',['route_seal','home'],[0,1]],['ch2.heroes',['spirit_gift','heroes_battle'],[0,1]],['ch3.breach',['mars_breaks_seal','mars_breach'],[0,2]]]) {
+    assert.deepEqual(scene(id).map(p=>p.art),arts);
+    assert.deepEqual(scene(id).map(p=>p.lineStart),starts);
+  }
+  assert.equal(scene('ch2.seal')[0].art,'seal_watch');
+  assert.equal(scene('ch3.watch')[0].art,'together');
+  assert.equal(data.ko.pages.at(-1).lines[2].text,'그래, 함께 지키자꾸나. 너희가 있으니 나도 마음이 놓이는구나.');
 });
 
 test('all local homepage/story references exist, including the no-JavaScript reading route', () => {

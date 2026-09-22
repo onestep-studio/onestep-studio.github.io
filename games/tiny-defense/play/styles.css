@@ -543,6 +543,12 @@ kbd {
   opacity: 0.7;
 }
 
+@font-face { font-family:'Do Hyeon'; src:url('/assets/fonts/DoHyeon.woff2') format('woff2'); font-display:swap; }
+body.in-courtyard { font-family:'Do Hyeon','Noto Sans JP',system-ui,sans-serif; }
+body.in-courtyard .game-shell { max-width:min(500px,calc((100dvh - 170px) * .75)); }
+body.in-courtyard .controls { padding-top:8px; }
+body.in-courtyard .hint { margin:8px 0 0; }
+
 .image-btn {
   grid-column: 1 / -1;
   border: 1px solid rgba(23, 32, 51, 0.24);

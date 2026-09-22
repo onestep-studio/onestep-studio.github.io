@@ -71,10 +71,11 @@
       ]
     }
   </script>
-  <link rel="stylesheet" href="/world.css?v=world-7">
+  <link rel="stylesheet" href="/world.css?v=world-8">
   <script defer src="/book-turn.js?v=2"></script>
-  <script defer src="/world.js?v=world-7"></script>
+  <script defer src="/world.js?v=world-8"></script>
 <link rel="preload" href="/assets/fonts/DoHyeon.woff2" as="font" type="font/woff2" crossorigin>
+<script defer src="/map-panels.js?v=map-1"></script>
 </head>
 <body class="home-page">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -87,8 +88,8 @@
       </a>
 
       <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
-        <a href="#games">Games</a>
-        <a href="#studio">Studio</a>
+        <a href="#games" data-map-open="day">Games</a>
+        <a href="#studio" data-map-open="studio">Studio</a>
         <a href="mailto:chunsanet@gmail.com">Contact</a>
         <span class="language-switcher" role="group" aria-label="Select language">
           <a href="/" lang="ko">KO</a>
@@ -124,18 +125,20 @@
           <div class="world-dust" aria-hidden="true"></div><div class="fire-glow" aria-hidden="true"></div><div class="lantern-glow" aria-hidden="true"></div>
           <div class="courtyard-resident" aria-hidden="true"><div class="resident-sprite"></div></div>
           <div class="world-motes" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i></div>
-          <a class="world-marker marker-forest" href="/games/tiny-defense/play/"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">Try woodcutting</span></a>
-          <a class="world-marker marker-gate" href="/en/games/tiny-defense/#stores"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">Discover the game</span></a>
+          <a class="world-marker marker-forest" href="/games/tiny-defense/play/" data-map-open="game"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">Try woodcutting</span></a>
+          <a class="world-marker marker-gate" href="/en/games/tiny-defense/#stores" data-map-open="stores"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">Leave the gate</span></a>
+          <a class="world-marker marker-fire" href="/en/games/tiny-defense/#features" data-map-open="day"><span class="marker-point" aria-hidden="true">☀</span><span class="marker-label">Prepare by day</span></a>
+          <a class="world-marker marker-guard" href="/en/games/tiny-defense/#features" data-map-open="night"><span class="marker-point" aria-hidden="true">☾</span><span class="marker-label">Defend at night</span></a>
           <a class="world-marker marker-book" href="#storybook" data-open-story><span class="marker-point" aria-hidden="true">＋</span><span class="marker-label">Read the story</span></a>
         </div>
         <div class="world-caption"><span class="world-place">TINY DEFENSE <span aria-hidden="true">/</span> ONESTEP STUDIO</span><span>Follow the glowing markers to explore.</span></div>
       </div>
-      <div class="world-bottom"><a href="#storybook">01 <span>Read the story</span> ↓</a><a href="/games/tiny-defense/play/">02 <span>Try woodcutting</span> ↗</a><a href="/en/games/tiny-defense/#stores">03 <span>Discover the game</span> ↗</a></div>
+      <nav class="world-bottom" aria-label="Tiny Defense"><a href="/en/games/tiny-defense/#features" data-map-open="day"><span>Prepare by day</span></a><a href="/en/games/tiny-defense/#features" data-map-open="night"><span>Defend at night</span></a><a href="#storybook" data-open-story><span>Read the story</span></a><a href="/games/tiny-defense/play/" data-map-open="game"><span>Try woodcutting</span></a><a href="/en/games/tiny-defense/#stores" data-map-open="stores"><span>Leave the gate</span></a><button class="resume-link" data-resume-story hidden>Continue reading</button></nav>
       <p class="world-notice" data-world-notice role="status"></p>
     </section>
     <section class="story-invitation" id="storybook" aria-labelledby="invitation-title">
-      <div class="invitation-art"><img src="/assets/world/supplies.webp?v=story-3" alt="" loading="lazy" width="1024" height="1024"></div>
-      <div class="invitation-copy"><p class="world-eyebrow">CHAPTER 01–03 <span aria-hidden="true">—</span> STORYBOOK</p><h2 id="invitation-title">A Castle to Come Home To</h2><p>A boy, an old man, and the people who keep a home worth returning to.</p><a class="book-cta" href="/en/story/" data-open-story>Open the book <span aria-hidden="true">↗</span></a><button class="resume-link" data-resume-story hidden>Continue reading</button></div>
+      <div class="invitation-art"><img src="/assets/world/supplies.webp?v=story-4" alt="" loading="lazy" width="1024" height="1024"></div>
+      <div class="invitation-copy"><p class="world-eyebrow">CHAPTER 01–03 <span aria-hidden="true">—</span> STORYBOOK</p><h2 id="invitation-title">A Castle to Come Home To</h2><p>A boy, an old man, and the people who keep a home worth returning to.</p><a class="book-cta" href="/en/story/" data-open-story>Open the book <span aria-hidden="true">↗</span></a></div>
     </section>
     <dialog class="story-reader" id="story-reader" aria-labelledby="reader-title">
       <div class="reader-shell">
@@ -153,6 +156,57 @@
       </div>
     </dialog>
     <details class="world-credits"><summary>Music & assets</summary><p>“The Path of the Goblin King” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100873">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.<br>“Crossing the Chasm” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700026">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Web versions: re-encoded, loudness adjusted.<br>Book sounds — <a href="https://kenney.nl/assets/rpg-audio">Kenney RPG Audio</a>, CC0.<br>“Secret of Beautiful Forest” — OneStep Studio. Illustrations and characters — Tiny Defense / OneStep Studio. Courtyard art — AI-generated for OneStep Studio.</p></details>
+    <dialog class="map-popup" data-map-dialog aria-labelledby="map-panel-title"><div class="map-panel-shell"><header class="map-panel-toolbar"><div><p class="world-eyebrow">TINY DEFENSE</p><h2 id="map-panel-title"></h2></div><button type="button" data-map-close aria-label="Back to the courtyard">✕ <span>Back to the courtyard</span></button></header><div class="map-panel-content" data-map-content></div></div></dialog><template data-map-template="day" data-title="Prepare by day">
+          <div class="guide-tabs"><button type="button" data-map-switch="day" aria-pressed="true">☀ Prepare by day</button><button type="button" data-map-switch="night" aria-pressed="false">☾ Defend at night</button></div>
+          <div class="guide-scenes"><article class="guide-scene" data-guide-scene ><video controls muted loop playsinline preload="none" poster="/assets/daynight/day-01-gather.webp" data-src="/assets/daynight/day-01-gather.mp4" aria-label="Gathering Rhythm"></video><div><p class="world-eyebrow">TINY DEFENSE / DAY 01</p><h3>Gathering Rhythm</h3><p>Swing the moment the timing gauge reaches the green band. Land it perfectly and the streak builds, raising every harvest that follows.</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/day-02-memory.webp" data-src="/assets/daynight/day-02-memory.mp4" aria-label="Ore Memory"></video><div><p class="world-eyebrow">TINY DEFENSE / DAY 02</p><h3>Ore Memory</h3><p>Remember where the vein flashed, then strike the same spots again. Keep the order and deeper ore opens up.</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/day-03-tool.webp" data-src="/assets/daynight/day-03-tool.mp4" aria-label="Tool Growth"></video><div><p class="world-eyebrow">TINY DEFENSE / DAY 03</p><h3>Tool Growth</h3><p>Pour resources into your axe and pickaxe so a single swing yields more. The shorter the day, the more your tools earn for you.</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/day-04-village.webp" data-src="/assets/daynight/day-04-village.mp4" aria-label="A Day in the Village"></video><div><p class="world-eyebrow">TINY DEFENSE / DAY 04</p><h3>A Day in the Village</h3><p>Walk a spring afternoon while villagers go about their work. Every new building is one more reason the night holds.</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/day-05-relic.webp" data-src="/assets/daynight/day-05-relic.mp4" aria-label="Relic Draft"></video><div><p class="world-eyebrow">TINY DEFENSE / DAY 05</p><h3>Relic Draft</h3><p>Pick one of three relics. That single choice reshapes every night that comes after.</p></div></article></div>
+          <nav class="guide-index" aria-label="Prepare by day"><button type="button" data-guide-jump="0" aria-pressed="true"><span>01</span> Gathering Rhythm</button><button type="button" data-guide-jump="1" aria-pressed="false"><span>02</span> Ore Memory</button><button type="button" data-guide-jump="2" aria-pressed="false"><span>03</span> Tool Growth</button><button type="button" data-guide-jump="3" aria-pressed="false"><span>04</span> A Day in the Village</button><button type="button" data-guide-jump="4" aria-pressed="false"><span>05</span> Relic Draft</button></nav>
+          <div class="guide-navigation"><button type="button" data-guide-prev>← Previous scene</button><span data-guide-progress role="status">1 / 5</span><button type="button" data-guide-next>Next scene →</button></div>
+        </template><template data-map-template="night" data-title="Defend at night">
+          <div class="guide-tabs"><button type="button" data-map-switch="day" aria-pressed="false">☀ Prepare by day</button><button type="button" data-map-switch="night" aria-pressed="true">☾ Defend at night</button></div>
+          <div class="guide-scenes"><article class="guide-scene" data-guide-scene ><video controls muted loop playsinline preload="none" poster="/assets/daynight/night-01-deploy.webp" data-src="/assets/daynight/night-01-deploy.mp4" aria-label="Forming the Line"></video><div><p class="world-eyebrow">TINY DEFENSE / NIGHT 01</p><h3>Forming the Line</h3><p>Drag spearmen, archers, and monks into the positions you want, then close the gaps from the tower shop.</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/night-02-defense.webp" data-src="/assets/daynight/night-02-defense.mp4" aria-label="Holding the Line"></video><div><p class="world-eyebrow">TINY DEFENSE / NIGHT 02</p><h3>Holding the Line</h3><p>Guardians and soldiers meet the skeleton horde head-on. While the front rank holds, arrows fall from behind.</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/night-03-hero.webp" data-src="/assets/daynight/night-03-hero.mp4" aria-label="Hero Skill"></video><div><p class="world-eyebrow">TINY DEFENSE / NIGHT 03</p><h3>Hero Skill</h3><p>The hero's spin attack clears everything within reach. When you spend it decides where the wave breaks.</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/night-04-duel.webp" data-src="/assets/daynight/night-04-duel.mp4" aria-label="Boss Duel"></video><div><p class="world-eyebrow">TINY DEFENSE / NIGHT 04</p><h3>Boss Duel</h3><p>Every fifth night, chain the on-screen commands and face the boss yourself. Drop the input and the counterattack lands.</p></div></article><article class="guide-scene" data-guide-scene hidden><video controls muted loop playsinline preload="none" poster="/assets/daynight/night-05-season.webp" data-src="/assets/daynight/night-05-season.mp4" aria-label="Beyond the Season"></video><div><p class="world-eyebrow">TINY DEFENSE / NIGHT 05</p><h3>Beyond the Season</h3><p>Past spring waits summer, and past that, fall and winter. Every season turn pushes the night one step deeper.</p></div></article></div>
+          <nav class="guide-index" aria-label="Defend at night"><button type="button" data-guide-jump="0" aria-pressed="true"><span>01</span> Forming the Line</button><button type="button" data-guide-jump="1" aria-pressed="false"><span>02</span> Holding the Line</button><button type="button" data-guide-jump="2" aria-pressed="false"><span>03</span> Hero Skill</button><button type="button" data-guide-jump="3" aria-pressed="false"><span>04</span> Boss Duel</button><button type="button" data-guide-jump="4" aria-pressed="false"><span>05</span> Beyond the Season</button></nav>
+          <div class="guide-navigation"><button type="button" data-guide-prev>← Previous scene</button><span data-guide-progress role="status">1 / 5</span><button type="button" data-guide-next>Next scene →</button></div>
+        </template><template data-map-template="stores" data-title="Continue your adventure"><div class="store-banner"><img src="/assets/app-icon.webp" width="96" height="96" alt=""><div><p class="world-eyebrow">TINY DEFENSE</p><p>Find Tiny Defense in your app store.</p></div></div><ul class="store-grid">
+            <li class="store-item">
+              <a class="store-card is-live" href="https://play.google.com/store/apps/details?id=com.onestep.tinydefense" target="_blank" rel="noopener" aria-label="View Tiny Defense on Google Play">
+                <span class="store-name">Google Play</span>
+                <span class="store-state">Available now <span aria-hidden="true">&rarr;</span></span>
+              </a>
+            </li>
+            <li class="store-item">
+              <a class="store-card is-live" href="https://apps.apple.com/app/id6785383234" target="_blank" rel="noopener" aria-label="View Tiny Defense on the App Store">
+                <span class="store-name">App Store</span>
+                <span class="store-state">Available now <span aria-hidden="true">&rarr;</span></span>
+              </a>
+            </li>
+            <li class="store-item">
+              <a class="store-card is-live" href="https://m.onestore.co.kr/v2/ko-kr/app/0001007324" target="_blank" rel="noopener" aria-label="View Tiny Defense on ONE store">
+                <span class="store-name">ONE store</span>
+                <span class="store-state">Available now <span aria-hidden="true">&rarr;</span></span>
+              </a>
+            </li>
+            <li class="store-item">
+              <div class="store-card is-coming">
+                <span class="store-name">Steam</span>
+                <span class="store-state">Coming soon</span>
+              </div>
+            </li>
+          </ul></template><template data-map-template="game" data-title="Try woodcutting"><p class="mini-note">Closing ends this attempt. Your best score stays saved.</p><iframe class="map-minigame" title="Try woodcutting" data-src="/games/tiny-defense/play/?embed=1&amp;courtyard=1&amp;lang=en&amp;v=map-1" allow="autoplay; web-share; clipboard-write"></iframe></template><template data-map-template="studio" data-title="OneStep Studio"><section class="studio-summary section">
+      <div class="container studio-summary-grid">
+        <div class="reveal">
+          <p class="eyebrow">OUR WAY</p>
+          <h2>One step at a time,<br>with purpose.</h2>
+        </div>
+        <div class="studio-summary-copy">
+          <p class="lead">OneStep Studio makes games where small choices grow into big stories.</p>
+          <p>We are building the world of Tiny Defense one step at a time, with meaningful choices in every short session and challenges that keep unfolding.</p>
+          <a class="text-link" href="mailto:chunsanet@gmail.com">
+            chunsanet@gmail.com
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section></template>
     <!-- WORLD EXPERIENCE END -->
 
     <section class="game-library section" id="games" aria-labelledby="games-title">

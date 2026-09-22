@@ -15,11 +15,12 @@ def export(game, sounds, story_only=False):
     out = ROOT / 'assets/world'
     out.mkdir(parents=True, exist_ok=True)
     ui = game / 'Assets/Resources/TinyDefense/UI'
-    mapping = {
-        'prologue': 'Prologue/prologue_panel_1.png',
-    }
     source = game / 'Assets/Scripts/TinyDefense'
     sequence = (source / 'StorySequence.cs').read_text(encoding='utf-8-sig')
+    prologue_source = (source / 'PrologueSequence.cs').read_text(encoding='utf-8-sig')
+    panel_count = int(re.search(r'const int PanelCount\s*=\s*(\d+)', prologue_source)[1])
+    mapping = {('prologue' if i == 1 else f'prologue_{i}'): f'Prologue/prologue_panel_{i}.png'
+               for i in range(1, panel_count + 1)}
     def array(name):
         match = re.search(r'\b' + name + r'\s*=\s*\{(.*?)\};', sequence, re.S)
         if not match:
@@ -30,11 +31,26 @@ def export(game, sounds, story_only=False):
     voices = [list(map(int, re.findall(r'\d+', row))) for row in re.findall(r'new\[\]\s*\{([^}]+)\}', array('Speakers'))]
     if not ids or len(ids) != len(art_paths) or len(ids) != len(voices):
         raise ValueError('Story scene, art and speaker arrays do not match')
-    arts = []
-    for path in art_paths:
-        name = 'prologue' if path == 'Prologue/prologue_panel_1' else Path(path).name.removeprefix('story_')
+    # Mirror the game's per-dialogue overrides, and fail loudly if its grammar changes.
+    art_method = re.search(r'ArtFor\(int scene, int page\)\s*\{(.*?)\}', sequence, re.S)[1]
+    art_method = re.sub(r'//[^\n]*', '', art_method).strip()
+    rule_pattern = r'if\s*\((scene\s*==\s*\d+(?:\s*&&\s*page\s*(?:==|<)\s*\d+)?)\)\s*return\s*"UI/([^"]+)"\s*;'
+    rules = re.findall(rule_pattern, art_method)
+    remainder = re.sub(rule_pattern, '', art_method).strip()
+    if remainder != 'return Art[scene];':
+        raise ValueError('Unsupported ArtFor logic; update exporter before publishing')
+    def art_for(scene, line):
+        for condition, path in rules:
+            parts = re.fullmatch(r'scene\s*==\s*(\d+)(?:\s*&&\s*page\s*(==|<)\s*(\d+))?', condition)
+            if scene == int(parts[1]) and (not parts[2] or
+                    (line == int(parts[3]) if parts[2] == '==' else line < int(parts[3]))):
+                return path
+        return art_paths[scene]
+    scene_arts = [[art_for(scene, line) for line in range(len(speakers))]
+                  for scene, speakers in enumerate(voices)]
+    for path in dict.fromkeys(path for scene in scene_arts for path in scene):
+        name = Path(path).name.removeprefix('story_')
         mapping[name] = path + '.png'
-        arts.append(name)
     for name, path in mapping.items():
         im = Image.open(ui / path).convert('RGB')
         im.thumbnail((1100, 1500))
@@ -49,14 +65,27 @@ def export(game, sounds, story_only=False):
     prologue = table('Loc.Season.cs')
     data = {}
     for lang, col in [('ko',0), ('en',1), ('ja',3)]:
-        pages = [{'id':'prologue', 'chapter':1, 'scene':0, 'art':'prologue', 'title':{'ko':'봉인 위에 세운 성', 'en':'A Castle Above the Seal', 'ja':'封印の上に築いた城'}[lang],
-                  'lines':[{'speaker':0,'text':prologue[f'prologue.cut{i}'][col]} for i in [1,2]]}]
-        for ident, speakers, art in zip(ids, voices, arts):
+        pages = [{'id':'prologue' if i == 1 else f'prologue.{i}', 'sourceId':'prologue',
+                  'chapter':1, 'scene':0, 'part':i, 'parts':panel_count,
+                  'art':'prologue' if i == 1 else f'prologue_{i}',
+                  'title':{'ko':'프롤로그', 'en':'Prologue', 'ja':'プロローグ'}[lang],
+                  'lines':[{'speaker':0,'text':prologue[f'prologue.cut{i}'][col]}]}
+                 for i in range(1, panel_count + 1)]
+        chapter_scenes = {}
+        for ident, speakers, arts in zip(ids, voices, scene_arts):
             chapter = int(ident[2]) if re.match(r'ch\d\.', ident) else 1
-            scene = 1 + sum(p['chapter'] == chapter and p['id'] != 'prologue' for p in pages)
-            pages.append({'id':ident, 'chapter':chapter, 'scene':scene, 'art':art, 'title':strings[f'story.{ident}.title'][col],
-                          'lines':[{'speaker':speaker, 'text':strings[f'story.{ident}.{n}'][col]} for n,speaker in enumerate(speakers)]})
-        data[lang] = {'title':strings['story.title'][col], 'boy':strings['story.boy'][col], 'pages':pages}
+            chapter_scenes[chapter] = chapter_scenes.get(chapter, 0) + 1
+            groups = []
+            for n, (speaker, art) in enumerate(zip(speakers, arts)):
+                if not groups or groups[-1]['art'] != Path(art).name.removeprefix('story_'):
+                    groups.append({'art':Path(art).name.removeprefix('story_'), 'lineStart':n, 'lines':[]})
+                groups[-1]['lines'].append({'speaker':speaker, 'text':strings[f'story.{ident}.{n}'][col]})
+            for part, group in enumerate(groups, 1):
+                pages.append({'id':ident if part == 1 else f'{ident}.part{part}', 'sourceId':ident,
+                              'chapter':chapter, 'scene':chapter_scenes[chapter], 'part':part, 'parts':len(groups),
+                              'title':strings[f'story.{ident}.title'][col], **group})
+        data[lang] = {'title':strings['story.title'][col], 'boy':strings['story.boy'][col],
+                      'previewCount':panel_count + 1, 'pages':pages}
     (out / 'story.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     if story_only:
         print(f'Exported {len(mapping)} illustrations and {len(pages)} spreads in 3 languages.')
