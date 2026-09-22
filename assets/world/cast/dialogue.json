@@ -1,0 +1,32 @@
+{
+  "ko": {
+    "boy": "오늘은 할아버지도 좀 쉬면 좋겠다.",
+    "guardian": "불 곁에서 쉬어. 문은 내가 볼게.",
+    "mage": "너도 좀 쉬어. 불은 내가 봐줄게.",
+    "girl": "장작은 충분해. 잠깐 쉬어도 되겠지?",
+    "berserker": "몸도 풀렸는데, 한판 어때?",
+    "duelist": "좋지. 일단 수프부터 먹고.",
+    "pawn": "이 장작이면 모두 따뜻하겠지?",
+    "dark-knight": "조용하네. 조금 더 쉬어도 되겠어."
+  },
+  "en": {
+    "boy": "I hope Grandpa gets some rest today.",
+    "guardian": "Rest by the fire. I'll watch the gate.",
+    "mage": "You rest too. I'll tend the fire.",
+    "girl": "Plenty of firewood. Time for a little break?",
+    "berserker": "I'm warmed up. How about a spar?",
+    "duelist": "Gladly. After the soup.",
+    "pawn": "This should keep everyone warm.",
+    "dark-knight": "Quiet for now. Rest a little longer."
+  },
+  "ja": {
+    "boy": "今日はおじいちゃんも休めるといいな。",
+    "guardian": "火のそばで休んで。門は見ているから。",
+    "mage": "君も休みなよ。火は見ておくから。",
+    "girl": "薪は十分。少し休んでもいいよね？",
+    "berserker": "体も温まったし、一勝負どうだ？",
+    "duelist": "いいね。まずはスープを飲んでから。",
+    "pawn": "この薪で、みんな暖まれるかな。",
+    "dark-knight": "静かだね。もう少し休んでいていいよ。"
+  }
+}

@@ -22,23 +22,27 @@ def export(game_root):
     output.mkdir(exist_ok=True)
     manifest = []
     for ident, relative in SOURCES.items():
-        sheet = Image.open(source / relative).convert('RGBA')
-        size = sheet.height
-        assert sheet.width == size * 6, relative
-        frames = [sheet.crop((i*size, 0, (i+1)*size, size)) for i in range(6)]
-        boxes = [frame.getbbox() for frame in frames]
+        states = {}
+        for state, file in [('run', relative), ('idle', relative.replace('Run', 'Idle'))]:
+            sheet = Image.open(source / file).convert('RGBA')
+            size = sheet.height
+            count = sheet.width // size
+            assert count == (6 if state == 'run' else 8), file
+            states[state] = [sheet.crop((i*size, 0, (i+1)*size, size)) for i in range(count)]
+        boxes = [frame.getbbox() for frames in states.values() for frame in frames]
         bounds = (min(b[0] for b in boxes), min(b[1] for b in boxes),
                   max(b[2] for b in boxes), max(b[3] for b in boxes))
         width, height = bounds[2]-bounds[0], bounds[3]-bounds[1]
         scale = min(108/width, 96/height)
         target = (round(width*scale), round(height*scale))
-        atlas = Image.new('RGBA', (128*6, 128))
-        for i, frame in enumerate(frames):
-            # Use one bounding box for all frames: retain the original foot motion.
-            resized = frame.crop(bounds).resize(target, Image.Resampling.LANCZOS)
-            atlas.paste(resized, (i*128+(128-target[0])//2, 116-target[1]))
-        atlas.save(output / f'{ident}.webp', lossless=True)
-        manifest.append({'id': ident, 'source': relative, 'frames': 6, 'frameSize': 128})
+        for state, frames in states.items():
+            atlas = Image.new('RGBA', (128*len(frames), 128))
+            for i, frame in enumerate(frames):
+                resized = frame.crop(bounds).resize(target, Image.Resampling.LANCZOS)
+                atlas.paste(resized, (i*128+(128-target[0])//2, 116-target[1]))
+            suffix = '' if state == 'run' else '-idle'
+            atlas.save(output / f'{ident}{suffix}.webp', lossless=True)
+        manifest.append({'id': ident, 'source': relative, 'frames': 6, 'idleFrames': 8, 'frameSize': 128})
     (output / 'manifest.json').write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')
     print(f'Exported {len(manifest)} courtyard characters.')
 

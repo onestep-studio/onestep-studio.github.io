@@ -35,18 +35,37 @@
 .courtyard { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 60%; }
 .courtyard-night { opacity:0; transition:opacity 1.8s ease; }
 .courtyard-actors { position:absolute; z-index:1; pointer-events:none; }
-.courtyard-walker { position:absolute; width:9.5%; aspect-ratio:1; left:var(--x1); top:var(--y1); transform:translate(-50%,-90.625%); animation:courtyard-roam var(--trip) linear var(--phase) infinite; }
-.walker-facing { width:100%; height:100%; animation:courtyard-facing var(--trip) steps(1,end) var(--phase) infinite; }
-.walker-sprite { width:100%; height:100%; background-size:600% 100%; background-repeat:no-repeat; animation:resident-steps .85s steps(6) var(--phase) infinite; filter:drop-shadow(0 3px 2px #0006); }
-[data-time=night] .walker-sprite { filter:brightness(.75) drop-shadow(0 3px 2px #0008); }
-@keyframes courtyard-roam {
- 0%,100% { left:var(--x1); top:var(--y1); }
- 25%,75% { left:var(--x2); top:var(--y2); }
- 50% { left:var(--x3); top:var(--y3); }
+.courtyard-walker { position:absolute; width:9.5%; aspect-ratio:1; left:var(--x1); top:var(--y1); opacity:0; transform:translate(-50%,-90.625%); animation:courtyard-scene 168s linear var(--delay) infinite both; }
+.walker-facing { width:100%; height:100%; animation:courtyard-facing 168s steps(1,end) var(--delay) infinite both; }
+.walker-motion,.walker-rest { position:absolute; inset:0; }
+.walker-motion { animation:courtyard-walking 168s steps(1,end) var(--delay) infinite both; }
+.walker-rest { animation:courtyard-resting 168s steps(1,end) var(--delay) infinite both; }
+.walker-sprite,.walker-idle { width:100%; height:100%; background-repeat:no-repeat; filter:drop-shadow(0 3px 2px #0006); }
+.walker-sprite { background-size:600% 100%; animation:resident-steps .85s steps(6) infinite; }
+.walker-idle { background-size:800% 100%; animation:courtyard-idle 1.6s steps(8) infinite; }
+[data-time=night] .walker-sprite,[data-time=night] .walker-idle { filter:brightness(.8) drop-shadow(0 3px 2px #0008); }
+@keyframes courtyard-idle { to { background-position:114.285714% 0; } }
+@keyframes courtyard-scene {
+ 0% { opacity:0; left:var(--x1); top:var(--y1); }
+ .6% { opacity:1; }
+ 2%,12% { opacity:1; left:var(--x2); top:var(--y2); }
+ 13.5% { opacity:1; }
+ 14.5%,100% { opacity:0; left:var(--x3); top:var(--y3); }
 }
-@keyframes courtyard-facing { 0% { transform:scaleX(1); } 50% { transform:scaleX(-1); } }
+@keyframes courtyard-facing { 0% { transform:scaleX(var(--enter)); } 2% { transform:scaleX(var(--facing)); } 12%,100% { transform:scaleX(var(--leave)); } }
+@keyframes courtyard-walking { 0% { opacity:1; } 2% { opacity:0; } 12% { opacity:1; } 14.5%,100% { opacity:0; } }
+@keyframes courtyard-resting { 0% { opacity:0; } 2% { opacity:1; } 12%,100% { opacity:0; } }
+.courtyard-bubble { position:absolute; bottom:100%; left:50%; width:max-content; max-width:170px; margin:0 0 4px; padding:9px 12px; transform:translateX(-50%); border:1px solid #cbb887; border-radius:12px; background:#fff4db; color:#302b24; box-shadow:0 3px 12px #0003; font:14px/1.5 var(--reading-font,system-ui,sans-serif); word-break:keep-all; text-align:center; opacity:0; animation:courtyard-speech 168s linear var(--delay) infinite both; }
+.courtyard-bubble::after { content:''; position:absolute; top:100%; left:50%; border:6px solid transparent; border-top-color:#fff4db; transform:translateX(-50%); }
+.courtyard-bubble[data-reply] { animation-name:courtyard-reply; }
+@keyframes courtyard-speech { 0%,3.5% { opacity:0; } 4%,6.8% { opacity:1; } 7.2%,100% { opacity:0; } }
+@keyframes courtyard-reply { 0%,7.8% { opacity:0; } 8.3%,10.8% { opacity:1; } 11.2%,100% { opacity:0; } }
+@media(max-width:699px) { .courtyard-bubble { max-width:145px; padding:7px 9px; font-size:13px; } }
 @media(prefers-reduced-motion:reduce) {
- .courtyard-walker { left:var(--x2); top:var(--y2); }
+ .courtyard-walker { display:none; }
+ .courtyard-walker[data-scene="0"] { display:block; opacity:1; left:var(--x2); top:var(--y2); }
+ .walker-motion,.courtyard-bubble { display:none; }
+ .walker-rest { opacity:1; }
 }
 .gate-guard { position:absolute; top:56.5%; left:48%; width:18%; aspect-ratio:1; transform:translate(-50%,-61.875%); }
 .guard-right { left:69%; }
