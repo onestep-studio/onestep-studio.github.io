@@ -1,1952 +1,3170 @@
 {
   "ko": {
-    "title": "돌아올 성",
+    "title": "사계절의 기억",
     "boy": "폰",
-    "previewCount": 6,
+    "speakers": {
+      "1": "폰",
+      "2": "노인",
+      "3": "마르스",
+      "4": "젊은 수호자",
+      "5": "수호정령",
+      "6": "기사",
+      "7": "미래의 폰",
+      "8": "병사",
+      "9": "태고의 트롤"
+    },
+    "books": {
+      "1": "고향·봄",
+      "2": "여름",
+      "3": "가을",
+      "4": "겨울",
+      "5": "귀환"
+    },
+    "previewCount": 9,
     "pages": [
       {
-        "id": "prologue",
+        "id": "rewind.prologue.1",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 1,
-        "parts": 5,
-        "art": "prologue",
+        "parts": 6,
+        "art": "revised_last_gate",
         "title": "프롤로그",
         "lines": [
           {
             "speaker": 0,
-            "text": "오래전, 사람들은 잠든 괴물들의 봉인 위에 성을 세웠다. 그 아래는 누구도 들여다보지 않았다."
+            "text": "성이 무너지던 마지막 밤.\n모두가 물러난 성문 앞에, 한 기사가 남았다."
           }
         ]
       },
       {
-        "id": "prologue.2",
+        "id": "rewind.prologue.2",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 2,
-        "parts": 5,
-        "art": "prologue_2",
+        "parts": 6,
+        "art": "revised_last_warning",
         "title": "프롤로그",
         "lines": [
           {
-            "speaker": 0,
-            "text": "어느 밤, 봉인이 갈라졌다. 새어 나온 괴물들이 성벽을 두드렸고, 성이 흔들릴 때마다 틈은 더 벌어졌다."
+            "speaker": 8,
+            "text": "기사님! 놈이 성문까지 왔습니다!"
+          },
+          {
+            "speaker": 6,
+            "text": "모두 안으로 들어가라. 여기는 내가 막겠다."
           }
-        ],
-        "after": [
-          "숲의 어둠이 갈라지더니 태고의 트롤이 모습을 드러냈다. 거대한 몸이 내려앉자 땅이 울렸다.\n\n성문 앞을 막아선 것은 검 한 자루를 든 노인이었다. 트롤은 성벽 뒤에 남은 사람이 고작 하나냐며 비웃었다. 노인은 검이 부러지기 전에는 지나갈 수 없다고 답했다.",
-          "말이 끝나자 둘이 맞붙었다. 노인은 물러서지 않았고, 트롤의 이빨이 부러져 나갔다. 그러나 그 싸움을 버틴 검도 끝내 부러졌다.\n\n거친 숨을 몰아쉬는 노인에게 트롤이 다음 밤에는 대신 설 사람도 없을 것이라 쏘아붙였다. 노인은 대답하지 않았다. 트롤의 커다란 등이 숲속으로 멀어졌다."
         ]
       },
       {
-        "id": "prologue.3",
+        "id": "rewind.prologue.talk1",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 3,
-        "parts": 5,
-        "art": "prologue_3",
-        "title": "프롤로그",
+        "parts": 6,
+        "art": "revised_last_warning",
+        "title": "성문 앞의 결투",
         "lines": [
           {
-            "speaker": 0,
-            "text": "이빨을 잃은 트롤은 어둠 속으로 달아났다. 노인의 검도 부러졌다. 해가 뜨자 괴물들은 숲으로 물러났다."
+            "speaker": 9,
+            "text": "또 인간인가."
+          },
+          {
+            "speaker": 6,
+            "text": "……."
+          },
+          {
+            "speaker": 9,
+            "text": "비켜라. 성째로 짓밟아 주마."
+          },
+          {
+            "speaker": 6,
+            "text": "여기서 더는 못 간다."
           }
         ]
       },
       {
-        "id": "prologue.4",
+        "id": "rewind.prologue.3",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 4,
-        "parts": 5,
-        "art": "prologue_4",
+        "parts": 6,
+        "art": "revised_last_sword_break",
         "title": "프롤로그",
         "lines": [
           {
-            "speaker": 0,
-            "text": "밤을 지킨 이들은 지쳐 잠들었다. 물자를 구하러 나갈 사람은 창을 들기엔 아직 어린 소년뿐이었다."
+            "speaker": 6,
+            "text": "……미안하다."
           }
         ]
       },
       {
-        "id": "prologue.5",
+        "id": "rewind.prologue.4",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 5,
-        "parts": 5,
-        "art": "prologue_5",
+        "parts": 6,
+        "art": "revised_last_sword_break",
         "title": "프롤로그",
         "lines": [
           {
             "speaker": 0,
-            "text": "봉인은 오늘도 벌어지고 있었다. 소년은 빈 자루를 메고 성문을 나섰다. 해 지기 전, 성이 하루 더 버틸 물자를 구해야 했다."
+            "text": "시야가 서서히 흐려졌다."
           }
         ]
       },
       {
-        "id": "supplies",
-        "sourceId": "supplies",
+        "id": "rewind.prologue.5",
+        "sourceId": "prologue",
+        "chapter": 1,
+        "scene": 0,
+        "part": 6,
+        "parts": 6,
+        "art": "revised_last_glimmer",
+        "title": "프롤로그",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "흐릿한 청록빛이 어둠 속에서 번졌다."
+          }
+        ]
+      },
+      {
+        "id": "rewind.morning",
+        "sourceId": "morning",
+        "chapter": 1,
+        "scene": 0,
+        "part": 1,
+        "parts": 1,
+        "art": "revised_morning",
+        "title": "첫 아침",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "폰! 이리 좀 와 보렴."
+          },
+          {
+            "speaker": 1,
+            "text": "응!"
+          },
+          {
+            "speaker": 8,
+            "text": "어르신, 어젯밤 괴물들 때문에 성문 지지대가 갈라졌습니다."
+          },
+          {
+            "speaker": 2,
+            "text": "창고에 남은 목재는?"
+          },
+          {
+            "speaker": 8,
+            "text": "거의 없습니다."
+          },
+          {
+            "speaker": 1,
+            "text": "내가 가져올까? 나도 도울래!"
+          },
+          {
+            "speaker": 2,
+            "text": "네가? 숲까지 가야 하는데 괜찮겠니?"
+          },
+          {
+            "speaker": 1,
+            "text": "응. 할 수 있어!"
+          },
+          {
+            "speaker": 2,
+            "text": "그래. 싸우는 것만이 성을 지키는 일은 아니란다. 가까운 숲부터 가 보자꾸나."
+          }
+        ]
+      },
+      {
+        "id": "interlude.gather",
+        "sourceId": "interlude.gather",
         "chapter": 1,
         "scene": 1,
         "part": 1,
         "parts": 1,
-        "title": "빈 자루의 무게",
-        "art": "supplies",
+        "kind": "interlude",
+        "visual": "illustration",
+        "art": "interlude_gather_forest",
+        "title": "성을 지킬 나무",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "폰은 가까운 숲으로 향했다. 도끼를 내리칠 때마다 성으로 가져갈 나무가 쌓였다."
+          },
+          {
+            "speaker": 0,
+            "text": "모은 목재는 성문을 고치는 데 쓰였다. 작은 손으로 시작한 일이 밤의 방어선을 받쳐 주었다."
+          }
+        ]
+      },
+      {
+        "id": "v2.smallhands",
+        "sourceId": "v2.smallhands",
+        "chapter": 1,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "작은 손",
+        "art": "revised_supplies",
         "lineStart": 0,
         "lines": [
           {
             "speaker": 0,
-            "text": "소년이 가져온 나무로 성문을 덧댔다. 병사들은 따뜻한 밥을 먹고 다시 성벽에 올랐다."
+            "text": "성문은 밤새 버텼다. 폰이 가져온 나무가 부서진 지지대를 대신하고 있었다."
           },
           {
             "speaker": 1,
-            "text": "난 밖에서 나무만 주워 왔는데…"
+            "text": "내가 가져온 나무네. 나도 성을 지킨 거야?"
           },
           {
             "speaker": 2,
-            "text": "그 나무 덕분에 성문이 버텼단다. 네가 우리를 도운 거야."
-          },
-          {
-            "speaker": 2,
-            "text": "오늘도 나무와 먹을 것을 구해다 주겠니?"
+            "text": "그럼. 검을 드는 것만이 지키는 일은 아니란다."
           },
           {
             "speaker": 1,
-            "text": "응, 해 볼게!"
+            "text": "그럼 오늘도 다녀올게!"
           }
         ]
       },
       {
-        "id": "ring",
-        "sourceId": "ring",
+        "id": "v2.light",
+        "sourceId": "v2.light",
         "chapter": 1,
         "scene": 2,
         "part": 1,
-        "parts": 1,
-        "title": "혼자 막지 말거라",
-        "art": "ring",
+        "parts": 2,
+        "title": "작은 빛",
+        "art": "revised_spirit_meeting",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 1,
-            "text": "반지를 만들면, 나도 할아버지처럼 싸울 수 있을까?"
-          },
-          {
-            "speaker": 2,
-            "text": "그럼. 나처럼 영웅의 힘을 빌려 싸울 수 있단다."
+            "speaker": 0,
+            "text": "나뭇가지를 줍던 폰 앞에 작은 빛이 나타났다. 가까이 다가가도 달아나지 않았다."
           },
           {
             "speaker": 1,
-            "text": "반지 속 영웅이랑 이야기도 할 수 있어?"
+            "text": "안녕? 나랑 같이 갈래?"
           },
           {
-            "speaker": 2,
-            "text": "그렇단다. 나도 검에서 들려오는 목소리에 도움을 받았지. 다만 어떻게 싸울지는 네가 정하는 거란다."
+            "speaker": 0,
+            "text": "폰이 손바닥을 펴자 작은 빛이 내려앉았다. 손을 살짝 올리면 빛도 올라갔다. 둘은 한동안 같은 장난을 되풀이했다."
           },
           {
-            "speaker": 2,
-            "text": "그리고 혼자 다 막으려 하지는 말거라. 내 검이 부러졌을 때도, 성에 남은 사람들이 함께 버텨 주었단다."
+            "speaker": 1,
+            "text": "너도 재미있어? 내일도 같이 놀자."
+          },
+          {
+            "speaker": 0,
+            "text": "작은 빛이 폰의 손끝을 맴돌았다. 폰은 채집한 나뭇가지와 새 친구를 데리고 노인을 찾아갔다."
           }
-        ],
-        "before": [
-          "모루를 두드리는 소리가 울렸다. 마침내 마법 반지가 모습을 드러냈다.\n\n이제 반지에 깃들 영웅의 힘을 고를 차례였다. 손안에 쏙 들어오는 작은 반지가 영웅과 소년을 이어 줄 터였다.",
-          "낮에는 나무를 모으고, 밤에는 성벽을 지키는 날들이 이어졌다.\n\n소년은 반지를 내려다보았다. 검을 들지 못하는 자신도 이 반지가 있다면 함께 싸울 수 있을 것 같았다."
         ]
       },
       {
-        "id": "troll",
-        "sourceId": "troll",
+        "id": "v2.light.part2",
+        "sourceId": "v2.light",
+        "chapter": 1,
+        "scene": 2,
+        "part": 2,
+        "parts": 2,
+        "title": "작은 빛",
+        "art": "revised_small_light",
+        "lineStart": 5,
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "할아버지, 채집하다가 작은 빛을 봤어. 내가 다가가도 사라지지 않았어."
+          },
+          {
+            "speaker": 2,
+            "text": "정령이 네게 다가왔구나. 이제 네 곁에 머물고 싶은가 보구나."
+          },
+          {
+            "speaker": 1,
+            "text": "할아버지도 정령을 만난 적 있어?"
+          },
+          {
+            "speaker": 2,
+            "text": "오래전에. 우리처럼 스스로 뜻을 가진 존재들이란다."
+          }
+        ]
+      },
+      {
+        "id": "interlude.forge",
+        "sourceId": "interlude.forge",
         "chapter": 1,
         "scene": 3,
         "part": 1,
         "parts": 1,
-        "title": "검이 부러진 다음",
-        "art": "troll",
+        "kind": "interlude",
+        "visual": "forge",
+        "art": "revised_ring_empty",
+        "title": "모루 위의 반지",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "룬 광석과 반짝이는 돌이 모루 위로 모였다. 망치가 내려앉고, 반지가 빛을 띠기 시작했다."
+          },
+          {
+            "speaker": 0,
+            "text": "제작이 끝났다. 이제 반지에 새길 영웅의 힘을 고를 차례였다."
+          }
+        ]
+      },
+      {
+        "id": "v2.ring",
+        "sourceId": "v2.ring",
+        "chapter": 1,
+        "scene": 3,
+        "part": 1,
+        "parts": 2,
+        "title": "반지가 부른 기억",
+        "art": "revised_ring_empty",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "이 반지는 어떻게 영웅의 힘을 불러오는 걸까?"
+          }
+        ]
+      },
+      {
+        "id": "v2.ring.part2",
+        "sourceId": "v2.ring",
+        "chapter": 1,
+        "scene": 3,
+        "part": 2,
+        "parts": 2,
+        "title": "반지가 부른 기억",
+        "art": "revised_ring_memory",
+        "lineStart": 1,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "꼬마 정령이 다가오자 반지에서 금빛과 청록빛이 얽혔다. 오래전 방패를 들었던 한 영웅의 기억이 비쳤다."
+          },
+          {
+            "speaker": 1,
+            "text": "이 사람도 이 땅에서 싸웠던 영웅이야?"
+          },
+          {
+            "speaker": 2,
+            "text": "그렇단다. 지금 새 영웅을 부른 건 아니야. 반지에 비친 옛 기억을 보고 있는 게지."
+          },
+          {
+            "speaker": 1,
+            "text": "그럼 반지 안에 사람이 갇혀 있는 건 아니네?"
+          },
+          {
+            "speaker": 2,
+            "text": "그래. 그 사람이 남긴 마음과 싸움의 기억에 닿는 거란다."
+          },
+          {
+            "speaker": 1,
+            "text": "누구를 지키려고 싸웠을까?"
+          },
+          {
+            "speaker": 0,
+            "text": "영웅의 형상은 말없이 방패를 들고 있었다."
+          },
+          {
+            "speaker": 1,
+            "text": "그 마음을 우리도 이어 갈 수 있겠지?"
+          },
+          {
+            "speaker": 2,
+            "text": "그럼. 네가 지키고 싶은 사람들을 떠올려 보렴."
+          }
+        ]
+      },
+      {
+        "id": "v2.springstone",
+        "sourceId": "v2.springstone",
+        "chapter": 1,
+        "scene": 4,
+        "part": 1,
+        "parts": 2,
+        "title": "꽃의 비석",
+        "art": "revised_spring_sleep",
         "lineStart": 0,
         "lines": [
           {
             "speaker": 0,
-            "text": "이빨 부러진 트롤을 물리친 아침, 노인은 말없이 성문을 쓸어 보았다."
+            "text": "꽃 사이에 오래된 비석이 있었다. 폰이 손을 대도 아무 일도 일어나지 않았다."
           },
           {
             "speaker": 1,
-            "text": "할아버지 검이 없어도, 우리가 막았어."
-          },
-          {
-            "speaker": 2,
-            "text": "그래. 이제 내 검이 없어도 함께 성을 지킬 수 있겠구나."
+            "text": "그냥 돌인가?"
           }
         ]
       },
       {
-        "id": "spring",
-        "sourceId": "spring",
+        "id": "v2.springstone.part2",
+        "sourceId": "v2.springstone",
         "chapter": 1,
         "scene": 4,
-        "part": 1,
-        "parts": 1,
-        "title": "길을 거슬러",
-        "art": "spring",
-        "lineStart": 0,
+        "part": 2,
+        "parts": 2,
+        "title": "꽃의 비석",
+        "art": "revised_spring_awake",
+        "lineStart": 2,
         "lines": [
           {
-            "speaker": 1,
-            "text": "괴수들 발자국이야. 이 길을 따라가면 어디가 나올까?"
-          },
-          {
-            "speaker": 2,
-            "text": "나도 여기까지는 와 본 적이 없단다. 늘 성문 앞에서 놈들을 막았으니."
+            "speaker": 0,
+            "text": "꼬마 정령이 다가오자 꽃 문양이 빛났다. 아주 오래된 풍경이 한순간 비쳤다."
           },
           {
             "speaker": 1,
-            "text": "그럼 같이 가 보자. 놈들이 오는 길을 막을 수 있을지도 몰라."
+            "text": "방금…… 뭐였지? 너도 이 돌을 아는 거야?"
           }
-        ],
-        "before": [
-          "네메시스는 쓰러졌다.",
-          "그러나 성 아래의 균열은 닫히지 않았다. 등불 속 정령들이 빛을 모으자 어둠 속에 길이 드러났다. 꽃잎 하나가 빛을 가로질러 흘러갔다.\n\n노인은 그 길을 오래 바라보았다. 밤마다 성을 찾아오던 괴물들이 어디서 왔는지, 이제야 알 수 있었다.",
-          "정령의 문이 열렸다. 소년과 노인은 성을 등지고 그 빛 속으로 들어섰다.\n\n문 너머에는 봄이 기다리고 있었다. 이제는 밀려오는 적을 막는 데서 그치지 않고, 그들이 오는 길을 찾아가야 했다."
         ]
       },
       {
-        "id": "summer",
-        "sourceId": "summer",
+        "id": "v2.springmemory",
+        "sourceId": "v2.springmemory",
         "chapter": 1,
         "scene": 5,
         "part": 1,
         "parts": 1,
-        "title": "돌에 남은 길",
-        "art": "summer",
+        "title": "검을 들지 않은 사람들",
+        "art": "revised_many_hands",
         "lineStart": 0,
         "lines": [
           {
             "speaker": 0,
-            "text": "봄을 지나온 길목에 오래된 표석이 있었다. 여러 갈래의 길 끝에 성 하나가 새겨져 있었다."
-          },
-          {
-            "speaker": 2,
-            "text": "이 길들이 모두 우리 성으로 이어지는 게로구나. 성 아래 봉인만 살피느라 이건 몰랐어."
-          },
-          {
-            "speaker": 1,
-            "text": "그럼 하나씩 살펴보자. 우리가 막을 수 있는 길이 있을 거야."
-          }
-        ],
-        "before": [
-          "봄의 풍경이 문 뒤로 걷히고, 여름의 길이 열렸다. 계절이 바뀌어도 발밑에서 찾아야 할 흔적은 같았다. 성 아래로 이어지는 길은 하나가 아니었다."
-        ]
-      },
-      {
-        "id": "autumn",
-        "sourceId": "autumn",
-        "chapter": 1,
-        "scene": 6,
-        "part": 1,
-        "parts": 1,
-        "title": "물려주고 싶지 않은 것",
-        "art": "autumn",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 0,
-            "text": "낙엽 아래에도 같은 표식이 있었다. 노인은 성벽에서 보낸 지난날을 떠올렸다."
-          },
-          {
-            "speaker": 2,
-            "text": "이젠 제법 든든하구나. 그래도 너까지 나처럼 평생 성벽만 지키며 살지는 않았으면 해."
-          },
-          {
-            "speaker": 1,
-            "text": "그럼 할아버지도 같이 쉬어야 해. 돌아가면 둘 다 쉴 수 있게 하자."
-          }
-        ],
-        "before": [
-          "다음 문 너머로 낙엽이 내려앉았다. 소년은 발밑을 살피며 걸었고, 노인은 익숙한 표식 앞에서 걸음을 멈추었다. 오래 묻어 두었던 기억이 그 길 위에서 되살아났다."
-        ]
-      },
-      {
-        "id": "winter",
-        "sourceId": "winter",
-        "chapter": 1,
-        "scene": 7,
-        "part": 1,
-        "parts": 1,
-        "title": "돌아가는 쪽에서",
-        "art": "winter",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 0,
-            "text": "정령의 빛이 눈 덮인 표석을 비췄다. 거기에는 고향으로 이어지는 길을 닫는 방법이 새겨져 있었다."
-          },
-          {
-            "speaker": 2,
-            "text": "이 길을 닫으면 괴수들도 돌아가야겠구나. 우리가 무사히 건넌 뒤에 봉하자꾸나."
-          },
-          {
-            "speaker": 1,
-            "text": "응. 그러면 성에 있는 사람들도 조금은 쉬겠지?"
-          }
-        ],
-        "before": [
-          "가을빛이 사라지고 겨울의 문이 열렸다. 눈 아래에 묻힌 표식을 찾아낸 뒤에도, 두 사람은 곧바로 길을 닫지 않았다. 이곳을 떠나 돌아가야 할 이들이 아직 남아 있었다."
-        ]
-      },
-      {
-        "id": "home",
-        "sourceId": "home",
-        "chapter": 1,
-        "scene": 8,
-        "part": 1,
-        "parts": 2,
-        "title": "오늘은 쉬어도 된단다",
-        "art": "route_seal",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 0,
-            "text": "둘이 돌아온 뒤, 정령의 빛이 길 하나를 봉했다. 성문 앞에 오랜만에 고요한 아침이 왔다."
-          }
-        ],
-        "before": [
-          "마지막 문 너머에 낯익은 성이 보였다. 겨울에서 고향으로 이어진 빛을 건넌 뒤, 두 사람은 자신들이 지나온 길을 돌아보았다. 돌아올 이들이 건넜는지 확인하고서야 길 하나를 닫았다."
-        ]
-      },
-      {
-        "id": "home.part2",
-        "sourceId": "home",
-        "chapter": 1,
-        "scene": 8,
-        "part": 2,
-        "parts": 2,
-        "title": "오늘은 쉬어도 된단다",
-        "art": "home",
-        "lineStart": 1,
-        "lines": [
-          {
-            "speaker": 1,
-            "text": "오늘은 뭘 구해 오면 돼?"
-          },
-          {
-            "speaker": 2,
-            "text": "오늘은 쉬어도 된단다."
+            "text": "성벽 위에서는 병사들이 싸웠다. 아래에서는 사람들이 나무를 나르고, 음식을 만들고, 무너진 돌을 쌓았다."
           },
           {
             "speaker": 0,
-            "text": "아직 다른 길들이 남아 있었다. 다시 밤이 오기 전, 둘은 나란히 앉아 빵을 나눠 먹었다."
+            "text": "성문 옆 지지대가 기울었다. 병사 하나가 그 아래에 갇혔다. 나무를 나르던 사람들이 짐을 내려놓고 달려갔다."
+          },
+          {
+            "speaker": 0,
+            "text": "몇 사람이 지지대를 받치는 동안 다른 사람들이 병사를 끌어냈다. 곧 새 목재가 빈자리를 메웠다. 성문은 다시 버텼다."
+          },
+          {
+            "speaker": 1,
+            "text": "나랑 똑같네. 저 사람들도 싸우지 않는데 성을 지키고 있어."
+          },
+          {
+            "speaker": 2,
+            "text": "그래. 성을 지킨 것은 영웅만이 아니었단다."
+          },
+          {
+            "speaker": 1,
+            "text": "내가 모으는 것도 전부 이어져 있는 거네."
           }
         ]
       },
       {
-        "id": "ch2.return",
-        "sourceId": "ch2.return",
+        "id": "v2.summerstone",
+        "sourceId": "v2.summerstone",
         "chapter": 2,
         "scene": 1,
         "part": 1,
         "parts": 1,
-        "title": "봉인 아래의 역사",
-        "art": "records",
+        "title": "태양의 비석",
+        "art": "revised_summer",
         "lineStart": 0,
         "lines": [
           {
+            "speaker": 0,
+            "text": "여름 길목의 비석에는 태양이 새겨져 있었다. 정령들의 빛이 이어지자 전쟁의 기억이 깨어났다."
+          },
+          {
             "speaker": 1,
-            "text": "길 하나를 막았는데도 땅속에서 소리가 나. 봉인이 또 깨진 걸까?"
+            "text": "이번엔 정령들이 먼저 모여드네. 꽃의 비석도 이렇게 빛났어."
           },
           {
             "speaker": 2,
-            "text": "아직은 알 수 없구나. 길 하나는 막았지만, 성 아래 봉인까지 온전히 고친 건 아니니."
-          },
-          {
-            "speaker": 1,
-            "text": "처음에 봉인을 만든 사람들은 어떻게 했을까? 성에 남은 기록을 찾아보자."
+            "text": "그래. 이 비석에는 어떤 기억이 남아 있을까."
           }
-        ],
-        "before": [
-          "길 하나를 닫아도 밤은 다시 찾아왔다. 성을 지키던 이들이 모두 쓰러지는 밤이면, 작은 불씨가 성을 타고 번졌다.\n\n불길 속에서 성이 흔들리고 마침내 잔해로 무너졌다. 지킬 사람이 없는 성은 홀로 버틸 수 없었다.",
-          "처음 그 빛을 만났을 때, 무너진 성 앞에서는 모든 것이 끝난 듯했다. 정령은 아직 끝나지 않았다고 말하며 마지막 빛을 손에 쥐여 주었다.\n\n그 빛이 세상 곳곳으로 흩어지자 시간은 다시 처음으로 돌아갔다. 사라진 것은 한 번의 밤이었고, 남은 것은 다시 지켜야 할 사람들과 정령이 건넨 힘이었다.",
-          "정령과 인연을 맺은 뒤에는 그 끝에 다른 빛이 기다렸다. 무너진 성 앞에 흩어져 있던 정령의 빛이 가슴으로 모여들었다. 빛은 각인으로 남았고, 잃어버린 자리에서 다시 시작할 힘을 건넸다.\n\n되돌아온 이들에게는 아직 알아내야 할 것이 있었다. 왜 봉인은 계속 벌어지는가."
         ]
       },
       {
-        "id": "ch2.rift",
-        "sourceId": "ch2.rift",
+        "id": "v2.firsthero",
+        "sourceId": "v2.firsthero",
         "chapter": 2,
         "scene": 2,
         "part": 1,
-        "parts": 1,
-        "title": "땅이 갈라진 날",
-        "art": "first_rift",
+        "parts": 4,
+        "title": "최초의 영웅",
+        "art": "revised_first_hero",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 2,
-            "text": "오래된 기록에는 사람과 정령이 함께 살았다고 적혀 있단다. 그러던 어느 날 땅이 크게 흔들렸지."
+            "speaker": 0,
+            "text": "아주 오래전, 괴물들이 사람들의 터전을 덮쳤다. 한 정령이 사람들을 지키려는 인간에게 자신의 힘을 나눠 주었다."
           },
           {
             "speaker": 1,
-            "text": "왜 그런 거야? 누가 땅을 갈라 놓았어?"
+            "text": "정령이 힘을 나눠 줘서, 저 사람이 더 강해진 거구나."
           },
           {
             "speaker": 2,
-            "text": "그 까닭은 기록에도 없구나. 틈에서 괴수들이 쏟아져 나왔고, 병사들은 끝없는 싸움에 지쳐 갔단다."
+            "text": "인간과 정령이 같은 뜻을 품고 깊이 공명했을 때, 최초의 영웅이 태어났단다."
           }
-        ],
-        "before": [
-          "소년과 노인은 오래된 기록을 펼쳤다. 지금의 성보다도 오래된 이야기가 그 안에 남아 있었다. 사람들이 정령과 함께 살던 때, 그리고 땅에 처음 큰 틈이 생겼던 때의 이야기였다."
         ]
       },
       {
-        "id": "ch2.heroes",
-        "sourceId": "ch2.heroes",
+        "id": "v2.firsthero.part2",
+        "sourceId": "v2.firsthero",
         "chapter": 2,
-        "scene": 3,
-        "part": 1,
-        "parts": 2,
-        "title": "나누어 준 힘",
-        "art": "spirit_gift",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "정령왕은 자신의 힘을 모아 왕국을 지키던 이들에게 나눠 주었단다. 그 힘이 깃들자 몸도 작아지고 모습도 어려졌지."
-          }
-        ],
-        "before": [
-          "기록 속 전장은 수많은 괴물로 뒤덮여 있었다. 대정령은 왕국을 지키는 이들에게 자신의 힘을 나누었다. 그 힘을 받은 사람들은 서로 다른 무기를 들고 같은 전장에 섰다."
-        ]
-      },
-      {
-        "id": "ch2.heroes.part2",
-        "sourceId": "ch2.heroes",
-        "chapter": 2,
-        "scene": 3,
+        "scene": 2,
         "part": 2,
-        "parts": 2,
-        "title": "나누어 준 힘",
-        "art": "heroes_battle",
-        "lineStart": 1,
+        "parts": 4,
+        "title": "최초의 영웅",
+        "art": "revised_heroes_defense",
+        "lineStart": 3,
         "lines": [
           {
-            "speaker": 1,
-            "text": "그 힘을 받은 사람들은 모두 기사였어?"
+            "speaker": 0,
+            "text": "기억은 전장으로 이어졌다. 수호기사는 방패를 세워 병사들이 물러설 시간을 벌었다."
           },
           {
-            "speaker": 2,
-            "text": "아니란다. 방패를 든 기사도 있었고, 마법사도 있었지. 그들이 우리가 아는 옛 영웅들이란다."
+            "speaker": 0,
+            "text": "그 곁에서 마법사가 지팡이를 들었다. 보랏빛 마력이 몰려오는 괴물들을 밀어냈다."
           }
         ]
       },
       {
-        "id": "ch2.castle",
-        "sourceId": "ch2.castle",
+        "id": "v2.firsthero.part3",
+        "sourceId": "v2.firsthero",
         "chapter": 2,
-        "scene": 4,
-        "part": 1,
-        "parts": 1,
-        "title": "성 아래에 남긴 것",
-        "art": "heroes_seal",
-        "lineStart": 0,
+        "scene": 2,
+        "part": 3,
+        "parts": 4,
+        "title": "최초의 영웅",
+        "art": "revised_heroes_escort",
+        "lineStart": 5,
         "lines": [
           {
-            "speaker": 2,
-            "text": "영웅들은 힘을 합쳐 괴수들을 몰아내고 균열을 봉했단다. 왕국은 그 봉인을 지키려 이 성을 세웠지."
+            "speaker": 0,
+            "text": "다른 길에서는 광전사가 대검을 휘둘렀다. 괴물들이 흩어지자 피란민의 마차가 움직이기 시작했다."
+          },
+          {
+            "speaker": 0,
+            "text": "마차 곁으로 달려든 적은 검투사가 막았다. 방패로 일격을 받아 내고, 빈틈을 향해 검을 찔렀다."
+          },
+          {
+            "speaker": 0,
+            "text": "다크나이트는 대열의 뒤를 지켰다. 보랏빛 검기가 추격자들을 가로막는 동안, 마차는 성문을 빠져나갔다."
           },
           {
             "speaker": 1,
-            "text": "우리가 성문을 고치는 것도, 그 봉인을 지키는 일이었네."
-          },
-          {
-            "speaker": 2,
-            "text": "그렇지. 병사들이 성벽을 지키고 네가 자원을 구해 오니, 봉인도 지켜 낼 수 있는 거란다."
+            "text": "다 다르게 싸우는데…… 지키려는 사람들은 같았구나."
           }
-        ],
-        "before": [
-          "괴물들은 틈 너머로 밀려났고, 영웅들은 그 입구를 봉했다. 싸움이 끝난 자리에는 성이 세워졌다. 소년에게 익숙한 성벽은, 오래전부터 누군가의 밤을 지켜 온 벽이었다."
         ]
       },
       {
-        "id": "ch2.seal",
-        "sourceId": "ch2.seal",
+        "id": "v2.firsthero.part4",
+        "sourceId": "v2.firsthero",
         "chapter": 2,
-        "scene": 5,
-        "part": 1,
-        "parts": 1,
-        "title": "아직 남은 상처",
-        "art": "seal_watch",
-        "lineStart": 0,
+        "scene": 2,
+        "part": 4,
+        "parts": 4,
+        "title": "최초의 영웅",
+        "art": "revised_summer",
+        "lineStart": 9,
         "lines": [
           {
+            "speaker": 2,
+            "text": "이들은 함께 괴물들을 몰아내고 균열을 봉했단다. 이 성은 그 봉인을 지키려고 세웠지."
+          },
+          {
             "speaker": 1,
-            "text": "여러 영웅이 힘을 합쳐야 했구나. 그럼 우리도 길 하나를 막았다고 끝난 게 아니네."
+            "text": "그럼 반지도 이런 영웅들의 기억과 이어져 있는 거야?"
           },
           {
             "speaker": 2,
-            "text": "그래도 그 길을 막은 덕에 모두가 한숨 돌렸단다. 나머지는 함께 방법을 찾아보자꾸나."
+            "text": "그렇단다. 반지는 영웅을 가두는 물건이 아니야. 그들이 남긴 공명의 기억에 닿게 해 주지."
           },
           {
             "speaker": 1,
-            "text": "오늘 밤도 잘 지켜야겠어. 이 성이 왜 여기 서 있는지 이제 알겠으니까."
+            "text": "다시 살아난 사람이 아니라, 그 사람이 남긴 기억인 거네."
+          },
+          {
+            "speaker": 2,
+            "text": "가장 강했던 의지와 전투의 기억이 잠시 모습을 얻는 거란다."
           }
         ]
       },
       {
-        "id": "ch3.master",
-        "sourceId": "ch3.master",
+        "id": "v2.autumnstone",
+        "sourceId": "v2.autumnstone",
         "chapter": 3,
         "scene": 1,
         "part": 1,
         "parts": 1,
-        "title": "노인이 꺼낸 이름",
-        "art": "mars_master",
+        "title": "낙엽의 비석",
+        "art": "revised_autumn",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 2,
-            "text": "이제 봉인이 다시 깨진 날의 이야기를 해 주마. 내 스승이던 기사 마르스에 관한 일이란다."
+            "speaker": 0,
+            "text": "낙엽 아래 비석이 빛나자 젊은 기사 둘이 나타났다. 마르스와 아직 늙지 않은 수호자였다."
+          },
+          {
+            "speaker": 3,
+            "text": "오늘은 검을 잘 썼다. 그런데 옆에 선 사람은 한 번이라도 돌아봤느냐?"
+          },
+          {
+            "speaker": 4,
+            "text": "……못 봤습니다. 이기는 데만 정신이 팔려서요."
+          },
+          {
+            "speaker": 3,
+            "text": "다음에는 같이 돌아오는 것까지 해내거라."
           },
           {
             "speaker": 1,
-            "text": "왕국에서 가장 강했다던 그 기사? 그분이 할아버지 스승님이었어?"
+            "text": "저 사람…… 할아버지? 할아버지도 옛날에는 기사였구나."
           },
           {
             "speaker": 2,
-            "text": "그래. 검을 쥐는 법도, 쓰러졌다 일어나는 법도 배웠지. 존경하던 스승이었단다."
+            "text": "그래."
+          },
+          {
+            "speaker": 1,
+            "text": "엄청 강했어?"
+          },
+          {
+            "speaker": 2,
+            "text": "글쎄. 끝까지 지켜내지는 못했으니까."
           }
-        ],
-        "before": [
-          "기록을 덮은 뒤에도 노인의 이야기는 끝나지 않았다. 이번에 그가 꺼낸 것은 책에 적힌 옛 전설이 아니라, 자신이 젊었을 때 곁에서 보았던 한 사람의 기억이었다. 스승, 마르스였다."
         ]
       },
       {
-        "id": "ch3.glory",
-        "sourceId": "ch3.glory",
+        "id": "v2.sword",
+        "sourceId": "v2.sword",
         "chapter": 3,
+        "scene": 2,
+        "part": 1,
+        "parts": 2,
+        "title": "검이 응답한 날",
+        "art": "revised_sword_silent",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "젊은 수호자는 사람들을 피신시키다 무기고의 낡은 검을 집어 들었다."
+          },
+          {
+            "speaker": 5,
+            "text": "아직 지키고 싶은 것이 남았는가?"
+          },
+          {
+            "speaker": 4,
+            "text": "있습니다. 그들을 지킬 수 있도록, 제게 힘을 나눠 주십시오."
+          }
+        ]
+      },
+      {
+        "id": "v2.sword.part2",
+        "sourceId": "v2.sword",
+        "chapter": 3,
+        "scene": 2,
+        "part": 2,
+        "parts": 2,
+        "title": "검이 응답한 날",
+        "art": "revised_sword_answer",
+        "lineStart": 3,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "정령의 빛이 검에 깃들었다. 지친 수호자의 몸에 다시 힘이 차올랐다."
+          },
+          {
+            "speaker": 1,
+            "text": "정말 할아버지였어…… 그래서 계속 성을 지킨 거야?"
+          },
+          {
+            "speaker": 2,
+            "text": "그래. 지키지 못한 사람들이 너무 많았거든."
+          }
+        ]
+      },
+      {
+        "id": "v2.winterstone",
+        "sourceId": "v2.winterstone",
+        "chapter": 4,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "부서진 비석",
+        "art": "revised_winter",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "깊은 금이 비석의 문양을 끊어 놓았다. 정령의 빛은 갈라진 두 조각 사이에서 흩어졌다."
+          },
+          {
+            "speaker": 1,
+            "text": "왜 이것만 안 보이지? 더 강해져야 하나?"
+          },
+          {
+            "speaker": 2,
+            "text": "힘으로 밀어붙일 일은 아닌 것 같구나. 정령들과 함께 끊어진 문양을 이어 보자꾸나."
+          }
+        ]
+      },
+      {
+        "id": "v2.mars",
+        "sourceId": "v2.mars",
+        "chapter": 4,
         "scene": 2,
         "part": 1,
         "parts": 1,
         "title": "영웅이 되고 싶었던 기사",
-        "art": "heroes_valor",
+        "art": "revised_mars",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 2,
-            "text": "스승님은 옛 영웅 이야기를 즐겨 하셨지. 자신도 왕국을 구할 날을 기다린다고 하셨단다."
+            "speaker": 0,
+            "text": "정령들이 금 양쪽의 문양을 빛으로 이었다. 기억은 성이 불타기 전, 마르스가 왕국에서 가장 강한 기사였던 때로 거슬러 올라갔다."
           },
           {
-            "speaker": 1,
-            "text": "싸울 일이 없는 건 좋은 거잖아."
+            "speaker": 3,
+            "text": "평생 검을 갈고닦았는데, 이 힘을 쓸 날이 오지 않는다면 아무도 나를 기억하지 못하겠지."
           },
           {
-            "speaker": 2,
-            "text": "나도 그렇게 생각한단다. 하지만 스승님은 싸울 일이 없으면, 평생 쌓은 실력을 아무도 알아주지 않을 거라 하셨지."
+            "speaker": 4,
+            "text": "싸울 일이 없는 건 좋은 거잖습니까."
+          },
+          {
+            "speaker": 3,
+            "text": "너는 아직 모른다. 힘이 있는데도 아무것도 바꾸지 못하는 기분을."
+          },
+          {
+            "speaker": 0,
+            "text": "그의 바람은 사람을 지키는 것보다, 자신의 힘이 필요하다는 사실을 증명하는 쪽으로 기울었다."
           }
         ]
       },
       {
-        "id": "ch3.breach",
-        "sourceId": "ch3.breach",
-        "chapter": 3,
+        "id": "v2.rift",
+        "sourceId": "v2.rift",
+        "chapter": 4,
         "scene": 3,
         "part": 1,
         "parts": 2,
-        "title": "두 번째 균열",
-        "art": "mars_breaks_seal",
+        "title": "다시 열린 균열",
+        "art": "revised_seal",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 2,
-            "text": "어느 밤, 스승님을 따라 지하로 내려갔지. 스승님은 봉인에 검을 꽂으며, 나온 괴수들을 직접 쓰러뜨려 영웅이 되겠다고 하셨단다."
+            "speaker": 0,
+            "text": "마르스는 옛 영웅들이 남긴 봉인 앞에서 검을 들었다. 무엇이 나오든 자신이 막을 수 있다고 믿었다."
           },
           {
-            "speaker": 1,
-            "text": "영웅이 되려고… 일부러 괴수들을 풀어 준 거야?"
+            "speaker": 4,
+            "text": "스승님, 뭘 하시는 겁니까?"
+          },
+          {
+            "speaker": 3,
+            "text": "걱정 마라. 내가 막을 수 있다."
           }
-        ],
-        "before": [
-          "노인의 기억 속에서 마르스는 성 지하로 내려갔다. 봉인은 지켜야 할 약속이었지만, 그에게는 자신의 힘을 증명할 문처럼 보였다. 그가 봉인을 풀자, 잠들어 있어야 할 괴물들이 다시 길을 얻었다."
         ]
       },
       {
-        "id": "ch3.breach.part2",
-        "sourceId": "ch3.breach",
-        "chapter": 3,
+        "id": "v2.rift.part2",
+        "sourceId": "v2.rift",
+        "chapter": 4,
         "scene": 3,
         "part": 2,
         "parts": 2,
-        "title": "두 번째 균열",
-        "art": "mars_breach",
-        "lineStart": 2,
+        "title": "다시 열린 균열",
+        "art": "revised_rift",
+        "lineStart": 3,
         "lines": [
           {
-            "speaker": 2,
-            "text": "그래. 하지만 고대 트롤은 스승님도 막지 못했지. 나는 사람들을 대피시키다가, 무너지는 돌더미 너머로 스승님을 놓쳤단다."
+            "speaker": 0,
+            "text": "마르스의 검이 봉인을 갈랐다. 작은 괴물들은 쓰러뜨렸지만, 그 뒤에서 거대한 존재가 눈을 떴다."
+          },
+          {
+            "speaker": 4,
+            "text": "스승님…… 이건 우리가 막을 수 있는 게 아닙니다."
+          },
+          {
+            "speaker": 0,
+            "text": "균열은 멈추지 않고 벌어졌다. 봉인의 기록과 공명 유물이 그 안으로 휩쓸려 갔다."
+          },
+          {
+            "speaker": 1,
+            "text": "그래서 그 거미가 반지 제작서를 가지고 있었던 거구나……"
           }
-        ],
-        "before": [
-          "풀려난 트롤은 마르스가 막아 세울 수 있는 상대가 아니었다. 젊은 제자는 사람들을 피신시키러 뛰었다. 다시 돌아왔을 때, 스승은 이미 트롤의 주먹 아래 쓰러져 있었다."
         ]
       },
       {
-        "id": "ch3.sword",
-        "sourceId": "ch3.sword",
-        "chapter": 3,
+        "id": "v2.echo",
+        "sourceId": "v2.echo",
+        "chapter": 4,
         "scene": 4,
         "part": 1,
         "parts": 1,
-        "title": "검이 응답한 날",
-        "art": "young_guardian",
+        "title": "기억의 틈",
+        "art": "revised_echo",
         "lineStart": 0,
         "lines": [
           {
+            "speaker": 1,
+            "text": "잠깐…… 이 장면……"
+          },
+          {
             "speaker": 2,
-            "text": "그 뒤로도 밤마다 괴수들이 왔지. 무기고에서 낡은 검을 주워 들었을 때, 목소리가 들렸단다."
+            "text": "왜 그러느냐?"
           },
           {
             "speaker": 1,
-            "text": "그게 수호기사의 목소리였어? 할아버지를 도와준 거야?"
+            "text": "모르겠어. 그런데 알아."
           },
           {
             "speaker": 2,
-            "text": "그래. 검에 남아 있던 그분의 힘으로 트롤을 몰아냈지. 봉인을 다 고칠 수는 없었지만, 사람들을 지킬 수는 있었단다."
+            "text": "이건 비석에 남은 내 기억이 아니다. 빛이…… 네게서 나오고 있구나."
           }
-        ],
-        "before": [
-          "그 뒤에도 밤은 멈추지 않았다. 젊은 그는 지하에서 빛나는 검을 주워 들었다. 그 순간 검에 남아 있던 수호자의 목소리가 들려왔다.\n\n남겨진 힘은 트롤을 몰아낼 수 있었지만, 이미 벌어진 틈을 모두 메우지는 못했다."
         ]
       },
       {
-        "id": "ch3.watch",
-        "sourceId": "ch3.watch",
-        "chapter": 3,
+        "id": "v2.after",
+        "sourceId": "v2.after",
+        "chapter": 4,
         "scene": 5,
         "part": 1,
-        "parts": 1,
-        "title": "함께 지킬 내일",
-        "art": "together",
+        "parts": 2,
+        "title": "암전 너머",
+        "art": "revised_last_defeat",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 2,
-            "text": "스승님을 떠올리면 마음이 무거웠지. 그래도 내가 남은 건 이곳 사람들을 지키고 싶어서였단다. 그러다 보니 어느새 수십 년이 흘렀구나."
+            "speaker": 0,
+            "text": "폭우, 부서진 검, 쓰러진 기사. 끝났다고 생각했던 장면이 다시 이어졌다."
+          },
+          {
+            "speaker": 6,
+            "text": "……결국 못 지켰어."
+          }
+        ]
+      },
+      {
+        "id": "v2.after.part2",
+        "sourceId": "v2.after",
+        "chapter": 4,
+        "scene": 5,
+        "part": 2,
+        "parts": 2,
+        "title": "암전 너머",
+        "art": "revised_guardian_return",
+        "lineStart": 2,
+        "lines": [
+          {
+            "speaker": 5,
+            "text": "아직 끝나지 않았어."
+          },
+          {
+            "speaker": 6,
+            "text": "다 끝났어. 성도…… 사람들도……"
+          },
+          {
+            "speaker": 5,
+            "text": "한 번만. 모든 것이 시작되기 전으로 돌려보낼게."
+          }
+        ]
+      },
+      {
+        "id": "v2.face",
+        "sourceId": "v2.face",
+        "chapter": 4,
+        "scene": 6,
+        "part": 1,
+        "parts": 1,
+        "title": "투구 아래",
+        "art": "revised_future_pawn",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "금 간 투구 아래로 눈과 머리카락이 드러났다. 낯설 만큼 자란 얼굴이었다."
           },
           {
             "speaker": 1,
-            "text": "이젠 혼자 안 해도 돼. 나도 있고 병사들도 있잖아. 우리 같이 지키자."
+            "text": "……저 사람…… 나야."
+          },
+          {
+            "speaker": 0,
+            "text": "비석의 역사가 아니었다. 폰 안에 봉인된, 아직 오지 않은 날의 기억이었다."
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 1,
+        "parts": 4,
+        "title": "남겨진 부탁",
+        "art": "revised_plea",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 7,
+            "text": "기억해야 해. 그래야 이번에는—"
+          },
+          {
+            "speaker": 5,
+            "text": "안 돼. 그 기억을 그대로 가지고 가면, 너는 또 혼자 모든 걸 짊어질 거야."
+          },
+          {
+            "speaker": 7,
+            "text": "그러면 너는?"
+          },
+          {
+            "speaker": 5,
+            "text": "이번에는…… 혼자 싸우지 마."
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind.part2",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 2,
+        "parts": 4,
+        "title": "남겨진 부탁",
+        "art": "revised_great_rewind",
+        "lineStart": 4,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "계절이 거꾸로 흘렀다. 폐허가 성으로 돌아가고, 기사는 어린 소년이 되었다."
+          },
+          {
+            "speaker": 0,
+            "text": "정령은 먼 시간을 되돌릴 힘을 모두 썼다. 그 빛이 다할 때, 폰의 미래 기억도 깊이 봉인되었다."
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind.part3",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 3,
+        "parts": 4,
+        "title": "남겨진 부탁",
+        "art": "revised_morning",
+        "lineStart": 6,
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "폰! 이리 좀 와 보렴."
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind.part4",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 4,
+        "parts": 4,
+        "title": "남겨진 부탁",
+        "art": "revised_echo",
+        "lineStart": 7,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "목소리가 멀어지자 눈 덮인 비석이 다시 보였다. 폰은 곁에 선 노인을 바라보았다."
+          },
+          {
+            "speaker": 1,
+            "text": "……그날이었구나. 나를 돌려보내고, 그 정령은……"
           },
           {
             "speaker": 2,
-            "text": "그래, 함께 지키자꾸나. 너희가 있으니 나도 마음이 놓이는구나."
+            "text": "내 검에서 들었던 목소리구나. 네 곁에서도 끝까지 함께했어."
+          },
+          {
+            "speaker": 1,
+            "text": "잊지 않을게. 이번에는 그 부탁을 지킬 거야."
           }
-        ],
-        "before": [
-          "이야기를 마친 노인의 곁에는 이제 소년이 있었다. 성에는 함께 밤을 지킬 사람들도 있었다. 검 하나로 문 앞을 막아서던 밤과 달리, 이번에는 노인 혼자 서 있지 않았다."
+        ]
+      },
+      {
+        "id": "v2.path",
+        "sourceId": "v2.path",
+        "chapter": 5,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "다른 길",
+        "art": "revised_path",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "할아버지는 계속 여기서 막고 있었던 거야?"
+          },
+          {
+            "speaker": 2,
+            "text": "그래. 나는 이 성을 지키는 것밖에는 하지 못한다고 생각했단다."
+          },
+          {
+            "speaker": 1,
+            "text": "하지만 계속 막기만 하면 끝나지 않아. 난 다른 길을 찾을게. 균열이 시작된 곳까지 갈 거야."
+          },
+          {
+            "speaker": 2,
+            "text": "가거라. 이번에는 혼자가 아니라, 네 곁에 선 모두와 함께."
+          }
+        ]
+      },
+      {
+        "id": "v2.together",
+        "sourceId": "v2.together",
+        "chapter": 5,
+        "scene": 2,
+        "part": 1,
+        "parts": 1,
+        "title": "이번에는 함께",
+        "art": "revised_together",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "처음에는 한 정령이 모든 빛을 내어 폰을 살렸다. 이제 그의 곁에는 수많은 동료가 있었다."
+          },
+          {
+            "speaker": 2,
+            "text": "서로를 지켜 주거라. 돌아오면 너희 이야기를 들려주렴."
+          },
+          {
+            "speaker": 1,
+            "text": "응. 이번에는 함께 갈게."
+          }
         ]
       }
-    ]
+    ],
+    "revision": "rewind-b05b90df6de7"
   },
   "en": {
-    "title": "A Castle to Come Home To",
+    "title": "Seasonal Memories",
     "boy": "Pawn",
-    "previewCount": 6,
+    "speakers": {
+      "1": "Pawn",
+      "2": "Old Man",
+      "3": "Mars",
+      "4": "Young Guardian",
+      "5": "Guardian Spirit",
+      "6": "Knight",
+      "7": "Future Pawn",
+      "8": "Soldier",
+      "9": "The Elder Troll"
+    },
+    "books": {
+      "1": "Home · Spring",
+      "2": "Summer",
+      "3": "Autumn",
+      "4": "Winter",
+      "5": "Homecoming"
+    },
+    "previewCount": 9,
     "pages": [
       {
-        "id": "prologue",
+        "id": "rewind.prologue.1",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 1,
-        "parts": 5,
-        "art": "prologue",
+        "parts": 6,
+        "art": "revised_last_gate",
         "title": "Prologue",
         "lines": [
           {
             "speaker": 0,
-            "text": "Long ago, people built a castle over the seal that held the sleeping monsters. No one looked beneath it."
+            "text": "The last night, as the castle fell.\nOne knight remained before the abandoned gate."
           }
         ]
       },
       {
-        "id": "prologue.2",
+        "id": "rewind.prologue.2",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 2,
-        "parts": 5,
-        "art": "prologue_2",
+        "parts": 6,
+        "art": "revised_last_warning",
         "title": "Prologue",
         "lines": [
           {
-            "speaker": 0,
-            "text": "One night, the seal cracked. Monsters slipped out and battered the walls. Each tremor widened the breach."
+            "speaker": 8,
+            "text": "Sir! It's reached the gate!"
+          },
+          {
+            "speaker": 6,
+            "text": "Get everyone inside. I'll hold it here."
           }
-        ],
-        "after": [
-          "The darkness of the forest parted. The ancient troll emerged, its landing shaking the ground. An old man stood before the gate with a single sword. The troll mocked him: was there only one defender left behind the walls? The old man answered that it would not pass while his blade held.",
-          "They clashed. The old man held his ground and broke the troll’s tooth, but his sword broke too. As he struggled for breath, the troll warned that no one would take his place the following night. The old man gave no answer. The great creature retreated into the forest."
         ]
       },
       {
-        "id": "prologue.3",
+        "id": "rewind.prologue.talk1",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 3,
-        "parts": 5,
-        "art": "prologue_3",
-        "title": "Prologue",
+        "parts": 6,
+        "art": "revised_last_warning",
+        "title": "The Duel at the Gate",
         "lines": [
           {
-            "speaker": 0,
-            "text": "The troll fled into the dark, a tooth broken. The old man’s sword had snapped too. At sunrise, the monsters retreated into the forest."
+            "speaker": 9,
+            "text": "Another human."
+          },
+          {
+            "speaker": 6,
+            "text": "…"
+          },
+          {
+            "speaker": 9,
+            "text": "Move. I'll crush this castle."
+          },
+          {
+            "speaker": 6,
+            "text": "You go no further."
           }
         ]
       },
       {
-        "id": "prologue.4",
+        "id": "rewind.prologue.3",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 4,
-        "parts": 5,
-        "art": "prologue_4",
+        "parts": 6,
+        "art": "revised_last_sword_break",
         "title": "Prologue",
         "lines": [
           {
-            "speaker": 0,
-            "text": "The defenders slept, exhausted. Only a boy too young to wield a spear was left to gather supplies."
+            "speaker": 6,
+            "text": "…I'm sorry."
           }
         ]
       },
       {
-        "id": "prologue.5",
+        "id": "rewind.prologue.4",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 5,
-        "parts": 5,
-        "art": "prologue_5",
+        "parts": 6,
+        "art": "revised_last_sword_break",
         "title": "Prologue",
         "lines": [
           {
             "speaker": 0,
-            "text": "The seal kept widening. The boy left the gate with an empty sack. Before sunset, he had to bring back enough for the castle to last another day."
+            "text": "His vision slowly blurred."
           }
         ]
       },
       {
-        "id": "supplies",
-        "sourceId": "supplies",
+        "id": "rewind.prologue.5",
+        "sourceId": "prologue",
+        "chapter": 1,
+        "scene": 0,
+        "part": 6,
+        "parts": 6,
+        "art": "revised_last_glimmer",
+        "title": "Prologue",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "A faint teal glow spread through the darkness."
+          }
+        ]
+      },
+      {
+        "id": "rewind.morning",
+        "sourceId": "morning",
+        "chapter": 1,
+        "scene": 0,
+        "part": 1,
+        "parts": 1,
+        "art": "revised_morning",
+        "title": "The First Morning",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "Pawn! Come here a moment."
+          },
+          {
+            "speaker": 1,
+            "text": "Coming!"
+          },
+          {
+            "speaker": 8,
+            "text": "Sir, last night's monsters cracked the gate supports."
+          },
+          {
+            "speaker": 2,
+            "text": "How much timber is left?"
+          },
+          {
+            "speaker": 8,
+            "text": "Almost none."
+          },
+          {
+            "speaker": 1,
+            "text": "Shall I bring some? I want to help!"
+          },
+          {
+            "speaker": 2,
+            "text": "You? Can you manage the trip to the forest?"
+          },
+          {
+            "speaker": 1,
+            "text": "Yes. I can do it!"
+          },
+          {
+            "speaker": 2,
+            "text": "Good. Fighting isn't the only way to protect the castle. Let's start with the nearby forest."
+          }
+        ]
+      },
+      {
+        "id": "interlude.gather",
+        "sourceId": "interlude.gather",
         "chapter": 1,
         "scene": 1,
         "part": 1,
         "parts": 1,
-        "title": "The Weight of an Empty Sack",
-        "art": "supplies",
+        "kind": "interlude",
+        "visual": "illustration",
+        "art": "interlude_gather_forest",
+        "title": "Timber for the Gate",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "Pawn set out for the nearby forest. With each swing of the axe, the pile of timber grew."
+          },
+          {
+            "speaker": 0,
+            "text": "The wood went into repairs at the gate. The work of small hands helped hold the defenses through the night."
+          }
+        ]
+      },
+      {
+        "id": "v2.smallhands",
+        "sourceId": "v2.smallhands",
+        "chapter": 1,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "Small Hands",
+        "art": "revised_supplies",
         "lineStart": 0,
         "lines": [
           {
             "speaker": 0,
-            "text": "The boy’s timber braced the gate. After a warm meal, the soldiers returned to the walls."
+            "text": "The gate had held. The timber Pawn brought now braced its broken frame."
           },
           {
             "speaker": 1,
-            "text": "But all I did was bring back wood…"
+            "text": "That's my timber. Did I help protect the castle too?"
           },
           {
             "speaker": 2,
-            "text": "Your wood kept the gate standing. You helped keep us safe."
-          },
-          {
-            "speaker": 2,
-            "text": "Will you bring us more wood and food today?"
+            "text": "Of course. A sword is not the only way to protect people."
           },
           {
             "speaker": 1,
-            "text": "Yes, I’ll try!"
+            "text": "Then I'll bring more today!"
           }
         ]
       },
       {
-        "id": "ring",
-        "sourceId": "ring",
+        "id": "v2.light",
+        "sourceId": "v2.light",
         "chapter": 1,
         "scene": 2,
         "part": 1,
-        "parts": 1,
-        "title": "You Need Not Stand Alone",
-        "art": "ring",
+        "parts": 2,
+        "title": "A Small Light",
+        "art": "revised_spirit_meeting",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 1,
-            "text": "If I make the ring, could I fight like you?"
-          },
-          {
-            "speaker": 2,
-            "text": "Yes. You can draw on a hero’s power to fight, just as I did."
+            "speaker": 0,
+            "text": "A little light appeared as Pawn gathered sticks. It stayed even when Pawn came closer."
           },
           {
             "speaker": 1,
-            "text": "Can I talk to the hero in the ring, too?"
+            "text": "Hello. Want to come with me?"
           },
           {
-            "speaker": 2,
-            "text": "Yes. The voice in my sword helped me, too. But how you fight is for you to decide."
+            "speaker": 0,
+            "text": "Pawn held out an open hand, and the little light settled on it. When the hand rose, the light rose too. They played like that for a while."
           },
           {
-            "speaker": 2,
-            "text": "And don’t try to hold them all off alone. When my sword broke, the people in the castle stood together."
+            "speaker": 1,
+            "text": "You like this too? Let's play again tomorrow."
+          },
+          {
+            "speaker": 0,
+            "text": "The little light circled Pawn’s fingertips. With the gathered sticks and a new friend, Pawn went to see the old man."
           }
-        ],
-        "before": [
-          "The anvil rang as the equipment was forged. A magic ring took shape, ready for a hero’s power to be chosen and inscribed within it. It was small enough to hold in one hand, but the strength it would carry was not small at all.",
-          "Wood was gathered by day; the walls were defended by night. Amid that rhythm, the boy looked down at the ring. It seemed to connect him, who carried no sword, to those who fought."
         ]
       },
       {
-        "id": "troll",
-        "sourceId": "troll",
+        "id": "v2.light.part2",
+        "sourceId": "v2.light",
+        "chapter": 1,
+        "scene": 2,
+        "part": 2,
+        "parts": 2,
+        "title": "A Small Light",
+        "art": "revised_small_light",
+        "lineStart": 5,
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "Grandpa, I saw a little light while gathering. It stayed when I came closer."
+          },
+          {
+            "speaker": 2,
+            "text": "A spirit has come to you. It seems it wants to stay by your side."
+          },
+          {
+            "speaker": 1,
+            "text": "Have you met a spirit too?"
+          },
+          {
+            "speaker": 2,
+            "text": "Long ago. They have wills of their own, just as we do."
+          }
+        ]
+      },
+      {
+        "id": "interlude.forge",
+        "sourceId": "interlude.forge",
         "chapter": 1,
         "scene": 3,
         "part": 1,
         "parts": 1,
-        "title": "After the Sword Broke",
-        "art": "troll",
-        "lineStart": 0,
+        "kind": "interlude",
+        "visual": "forge",
+        "art": "revised_ring_empty",
+        "title": "A Ring on the Anvil",
         "lines": [
           {
             "speaker": 0,
-            "text": "The morning after the broken-toothed troll fell, the old man quietly ran his hand over the gate."
+            "text": "Rune ore and shining stones came together on the anvil. The hammer struck, and a ring began to glow."
           },
-          {
-            "speaker": 1,
-            "text": "We held them off, even without your sword."
-          },
-          {
-            "speaker": 2,
-            "text": "Yes. Now we can defend the castle together, even without my sword."
-          }
-        ]
-      },
-      {
-        "id": "spring",
-        "sourceId": "spring",
-        "chapter": 1,
-        "scene": 4,
-        "part": 1,
-        "parts": 1,
-        "title": "Against the Tide",
-        "art": "spring",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 1,
-            "text": "Monster tracks. Where do you think this path leads?"
-          },
-          {
-            "speaker": 2,
-            "text": "I’ve never come this far either. I always fought them at the castle gate."
-          },
-          {
-            "speaker": 1,
-            "text": "Then let’s go together. Maybe we can block the way they use to reach us."
-          }
-        ],
-        "before": [
-          "The Nemesis had fallen.",
-          "Yet the rift beneath the castle remained open. The wisps in the lantern gathered their light, revealing a path in the darkness. A petal drifted through the glow. The old man gazed down that path. At last, he could see how the creatures had reached their walls every night.",
-          "The Spirit Gate opened. The boy and the old man left the castle behind and stepped into its light. Spring awaited them beyond it. Holding back the attackers would no longer be enough; they had to follow the road the creatures used."
-        ]
-      },
-      {
-        "id": "summer",
-        "sourceId": "summer",
-        "chapter": 1,
-        "scene": 5,
-        "part": 1,
-        "parts": 1,
-        "title": "Paths in the Stone",
-        "art": "summer",
-        "lineStart": 0,
-        "lines": [
           {
             "speaker": 0,
-            "text": "Beyond spring stood an old waystone. Its carved paths branched outward from a single castle."
-          },
-          {
-            "speaker": 2,
-            "text": "All these paths lead to our castle. I was so focused on the seal beneath it that I never knew."
-          },
-          {
-            "speaker": 1,
-            "text": "Then let’s check them one by one. There must be a path we can close."
+            "text": "The forging was complete. It was time to choose the hero’s power to inscribe in the ring."
           }
-        ],
-        "before": [
-          "Spring receded behind the gate, and the summer road opened. The season had changed, but they were searching for the same traces beneath their feet. More than one route led beneath the castle."
         ]
       },
       {
-        "id": "autumn",
-        "sourceId": "autumn",
+        "id": "v2.ring",
+        "sourceId": "v2.ring",
         "chapter": 1,
-        "scene": 6,
-        "part": 1,
-        "parts": 1,
-        "title": "What Must Not Be Passed On",
-        "art": "autumn",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 0,
-            "text": "The same mark lay beneath fallen leaves. The old man thought of his years on the walls."
-          },
-          {
-            "speaker": 2,
-            "text": "I can really count on you now. Still, I hope you won’t spend your whole life guarding the walls as I did."
-          },
-          {
-            "speaker": 1,
-            "text": "Then you have to rest too. Let’s make sure we both can when we get home."
-          }
-        ],
-        "before": [
-          "Beyond the next gate, fallen leaves covered the ground. The boy searched as they walked. At a familiar mark, the old man stopped. Memories long buried returned along that road."
-        ]
-      },
-      {
-        "id": "winter",
-        "sourceId": "winter",
-        "chapter": 1,
-        "scene": 7,
-        "part": 1,
-        "parts": 1,
-        "title": "From the Other Side",
-        "art": "winter",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 0,
-            "text": "The spirit lit up the snow-covered waystone. Carved into it was a way to close the path leading home."
-          },
-          {
-            "speaker": 2,
-            "text": "If we close this path, the monsters will have to turn back too. Let’s seal it once we’re safely across."
-          },
-          {
-            "speaker": 1,
-            "text": "Yes. Then the people at the castle can rest a little too, right?"
-          }
-        ],
-        "before": [
-          "Autumn faded and the winter gate opened. Even after finding the mark beneath the snow, they did not close the road at once. There were still people who needed it to return home."
-        ]
-      },
-      {
-        "id": "home",
-        "sourceId": "home",
-        "chapter": 1,
-        "scene": 8,
+        "scene": 3,
         "part": 1,
         "parts": 2,
-        "title": "Today, You Can Rest",
-        "art": "route_seal",
+        "title": "The Memory in the Ring",
+        "art": "revised_ring_empty",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 0,
-            "text": "After they returned, the wisps’ light sealed one path. For once, a quiet morning came to the castle gates."
+            "speaker": 1,
+            "text": "How does this ring call on a hero’s power?"
           }
-        ],
-        "before": [
-          "The familiar castle appeared beyond the final gate. They crossed from winter into home and looked back along the road they had travelled. Only when those returning had crossed did they close that route."
         ]
       },
       {
-        "id": "home.part2",
-        "sourceId": "home",
+        "id": "v2.ring.part2",
+        "sourceId": "v2.ring",
         "chapter": 1,
-        "scene": 8,
+        "scene": 3,
         "part": 2,
         "parts": 2,
-        "title": "Today, You Can Rest",
-        "art": "home",
+        "title": "The Memory in the Ring",
+        "art": "revised_ring_memory",
         "lineStart": 1,
         "lines": [
           {
+            "speaker": 0,
+            "text": "As the little spirit drew near, gold and teal light entwined above the ring. A memory appeared of a hero who had carried a shield long ago."
+          },
+          {
             "speaker": 1,
-            "text": "What should I bring back today?"
+            "text": "Was this person a hero who fought here too?"
           },
           {
             "speaker": 2,
-            "text": "Today, you can rest."
+            "text": "Yes. We haven’t called another hero. We’re looking at an old memory reflected in the ring."
+          },
+          {
+            "speaker": 1,
+            "text": "So there’s no person trapped inside the ring?"
+          },
+          {
+            "speaker": 2,
+            "text": "That’s right. It reaches the resolve and memories of battle that person left behind."
+          },
+          {
+            "speaker": 1,
+            "text": "Who was that hero trying to protect?"
           },
           {
             "speaker": 0,
-            "text": "Other paths still remained. Before night came again, they sat together and shared a loaf of bread."
-          }
-        ]
-      },
-      {
-        "id": "ch2.return",
-        "sourceId": "ch2.return",
-        "chapter": 2,
-        "scene": 1,
-        "part": 1,
-        "parts": 1,
-        "title": "Beneath the Seal",
-        "art": "records",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 1,
-            "text": "We closed a path, but I still hear something underground. Did the seal break again?"
-          },
-          {
-            "speaker": 2,
-            "text": "We can’t tell yet. We closed one path, but we haven’t fully repaired the seal beneath the castle."
+            "text": "The hero’s image held its shield in silence."
           },
           {
             "speaker": 1,
-            "text": "How did they make the seal in the first place? Let’s look for records in the castle."
-          }
-        ],
-        "before": [
-          "Closing one road did not end the nights. On nights when every defender fell, small embers spread through the castle. It shook in the flames and collapsed into rubble. Without its people, the castle could not stand alone.",
-          "When that light first came, everything had seemed lost before the fallen castle. The spirit said it was not over and placed its last light in an outstretched hand. As the light scattered across the world, time returned to the beginning. One night was undone. The people to be protected, and the power the spirit had entrusted to them, remained.",
-          "Once a bond with the spirits had been forged, another light awaited at that ending. Wisps gathered before the fallen castle and flowed into the hero’s chest. Their light became a mark, offering the strength to begin again after loss. Those who returned still had a question to answer: why did the seal keep opening?"
-        ]
-      },
-      {
-        "id": "ch2.rift",
-        "sourceId": "ch2.rift",
-        "chapter": 2,
-        "scene": 2,
-        "part": 1,
-        "parts": 1,
-        "title": "When the Earth Split",
-        "art": "first_rift",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "The old records tell of people living alongside spirits. Then one day, the earth shook."
-          },
-          {
-            "speaker": 1,
-            "text": "Why? Did someone split the earth open?"
+            "text": "We can carry that resolve forward too, can’t we?"
           },
           {
             "speaker": 2,
-            "text": "The records do not say why. Monsters poured out of the cracks, and the soldiers grew weary of endless fighting."
-          }
-        ],
-        "before": [
-          "The boy and the old man opened the old records. Within them lay a story older than their castle: a time when people lived beside spirits, and the first great rift opened in the earth."
-        ]
-      },
-      {
-        "id": "ch2.heroes",
-        "sourceId": "ch2.heroes",
-        "chapter": 2,
-        "scene": 3,
-        "part": 1,
-        "parts": 2,
-        "title": "A Power Shared",
-        "art": "spirit_gift",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "The Spirit King shared his power with the kingdom’s defenders. As it took hold, their bodies grew smaller and their faces younger."
-          }
-        ],
-        "before": [
-          "The battlefield in the records was overrun with monsters. The Great Spirit shared its power with the kingdom’s defenders. Bearing different weapons, those who received it stood together on the same battlefield."
-        ]
-      },
-      {
-        "id": "ch2.heroes.part2",
-        "sourceId": "ch2.heroes",
-        "chapter": 2,
-        "scene": 3,
-        "part": 2,
-        "parts": 2,
-        "title": "A Power Shared",
-        "art": "heroes_battle",
-        "lineStart": 1,
-        "lines": [
-          {
-            "speaker": 1,
-            "text": "Were all the people who received that power knights?"
-          },
-          {
-            "speaker": 2,
-            "text": "No. There were knights with shields, and mages too. They became the heroes of the old stories."
+            "text": "Of course. Think of the people you want to protect."
           }
         ]
       },
       {
-        "id": "ch2.castle",
-        "sourceId": "ch2.castle",
-        "chapter": 2,
+        "id": "v2.springstone",
+        "sourceId": "v2.springstone",
+        "chapter": 1,
         "scene": 4,
         "part": 1,
-        "parts": 1,
-        "title": "What Lies Beneath",
-        "art": "heroes_seal",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "The heroes drove the monsters back and sealed the rift together. The kingdom built this castle to guard the seal."
-          },
-          {
-            "speaker": 1,
-            "text": "So when we repair the gate, we’re protecting the seal too."
-          },
-          {
-            "speaker": 2,
-            "text": "That’s right. With the soldiers holding the walls and you bringing supplies, we can keep the seal safe too."
-          }
-        ],
-        "before": [
-          "The monsters were driven beyond the rift, and the heroes sealed its mouth. A castle rose where the battle had ended. The walls the boy knew had been guarding other people’s nights long before his own."
-        ]
-      },
-      {
-        "id": "ch2.seal",
-        "sourceId": "ch2.seal",
-        "chapter": 2,
-        "scene": 5,
-        "part": 1,
-        "parts": 1,
-        "title": "The Wound Remains",
-        "art": "seal_watch",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 1,
-            "text": "So it took several heroes working together. Closing one path isn’t the end for us either."
-          },
-          {
-            "speaker": 2,
-            "text": "But closing that path gave everyone a chance to breathe. We’ll find a way to deal with the rest together."
-          },
-          {
-            "speaker": 1,
-            "text": "I’ll help defend it tonight, too. Now I know why this castle stands here."
-          }
-        ]
-      },
-      {
-        "id": "ch3.master",
-        "sourceId": "ch3.master",
-        "chapter": 3,
-        "scene": 1,
-        "part": 1,
-        "parts": 1,
-        "title": "A Name Remembered",
-        "art": "mars_master",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "Now I’ll tell you about the day the seal was broken again. It concerns my old master, the knight Mars."
-          },
-          {
-            "speaker": 1,
-            "text": "The strongest knight in the kingdom? He was your teacher?"
-          },
-          {
-            "speaker": 2,
-            "text": "Yes. He taught me to hold a sword, and to get back up after a fall. I looked up to him."
-          }
-        ],
-        "before": [
-          "The records closed, but the old man’s story continued. This was no distant legend written in a book. It was the memory of someone he had known in his youth: his master, Mars."
-        ]
-      },
-      {
-        "id": "ch3.glory",
-        "sourceId": "ch3.glory",
-        "chapter": 3,
-        "scene": 2,
-        "part": 1,
-        "parts": 1,
-        "title": "The Knight Who Sought Glory",
-        "art": "heroes_valor",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "My master often spoke of the old heroes. He said he was waiting for his chance to save the kingdom."
-          },
-          {
-            "speaker": 1,
-            "text": "But isn’t it good when there’s no need to fight?"
-          },
-          {
-            "speaker": 2,
-            "text": "I think so too. But my master said that without a battle, no one would see the skill he’d spent his life building."
-          }
-        ]
-      },
-      {
-        "id": "ch3.breach",
-        "sourceId": "ch3.breach",
-        "chapter": 3,
-        "scene": 3,
-        "part": 1,
         "parts": 2,
-        "title": "The Second Fracture",
-        "art": "mars_breaks_seal",
+        "title": "The Flower Waystone",
+        "art": "revised_spring_sleep",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 2,
-            "text": "One night, I followed him below the castle. As he drove his sword into the seal, he said he would slay the monsters that came out and become a hero."
+            "speaker": 0,
+            "text": "An old waystone stood among the flowers. Nothing happened when Pawn touched it."
           },
           {
             "speaker": 1,
-            "text": "He let the monsters out on purpose… just to become a hero?"
+            "text": "Is it just a rock?"
           }
-        ],
-        "before": [
-          "In the old man’s memory, Mars descended beneath the castle. The seal was a promise to be guarded; to him, it had become a door through which to prove his strength. He broke it, giving the sleeping monsters a road back."
         ]
       },
       {
-        "id": "ch3.breach.part2",
-        "sourceId": "ch3.breach",
-        "chapter": 3,
-        "scene": 3,
+        "id": "v2.springstone.part2",
+        "sourceId": "v2.springstone",
+        "chapter": 1,
+        "scene": 4,
         "part": 2,
         "parts": 2,
-        "title": "The Second Fracture",
-        "art": "mars_breach",
+        "title": "The Flower Waystone",
+        "art": "revised_spring_awake",
         "lineStart": 2,
         "lines": [
           {
-            "speaker": 2,
-            "text": "Yes. But even he couldn’t stop the ancient troll. While I was leading people to safety, I lost sight of him behind the falling stones."
-          }
-        ],
-        "before": [
-          "The freed troll was more than Mars could contain. His young pupil ran to lead the people to safety. When he returned, his master had already fallen beneath the troll’s fist."
-        ]
-      },
-      {
-        "id": "ch3.sword",
-        "sourceId": "ch3.sword",
-        "chapter": 3,
-        "scene": 4,
-        "part": 1,
-        "parts": 1,
-        "title": "When the Sword Answered",
-        "art": "young_guardian",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "The monsters returned every night. When I picked up an old sword in the armoury, I heard a voice."
+            "speaker": 0,
+            "text": "A little spirit approached. The flower carving shone, revealing a glimpse of an ancient scene."
           },
           {
             "speaker": 1,
-            "text": "Was that the Guardian’s voice? Did he help you?"
-          },
-          {
-            "speaker": 2,
-            "text": "Yes. With his power still in the sword, I drove the troll back. I couldn’t fully mend the seal, but I could protect the people."
+            "text": "What was that? Do you know this stone too?"
           }
-        ],
-        "before": [
-          "The nights did not stop. Beneath the castle, the young man took up a shining sword and heard the guardian’s voice within it. The power left in that blade could drive the troll away, but it could not mend every rift that had opened."
         ]
       },
       {
-        "id": "ch3.watch",
-        "sourceId": "ch3.watch",
-        "chapter": 3,
+        "id": "v2.springmemory",
+        "sourceId": "v2.springmemory",
+        "chapter": 1,
         "scene": 5,
         "part": 1,
         "parts": 1,
-        "title": "Tomorrow, Together",
-        "art": "together",
+        "title": "Those Without Swords",
+        "art": "revised_many_hands",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 2,
-            "text": "Thinking of my master weighed on me. But I stayed because I wanted to protect the people here. Before I knew it, decades had passed."
+            "speaker": 0,
+            "text": "Soldiers fought on the walls. Below, people carried timber, cooked meals and rebuilt fallen stone."
+          },
+          {
+            "speaker": 0,
+            "text": "A support beside the gate began to fall, trapping a soldier beneath it. The timber carriers dropped their loads and ran to help."
+          },
+          {
+            "speaker": 0,
+            "text": "Some held up the support while others pulled the soldier free. Fresh timber soon filled the gap. The gate held once more."
           },
           {
             "speaker": 1,
-            "text": "You don’t have to do it alone anymore. I’m here, and so are the soldiers. Let’s defend it together."
+            "text": "They're like me. They aren't fighting, but they're protecting the castle."
           },
           {
             "speaker": 2,
-            "text": "Yes, together. Knowing you’re all here puts my mind at ease."
+            "text": "Yes. Heroes were never the only ones who kept a castle standing."
+          },
+          {
+            "speaker": 1,
+            "text": "So everything I gather helps them too."
           }
-        ],
-        "before": [
-          "As the old man finished, the boy remained beside him. Others in the castle would share the watch. Unlike that night when one sword had barred the gate, he no longer stood alone."
+        ]
+      },
+      {
+        "id": "v2.summerstone",
+        "sourceId": "v2.summerstone",
+        "chapter": 2,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "The Sun Waystone",
+        "art": "revised_summer",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "A sun marked the summer waystone. As the spirits' lights joined, a memory of war awakened."
+          },
+          {
+            "speaker": 1,
+            "text": "The spirits are gathering first this time. The flower stone shone like this too."
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. I wonder what memory this stone holds."
+          }
+        ]
+      },
+      {
+        "id": "v2.firsthero",
+        "sourceId": "v2.firsthero",
+        "chapter": 2,
+        "scene": 2,
+        "part": 1,
+        "parts": 4,
+        "title": "The First Hero",
+        "art": "revised_first_hero",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "Long ago, monsters overran human settlements. A spirit shared its power with a human who sought to protect the people."
+          },
+          {
+            "speaker": 1,
+            "text": "So that person grew stronger because the spirit shared its power."
+          },
+          {
+            "speaker": 2,
+            "text": "When a human and a spirit resonated deeply with one purpose, the first hero was born."
+          }
+        ]
+      },
+      {
+        "id": "v2.firsthero.part2",
+        "sourceId": "v2.firsthero",
+        "chapter": 2,
+        "scene": 2,
+        "part": 2,
+        "parts": 4,
+        "title": "The First Hero",
+        "art": "revised_heroes_defense",
+        "lineStart": 3,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "The memory moved to a battlefield. The Guardian raised her shield, buying time for the soldiers to fall back."
+          },
+          {
+            "speaker": 0,
+            "text": "Beside her, the Mage raised a staff. Violet magic drove back the advancing monsters."
+          }
+        ]
+      },
+      {
+        "id": "v2.firsthero.part3",
+        "sourceId": "v2.firsthero",
+        "chapter": 2,
+        "scene": 2,
+        "part": 3,
+        "parts": 4,
+        "title": "The First Hero",
+        "art": "revised_heroes_escort",
+        "lineStart": 5,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "On another road, the Berserker swung a greatsword. As the monsters scattered, a wagon of refugees began to move."
+          },
+          {
+            "speaker": 0,
+            "text": "The Gladiator stopped an enemy charging at the wagon, caught its blow on a shield, then thrust into the opening."
+          },
+          {
+            "speaker": 0,
+            "text": "The Dark Knight guarded the rear. Violet sword waves held off the pursuers as the wagon passed through the gate."
+          },
+          {
+            "speaker": 1,
+            "text": "They all fought differently… but they were protecting the same people."
+          }
+        ]
+      },
+      {
+        "id": "v2.firsthero.part4",
+        "sourceId": "v2.firsthero",
+        "chapter": 2,
+        "scene": 2,
+        "part": 4,
+        "parts": 4,
+        "title": "The First Hero",
+        "art": "revised_summer",
+        "lineStart": 9,
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "Together they drove back the monsters and sealed the rift. This castle was built to guard that seal."
+          },
+          {
+            "speaker": 1,
+            "text": "Then can a ring connect with memories of heroes like these?"
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. A ring does not imprison a hero. It reaches the memories of resonance they left behind."
+          },
+          {
+            "speaker": 1,
+            "text": "So it isn't someone brought back to life. It's the memory they left behind."
+          },
+          {
+            "speaker": 2,
+            "text": "Their strongest will and memories of battle briefly take form."
+          }
+        ]
+      },
+      {
+        "id": "v2.autumnstone",
+        "sourceId": "v2.autumnstone",
+        "chapter": 3,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "The Fallen-Leaf Waystone",
+        "art": "revised_autumn",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "Beneath fallen leaves, the stone revealed two young knights: Mars and the guardian before he grew old."
+          },
+          {
+            "speaker": 3,
+            "text": "Good sword work today. But did you look at the person beside you even once?"
+          },
+          {
+            "speaker": 4,
+            "text": "…No. I was too busy trying to win."
+          },
+          {
+            "speaker": 3,
+            "text": "Next time, make sure you both come home."
+          },
+          {
+            "speaker": 1,
+            "text": "Is that… Grandpa? You used to be a knight too."
+          },
+          {
+            "speaker": 2,
+            "text": "Yes."
+          },
+          {
+            "speaker": 1,
+            "text": "Were you really strong?"
+          },
+          {
+            "speaker": 2,
+            "text": "I wonder. I couldn't protect everyone to the end."
+          }
+        ]
+      },
+      {
+        "id": "v2.sword",
+        "sourceId": "v2.sword",
+        "chapter": 3,
+        "scene": 2,
+        "part": 1,
+        "parts": 2,
+        "title": "When the Sword Answered",
+        "art": "revised_sword_silent",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "While leading people to safety, the young guardian took an old sword from the armory."
+          },
+          {
+            "speaker": 5,
+            "text": "Is there still something you wish to protect?"
+          },
+          {
+            "speaker": 4,
+            "text": "Yes. Share your strength with me, so I can protect them."
+          }
+        ]
+      },
+      {
+        "id": "v2.sword.part2",
+        "sourceId": "v2.sword",
+        "chapter": 3,
+        "scene": 2,
+        "part": 2,
+        "parts": 2,
+        "title": "When the Sword Answered",
+        "art": "revised_sword_answer",
+        "lineStart": 3,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "The spirit’s light settled in the sword. Strength returned to the weary guardian."
+          },
+          {
+            "speaker": 1,
+            "text": "It really was you… Is that why you kept defending the castle?"
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. There were too many people I couldn't save."
+          }
+        ]
+      },
+      {
+        "id": "v2.winterstone",
+        "sourceId": "v2.winterstone",
+        "chapter": 4,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "The Broken Waystone",
+        "art": "revised_winter",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "A deep crack split the stone’s pattern. The spirits’ light scattered between the two halves."
+          },
+          {
+            "speaker": 1,
+            "text": "Why can't we see this one? Do we need to be stronger?"
+          },
+          {
+            "speaker": 2,
+            "text": "I don’t think force will help. Let’s join the broken pattern with the spirits."
+          }
+        ]
+      },
+      {
+        "id": "v2.mars",
+        "sourceId": "v2.mars",
+        "chapter": 4,
+        "scene": 2,
+        "part": 1,
+        "parts": 1,
+        "title": "The Knight Who Wanted to Be a Hero",
+        "art": "revised_mars",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "The spirits joined the broken pattern with light. The memory led back to before the castle burned, when Mars was the kingdom’s strongest knight."
+          },
+          {
+            "speaker": 3,
+            "text": "I honed my sword all my life. If I never get to use this strength, no one will remember me."
+          },
+          {
+            "speaker": 4,
+            "text": "Isn't it a good thing when there's no need to fight?"
+          },
+          {
+            "speaker": 3,
+            "text": "You don't understand yet. Having power and still being unable to change anything."
+          },
+          {
+            "speaker": 0,
+            "text": "His wish turned from protecting people toward proving that his power was needed."
+          }
+        ]
+      },
+      {
+        "id": "v2.rift",
+        "sourceId": "v2.rift",
+        "chapter": 4,
+        "scene": 3,
+        "part": 1,
+        "parts": 2,
+        "title": "The Rift Reopened",
+        "art": "revised_seal",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "Mars raised his sword before the seal left by the ancient heroes. He believed he could stop whatever emerged."
+          },
+          {
+            "speaker": 4,
+            "text": "Master, what are you doing?"
+          },
+          {
+            "speaker": 3,
+            "text": "Don't worry. I can stop it."
+          }
+        ]
+      },
+      {
+        "id": "v2.rift.part2",
+        "sourceId": "v2.rift",
+        "chapter": 4,
+        "scene": 3,
+        "part": 2,
+        "parts": 2,
+        "title": "The Rift Reopened",
+        "art": "revised_rift",
+        "lineStart": 3,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "Mars’s sword split the seal. He struck down the small monsters, but behind them an immense being opened its eyes."
+          },
+          {
+            "speaker": 4,
+            "text": "Master… this is beyond us."
+          },
+          {
+            "speaker": 0,
+            "text": "The rift kept widening. Records of the seal and resonance relics were swept inside."
+          },
+          {
+            "speaker": 1,
+            "text": "So that's how the spider got the ring blueprint…"
+          }
+        ]
+      },
+      {
+        "id": "v2.echo",
+        "sourceId": "v2.echo",
+        "chapter": 4,
+        "scene": 4,
+        "part": 1,
+        "parts": 1,
+        "title": "A Crack in Memory",
+        "art": "revised_echo",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "Wait… this scene…"
+          },
+          {
+            "speaker": 2,
+            "text": "What is it?"
+          },
+          {
+            "speaker": 1,
+            "text": "I don't know. But I know it."
+          },
+          {
+            "speaker": 2,
+            "text": "This isn't my memory in the stone. The light… it's coming from you."
+          }
+        ]
+      },
+      {
+        "id": "v2.after",
+        "sourceId": "v2.after",
+        "chapter": 4,
+        "scene": 5,
+        "part": 1,
+        "parts": 2,
+        "title": "Beyond the Darkness",
+        "art": "revised_last_defeat",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "The rain. The fallen sword. The defeated knight. The scene that seemed over continued."
+          },
+          {
+            "speaker": 6,
+            "text": "…I couldn't protect them after all."
+          }
+        ]
+      },
+      {
+        "id": "v2.after.part2",
+        "sourceId": "v2.after",
+        "chapter": 4,
+        "scene": 5,
+        "part": 2,
+        "parts": 2,
+        "title": "Beyond the Darkness",
+        "art": "revised_guardian_return",
+        "lineStart": 2,
+        "lines": [
+          {
+            "speaker": 5,
+            "text": "It isn't over yet."
+          },
+          {
+            "speaker": 6,
+            "text": "It's all gone. The castle… the people…"
+          },
+          {
+            "speaker": 5,
+            "text": "Just once. I'll send you back before it all began."
+          }
+        ]
+      },
+      {
+        "id": "v2.face",
+        "sourceId": "v2.face",
+        "chapter": 4,
+        "scene": 6,
+        "part": 1,
+        "parts": 1,
+        "title": "Beneath the Helmet",
+        "art": "revised_future_pawn",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "Eyes and hair appeared beneath the cracked helmet. A familiar face, grown almost beyond recognition."
+          },
+          {
+            "speaker": 1,
+            "text": "…That person… is me."
+          },
+          {
+            "speaker": 0,
+            "text": "This was no history from the stone. It was a memory sealed within Pawn, of days that had yet to come."
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 1,
+        "parts": 4,
+        "title": "One Last Request",
+        "art": "revised_plea",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 7,
+            "text": "I have to remember. Then this time—"
+          },
+          {
+            "speaker": 5,
+            "text": "No. If you carry those memories back, you'll try to bear it all alone again."
+          },
+          {
+            "speaker": 7,
+            "text": "Then what about you?"
+          },
+          {
+            "speaker": 5,
+            "text": "This time… don't fight alone."
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind.part2",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 2,
+        "parts": 4,
+        "title": "One Last Request",
+        "art": "revised_great_rewind",
+        "lineStart": 4,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "The seasons flowed backward. Ruins became a castle again, and the knight became a child."
+          },
+          {
+            "speaker": 0,
+            "text": "The spirit spent all its power to turn back those distant years. As its light faded, Pawn’s memories of the future were sealed deep within him."
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind.part3",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 3,
+        "parts": 4,
+        "title": "One Last Request",
+        "art": "revised_morning",
+        "lineStart": 6,
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "Pawn! Come here a moment."
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind.part4",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 4,
+        "parts": 4,
+        "title": "One Last Request",
+        "art": "revised_echo",
+        "lineStart": 7,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "As the voice faded, the snow-covered stone came back into view. Pawn looked at the elder beside him."
+          },
+          {
+            "speaker": 1,
+            "text": "…It was that morning. The spirit sent me back, and then…"
+          },
+          {
+            "speaker": 2,
+            "text": "That was the voice I heard in my sword. The spirit stayed with you to the very end, too."
+          },
+          {
+            "speaker": 1,
+            "text": "I won’t forget. This time, I’ll keep that promise."
+          }
+        ]
+      },
+      {
+        "id": "v2.path",
+        "sourceId": "v2.path",
+        "chapter": 5,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "Another Path",
+        "art": "revised_path",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "Have you been holding them back here all this time?"
+          },
+          {
+            "speaker": 2,
+            "text": "Yes. I thought defending this castle was all I could do."
+          },
+          {
+            "speaker": 1,
+            "text": "But holding them back won't end this. I'll find another way. I'll go to where the rift began."
+          },
+          {
+            "speaker": 2,
+            "text": "Go. This time, with everyone who stands beside you."
+          }
+        ]
+      },
+      {
+        "id": "v2.together",
+        "sourceId": "v2.together",
+        "chapter": 5,
+        "scene": 2,
+        "part": 1,
+        "parts": 1,
+        "title": "Together This Time",
+        "art": "revised_together",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "One spirit had given all its light to save Pawn. Now many companions stood beside him."
+          },
+          {
+            "speaker": 2,
+            "text": "Look after one another. Tell me your story when you return."
+          },
+          {
+            "speaker": 1,
+            "text": "Yes. This time, we'll go together."
+          }
         ]
       }
-    ]
+    ],
+    "revision": "rewind-b05b90df6de7"
   },
   "ja": {
-    "title": "帰る場所",
+    "title": "四季の記憶",
     "boy": "ポーン",
-    "previewCount": 6,
+    "speakers": {
+      "1": "ポーン",
+      "2": "老人",
+      "3": "マルス",
+      "4": "若き守護者",
+      "5": "守護精霊",
+      "6": "騎士",
+      "7": "未来のポーン",
+      "8": "兵士",
+      "9": "太古のトロール"
+    },
+    "books": {
+      "1": "故郷・春",
+      "2": "夏",
+      "3": "秋",
+      "4": "冬",
+      "5": "帰郷"
+    },
+    "previewCount": 9,
     "pages": [
       {
-        "id": "prologue",
+        "id": "rewind.prologue.1",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 1,
-        "parts": 5,
-        "art": "prologue",
+        "parts": 6,
+        "art": "revised_last_gate",
         "title": "プロローグ",
         "lines": [
           {
             "speaker": 0,
-            "text": "遠い昔、人々は眠る魔物の封印の上に城を築いた。その下をのぞく者はいなかった。"
+            "text": "城が崩れ落ちる最後の夜。\n皆が退いた城門の前に、一人の騎士が残った。"
           }
         ]
       },
       {
-        "id": "prologue.2",
+        "id": "rewind.prologue.2",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 2,
-        "parts": 5,
-        "art": "prologue_2",
+        "parts": 6,
+        "art": "revised_last_warning",
         "title": "プロローグ",
         "lines": [
           {
-            "speaker": 0,
-            "text": "ある夜、封印が裂けた。抜け出した魔物が城壁を叩き、城が揺れるたびに裂け目は広がった。"
+            "speaker": 8,
+            "text": "騎士殿！ 奴が城門まで！"
+          },
+          {
+            "speaker": 6,
+            "text": "皆、中へ入れ。ここは私が守る。"
           }
-        ],
-        "after": [
-          "森の闇を割って、太古のトロールが現れた。巨体が降り立つと地面が響いた。門の前には、剣を手にした老人が一人。城壁の守り手はそれだけかと嘲る相手に、老人は剣が折れるまでは通さぬと答えた。",
-          "二人がぶつかった。老人は退かず、トロールの牙を折った。だが、その戦いを耐えた剣もついに折れた。息を切らす老人に、次の夜は代わりに立つ者もいないだろうとトロールが告げた。老人は答えなかった。巨体が森の奥へ遠ざかっていった。"
         ]
       },
       {
-        "id": "prologue.3",
+        "id": "rewind.prologue.talk1",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 3,
-        "parts": 5,
-        "art": "prologue_3",
-        "title": "プロローグ",
+        "parts": 6,
+        "art": "revised_last_warning",
+        "title": "城門の決闘",
         "lines": [
           {
-            "speaker": 0,
-            "text": "牙を折られたトロールは闇へ逃げた。老人の剣も折れていた。日が昇ると、魔物は森へ退いた。"
+            "speaker": 9,
+            "text": "また人間か。"
+          },
+          {
+            "speaker": 6,
+            "text": "……"
+          },
+          {
+            "speaker": 9,
+            "text": "どけ。城ごと踏み潰してやる。"
+          },
+          {
+            "speaker": 6,
+            "text": "ここから先へは行かせない。"
           }
         ]
       },
       {
-        "id": "prologue.4",
+        "id": "rewind.prologue.3",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 4,
-        "parts": 5,
-        "art": "prologue_4",
+        "parts": 6,
+        "art": "revised_last_sword_break",
         "title": "プロローグ",
         "lines": [
           {
-            "speaker": 0,
-            "text": "夜を守った者たちは疲れ果てて眠った。物資を探しに行けるのは、槍を持つにはまだ幼い少年だけだった。"
+            "speaker": 6,
+            "text": "……すまない。"
           }
         ]
       },
       {
-        "id": "prologue.5",
+        "id": "rewind.prologue.4",
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
         "part": 5,
-        "parts": 5,
-        "art": "prologue_5",
+        "parts": 6,
+        "art": "revised_last_sword_break",
         "title": "プロローグ",
         "lines": [
           {
             "speaker": 0,
-            "text": "封印は今日も広がっていた。少年は空の袋を背負って門を出た。日暮れまでに、城がもう一日耐える物資を集めねばならない。"
+            "text": "視界がゆっくりとかすんでいった。"
           }
         ]
       },
       {
-        "id": "supplies",
-        "sourceId": "supplies",
+        "id": "rewind.prologue.5",
+        "sourceId": "prologue",
+        "chapter": 1,
+        "scene": 0,
+        "part": 6,
+        "parts": 6,
+        "art": "revised_last_glimmer",
+        "title": "プロローグ",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "かすかな青緑の光が、闇の中ににじんだ。"
+          }
+        ]
+      },
+      {
+        "id": "rewind.morning",
+        "sourceId": "morning",
+        "chapter": 1,
+        "scene": 0,
+        "part": 1,
+        "parts": 1,
+        "art": "revised_morning",
+        "title": "最初の朝",
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "ポーン！ ちょっとおいで。"
+          },
+          {
+            "speaker": 1,
+            "text": "うん！"
+          },
+          {
+            "speaker": 8,
+            "text": "ご隠居、昨夜の魔物に城門の支えを壊されました。"
+          },
+          {
+            "speaker": 2,
+            "text": "倉庫の木材は、どれほど残っておる？"
+          },
+          {
+            "speaker": 8,
+            "text": "ほとんどありません。"
+          },
+          {
+            "speaker": 1,
+            "text": "僕が取ってこようか？ 僕も手伝う！"
+          },
+          {
+            "speaker": 2,
+            "text": "お前が？ 森まで行くことになるが、大丈夫かい？"
+          },
+          {
+            "speaker": 1,
+            "text": "うん。できるよ！"
+          },
+          {
+            "speaker": 2,
+            "text": "そうか。戦うことだけが城を守ることではない。近くの森から行ってみよう。"
+          }
+        ]
+      },
+      {
+        "id": "interlude.gather",
+        "sourceId": "interlude.gather",
         "chapter": 1,
         "scene": 1,
         "part": 1,
         "parts": 1,
-        "title": "空の袋の重み",
-        "art": "supplies",
+        "kind": "interlude",
+        "visual": "illustration",
+        "art": "interlude_gather_forest",
+        "title": "城を守る木材",
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "ポーンは近くの森へ向かった。斧を振るうたび、城へ運ぶ木材が増えていった。"
+          },
+          {
+            "speaker": 0,
+            "text": "集めた木材は城門の修理に使われた。小さな手で始めた仕事が、夜の守りを支えていた。"
+          }
+        ]
+      },
+      {
+        "id": "v2.smallhands",
+        "sourceId": "v2.smallhands",
+        "chapter": 1,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "小さな手",
+        "art": "revised_supplies",
         "lineStart": 0,
         "lines": [
           {
             "speaker": 0,
-            "text": "少年の運んだ木で門を補強した。兵士たちは温かい食事をとり、再び城壁へ上がった。"
+            "text": "城門は夜を越えた。ポーンの運んだ木材が、壊れた支えの代わりになっていた。"
           },
           {
             "speaker": 1,
-            "text": "僕は外で木を集めてきただけなのに……"
+            "text": "僕が運んだ木だ。僕も城を守れたの？"
           },
           {
             "speaker": 2,
-            "text": "お前の木のおかげで門がもったんじゃ。みんなを助けてくれたんだよ。"
-          },
-          {
-            "speaker": 2,
-            "text": "今日も木と食べ物を集めてきてくれるかい？"
+            "text": "もちろんじゃ。剣を持つことだけが、守ることではないんだよ。"
           },
           {
             "speaker": 1,
-            "text": "うん、やってみる！"
+            "text": "じゃあ、今日も行ってくる！"
           }
         ]
       },
       {
-        "id": "ring",
-        "sourceId": "ring",
+        "id": "v2.light",
+        "sourceId": "v2.light",
         "chapter": 1,
         "scene": 2,
         "part": 1,
-        "parts": 1,
-        "title": "ひとりで守るな",
-        "art": "ring",
+        "parts": 2,
+        "title": "小さな光",
+        "art": "revised_spirit_meeting",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 1,
-            "text": "指輪を作ったら、僕もおじいさんみたいに戦えるかな？"
-          },
-          {
-            "speaker": 2,
-            "text": "もちろんじゃ。わしのように、英雄の力を借りて戦えるんだよ。"
+            "speaker": 0,
+            "text": "枝を拾うポーンの前に、小さな光が現れた。近づいても逃げなかった。"
           },
           {
             "speaker": 1,
-            "text": "指輪の中の英雄と、お話もできるの？"
+            "text": "こんにちは。一緒に来る？"
           },
           {
-            "speaker": 2,
-            "text": "そうじゃ。わしも剣の声に助けられた。だが、どう戦うかはお前が決めるんだよ。"
+            "speaker": 0,
+            "text": "ポーンが手を開くと、小さな光が手のひらに降りた。そっと手を上げると、光も上がる。二人はしばらく同じ遊びを繰り返した。"
           },
           {
-            "speaker": 2,
-            "text": "それから、ひとりで全部防ごうとするでないぞ。わしの剣が折れたときも、城のみんなが力を合わせて耐えてくれた。"
+            "speaker": 1,
+            "text": "君も楽しい？ 明日も一緒に遊ぼう。"
+          },
+          {
+            "speaker": 0,
+            "text": "小さな光がポーンの指先を回った。ポーンは拾った枝と新しい友達を連れて、老人のもとへ向かった。"
           }
-        ],
-        "before": [
-          "金床の上で装備を鍛える音が響いた。魔法の指輪が形を成し、そこに刻む英雄の力を選ぶ時が来た。片手に収まる小さな指輪だったが、そこにつながる力は決して小さくなかった。",
-          "昼には木を集め、夜には城壁を守る。その繰り返しの中で、少年は指輪を見つめた。剣を持たない自分と戦う人々をつなぐものが、そこにある気がした。"
         ]
       },
       {
-        "id": "troll",
-        "sourceId": "troll",
+        "id": "v2.light.part2",
+        "sourceId": "v2.light",
+        "chapter": 1,
+        "scene": 2,
+        "part": 2,
+        "parts": 2,
+        "title": "小さな光",
+        "art": "revised_small_light",
+        "lineStart": 5,
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "おじいちゃん、採集していたら小さな光が見えたんだ。近づいても消えなかったよ。"
+          },
+          {
+            "speaker": 2,
+            "text": "精霊がお前に近づいてきたんじゃな。そばにいたいようじゃ。"
+          },
+          {
+            "speaker": 1,
+            "text": "おじいちゃんも精霊に会ったことがあるの？"
+          },
+          {
+            "speaker": 2,
+            "text": "昔にな。わしらと同じ、自分の意志を持つ者たちじゃ。"
+          }
+        ]
+      },
+      {
+        "id": "interlude.forge",
+        "sourceId": "interlude.forge",
         "chapter": 1,
         "scene": 3,
         "part": 1,
         "parts": 1,
-        "title": "剣が折れたあと",
-        "art": "troll",
-        "lineStart": 0,
+        "kind": "interlude",
+        "visual": "forge",
+        "art": "revised_ring_empty",
+        "title": "金床の上の指輪",
         "lines": [
           {
             "speaker": 0,
-            "text": "牙の折れたトロールを退けた朝、老人は黙って城門に手を触れた。"
+            "text": "ルーン鉱石と輝く石が金床の上に集まった。槌が振り下ろされ、指輪が光を帯び始めた。"
           },
-          {
-            "speaker": 1,
-            "text": "おじいさんの剣がなくても、みんなで守れたよ。"
-          },
-          {
-            "speaker": 2,
-            "text": "ああ。もう、わしの剣がなくても、みんなで城を守れるんだね。"
-          }
-        ]
-      },
-      {
-        "id": "spring",
-        "sourceId": "spring",
-        "chapter": 1,
-        "scene": 4,
-        "part": 1,
-        "parts": 1,
-        "title": "道をたどって",
-        "art": "spring",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 1,
-            "text": "魔物の足跡だ。この道、どこにつながってるんだろう？"
-          },
-          {
-            "speaker": 2,
-            "text": "わしもここまで来るのは初めてじゃ。いつも城門で食い止めていたからのう。"
-          },
-          {
-            "speaker": 1,
-            "text": "じゃあ、一緒に行こう。あいつらが来る道をふさげるかもしれないよ。"
-          }
-        ],
-        "before": [
-          "ネメシスは倒れた。",
-          "だが、城の下の亀裂は閉じなかった。ランタンの精霊たちが光を集めると、闇の中に道が現れた。一枚の花びらが光を横切った。老人はその道を見つめた。毎晩城を襲う怪物たちが、どこから来たのかようやく分かった。",
-          "精霊の門が開いた。少年と老人は城を背に、光の中へ踏み出した。その向こうには春が待っていた。押し寄せる敵を防ぐだけでなく、敵が来る道をたどらなければならなかった。"
-        ]
-      },
-      {
-        "id": "summer",
-        "sourceId": "summer",
-        "chapter": 1,
-        "scene": 5,
-        "part": 1,
-        "parts": 1,
-        "title": "石に残る道",
-        "art": "summer",
-        "lineStart": 0,
-        "lines": [
           {
             "speaker": 0,
-            "text": "春を越えた道に、古い道標があった。刻まれた幾筋もの道は、ひとつの城につながっていた。"
-          },
-          {
-            "speaker": 2,
-            "text": "この道はみな、わしらの城へ続いておるのか。城の下の封印ばかり気にして、知らずにいたよ。"
-          },
-          {
-            "speaker": 1,
-            "text": "じゃあ、ひとつずつ調べよう。僕らにもふさげる道があるはずだよ。"
+            "text": "指輪が完成した。次は、指輪に刻む英雄の力を選ぶ番だった。"
           }
-        ],
-        "before": [
-          "門の向こうへ春の景色が退き、夏の道が開いた。季節が変わっても、足元に探す痕跡は同じだった。城の下へ続く道は、一つではなかった。"
         ]
       },
       {
-        "id": "autumn",
-        "sourceId": "autumn",
+        "id": "v2.ring",
+        "sourceId": "v2.ring",
         "chapter": 1,
-        "scene": 6,
-        "part": 1,
-        "parts": 1,
-        "title": "受け継がせたくないもの",
-        "art": "autumn",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 0,
-            "text": "落ち葉の下にも同じ印があった。老人は城壁で過ごした日々を思い返した。"
-          },
-          {
-            "speaker": 2,
-            "text": "ずいぶん頼もしくなったね。だが、お前までわしのように、一生城壁を守って暮らしてほしくはないんじゃ。"
-          },
-          {
-            "speaker": 1,
-            "text": "じゃあ、おじいさんも休まなきゃ。帰ったら、ふたりとも休めるようにしよう。"
-          }
-        ],
-        "before": [
-          "次の門の向こうには落ち葉が積もっていた。足元を確かめて進む少年のそばで、老人が見覚えのある印に足を止めた。その道で、しまい込んでいた記憶がよみがえった。"
-        ]
-      },
-      {
-        "id": "winter",
-        "sourceId": "winter",
-        "chapter": 1,
-        "scene": 7,
-        "part": 1,
-        "parts": 1,
-        "title": "帰り道の向こう側",
-        "art": "winter",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 0,
-            "text": "精霊の光が雪に覆われた道標を照らした。そこには、故郷へ続く道を閉ざす方法が刻まれていた。"
-          },
-          {
-            "speaker": 2,
-            "text": "この道を閉じれば、魔物も引き返すしかあるまい。無事に渡ってから封じよう。"
-          },
-          {
-            "speaker": 1,
-            "text": "うん。そうしたら、城のみんなも少しは休めるよね？"
-          }
-        ],
-        "before": [
-          "秋の色が消え、冬の門が開いた。雪の下に印を見つけても、二人はすぐには道を閉ざさなかった。ここを離れ、帰らなければならない人々がまだいた。"
-        ]
-      },
-      {
-        "id": "home",
-        "sourceId": "home",
-        "chapter": 1,
-        "scene": 8,
+        "scene": 3,
         "part": 1,
         "parts": 2,
-        "title": "今日は休んでいい",
-        "art": "route_seal",
+        "title": "指輪が呼んだ記憶",
+        "art": "revised_ring_empty",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 0,
-            "text": "ふたりが帰ると、精霊の光がひとつの道を封じた。城門に、久しぶりの静かな朝が訪れた。"
+            "speaker": 1,
+            "text": "この指輪は、どうやって英雄の力を呼ぶんだろう？"
           }
-        ],
-        "before": [
-          "最後の門の向こうに、見慣れた城が見えた。冬から故郷へ続く光を渡り、二人は歩いてきた道を振り返った。帰る人々が渡ったのを確かめてから、その道を閉じた。"
         ]
       },
       {
-        "id": "home.part2",
-        "sourceId": "home",
+        "id": "v2.ring.part2",
+        "sourceId": "v2.ring",
         "chapter": 1,
-        "scene": 8,
+        "scene": 3,
         "part": 2,
         "parts": 2,
-        "title": "今日は休んでいい",
-        "art": "home",
+        "title": "指輪が呼んだ記憶",
+        "art": "revised_ring_memory",
         "lineStart": 1,
         "lines": [
           {
+            "speaker": 0,
+            "text": "小さな精霊が近づくと、指輪の上で金と青緑の光が絡み合った。遠い昔、盾を手に戦った英雄の記憶が映った。"
+          },
+          {
             "speaker": 1,
-            "text": "今日は何を集めてくればいい？"
+            "text": "この人も、この土地で戦った英雄なの？"
           },
           {
             "speaker": 2,
-            "text": "今日は休んでいいんだよ。"
+            "text": "そうじゃ。今、新しい英雄を呼んだのではない。指輪に映った昔の記憶を見ているんじゃよ。"
+          },
+          {
+            "speaker": 1,
+            "text": "じゃあ、指輪の中に人が閉じ込められてるわけじゃないんだね？"
+          },
+          {
+            "speaker": 2,
+            "text": "そうじゃ。その人が残した思いと、戦いの記憶に触れるんじゃよ。"
+          },
+          {
+            "speaker": 1,
+            "text": "あの人は、誰を守ろうとして戦ったのかな？"
           },
           {
             "speaker": 0,
-            "text": "ほかの道は、まだ残っていた。再び夜が来る前に、ふたりは並んで座り、パンを分け合った。"
-          }
-        ]
-      },
-      {
-        "id": "ch2.return",
-        "sourceId": "ch2.return",
-        "chapter": 2,
-        "scene": 1,
-        "part": 1,
-        "parts": 1,
-        "title": "封印の下の歴史",
-        "art": "records",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 1,
-            "text": "道をひとつ閉じたのに、地下で音がする。また封印が壊れたの？"
-          },
-          {
-            "speaker": 2,
-            "text": "まだ分からん。道はひとつ閉じたが、城の下の封印まで直せたわけではないからのう。"
+            "text": "英雄の姿は、黙って盾を構えていた。"
           },
           {
             "speaker": 1,
-            "text": "最初に封印を作った人たちは、どうやったのかな？ 城に残った記録を探そうよ。"
-          }
-        ],
-        "before": [
-          "道を一つ閉じても、夜はまた訪れた。守り手が全員倒れる夜には、小さな火が城を伝って広がった。炎の中で城が揺れ、やがて瓦礫となった。守る人のいない城は、一人では耐えられなかった。",
-          "初めてその光に出会った時、崩れた城の前では何もかも終わったように思えた。精霊はまだ終わっていないと告げ、最後の光を差し出された手に託した。光が世界中へ散ると、時は再び始まりへ戻った。一つの夜が巻き戻り、守るべき人々と精霊から受け継いだ力が残った。",
-          "精霊との縁を結んだ後には、その終わりに別の光が待っていた。崩れた城の前に散っていた精霊の光が、胸へ集まった。光は刻印となり、失った場所から再び始める力を渡した。戻った者たちには、まだ知るべきことがあった。なぜ封印は開き続けるのか。"
-        ]
-      },
-      {
-        "id": "ch2.rift",
-        "sourceId": "ch2.rift",
-        "chapter": 2,
-        "scene": 2,
-        "part": 1,
-        "parts": 1,
-        "title": "大地が裂けた日",
-        "art": "first_rift",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "古い記録には、人と精霊が共に暮らしていたとある。ある日、大地が大きく揺れたのじゃ。"
-          },
-          {
-            "speaker": 1,
-            "text": "どうして？ 誰かが大地を裂いたの？"
+            "text": "その思いを、僕たちも受け継げるよね？"
           },
           {
             "speaker": 2,
-            "text": "理由は記録にもない。裂け目から魔物があふれ、兵士たちは終わらぬ戦いに疲れていった。"
-          }
-        ],
-        "before": [
-          "少年と老人は古い記録を開いた。そこには城よりも古い物語が残っていた。人々が精霊と暮らしていた時代、そして大地に初めて大きな裂け目が生まれた時代の物語だった。"
-        ]
-      },
-      {
-        "id": "ch2.heroes",
-        "sourceId": "ch2.heroes",
-        "chapter": 2,
-        "scene": 3,
-        "part": 1,
-        "parts": 2,
-        "title": "分かち合った力",
-        "art": "spirit_gift",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "精霊王は王国を守る者たちに力を分け与えた。その力が宿ると、体は小さく、姿も若くなったんだ。"
-          }
-        ],
-        "before": [
-          "記録に描かれた戦場は、怪物で埋まっていた。大精霊は王国を守る者たちに力を分けた。その力を受けた人々は、それぞれの武器を手に、同じ戦場に立った。"
-        ]
-      },
-      {
-        "id": "ch2.heroes.part2",
-        "sourceId": "ch2.heroes",
-        "chapter": 2,
-        "scene": 3,
-        "part": 2,
-        "parts": 2,
-        "title": "分かち合った力",
-        "art": "heroes_battle",
-        "lineStart": 1,
-        "lines": [
-          {
-            "speaker": 1,
-            "text": "その力をもらった人は、みんな騎士だったの？"
-          },
-          {
-            "speaker": 2,
-            "text": "いや。盾を持つ騎士も、魔法使いもいた。彼らが、物語に出てくる昔の英雄たちなんじゃ。"
+            "text": "もちろんじゃ。お前が守りたい人たちを思い浮かべてごらん。"
           }
         ]
       },
       {
-        "id": "ch2.castle",
-        "sourceId": "ch2.castle",
-        "chapter": 2,
+        "id": "v2.springstone",
+        "sourceId": "v2.springstone",
+        "chapter": 1,
         "scene": 4,
         "part": 1,
-        "parts": 1,
-        "title": "城の下に残したもの",
-        "art": "heroes_seal",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "英雄たちは力を合わせて魔物を退け、裂け目を封じた。封印を守るために、この城が建てられたのじゃ。"
-          },
-          {
-            "speaker": 1,
-            "text": "門を直すことも、封印を守ることだったんだね。"
-          },
-          {
-            "speaker": 2,
-            "text": "そうじゃ。兵士が城壁を守り、お前が物資を運ぶ。だから封印も守れるんだよ。"
-          }
-        ],
-        "before": [
-          "怪物たちは裂け目の向こうへ押し戻され、英雄たちがその入口を封じた。戦いの跡には城が築かれた。少年になじみ深い城壁は、ずっと昔から誰かの夜を守ってきた壁だった。"
-        ]
-      },
-      {
-        "id": "ch2.seal",
-        "sourceId": "ch2.seal",
-        "chapter": 2,
-        "scene": 5,
-        "part": 1,
-        "parts": 1,
-        "title": "まだ残る傷",
-        "art": "seal_watch",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 1,
-            "text": "何人もの英雄が力を合わせたんだね。じゃあ、僕らも道をひとつ閉じただけじゃ終わりじゃないんだ。"
-          },
-          {
-            "speaker": 2,
-            "text": "それでも、あの道を閉じたおかげでみんな一息つけた。残りも一緒に方法を探そう。"
-          },
-          {
-            "speaker": 1,
-            "text": "今夜もしっかり守ろう。この城がここにある理由が分かったから。"
-          }
-        ]
-      },
-      {
-        "id": "ch3.master",
-        "sourceId": "ch3.master",
-        "chapter": 3,
-        "scene": 1,
-        "part": 1,
-        "parts": 1,
-        "title": "老人が語る名",
-        "art": "mars_master",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "今度は封印が再び壊された日の話をしよう。わしの師、騎士マルスにまつわる話じゃ。"
-          },
-          {
-            "speaker": 1,
-            "text": "王国でいちばん強かった騎士？ その人がおじいさんの先生だったの？"
-          },
-          {
-            "speaker": 2,
-            "text": "ああ。剣の握り方も、倒れてから立ち上がることも教わった。尊敬する師だったよ。"
-          }
-        ],
-        "before": [
-          "記録を閉じても、老人の話は終わらなかった。今度は本に書かれた遠い伝説ではない。若い頃、すぐそばで見ていた一人の記憶だった。師、マルスのことだった。"
-        ]
-      },
-      {
-        "id": "ch3.glory",
-        "sourceId": "ch3.glory",
-        "chapter": 3,
-        "scene": 2,
-        "part": 1,
-        "parts": 1,
-        "title": "英雄に憧れた騎士",
-        "art": "heroes_valor",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "師はよく昔の英雄を語った。自分も王国を救う日を待っている、と言っておった。"
-          },
-          {
-            "speaker": 1,
-            "text": "でも、戦わずにすむのはいいことだよね。"
-          },
-          {
-            "speaker": 2,
-            "text": "わしもそう思う。だが師は、戦いがなければ、一生かけて磨いた腕を誰にも認めてもらえないと言っておった。"
-          }
-        ]
-      },
-      {
-        "id": "ch3.breach",
-        "sourceId": "ch3.breach",
-        "chapter": 3,
-        "scene": 3,
-        "part": 1,
         "parts": 2,
-        "title": "二度目の亀裂",
-        "art": "mars_breaks_seal",
+        "title": "花の石碑",
+        "art": "revised_spring_sleep",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 2,
-            "text": "ある夜、師を追って地下へ下りた。師は封印に剣を突き立て、出てきた魔物を倒して英雄になると言ったのじゃ。"
+            "speaker": 0,
+            "text": "花の間に古い石碑があった。ポーンが触れても、何も起こらなかった。"
           },
           {
             "speaker": 1,
-            "text": "英雄になるために……わざと魔物を出したの？"
+            "text": "ただの石かな？"
           }
-        ],
-        "before": [
-          "老人の記憶の中で、マルスは城の地下へ降りていった。守るべき約束である封印が、彼には力を証明するための扉に見えていた。封印を解くと、眠っているはずの怪物たちに再び道が開けた。"
         ]
       },
       {
-        "id": "ch3.breach.part2",
-        "sourceId": "ch3.breach",
-        "chapter": 3,
-        "scene": 3,
+        "id": "v2.springstone.part2",
+        "sourceId": "v2.springstone",
+        "chapter": 1,
+        "scene": 4,
         "part": 2,
         "parts": 2,
-        "title": "二度目の亀裂",
-        "art": "mars_breach",
+        "title": "花の石碑",
+        "art": "revised_spring_awake",
         "lineStart": 2,
         "lines": [
           {
-            "speaker": 2,
-            "text": "ああ。だが師にも古のトロールは止められなかった。人々を逃がしているうちに、崩れる石の向こうで師を見失ったんじゃ。"
-          }
-        ],
-        "before": [
-          "解き放たれたトロールは、マルスにも止められなかった。若い弟子は人々を逃がすために走った。戻ってきた時には、師はすでにトロールの拳に倒れていた。"
-        ]
-      },
-      {
-        "id": "ch3.sword",
-        "sourceId": "ch3.sword",
-        "chapter": 3,
-        "scene": 4,
-        "part": 1,
-        "parts": 1,
-        "title": "剣が応えた日",
-        "art": "young_guardian",
-        "lineStart": 0,
-        "lines": [
-          {
-            "speaker": 2,
-            "text": "それから毎晩、魔物が来た。武器庫で古い剣を拾ったとき、声が聞こえたのじゃ。"
+            "speaker": 0,
+            "text": "小さな精霊が近づくと花の模様が光り、遠い昔の景色が一瞬映った。"
           },
           {
             "speaker": 1,
-            "text": "それが守護騎士の声だったの？ おじいさんを助けてくれたんだ？"
-          },
-          {
-            "speaker": 2,
-            "text": "ああ。剣に残ったあの方の力で、トロールを追い払った。封印は直しきれなかったが、人々を守ることはできたんじゃ。"
+            "text": "今の……何？ 君もこの石を知ってるの？"
           }
-        ],
-        "before": [
-          "それからも夜は続いた。若者は城の地下で光る剣を拾い、その中に残る守護者の声を聞いた。剣に残された力はトロールを退けたが、開いた亀裂をすべて塞ぐことはできなかった。"
         ]
       },
       {
-        "id": "ch3.watch",
-        "sourceId": "ch3.watch",
-        "chapter": 3,
+        "id": "v2.springmemory",
+        "sourceId": "v2.springmemory",
+        "chapter": 1,
         "scene": 5,
         "part": 1,
         "parts": 1,
-        "title": "共に守る明日",
-        "art": "together",
+        "title": "剣を持たない人々",
+        "art": "revised_many_hands",
         "lineStart": 0,
         "lines": [
           {
-            "speaker": 2,
-            "text": "師を思うと胸が重くなった。だが、ここに残ったのは人々を守りたかったからじゃ。気づけば何十年もたっておった。"
+            "speaker": 0,
+            "text": "城壁では兵士が戦い、その下では人々が木を運び、食事を作り、崩れた石を積んでいた。"
+          },
+          {
+            "speaker": 0,
+            "text": "城門脇の支えが傾き、兵士が一人、その下に取り残された。木を運んでいた人々が荷を下ろして駆け寄った。"
+          },
+          {
+            "speaker": 0,
+            "text": "何人かが支えを持ち上げ、ほかの人が兵士を引き出した。すぐに新しい木材が隙間を埋め、城門は再び持ちこたえた。"
           },
           {
             "speaker": 1,
-            "text": "もうひとりで頑張らなくていいよ。僕も兵士たちもいる。一緒に守ろう。"
+            "text": "僕と同じだ。戦っていなくても、城を守ってる。"
           },
           {
             "speaker": 2,
-            "text": "ああ、一緒に守ろう。お前たちがいると思うと、わしも安心できるよ。"
+            "text": "そうじゃ。城を守ったのは、英雄だけではなかったんだよ。"
+          },
+          {
+            "speaker": 1,
+            "text": "僕が集める物も、みんなにつながってるんだね。"
           }
-        ],
-        "before": [
-          "話し終えた老人のそばには、少年がいた。城には共に夜を守る人々もいた。一振りの剣で門をふさいだあの夜とは違う。今度は、老人は一人ではなかった。"
+        ]
+      },
+      {
+        "id": "v2.summerstone",
+        "sourceId": "v2.summerstone",
+        "chapter": 2,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "太陽の石碑",
+        "art": "revised_summer",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "夏の道の石碑には太陽が刻まれていた。精霊の光がつながると、戦の記憶が目覚めた。"
+          },
+          {
+            "speaker": 1,
+            "text": "今度は精霊たちが先に集まってる。花の石碑もこんなふうに光ってたね。"
+          },
+          {
+            "speaker": 2,
+            "text": "そうじゃな。この石碑には、どんな記憶が残っているのかのう。"
+          }
+        ]
+      },
+      {
+        "id": "v2.firsthero",
+        "sourceId": "v2.firsthero",
+        "chapter": 2,
+        "scene": 2,
+        "part": 1,
+        "parts": 4,
+        "title": "最初の英雄",
+        "art": "revised_first_hero",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "遠い昔、魔物が人々の里を襲った。ある精霊が、皆を守ろうとする人間に力を分け与えた。"
+          },
+          {
+            "speaker": 1,
+            "text": "精霊が力を分けてくれたから、あの人は強くなったんだね。"
+          },
+          {
+            "speaker": 2,
+            "text": "人と精霊が同じ願いを抱き、深く共鳴したとき、最初の英雄が生まれたんじゃ。"
+          }
+        ]
+      },
+      {
+        "id": "v2.firsthero.part2",
+        "sourceId": "v2.firsthero",
+        "chapter": 2,
+        "scene": 2,
+        "part": 2,
+        "parts": 4,
+        "title": "最初の英雄",
+        "art": "revised_heroes_defense",
+        "lineStart": 3,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "記憶は戦場へと移った。守護騎士は盾を構え、兵たちが退く時間を稼いだ。"
+          },
+          {
+            "speaker": 0,
+            "text": "その隣で魔法使いが杖を掲げた。紫の魔力が押し寄せる魔物を退けた。"
+          }
+        ]
+      },
+      {
+        "id": "v2.firsthero.part3",
+        "sourceId": "v2.firsthero",
+        "chapter": 2,
+        "scene": 2,
+        "part": 3,
+        "parts": 4,
+        "title": "最初の英雄",
+        "art": "revised_heroes_escort",
+        "lineStart": 5,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "別の道では狂戦士が大剣を振るった。魔物が散ると、避難民の馬車が動き出した。"
+          },
+          {
+            "speaker": 0,
+            "text": "馬車へ迫る敵を剣闘士が止めた。盾で一撃を受け、隙を突いて剣を繰り出した。"
+          },
+          {
+            "speaker": 0,
+            "text": "ダークナイトは隊列の後ろを守った。紫の剣気が追手を阻む間に、馬車は城門を抜けた。"
+          },
+          {
+            "speaker": 1,
+            "text": "戦い方はみんな違うのに……守ろうとした人たちは同じだったんだね。"
+          }
+        ]
+      },
+      {
+        "id": "v2.firsthero.part4",
+        "sourceId": "v2.firsthero",
+        "chapter": 2,
+        "scene": 2,
+        "part": 4,
+        "parts": 4,
+        "title": "最初の英雄",
+        "art": "revised_summer",
+        "lineStart": 9,
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "皆で魔物を退け、裂け目を封じたんじゃ。この城はその封印を守るために建てられた。"
+          },
+          {
+            "speaker": 1,
+            "text": "じゃあ、指輪もこういう英雄たちの記憶につながるの？"
+          },
+          {
+            "speaker": 2,
+            "text": "そうじゃ。指輪は英雄を閉じ込めるものではない。彼らが残した共鳴の記憶に触れさせてくれるんじゃ。"
+          },
+          {
+            "speaker": 1,
+            "text": "生き返った人じゃなくて、その人が残した記憶なんだね。"
+          },
+          {
+            "speaker": 2,
+            "text": "最も強い意志と戦いの記憶が、ひととき姿を得るんじゃよ。"
+          }
+        ]
+      },
+      {
+        "id": "v2.autumnstone",
+        "sourceId": "v2.autumnstone",
+        "chapter": 3,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "落ち葉の石碑",
+        "art": "revised_autumn",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "落ち葉の下の石碑が光り、若い騎士が二人現れた。マルスと、まだ老いていない守護者だった。"
+          },
+          {
+            "speaker": 3,
+            "text": "今日はよく剣を振るったな。だが、隣の者を一度でも見たか？"
+          },
+          {
+            "speaker": 4,
+            "text": "……見ていませんでした。勝つことに夢中で。"
+          },
+          {
+            "speaker": 3,
+            "text": "次は、共に帰るところまでやり遂げろ。"
+          },
+          {
+            "speaker": 1,
+            "text": "あの人……おじいちゃん？ 昔は騎士だったんだね。"
+          },
+          {
+            "speaker": 2,
+            "text": "そうじゃ。"
+          },
+          {
+            "speaker": 1,
+            "text": "すごく強かった？"
+          },
+          {
+            "speaker": 2,
+            "text": "どうじゃろうな。最後まで守りきれなかったからのう。"
+          }
+        ]
+      },
+      {
+        "id": "v2.sword",
+        "sourceId": "v2.sword",
+        "chapter": 3,
+        "scene": 2,
+        "part": 1,
+        "parts": 2,
+        "title": "剣が応えた日",
+        "art": "revised_sword_silent",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "若い守護者は人々を逃がしながら、武器庫の古い剣を手に取った。"
+          },
+          {
+            "speaker": 5,
+            "text": "まだ守りたいものがあるか？"
+          },
+          {
+            "speaker": 4,
+            "text": "あります。皆を守れるよう、私に力を分けてください。"
+          }
+        ]
+      },
+      {
+        "id": "v2.sword.part2",
+        "sourceId": "v2.sword",
+        "chapter": 3,
+        "scene": 2,
+        "part": 2,
+        "parts": 2,
+        "title": "剣が応えた日",
+        "art": "revised_sword_answer",
+        "lineStart": 3,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "精霊の光が剣に宿った。疲れ果てた守護者の体に、再び力が満ちた。"
+          },
+          {
+            "speaker": 1,
+            "text": "本当におじいちゃんだった……だから、ずっと城を守っていたの？"
+          },
+          {
+            "speaker": 2,
+            "text": "そうじゃ。守れなかった人が、あまりにも多くてな。"
+          }
+        ]
+      },
+      {
+        "id": "v2.winterstone",
+        "sourceId": "v2.winterstone",
+        "chapter": 4,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "壊れた石碑",
+        "art": "revised_winter",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "深いひびが石碑の文様を断ち切っていた。精霊の光は、割れ目の間で散ってしまった。"
+          },
+          {
+            "speaker": 1,
+            "text": "これだけ見えないのはなぜ？ もっと強くならなきゃだめ？"
+          },
+          {
+            "speaker": 2,
+            "text": "力で押すことではなさそうじゃ。精霊たちと一緒に、途切れた文様をつないでみよう。"
+          }
+        ]
+      },
+      {
+        "id": "v2.mars",
+        "sourceId": "v2.mars",
+        "chapter": 4,
+        "scene": 2,
+        "part": 1,
+        "parts": 1,
+        "title": "英雄になりたかった騎士",
+        "art": "revised_mars",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "精霊たちが光で文様をつないだ。記憶は城が燃える前、マルスが王国最強の騎士だった頃へさかのぼった。"
+          },
+          {
+            "speaker": 3,
+            "text": "一生を剣に捧げた。この力を振るう日が来なければ、誰も私を覚えてはいまい。"
+          },
+          {
+            "speaker": 4,
+            "text": "戦わずに済むのは、よいことではありませんか。"
+          },
+          {
+            "speaker": 3,
+            "text": "お前にはまだ分からぬ。力がありながら、何も変えられぬ気持ちは。"
+          },
+          {
+            "speaker": 0,
+            "text": "彼の願いは人を守ることよりも、自分の力が必要だと証明することへ傾いていった。"
+          }
+        ]
+      },
+      {
+        "id": "v2.rift",
+        "sourceId": "v2.rift",
+        "chapter": 4,
+        "scene": 3,
+        "part": 1,
+        "parts": 2,
+        "title": "再び開いた裂け目",
+        "art": "revised_seal",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "マルスは古の英雄たちが残した封印の前で剣を掲げた。何が出てこようと、自分なら止められると信じていた。"
+          },
+          {
+            "speaker": 4,
+            "text": "師匠、何をなさるのですか？"
+          },
+          {
+            "speaker": 3,
+            "text": "心配するな。私なら止められる。"
+          }
+        ]
+      },
+      {
+        "id": "v2.rift.part2",
+        "sourceId": "v2.rift",
+        "chapter": 4,
+        "scene": 3,
+        "part": 2,
+        "parts": 2,
+        "title": "再び開いた裂け目",
+        "art": "revised_rift",
+        "lineStart": 3,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "マルスの剣が封印を断った。小さな魔物は倒せたが、その奥で巨大な存在が目を開いた。"
+          },
+          {
+            "speaker": 4,
+            "text": "師匠……これは、我々の手には負えません。"
+          },
+          {
+            "speaker": 0,
+            "text": "裂け目は広がり続けた。封印の記録も共鳴の遺物も、その中へ吸い込まれていった。"
+          },
+          {
+            "speaker": 1,
+            "text": "だから、あのクモが指輪の製作書を持っていたんだ……"
+          }
+        ]
+      },
+      {
+        "id": "v2.echo",
+        "sourceId": "v2.echo",
+        "chapter": 4,
+        "scene": 4,
+        "part": 1,
+        "parts": 1,
+        "title": "記憶の隙間",
+        "art": "revised_echo",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "待って……この景色……"
+          },
+          {
+            "speaker": 2,
+            "text": "どうしたんじゃ？"
+          },
+          {
+            "speaker": 1,
+            "text": "分からない。でも、知ってる。"
+          },
+          {
+            "speaker": 2,
+            "text": "これは石碑に残ったわしの記憶ではない。光が……お前から出ておる。"
+          }
+        ]
+      },
+      {
+        "id": "v2.after",
+        "sourceId": "v2.after",
+        "chapter": 4,
+        "scene": 5,
+        "part": 1,
+        "parts": 2,
+        "title": "暗転の向こう",
+        "art": "revised_last_defeat",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "豪雨、落ちた剣、倒れた騎士。終わったはずの場面が、その先へ続いた。"
+          },
+          {
+            "speaker": 6,
+            "text": "……結局、守れなかった。"
+          }
+        ]
+      },
+      {
+        "id": "v2.after.part2",
+        "sourceId": "v2.after",
+        "chapter": 4,
+        "scene": 5,
+        "part": 2,
+        "parts": 2,
+        "title": "暗転の向こう",
+        "art": "revised_guardian_return",
+        "lineStart": 2,
+        "lines": [
+          {
+            "speaker": 5,
+            "text": "まだ終わっていない。"
+          },
+          {
+            "speaker": 6,
+            "text": "全部終わった。城も……みんなも……"
+          },
+          {
+            "speaker": 5,
+            "text": "一度だけ。すべてが始まる前へ送り返す。"
+          }
+        ]
+      },
+      {
+        "id": "v2.face",
+        "sourceId": "v2.face",
+        "chapter": 4,
+        "scene": 6,
+        "part": 1,
+        "parts": 1,
+        "title": "兜の下",
+        "art": "revised_future_pawn",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "ひび割れた兜の下から、目と髪が見えた。見慣れた顔が、別人のように大人になっていた。"
+          },
+          {
+            "speaker": 1,
+            "text": "……あの人……僕だ。"
+          },
+          {
+            "speaker": 0,
+            "text": "石碑の歴史ではなかった。ポーンの中に封じられた、まだ来ていない日の記憶だった。"
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 1,
+        "parts": 4,
+        "title": "残された願い",
+        "art": "revised_plea",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 7,
+            "text": "覚えていなきゃ。そうすれば今度こそ—"
+          },
+          {
+            "speaker": 5,
+            "text": "だめ。その記憶を持っていけば、また一人ですべてを背負ってしまう。"
+          },
+          {
+            "speaker": 7,
+            "text": "じゃあ、君は？"
+          },
+          {
+            "speaker": 5,
+            "text": "今度は……一人で戦わないで。"
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind.part2",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 2,
+        "parts": 4,
+        "title": "残された願い",
+        "art": "revised_great_rewind",
+        "lineStart": 4,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "季節が逆に流れた。廃墟は城へ戻り、騎士は幼い少年になった。"
+          },
+          {
+            "speaker": 0,
+            "text": "精霊は遠い時を巻き戻す力を使い切った。その光が尽きると、ポーンの未来の記憶も深く封じられた。"
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind.part3",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 3,
+        "parts": 4,
+        "title": "残された願い",
+        "art": "revised_morning",
+        "lineStart": 6,
+        "lines": [
+          {
+            "speaker": 2,
+            "text": "ポーン！ ちょっとおいで。"
+          }
+        ]
+      },
+      {
+        "id": "v2.rewind.part4",
+        "sourceId": "v2.rewind",
+        "chapter": 4,
+        "scene": 7,
+        "part": 4,
+        "parts": 4,
+        "title": "残された願い",
+        "art": "revised_echo",
+        "lineStart": 7,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "声が遠のくと、雪に覆われた石碑が再び見えた。ポーンは隣の老人を見上げた。"
+          },
+          {
+            "speaker": 1,
+            "text": "……あの日だったんだ。僕を戻して、あの精霊は……"
+          },
+          {
+            "speaker": 2,
+            "text": "わしの剣から聞こえた声じゃな。お前のそばでも、最後まで共にいたんじゃ。"
+          },
+          {
+            "speaker": 1,
+            "text": "忘れないよ。今度こそ、あの約束を守る。"
+          }
+        ]
+      },
+      {
+        "id": "v2.path",
+        "sourceId": "v2.path",
+        "chapter": 5,
+        "scene": 1,
+        "part": 1,
+        "parts": 1,
+        "title": "別の道",
+        "art": "revised_path",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 1,
+            "text": "おじいちゃんは、ずっとここで食い止めていたの？"
+          },
+          {
+            "speaker": 2,
+            "text": "そうじゃ。この城を守ることしかできないと、思っておった。"
+          },
+          {
+            "speaker": 1,
+            "text": "でも、防ぐだけじゃ終わらない。僕は別の道を探す。亀裂が始まった場所まで行くよ。"
+          },
+          {
+            "speaker": 2,
+            "text": "行っておいで。今度は、お前の隣に立つ皆と一緒にな。"
+          }
+        ]
+      },
+      {
+        "id": "v2.together",
+        "sourceId": "v2.together",
+        "chapter": 5,
+        "scene": 2,
+        "part": 1,
+        "parts": 1,
+        "title": "今度は一緒に",
+        "art": "revised_together",
+        "lineStart": 0,
+        "lines": [
+          {
+            "speaker": 0,
+            "text": "初めは、一体の精霊がすべての光を捧げてポーンを救った。今、その隣には多くの仲間がいた。"
+          },
+          {
+            "speaker": 2,
+            "text": "互いを守るんじゃぞ。帰ったら、お前たちの話を聞かせておくれ。"
+          },
+          {
+            "speaker": 1,
+            "text": "うん。今度は一緒に行くよ。"
+          }
         ]
       }
-    ]
+    ],
+    "revision": "rewind-b05b90df6de7"
   }
 }

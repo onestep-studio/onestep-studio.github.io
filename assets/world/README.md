@@ -1,5 +1,43 @@
 # Tiny Defense courtyard & storybook assets
 
+## Courtyard encounters — 2026-09-30
+
+- The existing KO/EN/JA game courtyards now include a small-light greeting, resident conversations and four seasonal waystones. The studio landing pages remain independent.
+- `small-light-idle.webp` reuses every original frame of `Units/PersonalSpirit/small-light/Idle.png` (64 frames, eight-column source atlas). `build-courtyard-spirit.py` creates a lossless horizontal strip using nearest-neighbor scaling to preserve the pixel art. No game files are changed.
+- The familiar responds once per tap. It moves to the story-reader toolbar when the book opens and returns to the courtyard when it closes. Its greeting is also available from the menu and announced inside the modal.
+- All eight residents have permanently accessible menu buttons. Visible scenery characters support the same action by tap. A greeting brings only the selected resident forward; daytime lines reuse `cast/dialogue.json`, and new nighttime lines are website adaptations in `courtyard-life.json`.
+- Four waystones add illustration-local petals, golden light, leaves or snow. The reset returns to the existing courtyard without altering day/night selection. Story links open the matching seasonal scene and retain the reader's spoiler gate and localized text-route fallback.
+- New effects respect reduced motion, the existing pause control and hidden-page state. Weather cannot intercept taps, and reset/book-close actions retain visible keyboard focus. Encounters are hidden until JavaScript initialization succeeds.
+- Runtime behavior is checked by `node tools/verify-courtyard-life.cjs ./output/qa/node_modules/jsdom` using the existing QA dependency. This covers all three languages, speech changes, scenery/menu parity, familiar docking, seasonal spoiler consent, original dialogue and reduced motion. Browser layout remains unverified because Browser Use blocks local URLs; this is DOM-level testing, not native-device QA or a production deployment.
+
+## Current story sync — 2026-09-30
+
+This revision supersedes the September 28 content totals below. The existing reader layout, website interludes and audio remain in place.
+
+- Refreshed from the current read-only `C:/OneStep/tiny_defense` sources: `StorySequence.Definitions.cs`, `StorySequence.Rewind.cs`, `PrologueSequence.cs`, `PrologueDuelCinematic.cs` and the actual localization tables.
+- The small-light scene now includes five first-meeting entries with `spirit_meeting` art, followed by four entries with the old man and `small_light` art. The spring memory includes the residents supporting the gate and rescuing a soldier. The autumn memory includes Mars teaching the young guardian to return with his companions.
+- Prologue cuts 4 and 5 now describe blurred vision and a faint teal glow. Only the actively called `prologue.talk1` dialogue is retained; unused `talk2` remains excluded.
+- KO/EN/JA each contain 39 reading pages and 132 structured caption/dialogue entries: 128 from the game plus four website-interlude entries. Five books, 18 main-story scenes, nine named speaker roles and 33 distinct full illustrations are preserved. Ten entries and one reading page were added relative to the previous website working copy.
+- A content hash versions the exported text, scene order and source art. Game pages pass this revision to the story fetch; reader and text-edition art URLs use the same revision. Saved positions still use stable page IDs, while full-story permission requires the saved edition to match.
+- Verification: 22 Node checks, five Python speaker-normalization checks and the static build pass. The updated illustration was inspected locally. Chrome Browser Use blocked both localhost and 127.0.0.1 (`ERR_BLOCKED_BY_CLIENT`), so this refresh does not claim browser layout or native-device QA, or a production deployment.
+
+## Current story and UI sync — 2026-09-28
+
+This revision supersedes older story/reader descriptions below; previous asset and audio provenance remains historical reference.
+
+- Sources: current `C:/OneStep/tiny_defense` story definitions, rewind art rules, prologue and duel sequences, morning voices, forge visuals and localization tables. Game files were read only.
+- Five books and 18 memories follow `DisplayOrder`. First morning and the active prologue dialogue exchange are included. Removed talk2 localization is excluded by reading actual PlayDialogue calls. The 36 source reading pages contain 118 caption/dialogue entries per language after speaker separation. All nine named speaker roles use the game's localized names.
+- Every story entry is checked for known `Speaker:` / `Speaker：` prefixes. Multiple speakers in a single caption become separate structured lines. Continuation lines and ordinary prose colons remain intact. This matches `PrologueSequence.FormatCaptionSpeaker` and also handles all other known story speakers.
+- Two website interludes connect first gathering and ring forging. `story-interludes.json` holds KO/EN/JA adaptations and insertion points. Totals: 38 pages, 122 entries per language, 32 full illustrations plus three forge props. The prologue now uses the game's `last_sword_break` art for the knight's final words and GAME OVER; the separate duel vignette and obsolete post-duel dialogue are removed.
+- Gathering uses `interlude_gather_forest.webp`, generated with the built-in image_gen tool using `revised_supplies.webp` as Pawn/style reference. Prompt: a full 3:2 storybook forest scene, the same blue-clad Pawn resting both hands on his axe at a fresh stump, collected logs and warm morning light, distant castle, no other people or text. Full generation prompt is saved in `gather-image-prompt.txt`. The illustration replaces the detached tree/Pawn sprite animation and appears uncropped in both reader and text editions.
+- Forge props remain lossless exports of `SharedAnvil`, `ToolHammer` and the first `HeroRing` frame. Its effect runs once, never advances pages, and respects disabled/reduced motion.
+- `reader.css` owns a bounded two-pane desktop layout and an image-above-text mobile layout. Images use contain without cropping, and only the dialogue pane scrolls. Text is 21px on desktop / 19px on phones; navigation stays visible. The former folding bar and opening animation are removed.
+- Legacy web narration is retired because it contradicted the revised plot. Repeated art is retained for the winter reveal. Reading state uses its own revision key; old spoiler permission cannot unlock the new ending.
+- Chrome visual QA: 1228×884 (the reported screenshot size), 390×844, 320×740 and landscape checks; KO/EN/JA speaker separation, long dialogue through its last line, full image boundaries and the new interludes. No native mobile device testing or deployment.
+- Validation: 21 Node tests and 5 Python normalization tests pass; JavaScript and Python syntax checks pass.
+
+Refresh: `python tools/build-world-assets.py --game-root C:/OneStep/tiny_defense --sound-root C:/OneStep/Assets/Sounds --story-only`, then `python tools/build-world-pages.py`.
+
 ## Sketchbook reader revision
 
 The reading surface now uses a cloth-colored binding, inset illustrations, a central gutter and a animated paper leaf. Interaction reference: https://github.com/MengTo/sketchbook (Meng To; its README credits Matthew Yu's original concept). `book-turn.js` is an independent implementation for live HTML dialogue rather than image-only spreads; no reference artwork or fonts are bundled.

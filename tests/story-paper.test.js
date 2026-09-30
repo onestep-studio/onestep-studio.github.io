@@ -4,21 +4,17 @@ const fs = require('node:fs');
 const { hasArt, splitLines, paperTransform } = require('../book-turn.js');
 const stories = require('../assets/world/story.json');
 
-test('each illustration appears once, and text fills both leaves without dropping dialogue', () => {
+test('revisited illustrations remain visible in the revised text edition', () => {
   for (const [lang, story] of Object.entries(stories)) {
-    const illustrated = story.pages.filter((_, i) => hasArt(story.pages, i));
-    const uniqueCount = new Set(story.pages.map(p => p.art)).size;
-    assert.equal(illustrated.length, uniqueCount);
-    assert.equal(new Set(illustrated.map(p => p.art)).size, uniqueCount);
-    for (const [i, page] of story.pages.entries()) {
-      if (hasArt(story.pages, i)) continue;
-      const split = splitLines(page.lines);
-      assert.ok(split > 0 && split < page.lines.length, `${lang}/${page.id}: both leaves contain dialogue`);
-      assert.deepEqual([...page.lines.slice(0, split), ...page.lines.slice(split)], page.lines);
-    }
     const html = fs.readFileSync(`${lang === 'ko' ? '' : lang + '/'}story/index.html`, 'utf8');
-    assert.equal((html.match(/<img /g) || []).length, uniqueCount);
-    assert.equal((html.match(/class="text-only"/g) || []).length, story.pages.length-uniqueCount);
+    assert.equal((html.match(/<img /g) || []).length, story.pages.length);
+    assert.equal((html.match(/class="text-only"/g) || []).length, 0);
+    for (const page of story.pages) {
+      for (const line of page.lines) {
+        const escaped=line.text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#x27;');
+        assert.ok(html.replace(/\r\n/g, '\n').includes(escaped), `${lang}/${page.id}: missing dialogue`);
+      }
+    }
   }
 });
 

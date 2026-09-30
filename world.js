@@ -4,9 +4,9 @@
   if (!world) return;
   const lang = ['ko', 'en', 'ja'].includes(document.documentElement.lang) ? document.documentElement.lang : 'ko';
   const copy = {
-    ko: { fold:'본문 접기 ▾', unfold:'본문 펼치기 ▴', on:'소리 켜기', off:'소리 끄기', pause:'움직임 멈추기', move:'움직임 재생', old:'노인', prologue:'프롤로그', scene:'장면', fullTitle:'그다음 이야기도 펼칠까요?', spoiler:'이제부터 챕터 1–3의 결말까지 이어집니다. 게임에서 직접 만나고 싶다면 여기서 책을 덮어 두세요.', full:'전체 이야기 읽기', back:'도입부로 돌아가기', close:'성 안으로', next:'다음 장', loading:'책을 펼치고 있어요…', error:'이야기를 불러오지 못했어요. 다시 시도해 주세요.', retry:'다시 불러오기', audioError:'소리를 재생하지 못했어요. 소리 켜기를 다시 눌러 주세요.', game:'게임에서 여정 이어가기', continue:'이어서 읽기', saved:'읽던 곳을 기억해 둘게요.' },
-    en: { fold:'Hide text ▾', unfold:'Show text ▴', on:'Sound on', off:'Sound off', pause:'Pause motion', move:'Resume motion', old:'Old man', prologue:'Prologue', scene:'Scene', fullTitle:'Turn to the rest of the story?', spoiler:'The following pages include the endings of Chapters 1–3. Close the book here if you would rather discover it in the game.', full:'Read the full story', back:'Back to the opening', close:'Courtyard', next:'Next', loading:'Opening the book…', error:'The story could not be loaded. Please try again.', retry:'Try again', audioError:'Audio could not start. Select Sound on to try again.', game:'Continue the journey in the game', continue:'Continue reading', saved:'Your place in the book is saved.' },
-    ja: { fold:'本文を閉じる ▾', unfold:'本文を開く ▴', on:'音をオン', off:'音をオフ', pause:'動きを止める', move:'動きを再開', old:'老人', prologue:'プロローグ', scene:'場面', fullTitle:'物語の続きを開きますか？', spoiler:'この先はチャプター1〜3の結末まで描かれています。ゲームで出会いたい方は、ここで本を閉じてください。', full:'物語をすべて読む', back:'冒頭に戻る', close:'城の中へ', next:'次のページ', loading:'本を開いています…', error:'物語を読み込めませんでした。もう一度お試しください。', retry:'再読み込み', audioError:'音を再生できませんでした。音をオンにして、もう一度お試しください。', game:'ゲームで旅を続ける', continue:'続きから読む', saved:'読んだ場所を覚えておきます。' }
+    ko: { on:'소리 켜기', off:'소리 끄기', pause:'움직임 멈추기', move:'움직임 재생', old:'노인', prologue:'프롤로그', scene:'장면', fullTitle:'그다음 이야기도 펼칠까요?', spoiler:'이제부터 사계절의 기억과 결말까지 이어집니다. 게임에서 직접 만나고 싶다면 여기서 책을 덮어 두세요.', full:'전체 이야기 읽기', back:'도입부로 돌아가기', close:'성 안으로', next:'다음 장', loading:'책을 펼치고 있어요…', error:'이야기를 불러오지 못했어요. 다시 시도해 주세요.', retry:'다시 불러오기', audioError:'소리를 재생하지 못했어요. 소리 켜기를 다시 눌러 주세요.', game:'게임에서 여정 이어가기', continue:'이어서 읽기', saved:'읽던 곳을 기억해 둘게요.' },
+    en: { on:'Sound on', off:'Sound off', pause:'Pause motion', move:'Resume motion', old:'Old man', prologue:'Prologue', scene:'Scene', fullTitle:'Turn to the rest of the story?', spoiler:'The following pages include the seasonal memories and the ending. Close the book here if you would rather discover it in the game.', full:'Read the full story', back:'Back to the opening', close:'Courtyard', next:'Next', loading:'Opening the book…', error:'The story could not be loaded. Please try again.', retry:'Try again', audioError:'Audio could not start. Select Sound on to try again.', game:'Continue the journey in the game', continue:'Continue reading', saved:'Your place in the book is saved.' },
+    ja: { on:'音をオン', off:'音をオフ', pause:'動きを止める', move:'動きを再開', old:'老人', prologue:'プロローグ', scene:'場面', fullTitle:'物語の続きを開きますか？', spoiler:'この先は四季の記憶と結末まで描かれています。ゲームで出会いたい方は、ここで本を閉じてください。', full:'物語をすべて読む', back:'冒頭に戻る', close:'城の中へ', next:'次のページ', loading:'本を開いています…', error:'物語を読み込めませんでした。もう一度お試しください。', retry:'再読み込み', audioError:'音を再生できませんでした。音をオンにして、もう一度お試しください。', game:'ゲームで旅を続ける', continue:'続きから読む', saved:'読んだ場所を覚えておきます。' }
   }[lang];
   const $ = (selector) => document.querySelector(selector);
   const dialog = $('#story-reader');
@@ -17,26 +17,15 @@
   const contents = $('#story-contents');
   const gate = $('[data-story-gate]');
   const lines = $('[data-story-lines]');
-  const textToggle = document.createElement('button');
-  textToggle.type = 'button'; textToggle.className = 'story-text-toggle';
-  textToggle.hidden = true; textToggle.textContent = copy.fold;
-  textToggle.setAttribute('aria-controls', 'story-copy');
   const storyCopy = document.createElement('div'); storyCopy.className = 'story-copy'; storyCopy.id = 'story-copy';
-  storyCopy.append(...page.childNodes); page.append(textToggle, storyCopy);
-  let textCollapsed = false;
-  function textState(illustrated, forceOpen = false) {
-    textToggle.hidden = !illustrated || forceOpen;
-    storyCopy.hidden = illustrated && textCollapsed && !forceOpen;
-    textToggle.setAttribute('aria-expanded', String(!storyCopy.hidden));
-    textToggle.textContent = storyCopy.hidden ? copy.unfold : copy.fold;
-  }
-  textToggle.addEventListener('click', () => { textCollapsed = !textCollapsed; textState(true); });
+  storyCopy.append(...page.childNodes); page.append(storyCopy);
+  function textState() { storyCopy.hidden = false; }
   const title = $('[data-page-title]');
   title.id = 'story-scene-title';
   storyCopy.tabIndex = 0; storyCopy.setAttribute('role','region'); storyCopy.setAttribute('aria-labelledby',title.id);
   const progress = $('[data-page-progress]');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  const storageKey = 'tiny-defense-storybook-v1';
+  const storageKey = 'tiny-defense-storybook-rewind-v2';
   let story, loading, index = 0, allowed = false, pending = 2, showingGate = false, turning = false;
   let lastTrigger, paused = reduce.matches, enabled = false, volume = .35, audioEpoch = 0;
   let openEpoch = 0, activeTurn = null, entrance = null, opening = false;
@@ -130,7 +119,7 @@
   new ResizeObserver(fitActors).observe(landscape);
 
   function remember() {
-    saved = {page:index, id:story.pages[index].id, full:allowed};
+    saved = {page:index, id:story.pages[index].id, full:allowed, revision:story.revision};
     try { localStorage.setItem(storageKey,JSON.stringify(saved)); } catch { /* Reading remains available. */ }
     $('[data-resume-story]').hidden = index === 0;
   }
@@ -140,10 +129,18 @@
   }
   function renderContents() {
     contents.replaceChildren();
+    let chapter = null;
     story.pages.forEach((p,i) => {
+      if (p.part > 1) return;
+      if (p.chapter !== chapter) {
+        chapter = p.chapter;
+        const heading = document.createElement('h3');
+        heading.textContent = story.books[String(chapter)];
+        contents.append(heading);
+      }
       const button = document.createElement('button'); button.type = 'button';
-      button.textContent = `${String(p.chapter).padStart(2,'0')}.${String(p.scene).padStart(2,'0')}  ${i < story.previewCount || allowed ? p.title : copy.scene+' '+p.scene}${p.parts > 1 ? ` (${p.part}/${p.parts})` : ''}`;
-      if (i === index && !showingGate) button.setAttribute('aria-current','page');
+      button.textContent = p.kind === 'interlude' || i < story.previewCount || allowed ? p.title : `${copy.scene} ${p.scene}`;
+      if (p.sourceId === story.pages[index].sourceId && !showingGate) button.setAttribute('aria-current','page');
       button.addEventListener('click', () => { contentsState(false); navigate(i); });
       contents.append(button);
     });
@@ -154,6 +151,25 @@
     button.addEventListener('click', callback);
     return button;
   }
+  const vignette = document.createElement('div');
+  vignette.className = 'story-vignette'; vignette.hidden = true; vignette.setAttribute('aria-hidden','true');
+  $('[data-book-left]').append(vignette);
+  function renderVignette(data) {
+    vignette.replaceChildren(); vignette.hidden = data.kind !== 'interlude' || data.visual !== 'forge';
+    if (vignette.hidden) return;
+    const frame=document.createElement('div'); frame.className='vignette-frame vignette-'+data.visual;
+    const sprite=(name,src) => {
+      const element=document.createElement(src ? 'img' : 'span'); element.className='vignette-'+name;
+      if(src) { element.src=src; element.alt=''; }
+      frame.append(element);
+    };
+    if(data.visual==='forge') {
+      sprite('anvil','/assets/world/interlude-anvil.webp');
+      sprite('hammer','/assets/world/interlude-hammer.webp');
+      sprite('ring','/assets/world/interlude-ring.webp');
+    }
+    vignette.append(frame);
+  }
   function render(save = true) {
     const data = story.pages[index];
     showingGate = false;
@@ -162,11 +178,13 @@
     const chapter = String(data.chapter).padStart(2,'0');
     $('.reader-kicker').textContent = `TINY DEFENSE / CHAPTER ${chapter}`;
     $('.art-chapter b').textContent = chapter;
-    $('[data-page-kicker]').textContent = (data.sourceId === 'prologue' ? copy.prologue : `CHAPTER ${chapter} / ${copy.scene} ${String(data.scene).padStart(2,'0')}`) + (data.parts > 1 ? ` · ${data.part}/${data.parts}` : '');
-    const illustrated = paper.hasArt(story.pages, index);
+    $('[data-page-kicker]').textContent = (data.sourceId === 'prologue' ? copy.prologue : data.sourceId === 'morning' ? story.books[String(data.chapter)] : `${story.books[String(data.chapter)]} / ${copy.scene} ${String(data.scene).padStart(2,'0')}`) + (data.parts > 1 ? ` · ${data.part}/${data.parts}` : '');
+    if (data.kind === 'interlude') $('[data-page-kicker]').textContent = story.books[String(data.chapter)];
+    const illustrated = Boolean(story.pages[index].art);
     spread.classList.toggle('text-spread', !illustrated);
-    textState(illustrated); storyCopy.scrollTop = 0;
-    $('.book-illustration').hidden = !illustrated;
+    textState(illustrated); storyCopy.scrollTop = 0; page.scrollTop = 0;
+    renderVignette(data);
+    $('.book-illustration').hidden = !illustrated || !vignette.hidden;
     $('[data-left-page]').hidden = illustrated;
     const leftLines = $('[data-left-lines]'); leftLines.replaceChildren();
     $('[data-left-title]').textContent = data.title;
@@ -178,7 +196,7 @@
     const readingLines = [...(data.before || []).map(text => ({speaker:0,text})), ...data.lines, ...(data.after || []).map(text => ({speaker:0,text}))];
     const split = illustrated ? 0 : paper.splitLines(readingLines);
     const art = $('[data-story-art]');
-    if (illustrated) art.src = `/assets/world/${data.art}.webp?v=story-4`;
+    if (illustrated) art.src = `/assets/world/${data.art}.webp?v=${story.revision}`;
     else art.removeAttribute('src');
     // The narration supplies the illustration's context; avoid repeating it in alt text.
     art.alt = '';
@@ -186,7 +204,7 @@
       const p = document.createElement('p');
       if (line.speaker) {
         const speaker=document.createElement('span'); speaker.className='speaker';
-        speaker.textContent=line.speaker===1 ? story.boy : copy.old;
+        speaker.textContent=story.speakers[String(line.speaker)];
         p.append(speaker);
       } else p.className='narration';
       p.append(document.createTextNode(line.text)); (lineIndex < split ? leftLines : lines).append(p);
@@ -201,16 +219,17 @@
     }
     if (save) { renderContents(); remember(); }
     // Cache only the next illustration, never unreached dialogue or audio requests.
-    if (index+1 < story.pages.length && (allowed || index+1 < story.previewCount) && paper.hasArt(story.pages, index+1)) {
-      const image = new Image(); image.src=`/assets/world/${story.pages[index+1].art}.webp?v=story-4`;
+    if (index+1 < story.pages.length && (allowed || index+1 < story.previewCount) && Boolean(story.pages[index+1].art)) {
+      const image = new Image(); image.src=`/assets/world/${story.pages[index+1].art}.webp?v=${story.revision}`;
     }
   }
   function spoilerGate(target) {
     pending = target; showingGate=true;
+    $('[data-reader-pages]').scrollTop=0; storyCopy.scrollTop=0; page.scrollTop=0;
     textState(true, true);
     title.hidden=false; $('[data-page-kicker]').hidden=false;
     title.textContent=copy.fullTitle;
-    $('[data-page-kicker]').textContent='CHAPTER 01–03';
+    $('[data-page-kicker]').textContent='CHAPTER 01–05';
     lines.hidden=true; gate.hidden=false; gate.replaceChildren();
     const p=document.createElement('p'); p.textContent=copy.spoiler; gate.append(p);
     gate.append(makeButton(copy.full, () => { allowed=true; navigate(pending); }));
@@ -246,7 +265,7 @@
     if (target >= story.previewCount && !allowed) { spoilerGate(target); return; }
     if (target === index && !showingGate) return;
     // Narrow screens keep a readable continuous page, with a short fade.
-    if (reduce.matches || matchMedia('(max-width:699px)').matches || !spread.classList.contains('text-spread') || paper.hasArt(story.pages,target)) {
+    if (reduce.matches || matchMedia('(max-width:699px)').matches || !spread.classList.contains('text-spread') || Boolean(story.pages[target].art)) {
       index=target; render(); effect(`page-${1+(target%3)}`);
       if (!reduce.matches) spread.animate([{opacity:.35},{opacity:1}], {duration:220});
       page.focus({preventScroll:true}); dialog.scrollTop=0; $('[data-reader-pages]').scrollTop=0; return;
@@ -256,7 +275,7 @@
   }
   async function loadStory() {
     if (story) return story;
-    if (!loading) loading=fetch('/assets/world/story.json?v=story-6').then(r => {
+    if (!loading) loading=fetch(`/assets/world/story.json?v=${world.dataset.storyRevision}`).then(r => {
       if (!r.ok) throw new Error('Story HTTP '+r.status);
       return r.json();
     }).then(data => {
@@ -265,57 +284,7 @@
     }).finally(() => { loading=null; });
     return loading;
   }
-  function enterFromMap(origin) {
-    if (reduce.matches || matchMedia('(max-width:699px)').matches || typeof Animation === 'undefined') return Promise.resolve();
-    return new Promise(resolve => {
-      const rect = spread.getBoundingClientRect();
-      const mobile = matchMedia('(max-width:699px)').matches;
-      const anchor = mobile ? .5 : .75;
-      const scale = Math.max(.055, Math.min(.22, origin.width / (rect.width * (mobile ? 1 : .5))));
-      const dx = origin.x - (rect.left + rect.width * anchor);
-      const dy = origin.y - (rect.top + Math.min(rect.height, innerHeight * .75) * .5);
-      const cover = document.createElement('div'); cover.className='arrival-cover'; cover.setAttribute('aria-hidden','true');
-      const name = document.createElement('span'); name.textContent=$('#reader-title').textContent;
-      const imprint=document.createElement('small'); imprint.textContent='TINY DEFENSE';
-      cover.append(imprint,name);
-      const leaves = Array.from({length:3}, () => {
-        const leaf=document.createElement('div'); leaf.className='arrival-leaf'; leaf.setAttribute('aria-hidden','true');
-        spread.append(leaf); return leaf;
-      });
-      spread.append(cover);
-      dialog.classList.add('arrival-ready');
-      const animations=[], sounds=[]; let finished=false;
-      const finish = () => {
-        if (finished) return; finished=true;
-        animations.forEach(animation=>animation.cancel());
-        sounds.forEach(clearTimeout);
-        leaves.forEach(leaf=>leaf.remove()); cover.remove();
-        dialog.classList.remove('book-arriving','arrival-ready'); spread.style.transformOrigin='';
-        opening=false; entrance=null; resolve();
-      };
-      entrance={cancel:finish};
-      spread.style.transformOrigin=`${anchor*100}% ${Math.min(rect.height,innerHeight*.75)*.5}px`;
-      const flight=spread.animate([
-        {transform:`translate(${dx}px,${dy}px) scale(${scale}) rotateX(48deg) rotateZ(-24deg)`,offset:0},
-        {transform:`translate(${dx*.62}px,${dy*.62-55}px) scale(${Math.max(.3,scale*2)}) rotateX(24deg) rotateZ(-12deg)`,offset:.36},
-        {transform:'translate(0,0) scale(1.025) rotateX(0deg) rotateZ(0deg)',offset:.8},
-        {transform:'translate(0,0) scale(1) rotateX(0deg) rotateZ(0deg)',offset:1}
-      ],{duration:1100,easing:'cubic-bezier(.2,.65,.25,1)',fill:'both'});
-      animations.push(flight);
-      animations.push(cover.animate([
-        {transform:'rotateY(0deg)',opacity:1},
-        {transform:'rotateY(-165deg)',opacity:1,offset:.9},
-        {transform:'rotateY(-180deg)',opacity:0}
-      ],{delay:720,duration:630,easing:'cubic-bezier(.3,.1,.2,1)',fill:'both'}));
-      leaves.forEach((leaf,i)=>animations.push(leaf.animate([
-        {transform:'rotateY(0deg)',opacity:1},
-        {transform:'rotateY(-95deg)',opacity:1,offset:.55},
-        {transform:'rotateY(-179deg)',opacity:0}
-      ],{delay:900+i*95,duration:430,easing:'ease-in-out',fill:'both'})));
-      sounds.push(setTimeout(()=>effect('page-1'),900),setTimeout(()=>effect('page-2'),1090));
-      animations.at(-1).onfinish=finish;
-    });
-  }
+  function enterFromMap() { return Promise.resolve(); }
   async function openBook(trigger, resume = false) {
     if (turning || opening) return;
     const epoch = ++openEpoch;
@@ -326,6 +295,7 @@
     lastTrigger=trigger;
     contentsState(false);
     if (!dialog.open) dialog.showModal();
+    document.dispatchEvent(new CustomEvent('courtyard:book', {detail:{open:true}}));
     syncMusic(); effect('book-open');
     textState(false, true);
     title.hidden=false; title.textContent=copy.loading;
@@ -335,11 +305,15 @@
     try {
       await loadStory();
       if (!dialog.open || epoch !== openEpoch) return;
-      allowed=Boolean(resume && saved?.full);
-      const legacyIds=['prologue','supplies','ring','troll','spring','summer','autumn','winter','home','ch2.return','ch2.rift','ch2.heroes','ch2.castle','ch2.seal','ch3.master','ch3.glory','ch3.breach','ch3.sword','ch3.watch'];
-      const restored=resume && saved ? story.pages.findIndex(p=>p.id===(saved.id || legacyIds[saved.page])) : 0;
+      allowed=Boolean(resume && saved?.full && saved.revision === story.revision);
+
+      const restored=resume && saved ? story.pages.findIndex(p=>p.id===saved.id) : 0;
       index=Math.max(0,Math.min(restored,allowed ? story.pages.length-1 : story.previewCount-1));
-      render(); dialog.scrollTop=0; $('[data-reader-pages]').scrollTop=0;
+      const destination=story.pages.findIndex(p=>p.id===trigger.dataset.storyScene);
+      if (destination >= 0 && (allowed || destination < story.previewCount)) index=destination;
+      render();
+      if (destination >= story.previewCount && !allowed) spoilerGate(destination);
+      dialog.scrollTop=0; $('[data-reader-pages]').scrollTop=0;
       if (opening) await enterFromMap(origin);
       if (!dialog.open || epoch !== openEpoch) return;
       opening=false; dialog.classList.remove('book-arriving','arrival-ready'); page.focus({preventScroll:true});
@@ -352,6 +326,7 @@
   }
   function closeBook() { dialog.close(); }
   dialog.addEventListener('close', () => {
+    document.dispatchEvent(new CustomEvent('courtyard:book', {detail:{open:false}}));
     ++openEpoch;
     entrance?.cancel(); opening=false; dialog.classList.remove('book-arriving','arrival-ready');
     activeTurn?.dispose(); activeTurn = null; turning = false;
@@ -377,20 +352,6 @@
     if (event.target.matches('input,select,textarea') || !contents.hidden || showingGate) return;
     if(event.key==='ArrowRight') { event.preventDefault(); navigate(index+1); }
     if(event.key==='ArrowLeft') { event.preventDefault(); navigate(index-1); }
-  });
-  let tapStart = null;
-  spread.addEventListener('pointerdown', event => {
-    tapStart = {x:event.clientX,y:event.clientY,scroll:$('[data-reader-pages]').scrollTop};
-  },{passive:true});
-  spread.addEventListener('pointercancel', () => { tapStart=null; });
-  spread.addEventListener('click', event => {
-    if (!story || turning || opening || showingGate || !contents.hidden || event.target.closest('button,a,input,.story-copy')) return;
-    if (matchMedia('(max-width:699px)').matches) return;
-    const start=tapStart; tapStart=null;
-    if (start && (Math.hypot(event.clientX-start.x,event.clientY-start.y)>12 || Math.abs($('[data-reader-pages]').scrollTop-start.scroll)>8)) return;
-    if (window.getSelection()?.toString()) return;
-    const rect=spread.getBoundingClientRect();
-    navigate(index+(event.clientX < rect.left+rect.width/2 ? -1 : 1));
   });
   window.addEventListener('resize', () => {
     entrance?.cancel();

@@ -4,35 +4,51 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const data = JSON.parse(fs.readFileSync(path.join(root,'assets/world/story.json'),'utf8'));
-const ids = ['prologue','supplies','ring','troll','spring','summer','autumn','winter','home',
-  'ch2.return','ch2.rift','ch2.heroes','ch2.castle','ch2.seal',
-  'ch3.master','ch3.glory','ch3.breach','ch3.sword','ch3.watch'];
+const ids = ['prologue','morning','v2.smallhands','v2.light','v2.ring','v2.springstone',
+  'v2.springmemory','v2.summerstone','v2.firsthero','v2.autumnstone','v2.sword',
+  'v2.winterstone','v2.mars','v2.rift','v2.echo','v2.after','v2.face','v2.rewind','v2.path','v2.together'];
 
-test('all three chapters retain scene order, dedicated art and translated dialogue', () => {
+test('revised memories retain all five books, dialogue, speakers and art transitions', () => {
   for (const lang of ['ko','en','ja']) {
-    assert.deepEqual([...new Set(data[lang].pages.map(p=>p.sourceId))],ids);
-    assert.equal(data[lang].pages.length,26);
-    assert.equal(data[lang].previewCount,6);
-    assert.equal(data[lang].pages.reduce((n,p)=>n+p.lines.length,0),64);
-    assert.deepEqual(data[lang].pages.slice(0,5).map(p=>p.art),['prologue','prologue_2','prologue_3','prologue_4','prologue_5']);
-    assert.deepEqual(data[lang].pages.map(p=>p.chapter),[...Array(14).fill(1),...Array(6).fill(2),...Array(6).fill(3)]);
-    assert.deepEqual(data[lang].pages.map(p=>p.lines.map(l=>l.speaker)),data.ko.pages.map(p=>p.lines.map(l=>l.speaker)));
-    for (const page of data[lang].pages) {
+    const story=data[lang];
+    assert.deepEqual([...new Set(story.pages.filter(p=>p.kind!=='interlude').map(p=>p.sourceId))],ids);
+    assert.equal(story.pages.length,39);
+    assert.equal(story.previewCount,9);
+    assert.equal(story.pages.reduce((n,p)=>n+p.lines.length,0),132);
+    assert.equal(Object.keys(story.books).length,5);
+    assert.equal(new Set(story.pages.map(p=>p.art)).size,33);
+    assert.equal(new Set(story.pages.map(p=>p.id)).size,39);
+    assert.deepEqual(story.pages.map(p=>p.lines.map(l=>l.speaker)),data.ko.pages.map(p=>p.lines.map(l=>l.speaker)));
+    for (const page of story.pages) {
       assert.ok(page.title.trim());
       assert.ok(fs.statSync(path.join(root,`assets/world/${page.art}.webp`)).size>1000);
-      for (const line of page.lines) assert.ok(line.text.trim());
+      assert.ok(!page.before && !page.after,'legacy cinematic prose must not reveal the new twist');
+      for (const line of page.lines) {
+        assert.ok(line.text.trim());
+        if(line.speaker) assert.ok(story.speakers[line.speaker]);
+      }
     }
+    const scene=id=>story.pages.filter(p=>p.sourceId===id);
+    assert.ok(!story.pages.some(p=>p.id==='interlude.duel'||p.id==='rewind.prologue.talk2'));
+    assert.deepEqual(story.pages.filter(p=>['rewind.prologue.3','rewind.prologue.4'].includes(p.id)).map(p=>p.art),['revised_last_sword_break','revised_last_sword_break']);
+    assert.equal(story.pages.find(p=>p.id==='interlude.gather').art,'interlude_gather_forest');
+    assert.equal(story.pages.find(p=>p.id==='interlude.gather').visual,'illustration');
+    assert.equal(scene('morning')[0].lines.length,9);
+    assert.deepEqual(scene('v2.light').map(p=>[p.lineStart,p.lines.length,p.art]),[
+      [0,5,'revised_spirit_meeting'],[5,4,'revised_small_light']
+    ]);
+    assert.equal(scene('v2.springmemory')[0].lines.length,6);
+    assert.equal(scene('v2.autumnstone')[0].lines.length,8);
+    assert.deepEqual(scene('v2.ring').map(p=>p.lineStart),[0,1]);
+    assert.deepEqual(scene('v2.firsthero').map(p=>p.lineStart),[0,3,5,9]);
+    assert.deepEqual(scene('v2.rewind').map(p=>p.lineStart),[0,4,6,7]);
+    assert.deepEqual(scene('v2.after').map(p=>p.art),['revised_last_defeat','revised_guardian_return']);
+    assert.deepEqual(story.pages.filter(p=>p.id==='rewind.prologue.talk1'||p.id==='rewind.prologue.talk2').map(p=>p.lines.map(l=>l.speaker)),[[9,6,9,6]]);
   }
-  const scene=id=>data.ko.pages.filter(p=>p.sourceId===id);
-  assert.equal(scene('supplies')[0].lines.length,5,'include the two latest supplies lines from the game');
-  assert.deepEqual(scene('ring')[0].lines.map(l=>l.speaker),[1,2,1,2,2]);
-  for(const [id,arts,starts] of [['home',['route_seal','home'],[0,1]],['ch2.heroes',['spirit_gift','heroes_battle'],[0,1]],['ch3.breach',['mars_breaks_seal','mars_breach'],[0,2]]]) {
-    assert.deepEqual(scene(id).map(p=>p.art),arts);
-    assert.deepEqual(scene(id).map(p=>p.lineStart),starts);
-  }
-  assert.equal(scene('ch2.seal')[0].art,'seal_watch');
-  assert.equal(scene('ch3.watch')[0].art,'together');
-  assert.equal(data.ko.pages.at(-1).lines[2].text,'그래, 함께 지키자꾸나. 너희가 있으니 나도 마음이 놓이는구나.');
+  assert.equal(data.ko.speakers[1],'폰');
+  assert.equal(data.ko.speakers[5],'수호정령');
+  assert.equal(data.ko.speakers[6],'기사');
+  assert.equal(data.ko.speakers[7],'미래의 폰');
 });
 
 test('all local homepage/story references exist, including the no-JavaScript reading route', () => {
@@ -75,24 +91,15 @@ test('courtyard day uses the game lobby track and night uses the current battle 
   }
 });
 
-test('cinematic prose survives export and appears in every localized text edition', () => {
+test('legacy narration and read permissions cannot leak the revised reveal', () => {
   const narration = require('../assets/world/story-narration.json');
-  for (const lang of ['ko','en','ja']) {
-    const html = fs.readFileSync(path.join(root,`${lang==='ko'?'':lang+'/'}story/index.html`),'utf8');
-    const story = data[lang];
-    assert.deepEqual(Object.keys(narration[lang]),Object.keys(narration.ko));
-    for (const [id, additions] of Object.entries(narration[lang])) {
-      const page = story.pages.find(p=>p.id===id);
-      assert.ok(page,`${lang}: unknown narration page ${id}`);
-      for (const [position, paragraphs] of Object.entries(additions)) {
-        assert.deepEqual(page[position],paragraphs);
-        assert.equal(paragraphs.length,narration.ko[id][position].length);
-        for (const text of paragraphs) {
-          assert.ok(text.trim());
-          assert.ok(html.replace(/\r\n/g, '\n').includes(text),`${lang}/${id}: missing cinematic prose`);
-        }
-      }
-    }
+  const runtime=fs.readFileSync(path.join(root,'world.js'),'utf8');
+  for (const lang of ['ko','en','ja']) assert.deepEqual(narration[lang],{});
+  assert.match(runtime,/tiny-defense-storybook-rewind-v2/);
+  assert.doesNotMatch(runtime,/tiny-defense-storybook-v1/);
+  assert.match(runtime,/story\.speakers\[String\(line\.speaker\)\]/);
+  for (const page of data.ko.pages.slice(0,data.ko.previewCount)) {
+    assert.doesNotMatch(page.lines.map(l=>l.text).join(' '),/미래의 폰|대회귀|기억을 봉인/);
   }
 });
 
@@ -101,4 +108,54 @@ test('Korean story contains no accidentally pasted Japanese prose', () => {
   assert.doesNotMatch(JSON.stringify(data.ko), /[\u3040-\u30ff]/);
   assert.doesNotMatch(JSON.stringify(narration.ko), /[\u3040-\u30ff]/);
   assert.doesNotMatch(fs.readFileSync(path.join(root,'story/index.html'),'utf8'), /[\u3040-\u30ff]/);
+});
+
+
+test('speaker prefixes are separated throughout all localized story pages', () => {
+  for (const [lang,story] of Object.entries(data)) {
+    for (const page of story.pages) for (const line of page.lines) {
+      for (const row of line.text.split('\n')) for (const name of Object.values(story.speakers)) {
+        assert.ok(!row.trimStart().startsWith(name+':') && !row.trimStart().startsWith(name+'：'), `${lang}/${page.id}: inline speaker`);
+      }
+    }
+    const warning=story.pages.find(p=>p.id==='rewind.prologue.2');
+    assert.deepEqual(warning.lines.map(l=>l.speaker),[8,6]);
+    assert.equal(story.pages.find(p=>p.id==='rewind.prologue.3').lines[0].speaker,6);
+  }
+  assert.match(data.en.pages.find(p=>p.id==='v2.autumnstone').lines[0].text,/knights: Mars/);
+});
+
+
+test('gameplay interludes preserve ordering, translations and original dialogue', () => {
+  const interludes=require('../assets/world/story-interludes.json');
+  for (const story of Object.values(data)) {
+    assert.equal(story.pages.filter(p=>p.kind==='interlude').length,2);
+    assert.equal(story.pages.filter(p=>p.kind!=='interlude').reduce((n,p)=>n+p.lines.length,0),128);
+    for (const entry of interludes) {
+      const index=story.pages.findIndex(p=>p.id===entry.id);
+      assert.equal(story.pages[index+1].id,entry.before);
+      assert.equal(story.pages[index].visual,entry.visual);
+      assert.ok(story.pages[index].lines.every(l=>l.speaker===0));
+    }
+    assert.equal(story.pages[story.previewCount-1].id,'v2.smallhands');
+  }
+  for(const name of ['anvil','hammer','ring']) assert.equal(fs.readFileSync(path.join(root,`assets/world/interlude-${name}.webp`)).toString('ascii',8,12),'WEBP');
+});
+
+test('story revisions keep fetched text, illustrations and spoiler consent in the same edition', () => {
+  const runtime=fs.readFileSync(path.join(root,'world.js'),'utf8');
+  assert.match(runtime,/world\.dataset\.storyRevision/);
+  assert.match(runtime,/saved\.revision === story\.revision/);
+  assert.doesNotMatch(runtime,/v=rewind-[1-4][`']/);
+  for (const [lang,story] of Object.entries(data)) {
+    assert.match(story.revision,/^rewind-[a-f0-9]{12}$/);
+    assert.equal(story.revision,data.ko.revision);
+    const prefix=lang==='ko'?'':lang+'/';
+    const game=fs.readFileSync(path.join(root,`${prefix}games/tiny-defense/index.html`),'utf8');
+    assert.ok(game.includes(`data-story-revision="${story.revision}"`));
+    const text=fs.readFileSync(path.join(root,`${prefix}story/index.html`),'utf8');
+    for (const page of story.pages) assert.ok(text.includes(`/assets/world/${page.art}.webp?v=${story.revision}`));
+  }
+  assert.equal(data.ko.pages.find(p=>p.id==='rewind.prologue.4').lines[0].text,'시야가 서서히 흐려졌다.');
+  assert.equal(data.ko.pages.find(p=>p.id==='rewind.prologue.5').lines[0].text,'흐릿한 청록빛이 어둠 속에서 번졌다.');
 });

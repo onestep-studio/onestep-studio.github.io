@@ -1,0 +1,62 @@
+{
+  "ko": {
+    "label": "성 안에서 함께",
+    "spirit": "작은 정령",
+    "greet": "손 내밀기",
+    "spiritHint": "작은 빛이 곁에서 기다리고 있어요.",
+    "spiritReply": ["손을 내밀자 작은 빛이 가까이 다가왔어요.", "정령이 손끝을 맴돌며 반짝였어요.", "작은 빛이 한 바퀴 돌고 다시 곁에 머물렀어요."],
+    "residents": "주민에게 말 걸기",
+    "residentHint": "누구와 인사를 나눌까요?",
+    "seasons": "사계절의 비석",
+    "reset": "지금의 안뜰",
+    "seasonHint": "비석을 눌러 계절의 기운을 느껴 보세요.",
+    "names": {"pawn":"폰", "boy":"소년", "girl":"소녀", "guardian":"수호기사", "mage":"마법사", "berserker":"광전사", "duelist":"검투사", "dark-knight":"다크나이트"},
+    "night": {"pawn":"오늘 모은 장작으로 밤을 버틸 수 있겠지?", "boy":"할아버지는 안에서 쉬고 계셔. 우리도 불 곁에 앉자.", "girl":"나무는 다 옮겼어. 이제 성 안에 있을게.", "guardian":"문은 내가 지킬게. 넌 따뜻한 곳에 있어.", "mage":"불이 꺼지지 않게 보고 있어. 손을 녹이고 가.", "berserker":"밖이 소란스럽군. 검은 준비됐어.", "duelist":"발소리가 들리면 알려 줘. 같이 보고 있자.", "dark-knight":"밤이 길어도, 여기서는 혼자가 아니야."},
+    "season": {
+      "spring":{"name":"봄", "hint":"따뜻한 바람에 꽃잎이 흩날립니다.", "read":"봄의 기억 읽기"},
+      "summer":{"name":"여름", "hint":"따뜻한 금빛이 성 안을 감쌉니다.", "read":"여름의 기억 읽기"},
+      "autumn":{"name":"가을", "hint":"돌길 위로 낙엽이 천천히 내려앉습니다.", "read":"가을의 기억 읽기"},
+      "winter":{"name":"겨울", "hint":"조용한 안뜰에 작은 눈송이가 내립니다.", "read":"겨울의 기억 읽기"}
+    }
+  },
+  "en": {
+    "label": "Company in the courtyard",
+    "spirit": "Little spirit",
+    "greet": "Offer your hand",
+    "spiritHint": "A little light is waiting beside you.",
+    "spiritReply": ["The little light drew closer to your outstretched hand.", "The spirit circled your fingertips with a soft glow.", "The little light turned once, then settled beside you."],
+    "residents": "Talk to the residents",
+    "residentHint": "Who would you like to greet?",
+    "seasons": "Seasonal waystones",
+    "reset": "Today's courtyard",
+    "seasonHint": "Touch a waystone to feel its season.",
+    "names": {"pawn":"Pawn", "boy":"Boy", "girl":"Girl", "guardian":"Guardian Knight", "mage":"Mage", "berserker":"Berserker", "duelist":"Duelist", "dark-knight":"Dark Knight"},
+    "night": {"pawn":"Will today's firewood last us through the night?", "boy":"Grandpa's resting inside. Let's sit by the fire too.", "girl":"All the wood's brought in. I'll stay inside now.", "guardian":"I'll guard the gate. Stay somewhere warm.", "mage":"I'm keeping the fire going. Warm your hands before you go.", "berserker":"Sounds restless out there. My sword's ready.", "duelist":"Tell me if you hear footsteps. We'll keep watch together.", "dark-knight":"Even on a long night, you're not alone here."},
+    "season": {
+      "spring":{"name":"Spring", "hint":"Petals drift on a warm breeze.", "read":"Read the spring memory"},
+      "summer":{"name":"Summer", "hint":"Warm golden light fills the courtyard.", "read":"Read the summer memory"},
+      "autumn":{"name":"Autumn", "hint":"Leaves settle slowly on the stone path.", "read":"Read the autumn memory"},
+      "winter":{"name":"Winter", "hint":"Small snowflakes fall in the quiet courtyard.", "read":"Read the winter memory"}
+    }
+  },
+  "ja": {
+    "label": "城の仲間たち",
+    "spirit": "小さな精霊",
+    "greet": "手を差し出す",
+    "spiritHint": "小さな光が、そばで待っています。",
+    "spiritReply": ["手を差し出すと、小さな光が近づいてきました。", "精霊が指先を巡り、やわらかく輝きました。", "小さな光はひと回りして、またそばに留まりました。"],
+    "residents": "住人に話しかける",
+    "residentHint": "誰に挨拶しましょうか。",
+    "seasons": "四季の石碑",
+    "reset": "今の城の中庭",
+    "seasonHint": "石碑に触れて、季節の気配を感じてみましょう。",
+    "names": {"pawn":"ポーン", "boy":"少年", "girl":"少女", "guardian":"守護騎士", "mage":"魔法使い", "berserker":"狂戦士", "duelist":"剣闘士", "dark-knight":"ダークナイト"},
+    "night": {"pawn":"今日集めた薪で、夜を越せるかな？", "boy":"おじいちゃんは中で休んでるよ。僕たちも火のそばに座ろう。", "girl":"薪は全部運んだよ。あとは城の中にいるね。", "guardian":"門は私が守る。暖かい場所にいて。", "mage":"火が消えないように見ているよ。手を温めていって。", "berserker":"外が騒がしいな。剣の用意はできている。", "duelist":"足音が聞こえたら教えてくれ。一緒に見張ろう。", "dark-knight":"夜が長くても、ここでは一人じゃないよ。"},
+    "season": {
+      "spring":{"name":"春", "hint":"暖かな風に、花びらが舞います。", "read":"春の記憶を読む"},
+      "summer":{"name":"夏", "hint":"暖かな金色の光が、城の中庭を包みます。", "read":"夏の記憶を読む"},
+      "autumn":{"name":"秋", "hint":"石畳に、落ち葉がゆっくり降り積もります。", "read":"秋の記憶を読む"},
+      "winter":{"name":"冬", "hint":"静かな中庭に、小さな雪が舞い降ります。", "read":"冬の記憶を読む"}
+    }
+  }
+}

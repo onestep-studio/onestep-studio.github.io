@@ -1,0 +1,65 @@
+[
+  {
+    "id": "interlude.gather",
+    "before": "v2.smallhands",
+    "visual": "illustration",
+    "art": "interlude_gather_forest",
+    "sources": [
+      "StorySequence.Rewind.cs: PlayFirstMorning",
+      "Screens/TutorialScreen.cs",
+      "Loc.StoryV2.cs: story.rewind.v2.smallhands.0"
+    ],
+    "ko": {
+      "title": "성을 지킬 나무",
+      "lines": [
+        "폰은 가까운 숲으로 향했다. 도끼를 내리칠 때마다 성으로 가져갈 나무가 쌓였다.",
+        "모은 목재는 성문을 고치는 데 쓰였다. 작은 손으로 시작한 일이 밤의 방어선을 받쳐 주었다."
+      ]
+    },
+    "en": {
+      "title": "Timber for the Gate",
+      "lines": [
+        "Pawn set out for the nearby forest. With each swing of the axe, the pile of timber grew.",
+        "The wood went into repairs at the gate. The work of small hands helped hold the defenses through the night."
+      ]
+    },
+    "ja": {
+      "title": "城を守る木材",
+      "lines": [
+        "ポーンは近くの森へ向かった。斧を振るうたび、城へ運ぶ木材が増えていった。",
+        "集めた木材は城門の修理に使われた。小さな手で始めた仕事が、夜の守りを支えていた。"
+      ]
+    }
+  },
+  {
+    "id": "interlude.forge",
+    "before": "v2.ring",
+    "visual": "forge",
+    "art": "revised_ring_empty",
+    "sources": [
+      "AwakenCutscene.cs: ShowAnim/ShowMessage",
+      "SharedForgeVisual.cs: Build/Draw"
+    ],
+    "ko": {
+      "title": "모루 위의 반지",
+      "lines": [
+        "룬 광석과 반짝이는 돌이 모루 위로 모였다. 망치가 내려앉고, 반지가 빛을 띠기 시작했다.",
+        "제작이 끝났다. 이제 반지에 새길 영웅의 힘을 고를 차례였다."
+      ]
+    },
+    "en": {
+      "title": "A Ring on the Anvil",
+      "lines": [
+        "Rune ore and shining stones came together on the anvil. The hammer struck, and a ring began to glow.",
+        "The forging was complete. It was time to choose the hero’s power to inscribe in the ring."
+      ]
+    },
+    "ja": {
+      "title": "金床の上の指輪",
+      "lines": [
+        "ルーン鉱石と輝く石が金床の上に集まった。槌が振り下ろされ、指輪が光を帯び始めた。",
+        "指輪が完成した。次は、指輪に刻む英雄の力を選ぶ番だった。"
+      ]
+    }
+  }
+]
