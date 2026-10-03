@@ -5,6 +5,10 @@
   const life = world?.querySelector('[data-courtyard-life]');
   if (!life) return;
   const familiar = world.querySelector('[data-familiar]');
+  const lifeDialog = world.querySelector('[data-life-dialog]');
+  const notifyPanel = () => document.dispatchEvent(new CustomEvent('courtyard:panel'));
+  lifeDialog?.querySelector('[data-life-close]').addEventListener('click', () => lifeDialog.close());
+  lifeDialog?.addEventListener('close', () => { notifyPanel(); familiar.focus({preventScroll:true}); });
   const home = familiar.parentElement;
   const bookSlot = document.querySelector('[data-reader-familiar]');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -29,12 +33,16 @@
     world.classList.toggle('life-still', still);
   }
   function dock(open) {
+    if (open && lifeDialog?.open) lifeDialog.close();
     (open ? bookSlot : home).append(familiar);
     bookSlot.hidden = !open;
     familiar.classList.toggle('familiar-at-book', open);
     motionState();
   }
   function greetSpirit() {
+    if (lifeDialog && !document.querySelector('#story-reader[open]') && !lifeDialog.open) {
+      lifeDialog.showModal(); notifyPanel();
+    }
     clearTimeout(spiritTimer);
     const reply = spiritResponse.getAttribute(`data-reply-${greeting++ % 3}`);
     spiritResponse.textContent = reply;

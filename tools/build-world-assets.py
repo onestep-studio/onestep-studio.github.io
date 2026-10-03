@@ -105,6 +105,12 @@ def export(game, sounds, story_only=False):
                          'lines':[{'speaker':9 if suffix.startswith('t') else 6,
                                    'text':strings[f'prologue.{section}.{suffix}'][col]}
                                   for suffix in ('t1','o1','t2','o2')]})
+        defeat = next(i for i, page in enumerate(pages) if page['id'] == 'rewind.prologue.3')
+        pages.insert(defeat, {'id':'rewind.prologue.defeated', 'sourceId':'prologue',
+            'chapter':1, 'scene':0, 'art':asset(art_root+'last_warning'),
+            'title':{'ko':'성문 앞의 결투','en':'The Duel at the Gate','ja':'城門の決闘'}[lang],
+            'lines':[{'speaker':voice,'text':strings['prologue.defeated.'+key][col]}
+                     for voice,key in [(6,'knight'),(9,'troll')]]})
         for i,page in enumerate(pages):
             page['part'],page['parts'] = i+1,len(pages)
         pages.append({'id':'rewind.morning','sourceId':'morning','chapter':1,'scene':0,
@@ -129,7 +135,14 @@ def export(game, sounds, story_only=False):
         data[lang] = {'title':strings['story.title'][col],
                       'boy':strings['story.boy'][col], 'speakers':{str(k):strings[v][col] for k,v in speaker_keys.items()},
                       'books':{str(i):strings[f'story.book.{i}'][col] for i in range(1,6)}, 'previewCount':panel_count+4,'pages':pages}
-    for story in data.values():
+    narration = json.loads((out / 'story-narration.json').read_text(encoding='utf-8'))
+    for lang, story in data.items():
+        by_id = {page['id']:page for page in story['pages']}
+        for entry in narration:
+            page = by_id[entry['page']]
+            for position in ('before', 'after'):
+                if position in entry[lang]:
+                    page[position] = entry[lang][position]
         for page in story['pages']:
             page['lines'] = [part for line in page['lines'] for part in separate_speakers(line, story['speakers'])]
     interludes = json.loads((out / 'story-interludes.json').read_text(encoding='utf-8'))

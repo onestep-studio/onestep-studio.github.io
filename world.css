@@ -35,6 +35,10 @@
 .courtyard { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 60%; }
 .courtyard-night { opacity:0; transition:opacity 1.8s ease; }
 .courtyard-actors { position:absolute; z-index:1; pointer-events:none; }
+.courtyard-combat { position:absolute; inset:0; width:100%; height:100%; z-index:80; pointer-events:none; }
+.night-encounter .courtyard-walker { opacity:0 !important; pointer-events:none; }
+.night-encounter .courtyard-walker,.night-encounter .courtyard-walker * { animation-play-state:paused !important; }
+@media(prefers-reduced-motion:reduce) { .courtyard-combat { display:none; } }
 .courtyard-walker { position:absolute; width:9.5%; aspect-ratio:1; left:var(--x1); top:var(--y1); opacity:0; transform:translate(-50%,-90.625%); animation:courtyard-scene 168s linear var(--delay) infinite both; }
 .walker-facing { width:100%; height:100%; animation:courtyard-facing 168s steps(1,end) var(--delay) infinite both; }
 .walker-motion,.walker-rest { position:absolute; inset:0; }
@@ -476,7 +480,7 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 }
 @media(prefers-reduced-motion:reduce) { .map-popup * { transition:none !important; } }
 
-.courtyard-page .game-details { --paper:#f9f8f3; --ink:#172033; --muted:#5f6672; --line:#d8d9d5; background:var(--paper); color:var(--ink); }
+.courtyard-page .game-details { display:none; }
 .courtyard-page.world-ready .bgm-player { display:none; }
 
 .mobile-hint { display:none; }
@@ -620,6 +624,23 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 .story-gate button.secondary { color:#f0ce91; border-color:#a39376; }
 .text-spread .story-gate button.secondary { color:#51432e; }
 .world-marker:focus-visible .marker-point { outline:3px solid #ffe0a1; outline-offset:4px; }
+
+/* The title remains readable; selection lights the scenery without opening a tooltip. */
+.world-marker.scenery-target { display:block; transform:none; cursor:pointer; outline:none; }
+.world-marker .marker-name { color:#fff3d8; font:600 15px/1.4 var(--reading-font,system-ui,sans-serif); background:rgb(8 23 33 / 78%); border:1px solid #e1c59266; border-radius:5px; box-shadow:0 2px 8px #0004; text-shadow:0 1px 2px #0009; pointer-events:none; transition:background .18s,border-color .18s,box-shadow .18s,scale .18s; }
+.scenery-target .marker-name { position:absolute; top:calc(50% - 68px); left:50%; transform:translateX(-50%); padding:7px 10px; }
+.scenery-target .marker-point,.scenery-target .marker-label { display:none; }
+.scenery-selection { position:absolute; inset:-8%; pointer-events:none; opacity:0; border-radius:50%; background:radial-gradient(ellipse at center, rgb(255 230 165 / 30%) 0%, rgb(255 226 151 / 20%) 42%, rgb(255 224 145 / 8%) 62%, transparent 76%); mix-blend-mode:screen; transition:opacity .18s ease; }
+.world .scenery-target:focus-visible { z-index:4; outline:none; }
+.scenery-target:focus-visible .scenery-selection,.scenery-target:active .scenery-selection { opacity:1; }
+.world .scenery-target:focus-visible .marker-name,.world .scenery-target:active .marker-name { background:rgb(38 42 36 / 92%); border-color:#ffe0a1; box-shadow:0 0 0 2px #e8bf6850,0 0 16px #e8bf6855; scale:1.06; }
+@media (hover:hover) and (pointer:fine) {
+ .scenery-target:hover { z-index:4; }
+ .scenery-target:hover .scenery-selection { opacity:1; }
+ .world .scenery-target:hover .marker-name { background:rgb(38 42 36 / 92%); border-color:#ffe0a1; box-shadow:0 0 0 2px #e8bf6850,0 0 16px #e8bf6855; scale:1.06; }
+}
+@media(max-width:699px) { .scenery-selection { display:none; } }
+@media(prefers-reduced-motion:reduce) { .scenery-selection,.world-marker .marker-name { transition:none; } }
 .guide-scene p:not(.world-eyebrow),.map-popup .studio-summary-copy,.world-intro { font-family:var(--reading-font); }
 .map-panel-toolbar>div { min-width:0; }
 .map-panel-toolbar h2 { overflow-wrap:anywhere; text-wrap:balance; }
@@ -796,3 +817,64 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 .reader-actions button { border-radius:8px; min-height:44px; }
 .story-contents h3 { grid-column:1/-1; margin:12px 0 0; font-size:15px; color:#f0ce91; }
 .story-contents button { text-align:left; }
+
+/* Character colors are shared by the story reader and the text edition. */
+[data-speaker="1"] { --speaker-color:#ffd479; } /* Pawn */
+[data-speaker="2"] { --speaker-color:#b6d99b; } /* Old man */
+[data-speaker="3"] { --speaker-color:#ff9e93; } /* Mars */
+[data-speaker="4"] { --speaker-color:#9dc8ff; } /* Young guardian */
+[data-speaker="5"] { --speaker-color:#79e1d6; } /* Guardian spirit */
+[data-speaker="6"] { --speaker-color:#c3b8ff; } /* Knight */
+[data-speaker="7"] { --speaker-color:#f3b8df; } /* Future Pawn */
+[data-speaker="8"] { --speaker-color:#a5dce9; } /* Soldier */
+[data-speaker="9"] { --speaker-color:#efb48b; } /* Elder Troll */
+.story-text-page .text-dialogue p[data-speaker] { color:#eee5d6; }
+.story-text-page .text-dialogue p[data-speaker] strong { color:var(--speaker-color); }
+
+/* The courtyard is the only entry surface; content opens from its scenery. */
+.courtyard-page .world-bottom,.courtyard-page .story-invitation { display:none; }
+.marker-gallery { left:85%; top:34%; }
+.guide-scene > img { display:block; width:100%; max-height:65dvh; object-fit:contain; background:#08151b; border-radius:12px; }
+.map-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.map-gallery figure { margin:0; }
+.map-gallery img { display:block; width:100%; height:auto; border-radius:8px; }
+.map-gallery figcaption { padding:10px 0; color:#e6dcc7; text-align:center; }
+.life-popup .courtyard-life { margin:0; padding:20px; }
+.life-popup { overflow:auto; }
+.reader-resume { align-self:center; margin:0 0 8px; padding:8px 18px; }
+@media(max-width:699px) {
+ .courtyard-page .world { padding-top:16px; }
+ .courtyard-page .world-heading { gap:12px; padding-bottom:14px; }
+ .courtyard-page .world-controls { display:flex; flex-wrap:wrap; gap:6px; }
+ .courtyard-page .time-switch { flex:1; }
+ .courtyard-page .time-switch button { min-height:44px; padding:6px 10px; font-size:16px; }
+ .courtyard-page .quiet-button { font-size:15px; min-height:44px; padding:8px 12px; }
+ .courtyard-page .motion-button { width:44px; }
+ .courtyard-page .world-landscape { aspect-ratio:1.03; }
+ .courtyard-page .world-marker { display:flex; gap:5px; }
+ .courtyard-page .marker-point { width:44px; height:44px; font-size:21px; }
+ .courtyard-page .marker-label { max-width:94px; white-space:normal; text-align:center; padding:4px 6px; font-size:13px; line-height:1.35; word-break:keep-all; }
+ .courtyard-page .marker-forest { left:16%; top:60%; }
+ .courtyard-page .marker-gate { left:57%; top:21%; }
+ .courtyard-page .marker-guard { left:53%; top:49%; }
+ .courtyard-page .marker-fire { left:43%; top:82%; }
+ .courtyard-page .marker-book { left:83%; top:79%; }
+ .courtyard-page .marker-gallery { left:84%; top:32%; }
+ .courtyard-page .world-landscape .world-familiar { left:27%; top:32%; }
+ .guide-scene > img { max-height:48dvh; }
+ .map-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+ .map-gallery figcaption { font-size:14px; }
+}
+
+@media(max-width:699px) {
+ .courtyard-page .world-marker.scenery-target { width:auto!important; height:auto!important; min-width:44px; min-height:44px; justify-content:center; gap:0; transform:translate(-50%,-50%); }
+ .courtyard-page .scenery-target .marker-name { position:static; transform:none; padding:7px 10px; font-size:14px; line-height:1.4; color:#fff3d8; background:rgb(8 23 33 / 78%); border:1px solid #e1c59266; border-radius:5px; box-shadow:0 2px 8px #0004; text-shadow:0 1px 2px #0009; }
+ .courtyard-page .scenery-target .scenery-resource { display:none; }
+ .courtyard-page .scenery-target .marker-point,.courtyard-page .scenery-target .marker-label { display:none; }
+ .courtyard-page .marker-forest { left:16%!important; top:60%!important; }
+ .courtyard-page .marker-gate { left:57%!important; top:21%!important; }
+ .courtyard-page .marker-guard { left:53%!important; top:49%!important; }
+ .courtyard-page .marker-fire { left:43%!important; top:82%!important; }
+ .courtyard-page .marker-book { left:83%!important; top:79%!important; }
+ .courtyard-page .marker-gallery { left:84%!important; top:32%!important; }
+}

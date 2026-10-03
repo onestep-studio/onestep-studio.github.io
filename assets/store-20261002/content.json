@@ -1,0 +1,326 @@
+{
+  "ko": {
+    "scenes": [
+      {
+        "kind": "day",
+        "clip": "wood",
+        "image": "02_gather",
+        "title": "타이밍에 맞춰 채집",
+        "body": "게이지가 중앙에 닿을 때 도끼를 내리치세요. 정확한 타이밍으로 나무를 모아 밤의 방어를 준비합니다."
+      },
+      {
+        "kind": "day",
+        "clip": "iron",
+        "image": "01_day",
+        "title": "광맥의 순서를 기억하기",
+        "body": "빛나는 광맥의 순서를 기억해 다시 누르세요. 낮에 모은 광석으로 성과 부대를 키워갑니다."
+      },
+      {
+        "kind": "day",
+        "clip": "spirit",
+        "image": "06_spirit",
+        "title": "나와 함께 자라는 정령",
+        "body": "정령의 능력을 키워 채집과 전투를 도와줄 동료로 성장시키세요."
+      },
+      {
+        "kind": "day",
+        "clip": "wisps",
+        "image": "06_spirit",
+        "title": "작은 정령들의 도움",
+        "body": "작은 정령들과 함께 자원을 모으고 다음 밤을 준비하세요."
+      },
+      {
+        "kind": "day",
+        "clip": "relic",
+        "image": "07_relic",
+        "title": "내 방어에 맞는 유물",
+        "body": "유물의 효과를 살펴보고 이번 여정에 맞는 힘을 선택하세요."
+      },
+      {
+        "kind": "night",
+        "clip": "defense-build",
+        "image": "03_wall_assembly",
+        "title": "나만의 방어선",
+        "body": "성벽과 타워를 배치하고 병사를 주둔시키세요. 적이 다가올 길을 생각하며 방어선을 만드세요."
+      },
+      {
+        "kind": "night",
+        "clip": "defense-battle",
+        "image": "04_archmage_frontline",
+        "title": "함께 지키는 성",
+        "body": "밤이 되면 몰려오는 적을 병사와 영웅이 함께 막아냅니다. 낮에 준비한 방어선이 시험받는 시간입니다."
+      },
+      {
+        "kind": "night",
+        "clip": "berserker",
+        "image": "04_archmage_frontline",
+        "title": "전세를 바꾸는 영웅",
+        "body": "영웅의 기술로 몰려오는 적을 상대하세요. 광전사의 회전베기가 전열의 적을 휩씁니다."
+      },
+      {
+        "kind": "night",
+        "clip": null,
+        "image": "05_duel",
+        "title": "보스와의 일기토",
+        "body": "보스와 마주 서서 공격과 방어의 타이밍을 잡으세요. 한 번의 판단이 승부를 바꿉니다."
+      },
+      {
+        "kind": "night",
+        "clip": null,
+        "image": "08_seasons",
+        "title": "계절마다 달라지는 숲",
+        "body": "봄, 여름, 가을, 겨울의 숲을 만나세요. 계절이 바뀌면 새로운 풍경과 적이 기다립니다."
+      }
+    ],
+    "gallery": [
+      {
+        "image": "01_day",
+        "title": "낮의 채집"
+      },
+      {
+        "image": "02_gather",
+        "title": "타이밍 채집"
+      },
+      {
+        "image": "03_wall_assembly",
+        "title": "나만의 방어선"
+      },
+      {
+        "image": "04_archmage_frontline",
+        "title": "전열의 중심 대마법사"
+      },
+      {
+        "image": "05_duel",
+        "title": "보스 일기토"
+      },
+      {
+        "image": "06_spirit",
+        "title": "내 정령"
+      },
+      {
+        "image": "07_relic",
+        "title": "유물 선택"
+      },
+      {
+        "image": "08_seasons",
+        "title": "사계절"
+      }
+    ]
+  },
+  "en": {
+    "scenes": [
+      {
+        "kind": "day",
+        "clip": "wood",
+        "image": "02_gather",
+        "title": "Gather with good timing",
+        "body": "Swing your axe as the gauge reaches the center. Gather wood with well-timed strikes to prepare for the night."
+      },
+      {
+        "kind": "day",
+        "clip": "iron",
+        "image": "01_day",
+        "title": "Remember the ore pattern",
+        "body": "Remember the order of the glowing veins, then repeat it. Use the ore you gather to develop your castle and troops."
+      },
+      {
+        "kind": "day",
+        "clip": "spirit",
+        "image": "06_spirit",
+        "title": "A spirit that grows with you",
+        "body": "Develop your spirit’s abilities to help you gather and fight."
+      },
+      {
+        "kind": "day",
+        "clip": "wisps",
+        "image": "06_spirit",
+        "title": "Help from little spirits",
+        "body": "Gather resources with the little spirits and prepare for the next night."
+      },
+      {
+        "kind": "day",
+        "clip": "relic",
+        "image": "07_relic",
+        "title": "Relics for your defenses",
+        "body": "Read each relic’s effect and choose the power that suits your run."
+      },
+      {
+        "kind": "night",
+        "clip": "defense-build",
+        "image": "03_wall_assembly",
+        "title": "Build your defense line",
+        "body": "Place walls and towers, then station your soldiers. Build your defenses around the enemy’s approach."
+      },
+      {
+        "kind": "night",
+        "clip": "defense-battle",
+        "image": "04_archmage_frontline",
+        "title": "Defend the castle together",
+        "body": "Soldiers and heroes fight together when enemies arrive at night. Put the defenses you built by day to the test."
+      },
+      {
+        "kind": "night",
+        "clip": "berserker",
+        "image": "04_archmage_frontline",
+        "title": "Heroes who turn the tide",
+        "body": "Meet the oncoming enemies with hero skills. The Berserker’s spinning attack sweeps through the front line."
+      },
+      {
+        "kind": "night",
+        "clip": null,
+        "image": "05_duel",
+        "title": "Duel the boss",
+        "body": "Face the boss and time your attacks and defenses. A single decision can change the outcome."
+      },
+      {
+        "kind": "night",
+        "clip": null,
+        "image": "08_seasons",
+        "title": "A forest shaped by the seasons",
+        "body": "Explore the forests of spring, summer, autumn and winter. New scenery and enemies await as the seasons change."
+      }
+    ],
+    "gallery": [
+      {
+        "image": "01_day",
+        "title": "Gathering by day"
+      },
+      {
+        "image": "02_gather",
+        "title": "Timed gathering"
+      },
+      {
+        "image": "03_wall_assembly",
+        "title": "Your defense line"
+      },
+      {
+        "image": "04_archmage_frontline",
+        "title": "The Archmage on the front line"
+      },
+      {
+        "image": "05_duel",
+        "title": "Boss duel"
+      },
+      {
+        "image": "06_spirit",
+        "title": "Your spirit"
+      },
+      {
+        "image": "07_relic",
+        "title": "Choose a relic"
+      },
+      {
+        "image": "08_seasons",
+        "title": "Four seasons"
+      }
+    ]
+  },
+  "ja": {
+    "scenes": [
+      {
+        "kind": "day",
+        "clip": "wood",
+        "image": "02_gather",
+        "title": "タイミングよく採集",
+        "body": "ゲージが中央に来たら斧を振り下ろしましょう。タイミングよく木材を集め、夜の守りに備えます。"
+      },
+      {
+        "kind": "day",
+        "clip": "iron",
+        "image": "01_day",
+        "title": "鉱脈の順番を覚える",
+        "body": "光る鉱脈の順番を覚えて、同じ順に押しましょう。集めた鉱石で城と部隊を育てます。"
+      },
+      {
+        "kind": "day",
+        "clip": "spirit",
+        "image": "06_spirit",
+        "title": "一緒に育つ精霊",
+        "body": "精霊の能力を育て、採集や戦闘を助けてくれる仲間にしましょう。"
+      },
+      {
+        "kind": "day",
+        "clip": "wisps",
+        "image": "06_spirit",
+        "title": "小さな精霊のお手伝い",
+        "body": "小さな精霊たちと資源を集め、次の夜に備えましょう。"
+      },
+      {
+        "kind": "day",
+        "clip": "relic",
+        "image": "07_relic",
+        "title": "守りに合わせた遺物",
+        "body": "遺物の効果を確かめ、今回の旅に合う力を選びましょう。"
+      },
+      {
+        "kind": "night",
+        "clip": "defense-build",
+        "image": "03_wall_assembly",
+        "title": "自分だけの防衛線",
+        "body": "城壁とタワーを配置し、兵士を駐屯させましょう。敵の進路を考えて防衛線を作ります。"
+      },
+      {
+        "kind": "night",
+        "clip": "defense-battle",
+        "image": "04_archmage_frontline",
+        "title": "みんなで守る城",
+        "body": "夜に押し寄せる敵を、兵士と英雄が力を合わせて迎え撃ちます。昼に築いた守りが試されます。"
+      },
+      {
+        "kind": "night",
+        "clip": "berserker",
+        "image": "04_archmage_frontline",
+        "title": "戦況を変える英雄",
+        "body": "英雄の技で迫る敵に立ち向かいましょう。狂戦士の回転斬りが前線の敵を薙ぎ払います。"
+      },
+      {
+        "kind": "night",
+        "clip": null,
+        "image": "05_duel",
+        "title": "ボスとの一騎討ち",
+        "body": "ボスと向き合い、攻撃と防御のタイミングを見極めましょう。一つの判断が勝負を分けます。"
+      },
+      {
+        "kind": "night",
+        "clip": null,
+        "image": "08_seasons",
+        "title": "季節ごとに変わる森",
+        "body": "春、夏、秋、冬の森へ。季節が変わるたび、新しい景色と敵が待っています。"
+      }
+    ],
+    "gallery": [
+      {
+        "image": "01_day",
+        "title": "昼の採集"
+      },
+      {
+        "image": "02_gather",
+        "title": "タイミング採集"
+      },
+      {
+        "image": "03_wall_assembly",
+        "title": "自分だけの防衛線"
+      },
+      {
+        "image": "04_archmage_frontline",
+        "title": "前線の大魔法使い"
+      },
+      {
+        "image": "05_duel",
+        "title": "ボスとの一騎討ち"
+      },
+      {
+        "image": "06_spirit",
+        "title": "自分の精霊"
+      },
+      {
+        "image": "07_relic",
+        "title": "遺物を選ぶ"
+      },
+      {
+        "image": "08_seasons",
+        "title": "四季"
+      }
+    ]
+  }
+}

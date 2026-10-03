@@ -10,9 +10,25 @@ test('revisited illustrations remain visible in the revised text edition', () =>
     assert.equal((html.match(/<img /g) || []).length, story.pages.length);
     assert.equal((html.match(/class="text-only"/g) || []).length, 0);
     for (const page of story.pages) {
-      for (const line of page.lines) {
+      for (const line of [...(page.before || []).map(text => ({text})), ...page.lines, ...(page.after || []).map(text => ({text}))]) {
         const escaped=line.text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#x27;');
         assert.ok(html.replace(/\r\n/g, '\n').includes(escaped), `${lang}/${page.id}: missing dialogue`);
+      }
+    }
+  }
+});
+
+test('cinematic action bridges survive export in every website language', () => {
+  for (const [lang, story] of Object.entries(stories)) {
+    const ids = story.pages.map(page => page.id);
+    const duel = story.pages[ids.indexOf('rewind.prologue.defeated')];
+    assert.equal(ids.indexOf(duel.id), ids.indexOf('rewind.prologue.talk1') + 1);
+    assert.equal(ids[ids.indexOf(duel.id) + 1], 'rewind.prologue.3');
+    assert.deepEqual(duel.lines.map(line => line.speaker), [6,9]);
+    for (const entry of require('../assets/world/story-narration.json')) {
+      const page = story.pages[ids.indexOf(entry.page)];
+      for (const position of ['before','after']) {
+        if (entry[lang][position]) assert.deepEqual(page[position], entry[lang][position]);
       }
     }
   }

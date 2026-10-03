@@ -1,0 +1,161 @@
+{
+    "version":  1,
+    "actors":  {
+                   "guardian":  {
+                                    "hero":  true,
+                                    "hp":  594,
+                                    "damage":  36,
+                                    "reduction":  0.5,
+                                    "interval":  0.65,
+                                    "hitFrame":  2,
+                                    "size":  190,
+                                    "speed":  116,
+                                    "fps":  12,
+                                    "anchor":  0.70833333333333337,
+                                    "states":  {
+                                                   "idle":  {
+                                                                "file":  "guardian-idle.png",
+                                                                "frames":  8,
+                                                                "cell":  192,
+                                                                "source":  "Units/Characters/NightSkins/guardian/Idle.png",
+                                                                "sha256":  "dc775786d51fff4242237e4f5c7d7fd8b7e67d99cc61226298e5aa1a4f2281e7"
+                                                            },
+                                                   "run":  {
+                                                               "file":  "guardian-run.png",
+                                                               "frames":  6,
+                                                               "cell":  192,
+                                                               "source":  "Units/Characters/NightSkins/guardian/Run.png",
+                                                               "sha256":  "7357666027ff460755008dc6b5b21f1674c28802304971044029eba9c7a79551"
+                                                           },
+                                                   "attack":  {
+                                                                  "file":  "guardian-attack.png",
+                                                                  "frames":  4,
+                                                                  "cell":  192,
+                                                                  "source":  "Units/Characters/NightSkins/guardian/Attack.png",
+                                                                  "sha256":  "a8c391a6d6a88a5e93bbc27d6cf9d2514a3c8c669a374bf9d01cd6a9b707b838"
+                                                              }
+                                               }
+                                },
+                   "spear-goblin":  {
+                                        "hero":  false,
+                                        "hp":  55,
+                                        "damage":  8,
+                                        "reduction":  0,
+                                        "interval":  1,
+                                        "hitFrame":  3,
+                                        "size":  127,
+                                        "speed":  80,
+                                        "fps":  12,
+                                        "anchor":  0.6875,
+                                        "states":  {
+                                                       "idle":  {
+                                                                    "file":  "spear-goblin-idle.png",
+                                                                    "frames":  8,
+                                                                    "cell":  192,
+                                                                    "source":  "Units/Monsters/Base/MonSpearGoblinIdle.png",
+                                                                    "sha256":  "a4a7dcee196afa9153af1a1c7c9f8093c8489a413eae470acd81ea0e48835744"
+                                                                },
+                                                       "run":  {
+                                                                   "file":  "spear-goblin-run.png",
+                                                                   "frames":  6,
+                                                                   "cell":  192,
+                                                                   "source":  "Units/Monsters/Base/MonSpearGoblinRun.png",
+                                                                   "sha256":  "cdc3e91a700063558b061ea3e37ec5dfb24ec813c4568063db7fd15f55233eb9"
+                                                               },
+                                                       "attack":  {
+                                                                      "file":  "spear-goblin-attack.png",
+                                                                      "frames":  7,
+                                                                      "cell":  192,
+                                                                      "source":  "Units/Monsters/Base/MonSpearGoblinAttack.png",
+                                                                      "sha256":  "0901151e74d5ebbecbf8d1d10f25ff90a08f513e6dfc8bcf430ad6f6617ca4d2"
+                                                                  }
+                                                   }
+                                    },
+                   "torch-goblin":  {
+                                        "hero":  false,
+                                        "hp":  45,
+                                        "damage":  9,
+                                        "reduction":  0,
+                                        "interval":  0.9,
+                                        "hitFrame":  4,
+                                        "size":  119,
+                                        "speed":  128,
+                                        "fps":  12,
+                                        "anchor":  0.69270833333333337,
+                                        "states":  {
+                                                       "idle":  {
+                                                                    "file":  "torch-goblin-idle.png",
+                                                                    "frames":  8,
+                                                                    "cell":  192,
+                                                                    "source":  "Units/Monsters/Base/MonTorchGoblinIdle.png",
+                                                                    "sha256":  "e18b3423f64faa2d3900a1a943db543455c3cfc335d36d422489e233283f72b2"
+                                                                },
+                                                       "run":  {
+                                                                   "file":  "torch-goblin-run.png",
+                                                                   "frames":  6,
+                                                                   "cell":  192,
+                                                                   "source":  "Units/Monsters/Base/MonTorchGoblinRun.png",
+                                                                   "sha256":  "ca90b4918102505c7f5dea66b9bb921cb18a86eb1acc7d66dce806093a7bdaf5"
+                                                               },
+                                                       "attack":  {
+                                                                      "file":  "torch-goblin-attack.png",
+                                                                      "frames":  8,
+                                                                      "cell":  192,
+                                                                      "source":  "Units/Monsters/Base/MonTorchGoblinAttack.png",
+                                                                      "sha256":  "95758ff1dd7434b20181ed65e6b930903e21fd554b8fe529d0fa197b3553b111"
+                                                                  }
+                                                   }
+                                    },
+                   "gnome":  {
+                                 "hero":  false,
+                                 "hp":  26,
+                                 "damage":  5,
+                                 "reduction":  0,
+                                 "interval":  0.9,
+                                 "hitFrame":  3,
+                                 "size":  101,
+                                 "speed":  136,
+                                 "fps":  12,
+                                 "anchor":  0.66145833333333337,
+                                 "states":  {
+                                                "idle":  {
+                                                             "file":  "gnome-idle.png",
+                                                             "frames":  8,
+                                                             "cell":  192,
+                                                             "source":  "Units/Monsters/Base/MonGnomeIdle.png",
+                                                             "sha256":  "05849e07ff2225f94ee7e716a7ff362edbe156a2006e4d2a77b4b7b0d63bfbdc"
+                                                         },
+                                                "run":  {
+                                                            "file":  "gnome-run.png",
+                                                            "frames":  6,
+                                                            "cell":  192,
+                                                            "source":  "Units/Monsters/Base/MonGnomeRun.png",
+                                                            "sha256":  "a37e439af049aca5e72e6c4c31ae44e62cfb6a0f2e6a8e9d5dad89be62422619"
+                                                        },
+                                                "attack":  {
+                                                               "file":  "gnome-attack.png",
+                                                               "frames":  7,
+                                                               "cell":  192,
+                                                               "source":  "Units/Monsters/Base/MonGnomeAttack.png",
+                                                               "sha256":  "bd7743bb99c302013923386a3fd02d1bcb075c35613beef7195ba08213a27feb"
+                                                           }
+                                            }
+                             }
+               },
+    "effects":  {
+                    "slash":  {
+                                  "file":  "slash.png",
+                                  "frames":  8,
+                                  "fps":  24,
+                                  "source":  "FX/HeroAttack/guardian.png",
+                                  "sha256":  "7d37b51d1b8bf02a98cbc629044f51f70e90b984e5f3cdc983855c0efbeb5174"
+                              },
+                    "spark":  {
+                                  "file":  "spark.png",
+                                  "frames":  1,
+                                  "fps":  1,
+                                  "source":  "FX/HitSpark.png",
+                                  "sha256":  "2798ba65a2e088648d8f0f15278f9afb4433a709d0f12f5aa4a8cdbb2aca6d63"
+                              }
+                }
+}

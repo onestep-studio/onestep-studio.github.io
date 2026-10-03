@@ -20,7 +20,7 @@
       "4": "겨울",
       "5": "귀환"
     },
-    "previewCount": 9,
+    "previewCount": 10,
     "pages": [
       {
         "id": "rewind.prologue.1",
@@ -28,7 +28,7 @@
         "chapter": 1,
         "scene": 0,
         "part": 1,
-        "parts": 6,
+        "parts": 7,
         "art": "revised_last_gate",
         "title": "프롤로그",
         "lines": [
@@ -44,7 +44,7 @@
         "chapter": 1,
         "scene": 0,
         "part": 2,
-        "parts": 6,
+        "parts": 7,
         "art": "revised_last_warning",
         "title": "프롤로그",
         "lines": [
@@ -64,7 +64,7 @@
         "chapter": 1,
         "scene": 0,
         "part": 3,
-        "parts": 6,
+        "parts": 7,
         "art": "revised_last_warning",
         "title": "성문 앞의 결투",
         "lines": [
@@ -84,6 +84,35 @@
             "speaker": 6,
             "text": "여기서 더는 못 간다."
           }
+        ],
+        "before": [
+          "폭우 속에서 고대 트롤이 성문 앞으로 모습을 드러냈다. 기사는 물러서지 않고 그 앞을 가로막았다."
+        ]
+      },
+      {
+        "id": "rewind.prologue.defeated",
+        "sourceId": "prologue",
+        "chapter": 1,
+        "scene": 0,
+        "art": "revised_last_warning",
+        "title": "성문 앞의 결투",
+        "lines": [
+          {
+            "speaker": 6,
+            "text": "크흑…"
+          },
+          {
+            "speaker": 9,
+            "text": "너같이 약해 빠진 녀석에겐 볼일 없다."
+          }
+        ],
+        "part": 4,
+        "parts": 7,
+        "before": [
+          "기사가 검을 들고 고대 트롤에게 맞섰다. 그러나 거센 공격을 버텨 내지 못하고 무릎을 꿇었다."
+        ],
+        "after": [
+          "고대 트롤은 쓰러진 기사를 남겨 두고 떠났다."
         ]
       },
       {
@@ -91,8 +120,8 @@
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
-        "part": 4,
-        "parts": 6,
+        "part": 5,
+        "parts": 7,
         "art": "revised_last_sword_break",
         "title": "프롤로그",
         "lines": [
@@ -107,8 +136,8 @@
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
-        "part": 5,
-        "parts": 6,
+        "part": 6,
+        "parts": 7,
         "art": "revised_last_sword_break",
         "title": "프롤로그",
         "lines": [
@@ -123,8 +152,8 @@
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
-        "part": 6,
-        "parts": 6,
+        "part": 7,
+        "parts": 7,
         "art": "revised_last_glimmer",
         "title": "프롤로그",
         "lines": [
@@ -180,6 +209,12 @@
             "speaker": 2,
             "text": "그래. 싸우는 것만이 성을 지키는 일은 아니란다. 가까운 숲부터 가 보자꾸나."
           }
+        ],
+        "before": [
+          "아침 햇살이 성 안뜰을 비추고 있었다. 폰과 노인 앞에서 병사가 보급대의 소식을 전했다."
+        ],
+        "after": [
+          "노인이 앞장서고 폰이 뒤를 따랐다. 두 사람은 열린 성문을 지나 나무를 구하러 숲으로 향했다."
         ]
       },
       {
@@ -1053,7 +1088,7 @@
         ]
       }
     ],
-    "revision": "rewind-b05b90df6de7"
+    "revision": "rewind-7ea92e746903"
   },
   "en": {
     "title": "Seasonal Memories",
@@ -1076,7 +1111,7 @@
       "4": "Winter",
       "5": "Homecoming"
     },
-    "previewCount": 9,
+    "previewCount": 10,
     "pages": [
       {
         "id": "rewind.prologue.1",
@@ -1084,7 +1119,7 @@
         "chapter": 1,
         "scene": 0,
         "part": 1,
-        "parts": 6,
+        "parts": 7,
         "art": "revised_last_gate",
         "title": "Prologue",
         "lines": [
@@ -1100,7 +1135,7 @@
         "chapter": 1,
         "scene": 0,
         "part": 2,
-        "parts": 6,
+        "parts": 7,
         "art": "revised_last_warning",
         "title": "Prologue",
         "lines": [
@@ -1120,7 +1155,7 @@
         "chapter": 1,
         "scene": 0,
         "part": 3,
-        "parts": 6,
+        "parts": 7,
         "art": "revised_last_warning",
         "title": "The Duel at the Gate",
         "lines": [
@@ -1140,6 +1175,35 @@
             "speaker": 6,
             "text": "You go no further."
           }
+        ],
+        "before": [
+          "Through the pouring rain, the Elder Troll appeared before the gate. The knight stood his ground and barred its way."
+        ]
+      },
+      {
+        "id": "rewind.prologue.defeated",
+        "sourceId": "prologue",
+        "chapter": 1,
+        "scene": 0,
+        "art": "revised_last_warning",
+        "title": "The Duel at the Gate",
+        "lines": [
+          {
+            "speaker": 6,
+            "text": "Argh…"
+          },
+          {
+            "speaker": 9,
+            "text": "I've no business with a weakling like you."
+          }
+        ],
+        "part": 4,
+        "parts": 7,
+        "before": [
+          "The knight raised his sword against the Elder Troll. But its relentless attacks brought him to his knees."
+        ],
+        "after": [
+          "The Elder Troll left the fallen knight behind."
         ]
       },
       {
@@ -1147,8 +1211,8 @@
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
-        "part": 4,
-        "parts": 6,
+        "part": 5,
+        "parts": 7,
         "art": "revised_last_sword_break",
         "title": "Prologue",
         "lines": [
@@ -1163,8 +1227,8 @@
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
-        "part": 5,
-        "parts": 6,
+        "part": 6,
+        "parts": 7,
         "art": "revised_last_sword_break",
         "title": "Prologue",
         "lines": [
@@ -1179,8 +1243,8 @@
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
-        "part": 6,
-        "parts": 6,
+        "part": 7,
+        "parts": 7,
         "art": "revised_last_glimmer",
         "title": "Prologue",
         "lines": [
@@ -1236,6 +1300,12 @@
             "speaker": 2,
             "text": "Good. Fighting isn't the only way to protect the castle. Let's start with the nearby forest."
           }
+        ],
+        "before": [
+          "Morning light filled the courtyard. Pawn was with the old man when a soldier came to report on the supply convoy."
+        ],
+        "after": [
+          "The old man led the way, with Pawn close behind. They passed through the open gate and headed into the forest to gather wood."
         ]
       },
       {
@@ -2109,7 +2179,7 @@
         ]
       }
     ],
-    "revision": "rewind-b05b90df6de7"
+    "revision": "rewind-7ea92e746903"
   },
   "ja": {
     "title": "四季の記憶",
@@ -2132,7 +2202,7 @@
       "4": "冬",
       "5": "帰郷"
     },
-    "previewCount": 9,
+    "previewCount": 10,
     "pages": [
       {
         "id": "rewind.prologue.1",
@@ -2140,7 +2210,7 @@
         "chapter": 1,
         "scene": 0,
         "part": 1,
-        "parts": 6,
+        "parts": 7,
         "art": "revised_last_gate",
         "title": "プロローグ",
         "lines": [
@@ -2156,7 +2226,7 @@
         "chapter": 1,
         "scene": 0,
         "part": 2,
-        "parts": 6,
+        "parts": 7,
         "art": "revised_last_warning",
         "title": "プロローグ",
         "lines": [
@@ -2176,7 +2246,7 @@
         "chapter": 1,
         "scene": 0,
         "part": 3,
-        "parts": 6,
+        "parts": 7,
         "art": "revised_last_warning",
         "title": "城門の決闘",
         "lines": [
@@ -2196,6 +2266,35 @@
             "speaker": 6,
             "text": "ここから先へは行かせない。"
           }
+        ],
+        "before": [
+          "激しい雨の中、古のトロールが城門の前に姿を現した。騎士は退かず、その行く手を阻んだ。"
+        ]
+      },
+      {
+        "id": "rewind.prologue.defeated",
+        "sourceId": "prologue",
+        "chapter": 1,
+        "scene": 0,
+        "art": "revised_last_warning",
+        "title": "城門の決闘",
+        "lines": [
+          {
+            "speaker": 6,
+            "text": "ぐっ…"
+          },
+          {
+            "speaker": 9,
+            "text": "お前のような弱い奴に用はない。"
+          }
+        ],
+        "part": 4,
+        "parts": 7,
+        "before": [
+          "騎士は剣を掲げ、古のトロールに立ち向かった。しかし激しい攻撃に耐えきれず、膝をついた。"
+        ],
+        "after": [
+          "古のトロールは倒れた騎士を残して去っていった。"
         ]
       },
       {
@@ -2203,8 +2302,8 @@
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
-        "part": 4,
-        "parts": 6,
+        "part": 5,
+        "parts": 7,
         "art": "revised_last_sword_break",
         "title": "プロローグ",
         "lines": [
@@ -2219,8 +2318,8 @@
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
-        "part": 5,
-        "parts": 6,
+        "part": 6,
+        "parts": 7,
         "art": "revised_last_sword_break",
         "title": "プロローグ",
         "lines": [
@@ -2235,8 +2334,8 @@
         "sourceId": "prologue",
         "chapter": 1,
         "scene": 0,
-        "part": 6,
-        "parts": 6,
+        "part": 7,
+        "parts": 7,
         "art": "revised_last_glimmer",
         "title": "プロローグ",
         "lines": [
@@ -2292,6 +2391,12 @@
             "speaker": 2,
             "text": "そうか。戦うことだけが城を守ることではない。近くの森から行ってみよう。"
           }
+        ],
+        "before": [
+          "朝の光が城の中庭を照らしていた。ポーンが老人といるところへ、兵士が補給隊の報告にやって来た。"
+        ],
+        "after": [
+          "老人が先に立ち、ポーンがその後を追った。二人は開いた城門を抜け、木材を集めに森へ向かった。"
         ]
       },
       {
@@ -3165,6 +3270,6 @@
         ]
       }
     ],
-    "revision": "rewind-b05b90df6de7"
+    "revision": "rewind-7ea92e746903"
   }
 }

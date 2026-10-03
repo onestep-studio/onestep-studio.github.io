@@ -18,6 +18,7 @@ def render(lang, c, revision):
     base = '' if lang=='ko' else '/'+lang
     game = base+'/games/tiny-defense/'
     m = LABELS[lang]
+    marker_names = {'ko': {'forest': '벌목 체험', 'gate': '게임 받기', 'fire': '게임 설명', 'guard': '전투 안내', 'book': '이야기', 'gallery': '게임 화면'}, 'en': {'forest': 'Woodcutting', 'gate': 'Get game', 'fire': 'How to play', 'guard': 'Combat guide', 'book': 'Story', 'gallery': 'Screenshots'}, 'ja': {'forest': '薪割り体験', 'gate': 'ゲーム入手', 'fire': '遊び方', 'guard': '戦闘ガイド', 'book': '物語', 'gallery': 'ゲーム画面'}}[lang]
     cast = json.loads((ROOT / 'assets/world/cast/manifest.json').read_text(encoding='utf-8'))
     # Six quiet vignettes: one resident or at most two heroes, never the full cast.
     scenes = [
@@ -36,7 +37,9 @@ def render(lang, c, revision):
             style = f'--x1:{x1}%;--y1:{y1}%;--x2:{x2}%;--y2:{y2}%;--x3:{x3}%;--y3:{y3}%;--delay:{scene*28}s;--facing:{facing};--enter:{1 if x2>x1 else -1};--leave:{1 if x3>x2 else -1};z-index:{y2}'
             bubble = f'<p class="courtyard-bubble"{" data-reply" if turn else ""}>{escape(dialogue[ident])}</p>'
             walkers += f'<div class="courtyard-walker" data-character="{ident}" data-scene="{scene}" style="{style}"><div class="walker-facing"><div class="walker-motion"><div class="walker-sprite" style="background-image:url(/assets/world/cast/{ident}.webp?v=2)"></div></div><div class="walker-rest"><div class="walker-idle" style="background-image:url(/assets/world/cast/{ident}-idle.webp?v=2)"></div></div></div>{bubble}</div>'
-    mobile_hint = {'ko':'아래 메뉴에서 성 안을 둘러보세요.', 'en':'Explore the courtyard using the menu below.', 'ja':'下のメニューから城を巡ってみましょう。'}[lang]
+    mobile_hint = c['hint']
+    gallery_label = {'ko':'모험의 풍경', 'en':'Adventure gallery', 'ja':'冒険の風景'}[lang]
+    life_label = {'ko':'성 안의 친구들', 'en':'Friends in the courtyard', 'ja':'城の仲間たち'}[lang]
     return f'''<!-- WORLD EXPERIENCE START -->
     <section class="world" id="top" aria-labelledby="world-title" data-world data-time="day" data-story-revision="{revision}">
       <div class="world-heading">
@@ -49,26 +52,26 @@ def render(lang, c, revision):
       </div>
       <div class="world-stage">
         <div class="world-landscape">
-          <img class="courtyard courtyard-day" src="/assets/world/courtyard-day-v2.webp" width="1536" height="1024" alt="{c['intro']}" fetchpriority="high">
-          <img class="courtyard courtyard-night" src="/assets/world/courtyard-night-v2.webp" width="1536" height="1024" alt="" loading="lazy">
+          <img class="courtyard courtyard-day" src="/assets/world/courtyard-day-outlined-v1.webp" width="1536" height="1024" alt="{c['intro']}" fetchpriority="high">
+          <img class="courtyard courtyard-night" src="/assets/world/courtyard-night-outlined-v1.webp" width="1536" height="1024" alt="" loading="lazy">
           <div class="courtyard-actors" aria-hidden="true" hidden><div class="gate-guard guard-left"><div class="lancer-sprite"></div></div><div class="gate-guard guard-right"><div class="lancer-sprite"></div></div>{walkers}</div>
           <div class="world-dust" aria-hidden="true"></div><div class="fire-glow" aria-hidden="true"></div><div class="lantern-glow" aria-hidden="true"></div>
           <div class="world-motes" aria-hidden="true">{''.join(f'<i style="--i:{i}"></i>' for i in range(14))}</div>
           <div class="season-weather" aria-hidden="true">{''.join(f'<i style="--i:{i};--x:{2+(i*23)%96}%"></i>' for i in range(24))}</div>
           {familiar(lang)}
-          <a class="world-marker marker-forest" href="/games/tiny-defense/play/" data-map-open="game"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">{c['forest']}</span></a>
-          <a class="world-marker marker-gate" href="{game}#stores" data-map-open="stores"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">{m['stores']}</span></a>
-          <a class="world-marker marker-fire" href="{game}#features" data-map-open="day"><span class="marker-point" aria-hidden="true">☀</span><span class="marker-label">{m['day']}</span></a>
-          <a class="world-marker marker-guard" href="{game}#features" data-map-open="night"><span class="marker-point" aria-hidden="true">☾</span><span class="marker-label">{m['night']}</span></a>
-          <a class="world-marker marker-book" href="#storybook" data-open-story><span class="marker-point" aria-hidden="true">＋</span><span class="marker-label">{c['book']}</span></a>
+          <a class="world-marker marker-forest" href="/games/tiny-defense/play/" data-map-open="game"><span class="marker-name">{marker_names['forest']}</span><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">{c['forest']}</span></a>
+          <a class="world-marker marker-gate" href="{game}#stores" data-map-open="stores"><span class="marker-name">{marker_names['gate']}</span><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">{m['stores']}</span></a>
+          <a class="world-marker marker-fire" href="{game}#features" data-map-open="day"><span class="marker-name">{marker_names['fire']}</span><span class="marker-point" aria-hidden="true">☀</span><span class="marker-label">{m['day']}</span></a>
+          <a class="world-marker marker-guard" href="{game}#features" data-map-open="night"><span class="marker-name">{marker_names['guard']}</span><span class="marker-point" aria-hidden="true">☾</span><span class="marker-label">{m['night']}</span></a>
+          <a class="world-marker marker-book" href="#storybook" data-open-story><span class="marker-name">{marker_names['book']}</span><span class="marker-point" aria-hidden="true">＋</span><span class="marker-label">{c['book']}</span></a>
+          <a class="world-marker marker-gallery" href="#gallery" data-map-open="gallery"><span class="marker-name">{marker_names['gallery']}</span><span class="marker-point" aria-hidden="true">▧</span><span class="marker-label">{gallery_label}</span></a>
         </div>
         <div class="world-caption"><span class="world-place">TINY DEFENSE <span aria-hidden="true">/</span> ONESTEP STUDIO</span><span class="desktop-hint">{c['hint']}</span><span class="mobile-hint">{mobile_hint}</span></div>
       </div>
-      {encounters(lang)}
-      <nav class="world-bottom" aria-label="Tiny Defense"><a href="{game}#features" data-map-open="day"><span>{m['day']}</span></a><a href="{game}#features" data-map-open="night"><span>{m['night']}</span></a><a href="#storybook" data-open-story><span>{c['book']}</span></a><a href="/games/tiny-defense/play/" data-map-open="game"><span>{c['forest']}</span></a><a href="{game}#stores" data-map-open="stores"><span>{m['stores']}</span></a><button class="resume-link" data-resume-story hidden>{c['resume']}</button></nav>
+      <dialog class="map-popup life-popup" data-life-dialog aria-label="{life_label}"><header class="map-panel-toolbar"><h2>{life_label}</h2><button type="button" data-life-close aria-label="{m['close']}">✕</button></header>{encounters(lang)}</dialog>
       <p class="world-notice" data-world-notice role="status"></p>
     </section>
-    <section class="story-invitation" id="storybook" aria-labelledby="invitation-title">
+    <section class="story-invitation" id="storybook" aria-labelledby="invitation-title" hidden>
       <div class="invitation-art"><img src="/assets/world/revised_supplies.webp?v={revision}" alt="" loading="lazy" width="1024" height="1024"></div>
       <div class="invitation-copy"><p class="world-eyebrow">{c['chapter']} <span aria-hidden="true">—</span> STORYBOOK</p><h2 id="invitation-title">{c['booktitle']}</h2><p>{c['bookdesc']}</p><a class="book-cta" href="{base}/story/" data-open-story>{c['open']} <span aria-hidden="true">↗</span></a></div>
     </section>
@@ -84,7 +87,7 @@ def render(lang, c, revision):
         <p class="book-gesture-hint">{ {'ko':'왼쪽을 누르면 이전 장, 오른쪽을 누르면 다음 장.', 'en':'Tap left to go back, right to turn the page.', 'ja':'左をタップで前へ、右をタップで次へ。'}[lang] }</p>
         </div>
         <footer class="reader-footer"><button type="button" data-story-prev>← <span>{c['prev']}</span></button><span class="page-progress" data-page-progress role="status" aria-live="polite"></span><button type="button" data-story-next><span>{c['next']}</span> →</button></footer>
-        <div class="reader-settings"><label>♫ {c['volume']} <input data-volume aria-label="{c['volume']}" type="range" min="0" max="100" value="35"></label><a href="{base}/story/">{c['read']}</a></div>
+        <div class="reader-settings"><label>♫ {c['volume']} <input data-volume aria-label="{c['volume']}" type="range" min="0" max="100" value="35"></label><a href="{base}/story/">{c['read']}</a><button class="resume-link reader-resume" data-resume-story hidden>{c['resume']}</button></div>
       </div>
     </dialog>
     <details class="world-credits"><summary>{c['credits']}</summary><p>“The Path of the Goblin King” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100873">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.<br>“Crossing the Chasm” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700026">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Web versions: re-encoded, loudness adjusted.<br>Book sounds — <a href="https://kenney.nl/assets/rpg-audio">Kenney RPG Audio</a>, CC0.<br>“Secret of Beautiful Forest” — OneStep Studio. Illustrations and characters — Tiny Defense / OneStep Studio. Courtyard art — AI-generated for OneStep Studio.</p></details>
@@ -109,7 +112,7 @@ def main():
             text=text.replace('</head>', '<link rel="stylesheet" href="/reader.css?v=reader-2">\n</head>')
         text=text.replace('content="#f9f8f3"','content="#0b1720"').replace('content="light"','content="dark light"')
         text=text.replace('as="image" href="/assets/onestep-logo.webp"','as="image" href="/assets/world/courtyard-day.webp"')
-        text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-v2.webp')
+        text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-outlined-v1.webp')
         text=text.replace('/world.css?v=world-1','/world.css?v=world-2').replace('/world.js?v=world-1','/world.js?v=world-2')
         text=re.sub(r'/reader\.css\?v=reader-\d+', '/reader.css?v=reader-2', text)
         text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-20', text)
@@ -117,6 +120,8 @@ def main():
             text=text.replace('</head>', '<script defer src="/courtyard-life.js?v=life-1"></script>\n</head>')
         if '/courtyard-life.css' not in text:
             text=text.replace('</head>', '<link rel="stylesheet" href="/courtyard-life.css?v=life-1">\n</head>')
+        if '/courtyard-combat.js' not in text:
+            text=text.replace('</head>', '<script defer src="/courtyard-combat.js?v=combat-1"></script>\n</head>')
         if '/courtyard-audio.js' not in text:
             text=text.replace('<script defer src="/world.js', '<script defer src="/courtyard-audio.js?v=1"></script>\n  <script defer src="/world.js')
         if '/book-turn.js' not in text:
@@ -130,6 +135,16 @@ def main():
         if '/map-panels.js' not in text:
             text=text.replace('</head>', '<script defer src="/map-panels.js?v=map-1"></script>\n</head>')
         text=re.sub(r'href="#(games|studio)"(?: data-map-open="[^"]*")*', lambda m: 'href="#'+m[1]+'" data-map-open="'+('day' if m[1]=='games' else 'studio')+'"', text)
+        text=text.replace('/world.css?v=world-20', '/world.css?v=world-21').replace('/world.js?v=world-20', '/world.js?v=world-21').replace('/reader.css?v=reader-2', '/reader.css?v=reader-3')
+        text=text.replace('/world.css?v=world-21', '/world.css?v=world-22').replace('/reader.css?v=reader-3', '/reader.css?v=reader-4')
+        text=text.replace('/world.css?v=world-22', '/world.css?v=world-23')
+        # Keep legacy source markup inert: it is never a scrollable second homepage.
+        text=re.sub(r'<div class="game-details">(.*?)</div>\s*</main>', r'<template data-game-archive>\1</template>\n  </main>', text, flags=re.S)
+        text=re.sub(r'\s*<a href="#(?:storybook|features|gallery|stores)"[^>]*>.*?</a>', '', text[:text.index('<main')], flags=re.S)+text[text.index('<main'):]
+        text=re.sub(r'/map-panels.js\?v=map-\d+', '/map-panels.js?v=map-3', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-30', text)
+        text=re.sub(r'/courtyard-life.js\?v=life-\d+', '/courtyard-life.js?v=life-2', text)
+        text=text.replace('/reader.css?v=reader-4', '/reader.css?v=reader-5')
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''
@@ -138,7 +153,7 @@ def main():
             if page['chapter'] != chapter:
                 chapter = page['chapter']
                 content += f'<h2 class="text-chapter" id="chapter-{chapter}">{escape(story['books'][str(chapter)])}</h2>'
-            lines=''.join('<p>'+('<strong>'+escape(story['speakers'][str(line['speaker'])])+'</strong><br>' if line['speaker'] else '')+escape(line['text'])+'</p>' for line in ([{'speaker':0,'text':t} for t in page.get('before',[])]+page['lines']+[{'speaker':0,'text':t} for t in page.get('after',[])]))
+            lines=''.join(('<p data-speaker="'+str(line['speaker'])+'">' if line['speaker'] else '<p>')+('<strong>'+escape(story['speakers'][str(line['speaker'])])+'</strong><br>' if line['speaker'] else '')+escape(line['text'])+'</p>' for line in ([{'speaker':0,'text':t} for t in page.get('before',[])]+page['lines']+[{'speaker':0,'text':t} for t in page.get('after',[])]))
             repeated = False
             with Image.open(ROOT / f'assets/world/{page["art"]}.webp') as art:
                 art_width, art_height = art.size
@@ -151,7 +166,7 @@ def main():
         skip={'ko':'본문 바로가기','en':'Skip to story','ja':'本文へ移動'}[lang]
         chapters=list(story['books'].values())
         chapter_links=''.join(f'<a href="#chapter-{i}">{label}</a>' for i,label in enumerate(chapters,1))
-        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1c24"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=ui-2"><link rel="stylesheet" href="/world.css?v=world-18"><meta name="robots" content="noindex"></head><body class="story-text-page"><a class="skip-link" href="#main">{skip}</a><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–05 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><nav class="reading-nav" aria-label="{c['contents']}"><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a>{chapter_links}</nav><main id="main">{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
+        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1c24"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=ui-2"><link rel="stylesheet" href="/world.css?v=world-22"><meta name="robots" content="noindex"></head><body class="story-text-page"><a class="skip-link" href="#main">{skip}</a><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–05 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><nav class="reading-nav" aria-label="{c['contents']}"><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a>{chapter_links}</nav><main id="main">{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
         game=base/'games/tiny-defense/index.html'
         html=game.read_text(encoding='utf-8')
         if '#storybook' not in html:

@@ -1,1 +1,23 @@
-{"ko": {}, "en": {}, "ja": {}}
+[
+  {
+    "page": "rewind.prologue.talk1",
+    "sources": ["PrologueDuelCinematic.cs: Sequence / BossEntrance.Play"],
+    "ko": {"before": ["폭우 속에서 고대 트롤이 성문 앞으로 모습을 드러냈다. 기사는 물러서지 않고 그 앞을 가로막았다."]},
+    "en": {"before": ["Through the pouring rain, the Elder Troll appeared before the gate. The knight stood his ground and barred its way."]},
+    "ja": {"before": ["激しい雨の中、古のトロールが城門の前に姿を現した。騎士は退かず、その行く手を阻んだ。"]}
+  },
+  {
+    "page": "rewind.prologue.defeated",
+    "sources": ["PrologueDuelCinematic.cs: Sequence / DuelGame.OpenExhibition(scriptedDefeat: true)"],
+    "ko": {"before": ["기사가 검을 들고 고대 트롤에게 맞섰다. 그러나 거센 공격을 버텨 내지 못하고 무릎을 꿇었다."], "after": ["고대 트롤은 쓰러진 기사를 남겨 두고 떠났다."]},
+    "en": {"before": ["The knight raised his sword against the Elder Troll. But its relentless attacks brought him to his knees."], "after": ["The Elder Troll left the fallen knight behind."]},
+    "ja": {"before": ["騎士は剣を掲げ、古のトロールに立ち向かった。しかし激しい攻撃に耐えきれず、膝をついた。"], "after": ["古のトロールは倒れた騎士を残して去っていった。"]}
+  },
+  {
+    "page": "rewind.morning",
+    "sources": ["FirstMorningSequence.cs: Open / Depart", "StorySequence.Rewind.cs: PlayFirstMorning"],
+    "ko": {"before": ["아침 햇살이 성 안뜰을 비추고 있었다. 폰과 노인 앞에서 병사가 보급대의 소식을 전했다."], "after": ["노인이 앞장서고 폰이 뒤를 따랐다. 두 사람은 열린 성문을 지나 나무를 구하러 숲으로 향했다."]},
+    "en": {"before": ["Morning light filled the courtyard. Pawn was with the old man when a soldier came to report on the supply convoy."], "after": ["The old man led the way, with Pawn close behind. They passed through the open gate and headed into the forest to gather wood."]},
+    "ja": {"before": ["朝の光が城の中庭を照らしていた。ポーンが老人といるところへ、兵士が補給隊の報告にやって来た。"], "after": ["老人が先に立ち、ポーンがその後を追った。二人は開いた城門を抜け、木材を集めに森へ向かった。"]}
+  }
+]

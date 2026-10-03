@@ -105,6 +105,24 @@
   // at every aspect ratio, including the narrower mobile crop.
   const landscape = $('.world-landscape');
   const actors = $('.courtyard-actors');
+  // Contours are baked into the background; transparent links follow its cover crop.
+  const sceneryTargets = [
+    ['forest', [170,501,310,704]],
+    ['gate', [741,257,1082,580]],
+    ['fire', [547,610,831,831]],
+    ['guard', [607,183,720,384]],
+    ['book', [1109,691,1389,909]],
+    ['gallery', [1238,318,1313,421]]
+  ].map(([name, box]) => {
+    const link = $(`.marker-${name}`);
+    if (!link) return null;
+    const highlight = document.createElement('span');
+    highlight.classList.add('scenery-selection');
+    highlight.setAttribute('aria-hidden','true');
+    link.prepend(highlight);
+    link.classList.add('scenery-target');
+    return {link,box};
+  }).filter(Boolean);
   function fitActors() {
     const width=landscape.clientWidth, height=landscape.clientHeight;
     const scale=Math.max(width/1536,height/1024);
@@ -112,6 +130,13 @@
     Object.assign(actors.style,{
       width:`${1536*scale}px`,height:`${1024*scale}px`,
       left:`${(width-1536*scale)*px/100}px`,top:`${(height-1024*scale)*py/100}px`
+    });
+    sceneryTargets.forEach(({link,box:[x,y,right,bottom]}) => {
+      Object.assign(link.style, {
+        left:`${(width-1536*scale)*px/100+x*scale}px`,
+        top:`${(height-1024*scale)*py/100+y*scale}px`,
+        width:`${(right-x)*scale}px`,height:`${(bottom-y)*scale}px`
+      });
     });
     actors.hidden=false;
   }
@@ -203,6 +228,7 @@
     readingLines.forEach((line, lineIndex) => {
       const p = document.createElement('p');
       if (line.speaker) {
+        p.dataset.speaker = String(line.speaker);
         const speaker=document.createElement('span'); speaker.className='speaker';
         speaker.textContent=story.speakers[String(line.speaker)];
         p.append(speaker);

@@ -20,6 +20,7 @@
     scenes.forEach((article,i) => {
       article.hidden = i !== scene;
       const video=article.querySelector('video');
+      if (!video) return;
       if (i !== scene) video.pause();
       else {
         if (!video.getAttribute('src')) video.src=video.dataset.src;
@@ -30,6 +31,7 @@
     content.querySelector('[data-guide-prev]').disabled=scene===0;
     content.querySelector('[data-guide-next]').disabled=scene===scenes.length-1;
     content.querySelector('[data-guide-progress]').textContent=`${scene+1} / ${scenes.length}`;
+    content.scrollTop=0;
   }
   function fill(kind) {
     const template=document.querySelector(`template[data-map-template="${kind}"]`);
