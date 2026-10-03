@@ -57,6 +57,7 @@ async function main() {
     const scale=Math.min(box.width/image.naturalWidth,box.height/image.naturalHeight);
     return {viewport:{width:innerWidth,height:innerHeight},toolbar:rect('.reader-toolbar'),pages:rect('.reader-pages'),
       image:{...box,paintWidth:image.naturalWidth*scale,paintHeight:image.naturalHeight*scale},
+      heading:rect('.story-page-heading'),title:rect('[data-page-title]'),copy:rect('.story-copy'),
       footer:rect('.reader-footer'),settings:rect('.reader-settings'),resume:rect('[data-resume-story]'),
       resumeInSettings:document.querySelector('.reader-settings').contains(document.querySelector('[data-resume-story]')),
       page:document.querySelector('[data-page-progress]').textContent,overflow:document.documentElement.scrollWidth>innerWidth};
@@ -87,6 +88,9 @@ async function main() {
     assert.ok(second.pages.y-second.toolbar.bottom<3,'body starts directly after toolbar');checks++;
     assert.equal(second.resumeInSettings,true,'resume belongs to compact footer settings');checks++;
     assert.equal(second.overflow,false);checks++;
+    assert.equal(second.heading.y,first.heading.y,'heading stays at the same top position');checks++;
+    assert.equal(second.title.y,first.title.y,'title keeps its position even without chapter metadata');checks++;
+    assert.equal(await evaluate("getComputedStyle(document.querySelector('.story-page-heading')).borderBottomWidth"),'2px','visible divider separates the fixed header');checks++;
     assert.ok(second.footer.bottom<=height && second.settings.bottom<=height+1,'navigation stays on screen');checks++;
     if(width>=1000){assert.ok(second.image.paintWidth>=width*.40,'illustration uses the large left pane');checks++;assert.ok(second.image.paintHeight>=height*.48);checks++;}
     if(width<700){assert.ok(second.image.paintHeight>=height*.22);checks++;}
@@ -96,6 +100,7 @@ async function main() {
     assert.equal(await evaluate("document.querySelector('[data-page-kicker]').hidden"),true,'prologue does not repeat its title');checks++;
     assert.deepEqual(await evaluate("[...document.querySelectorAll('[data-story-lines] .dialogue-text')].map(p=>p.textContent)"),stories[lang].pages[1].lines.map(line=>line.text),'all dialogue is preserved');checks++;
     assert.equal(await evaluate("[...document.querySelectorAll('[data-story-lines] p[data-speaker]')].every(p=>{const name=p.querySelector('.speaker').getBoundingClientRect(),text=p.querySelector('.dialogue-text').getBoundingClientRect();return name.right<text.x && p.scrollWidth<=p.clientWidth;})"),true,'speaker and dialogue have separate, unclipped columns');checks++;
+    assert.ok(await evaluate(`parseFloat(getComputedStyle(document.querySelector('.speaker')).fontSize)>=${width<700?18:20}`),'speaker names remain prominent');checks++;
     await click('.reader-settings summary');await ready("document.querySelector('.reader-settings').open");
     assert.ok(Math.abs((await metrics()).pages.height-second.pages.height)<2,'settings must not resize the illustration');checks++;
     assert.equal(await evaluate("(()=>{const r=document.querySelector('.reader-settings-panel').getBoundingClientRect();return r.x>=0 && r.right<=innerWidth && r.y>=0 && r.bottom<innerHeight;})()"),true,'settings stays within the viewport');checks++;
@@ -109,11 +114,12 @@ async function main() {
     await evaluate("document.querySelector('[data-story-art]').decode()");
     if(lang==='ko' && width===1920)await screenshot('after-dialogue-desktop.png');
     if(lang==='ko' && width===390)await screenshot('after-dialogue-mobile.png');
-    await evaluate("document.querySelector('.book-page').scrollTop=10000");
-    assert.equal(await evaluate("(()=>{const p=document.querySelector('.book-page');return p.scrollTop+p.clientHeight>=p.scrollHeight-2;})()"),true,'long dialogue remains scrollable');checks++;
+    await evaluate("document.querySelector('.story-copy').scrollTop=10000");
+    assert.equal(await evaluate("(()=>{const p=document.querySelector('.story-copy');return p.scrollTop+p.clientHeight>=p.scrollHeight-2;})()"),true,'dialogue scrolls independently');checks++;
+    assert.equal((await metrics()).heading.y,first.heading.y,'heading stays visible during dialogue scroll');checks++;
     await click('[data-story-prev]');await ready("document.querySelector('[data-page-progress]').textContent.startsWith('02')");
     assert.ok((await metrics()).pages.height>=first.pages.height-footerGrowth-2);checks++;
-    if(width===1920) {
+    if(width===1920 || width===390 || width===320) {
       for(let index=2;index<stories[lang].pages.length;index++) {
         await click('[data-story-next]');
         if(index===stories[lang].previewCount) {
@@ -125,6 +131,19 @@ async function main() {
         await ready(`!document.querySelector('[data-story-lines]').hidden && document.querySelector('[data-page-title]').textContent===${JSON.stringify(current.title)} && document.querySelector('[data-page-progress]').textContent.startsWith(${JSON.stringify(String(index+1).padStart(2,'0'))})`);
         const expected=[...(current.before||[]),...current.lines.map(line=>line.text),...(current.after||[])];
         assert.deepEqual(await evaluate("[...document.querySelectorAll('[data-story-lines]>p')].map(p=>p.querySelector('.dialogue-text')?.textContent||p.textContent)"),expected,'complete story survives the new text layout');checks++;
+        const currentMetrics=await metrics();
+        assert.equal(currentMetrics.heading.y,first.heading.y,'every scene shares the same heading position');checks++;
+        assert.equal(currentMetrics.heading.height,first.heading.height,'header divider stays fixed for every title length');checks++;
+        assert.equal(currentMetrics.title.y,first.title.y,'chapter metadata does not move scene titles');checks++;
+        assert.ok(currentMetrics.title.bottom<=currentMetrics.heading.bottom-4,'long titles fit above the divider');checks++;
+        assert.equal(await evaluate("[...document.querySelectorAll('[data-story-lines] p[data-speaker]')].every(p=>p.scrollWidth<=p.clientWidth && p.querySelector('.speaker').scrollWidth<=p.querySelector('.speaker').clientWidth)"),true,'large localized names are not clipped');checks++;
+        if(index===7 && lang==='ko' && (width===1920 || width===390)) {
+          await evaluate("document.querySelector('[data-story-art]').decode()");
+          await screenshot(width===1920?'fixed-heading-desktop.png':'fixed-heading-mobile.png');
+          await evaluate("document.querySelector('.story-copy').scrollTop=10000");
+          assert.equal((await metrics()).title.y,first.title.y,'title remains fixed on the longest opening dialogue');checks++;
+          await screenshot(width===1920?'fixed-heading-scrolled-desktop.png':'fixed-heading-scrolled-mobile.png');
+        }
       }
     }
     await click('[data-close-story]');

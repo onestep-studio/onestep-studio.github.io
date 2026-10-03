@@ -82,7 +82,7 @@ def render(lang, c, revision):
         <div class="reader-pages" data-reader-pages>
         <div class="book-spread" data-book-spread>
           <div class="book-left" data-book-left><div class="book-illustration"><img data-story-art src="/assets/world/revised_last_gate.webp?v={revision}" width="1024" height="1024" alt=""><div class="story-art-shade"></div><span class="art-chapter">CHAPTER <b>01</b></span></div><article class="book-page left-page" data-left-page hidden><p class="page-eyebrow" data-left-kicker></p><h3 data-left-title></h3><div class="story-lines" data-left-lines></div></article><span class="folio" data-folio-left></span></div>
-          <article class="book-page" data-book-page tabindex="-1"><p class="page-eyebrow" data-page-kicker></p><h3 data-page-title></h3><div class="story-lines" data-story-lines></div><div class="story-gate" data-story-gate hidden></div><div class="page-ornament" aria-hidden="true">✦</div><span class="folio" data-folio-right></span></article>
+          <article class="book-page" data-book-page tabindex="-1"><header class="story-page-heading"><p class="page-eyebrow" data-page-kicker></p><h3 data-page-title></h3></header><div class="story-lines" data-story-lines></div><div class="story-gate" data-story-gate hidden></div><div class="page-ornament" aria-hidden="true">✦</div><span class="folio" data-folio-right></span></article>
         </div>
         <p class="book-gesture-hint">{ {'ko':'왼쪽을 누르면 이전 장, 오른쪽을 누르면 다음 장.', 'en':'Tap left to go back, right to turn the page.', 'ja':'左をタップで前へ、右をタップで次へ。'}[lang] }</p>
         </div>
@@ -138,9 +138,9 @@ def main():
         text=re.sub(r'<div class="game-details">(.*?)</div>\s*</main>', r'<template data-game-archive>\1</template>\n  </main>', text, flags=re.S)
         text=re.sub(r'\s*<a href="#(?:storybook|features|gallery|stores)"[^>]*>.*?</a>', '', text[:text.index('<main')], flags=re.S)+text[text.index('<main'):]
         text=re.sub(r'/map-panels.js\?v=map-\d+', '/map-panels.js?v=map-3', text)
-        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-31', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-32', text)
         text=re.sub(r'/courtyard-life.js\?v=life-\d+', '/courtyard-life.js?v=life-2', text)
-        text=re.sub(r'/reader\.css\?v=reader-\d+', '/reader.css?v=reader-6', text)
+        text=re.sub(r'/reader\.css\?v=reader-\d+', '/reader.css?v=reader-7', text)
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''

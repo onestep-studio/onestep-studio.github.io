@@ -19,7 +19,8 @@
   const gate = $('[data-story-gate]');
   const lines = $('[data-story-lines]');
   const storyCopy = document.createElement('div'); storyCopy.className = 'story-copy'; storyCopy.id = 'story-copy';
-  storyCopy.append(...page.childNodes); page.append(storyCopy);
+  // Scene headings stay outside the scrolling dialogue, at the same position on every page.
+  storyCopy.append(lines, gate, ...page.querySelectorAll('.page-ornament,.folio')); page.append(storyCopy);
   function textState() { storyCopy.hidden = false; }
   const title = $('[data-page-title]');
   title.id = 'story-scene-title';
