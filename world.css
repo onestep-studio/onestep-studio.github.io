@@ -626,8 +626,7 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 .world-marker .marker-name { color:#fff3d8; font:600 15px/1.4 var(--reading-font,system-ui,sans-serif); background:rgb(8 23 33 / 78%); border:1px solid #e1c59266; border-radius:5px; box-shadow:0 2px 8px #0004; text-shadow:0 1px 2px #0009; pointer-events:none; transition:background .18s,border-color .18s,box-shadow .18s,scale .18s; }
 .scenery-target .marker-name { position:absolute; top:calc(50% - 68px); left:50%; transform:translateX(-50%); padding:7px 10px; }
 .scenery-target .marker-point,.scenery-target .marker-label { display:none; }
-.scenery-selection { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; opacity:0; transition:opacity .18s ease; filter:drop-shadow(0 0 7px #ffd279aa); }
-.scenery-selection polygon { fill:#ffe3a12e; stroke:#fff0bf; stroke-width:2; stroke-linejoin:round; }
+.scenery-selection { position:absolute; inset:-8%; pointer-events:none; opacity:0; border-radius:50%; background:radial-gradient(ellipse at center, rgb(255 230 165 / 30%) 0%, rgb(255 226 151 / 20%) 42%, rgb(255 224 145 / 8%) 62%, transparent 76%); mix-blend-mode:screen; transition:opacity .18s ease; }
 .world .scenery-target:focus-visible { z-index:4; outline:none; }
 .scenery-target:focus-visible .scenery-selection,.scenery-target:active .scenery-selection { opacity:1; }
 .world .scenery-target:focus-visible .marker-name,.world .scenery-target:active .marker-name { background:rgb(38 42 36 / 92%); border-color:#ffe0a1; box-shadow:0 0 0 2px #e8bf6850,0 0 16px #e8bf6855; scale:1.06; }

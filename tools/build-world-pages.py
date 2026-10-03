@@ -137,7 +137,7 @@ def main():
         text=re.sub(r'<div class="game-details">(.*?)</div>\s*</main>', r'<template data-game-archive>\1</template>\n  </main>', text, flags=re.S)
         text=re.sub(r'\s*<a href="#(?:storybook|features|gallery|stores)"[^>]*>.*?</a>', '', text[:text.index('<main')], flags=re.S)+text[text.index('<main'):]
         text=re.sub(r'/map-panels.js\?v=map-\d+', '/map-panels.js?v=map-3', text)
-        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-28', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-29', text)
         text=re.sub(r'/courtyard-life.js\?v=life-\d+', '/courtyard-life.js?v=life-2', text)
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
