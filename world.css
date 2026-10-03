@@ -620,6 +620,27 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 .story-gate button.secondary { color:#f0ce91; border-color:#a39376; }
 .text-spread .story-gate button.secondary { color:#51432e; }
 .world-marker:focus-visible .marker-point { outline:3px solid #ffe0a1; outline-offset:4px; }
+
+/* Scenery itself is the destination; labels appear on intentional interaction. */
+.world-marker.scenery-target { display:block; transform:none; cursor:pointer; outline:none; }
+.world-marker .marker-name { color:#fff0ce; font:600 15px/1.4 var(--reading-font,system-ui,sans-serif); text-shadow:0 1px 3px #07131d,0 0 6px #07131d,1px 0 2px #07131d,-1px 0 2px #07131d; pointer-events:none; }
+.scenery-target .marker-name { position:absolute; top:calc(50% - 68px); left:50%; transform:translateX(-50%); padding:3px 6px; }
+@media(max-width:599px) {
+ .world-marker .marker-name { font-size:12px; }
+ .scenery-target .marker-name { top:calc(50% - 58px); }
+}
+.scenery-target .marker-point,.scenery-target .marker-label { position:absolute; left:50%; opacity:0; transform:translate(-50%,6px); pointer-events:none; transition:opacity .18s ease,transform .18s ease; }
+.scenery-target .marker-point { top:calc(50% - 38px); animation:none; }
+.scenery-target .marker-label { top:calc(50% + 14px); }
+.world .scenery-target:focus-visible { z-index:4; outline:none; }
+.scenery-target:focus-visible .marker-point,.scenery-target:focus-visible .marker-label { opacity:1; transform:translate(-50%,0); }
+@media (hover:hover) and (pointer:fine) {
+ .scenery-target:hover { z-index:4; }
+ .scenery-target:hover .marker-point,.scenery-target:hover .marker-label { opacity:1; transform:translate(-50%,0); }
+}
+@media (prefers-reduced-motion:reduce) {
+ .scenery-target .marker-point,.scenery-target .marker-label { transition:none; }
+}
 .guide-scene p:not(.world-eyebrow),.map-popup .studio-summary-copy,.world-intro { font-family:var(--reading-font); }
 .map-panel-toolbar>div { min-width:0; }
 .map-panel-toolbar h2 { overflow-wrap:anywhere; text-wrap:balance; }
@@ -833,12 +854,14 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 }
 
 @media(max-width:699px) {
- .courtyard-page .world-marker.scenery-target { width:auto!important; height:auto!important; transform:translate(-50%,-50%); }
+ .courtyard-page .world-marker.scenery-target { width:auto!important; height:auto!important; min-width:44px; min-height:44px; justify-content:center; gap:0; transform:translate(-50%,-50%); }
+ .courtyard-page .scenery-target .marker-name { position:static; transform:none; padding:7px 10px; font-size:14px; line-height:1.4; color:#fff3d8; background:rgb(8 23 33 / 78%); border:1px solid #e1c59266; border-radius:5px; box-shadow:0 2px 8px #0004; text-shadow:0 1px 2px #0009; }
  .courtyard-page .scenery-target .scenery-resource { display:none; }
- .courtyard-page .scenery-target .marker-point,.courtyard-page .scenery-target .marker-label { position:static; opacity:1; transform:none; }
+ .courtyard-page .scenery-target .marker-point,.courtyard-page .scenery-target .marker-label { display:none; }
  .courtyard-page .marker-forest { left:16%!important; top:60%!important; }
  .courtyard-page .marker-gate { left:57%!important; top:21%!important; }
  .courtyard-page .marker-guard { left:53%!important; top:49%!important; }
  .courtyard-page .marker-fire { left:43%!important; top:82%!important; }
  .courtyard-page .marker-book { left:83%!important; top:79%!important; }
+ .courtyard-page .marker-gallery { left:84%!important; top:32%!important; }
 }

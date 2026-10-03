@@ -18,6 +18,7 @@ def render(lang, c, revision):
     base = '' if lang=='ko' else '/'+lang
     game = base+'/games/tiny-defense/'
     m = LABELS[lang]
+    marker_names = {'ko': {'forest': '벌목 체험', 'gate': '게임 받기', 'fire': '게임 설명', 'guard': '전투 안내', 'book': '이야기', 'gallery': '게임 화면'}, 'en': {'forest': 'Woodcutting', 'gate': 'Get game', 'fire': 'How to play', 'guard': 'Combat guide', 'book': 'Story', 'gallery': 'Screenshots'}, 'ja': {'forest': '薪割り体験', 'gate': 'ゲーム入手', 'fire': '遊び方', 'guard': '戦闘ガイド', 'book': '物語', 'gallery': 'ゲーム画面'}}[lang]
     cast = json.loads((ROOT / 'assets/world/cast/manifest.json').read_text(encoding='utf-8'))
     # Six quiet vignettes: one resident or at most two heroes, never the full cast.
     scenes = [
@@ -51,19 +52,19 @@ def render(lang, c, revision):
       </div>
       <div class="world-stage">
         <div class="world-landscape">
-          <img class="courtyard courtyard-day" src="/assets/world/courtyard-day-v2.webp" width="1536" height="1024" alt="{c['intro']}" fetchpriority="high">
-          <img class="courtyard courtyard-night" src="/assets/world/courtyard-night-v2.webp" width="1536" height="1024" alt="" loading="lazy">
+          <img class="courtyard courtyard-day" src="/assets/world/courtyard-day-outlined-v1.webp" width="1536" height="1024" alt="{c['intro']}" fetchpriority="high">
+          <img class="courtyard courtyard-night" src="/assets/world/courtyard-night-outlined-v1.webp" width="1536" height="1024" alt="" loading="lazy">
           <div class="courtyard-actors" aria-hidden="true" hidden><div class="gate-guard guard-left"><div class="lancer-sprite"></div></div><div class="gate-guard guard-right"><div class="lancer-sprite"></div></div>{walkers}</div>
           <div class="world-dust" aria-hidden="true"></div><div class="fire-glow" aria-hidden="true"></div><div class="lantern-glow" aria-hidden="true"></div>
           <div class="world-motes" aria-hidden="true">{''.join(f'<i style="--i:{i}"></i>' for i in range(14))}</div>
           <div class="season-weather" aria-hidden="true">{''.join(f'<i style="--i:{i};--x:{2+(i*23)%96}%"></i>' for i in range(24))}</div>
           {familiar(lang)}
-          <a class="world-marker marker-forest" href="/games/tiny-defense/play/" data-map-open="game"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">{c['forest']}</span></a>
-          <a class="world-marker marker-gate" href="{game}#stores" data-map-open="stores"><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">{m['stores']}</span></a>
-          <a class="world-marker marker-fire" href="{game}#features" data-map-open="day"><span class="marker-point" aria-hidden="true">☀</span><span class="marker-label">{m['day']}</span></a>
-          <a class="world-marker marker-guard" href="{game}#features" data-map-open="night"><span class="marker-point" aria-hidden="true">☾</span><span class="marker-label">{m['night']}</span></a>
-          <a class="world-marker marker-book" href="#storybook" data-open-story><span class="marker-point" aria-hidden="true">＋</span><span class="marker-label">{c['book']}</span></a>
-          <a class="world-marker marker-gallery" href="#gallery" data-map-open="gallery"><span class="marker-point" aria-hidden="true">▧</span><span class="marker-label">{gallery_label}</span></a>
+          <a class="world-marker marker-forest" href="/games/tiny-defense/play/" data-map-open="game"><span class="marker-name">{marker_names['forest']}</span><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">{c['forest']}</span></a>
+          <a class="world-marker marker-gate" href="{game}#stores" data-map-open="stores"><span class="marker-name">{marker_names['gate']}</span><span class="marker-point" aria-hidden="true">↗</span><span class="marker-label">{m['stores']}</span></a>
+          <a class="world-marker marker-fire" href="{game}#features" data-map-open="day"><span class="marker-name">{marker_names['fire']}</span><span class="marker-point" aria-hidden="true">☀</span><span class="marker-label">{m['day']}</span></a>
+          <a class="world-marker marker-guard" href="{game}#features" data-map-open="night"><span class="marker-name">{marker_names['guard']}</span><span class="marker-point" aria-hidden="true">☾</span><span class="marker-label">{m['night']}</span></a>
+          <a class="world-marker marker-book" href="#storybook" data-open-story><span class="marker-name">{marker_names['book']}</span><span class="marker-point" aria-hidden="true">＋</span><span class="marker-label">{c['book']}</span></a>
+          <a class="world-marker marker-gallery" href="#gallery" data-map-open="gallery"><span class="marker-name">{marker_names['gallery']}</span><span class="marker-point" aria-hidden="true">▧</span><span class="marker-label">{gallery_label}</span></a>
         </div>
         <div class="world-caption"><span class="world-place">TINY DEFENSE <span aria-hidden="true">/</span> ONESTEP STUDIO</span><span class="desktop-hint">{c['hint']}</span><span class="mobile-hint">{mobile_hint}</span></div>
       </div>
@@ -111,7 +112,7 @@ def main():
             text=text.replace('</head>', '<link rel="stylesheet" href="/reader.css?v=reader-2">\n</head>')
         text=text.replace('content="#f9f8f3"','content="#0b1720"').replace('content="light"','content="dark light"')
         text=text.replace('as="image" href="/assets/onestep-logo.webp"','as="image" href="/assets/world/courtyard-day.webp"')
-        text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-v2.webp')
+        text=text.replace('/assets/world/courtyard-day.webp','/assets/world/courtyard-day-outlined-v1.webp')
         text=text.replace('/world.css?v=world-1','/world.css?v=world-2').replace('/world.js?v=world-1','/world.js?v=world-2')
         text=re.sub(r'/reader\.css\?v=reader-\d+', '/reader.css?v=reader-2', text)
         text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-20', text)
@@ -136,7 +137,7 @@ def main():
         text=re.sub(r'<div class="game-details">(.*?)</div>\s*</main>', r'<template data-game-archive>\1</template>\n  </main>', text, flags=re.S)
         text=re.sub(r'\s*<a href="#(?:storybook|features|gallery|stores)"[^>]*>.*?</a>', '', text[:text.index('<main')], flags=re.S)+text[text.index('<main'):]
         text=re.sub(r'/map-panels.js\?v=map-\d+', '/map-panels.js?v=map-3', text)
-        text=re.sub(r'/world.css\?v=world-\d+', '/world.css?v=world-23', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-27', text)
         text=re.sub(r'/courtyard-life.js\?v=life-\d+', '/courtyard-life.js?v=life-2', text)
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
