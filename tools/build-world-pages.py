@@ -135,16 +135,13 @@ def main():
         if '/map-panels.js' not in text:
             text=text.replace('</head>', '<script defer src="/map-panels.js?v=map-1"></script>\n</head>')
         text=re.sub(r'href="#(games|studio)"(?: data-map-open="[^"]*")*', lambda m: 'href="#'+m[1]+'" data-map-open="'+('day' if m[1]=='games' else 'studio')+'"', text)
-        text=text.replace('/world.css?v=world-20', '/world.css?v=world-21').replace('/world.js?v=world-20', '/world.js?v=world-21').replace('/reader.css?v=reader-2', '/reader.css?v=reader-3')
-        text=text.replace('/world.css?v=world-21', '/world.css?v=world-22').replace('/reader.css?v=reader-3', '/reader.css?v=reader-4')
-        text=text.replace('/world.css?v=world-22', '/world.css?v=world-23')
         # Keep legacy source markup inert: it is never a scrollable second homepage.
         text=re.sub(r'<div class="game-details">(.*?)</div>\s*</main>', r'<template data-game-archive>\1</template>\n  </main>', text, flags=re.S)
         text=re.sub(r'\s*<a href="#(?:storybook|features|gallery|stores)"[^>]*>.*?</a>', '', text[:text.index('<main')], flags=re.S)+text[text.index('<main'):]
         text=re.sub(r'/map-panels.js\?v=map-\d+', '/map-panels.js?v=map-3', text)
         text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-30', text)
         text=re.sub(r'/courtyard-life.js\?v=life-\d+', '/courtyard-life.js?v=life-2', text)
-        text=text.replace('/reader.css?v=reader-4', '/reader.css?v=reader-5')
+        text=re.sub(r'/reader\.css\?v=reader-\d+', '/reader.css?v=reader-5', text)
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''
