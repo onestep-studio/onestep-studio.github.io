@@ -9,9 +9,9 @@ from world_life import familiar, encounters
 
 ROOT = Path(__file__).resolve().parents[1]
 COPY = {
- 'ko': dict(kicker='TINY DEFENSE · 작은 세계로의 초대',title='잠시, 성 안에 머물러요.',intro='숲에서 나무를 모으고, 밤에는 함께 성을 지키는 곳.',day='낮',night='밤',sound='소리 켜기',motion='움직임 멈추기',book='이야기 읽기',forest='도끼질 체험',gate='게임 만나기',hint='빛나는 표식을 눌러 둘러보세요.',chapter='CHAPTER 01–05',booktitle='사계절의 기억',bookdesc='폰과 꼬마 정령, 계절의 비석에 남은 기억을 따라가는 이야기.',open='책 펼치기',resume='이어서 읽기',close='책 덮기',contents='목차',prev='이전 장',next='다음 장',volume='음량',credits='음악과 리소스',home='성 안으로',old='노인',read='글로 읽기'),
- 'en': dict(kicker='TINY DEFENSE · A SMALL WORLD AWAITS',title='Stay a while, within the walls.',intro='Gather wood in the forest. Stand together when night falls.',day='Day',night='Night',sound='Sound on',motion='Pause motion',book='Read the story',forest='Try woodcutting',gate='Discover the game',hint='Follow the glowing markers to explore.',chapter='CHAPTER 01–05',booktitle='Seasonal Memories',bookdesc='Follow Pawn and the little spirits through the memories held in the seasonal waystones.',open='Open the book',resume='Continue reading',close='Close book',contents='Contents',prev='Previous',next='Next',volume='Volume',credits='Music & assets',home='Courtyard',old='Old man',read='Read as text'),
- 'ja': dict(kicker='TINY DEFENSE · 小さな世界へ',title='城の中で、ひと休み。',intro='森で木を集め、夜にはみんなで城を守る場所。',day='昼',night='夜',sound='音をオン',motion='動きを止める',book='物語を読む',forest='薪割り体験',gate='ゲームを見る',hint='光る目印を押して、城を巡ってみましょう。',chapter='CHAPTER 01–05',booktitle='四季の記憶',bookdesc='ポーンと小さな精霊たちが、季節の石碑に残された記憶をたどる物語。',open='本を開く',resume='続きから読む',close='本を閉じる',contents='目次',prev='前のページ',next='次のページ',volume='音量',credits='音楽と素材',home='城の中へ',old='老人',read='文章で読む'),
+ 'ko': dict(kicker='TINY DEFENSE · 작은 세계로의 초대',title='잠시, 성 안에 머물러요.',intro='숲에서 나무를 모으고, 밤에는 함께 성을 지키는 곳.',day='낮',night='밤',sound='소리 켜기',motion='움직임 멈추기',book='이야기 읽기',forest='도끼질 체험',gate='게임 만나기',hint='빛나는 표식을 눌러 둘러보세요.',chapter='CHAPTER 01–05',booktitle='사계절의 기억',bookdesc='폰과 꼬마 정령, 계절의 비석에 남은 기억을 따라가는 이야기.',open='책 펼치기',resume='이어서 읽기',close='책 덮기',contents='목차',prev='이전',next='다음',volume='음량',credits='음악과 리소스',home='성 안으로',old='노인',read='글로 읽기',settings='읽기 설정'),
+ 'en': dict(kicker='TINY DEFENSE · A SMALL WORLD AWAITS',title='Stay a while, within the walls.',intro='Gather wood in the forest. Stand together when night falls.',day='Day',night='Night',sound='Sound on',motion='Pause motion',book='Read the story',forest='Try woodcutting',gate='Discover the game',hint='Follow the glowing markers to explore.',chapter='CHAPTER 01–05',booktitle='Seasonal Memories',bookdesc='Follow Pawn and the little spirits through the memories held in the seasonal waystones.',open='Open the book',resume='Continue reading',close='Close book',contents='Contents',prev='Previous',next='Next',volume='Volume',credits='Music & assets',home='Courtyard',old='Old man',read='Read as text',settings='Reading settings'),
+ 'ja': dict(kicker='TINY DEFENSE · 小さな世界へ',title='城の中で、ひと休み。',intro='森で木を集め、夜にはみんなで城を守る場所。',day='昼',night='夜',sound='音をオン',motion='動きを止める',book='物語を読む',forest='薪割り体験',gate='ゲームを見る',hint='光る目印を押して、城を巡ってみましょう。',chapter='CHAPTER 01–05',booktitle='四季の記憶',bookdesc='ポーンと小さな精霊たちが、季節の石碑に残された記憶をたどる物語。',open='本を開く',resume='続きから読む',close='本を閉じる',contents='目次',prev='前へ',next='次へ',volume='音量',credits='音楽と素材',home='城の中へ',old='老人',read='文章で読む',settings='読書設定'),
 }
 
 def render(lang, c, revision):
@@ -77,7 +77,7 @@ def render(lang, c, revision):
     </section>
     <dialog class="story-reader" id="story-reader" aria-labelledby="reader-title">
       <div class="reader-shell">
-        <header class="reader-toolbar"><div class="reader-title-group"><span class="reader-familiar-slot" data-reader-familiar hidden></span><span class="reader-kicker">TINY DEFENSE / CHAPTER 01</span><h2 id="reader-title">{c['booktitle']}</h2></div><div class="reader-actions"><button type="button" class="reader-sound" data-sound aria-pressed="false">♫ <span>{c['sound']}</span></button><button type="button" data-contents aria-expanded="false" aria-controls="story-contents">{c['contents']}</button><button type="button" data-close-story aria-label="{c['close']}">✕</button></div></header>
+        <header class="reader-toolbar"><div class="reader-title-group"><span class="reader-familiar-slot" data-reader-familiar hidden></span><span class="reader-kicker">TINY DEFENSE / CHAPTER 01</span><h2 id="reader-title">{c['booktitle']}</h2></div><div class="reader-actions"><button type="button" class="reader-sound" data-sound aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 6 8H3v8h3l5 4zM15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg><span>{c['sound']}</span></button><button type="button" data-contents aria-expanded="false" aria-controls="story-contents">{c['contents']}</button><button type="button" data-close-story aria-label="{c['close']}">✕</button></div></header>
         <nav class="story-contents" id="story-contents" aria-label="{c['contents']}" hidden></nav>
         <div class="reader-pages" data-reader-pages>
         <div class="book-spread" data-book-spread>
@@ -86,8 +86,7 @@ def render(lang, c, revision):
         </div>
         <p class="book-gesture-hint">{ {'ko':'왼쪽을 누르면 이전 장, 오른쪽을 누르면 다음 장.', 'en':'Tap left to go back, right to turn the page.', 'ja':'左をタップで前へ、右をタップで次へ。'}[lang] }</p>
         </div>
-        <footer class="reader-footer"><button type="button" data-story-prev>← <span>{c['prev']}</span></button><span class="page-progress" data-page-progress role="status" aria-live="polite"></span><button type="button" data-story-next><span>{c['next']}</span> →</button></footer>
-        <div class="reader-settings"><label>♫ {c['volume']} <input data-volume aria-label="{c['volume']}" type="range" min="0" max="100" value="35"></label><a href="{base}/story/">{c['read']}</a><button class="resume-link reader-resume" data-resume-story hidden>{c['resume']}</button></div>
+        <footer class="reader-footer"><button type="button" data-story-prev>← <span>{c['prev']}</span></button><span class="page-progress" data-page-progress role="status" aria-live="polite"></span><button type="button" data-story-next><span>{c['next']}</span> →</button><details class="reader-settings"><summary aria-label="{c['settings']}" title="{c['settings']}">⋯</summary><div class="reader-settings-panel"><label>{c['volume']} <input data-volume aria-label="{c['volume']}" type="range" min="0" max="100" value="35"></label><a href="{base}/story/">{c['read']}</a><button class="resume-link reader-resume" data-resume-story hidden>{c['resume']}</button></div></details></footer>
       </div>
     </dialog>
     <details class="world-credits"><summary>{c['credits']}</summary><p>“The Path of the Goblin King” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100873">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.<br>“Crossing the Chasm” — <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700026">Kevin MacLeod (incompetech.com)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Web versions: re-encoded, loudness adjusted.<br>Book sounds — <a href="https://kenney.nl/assets/rpg-audio">Kenney RPG Audio</a>, CC0.<br>“Secret of Beautiful Forest” — OneStep Studio. Illustrations and characters — Tiny Defense / OneStep Studio. Courtyard art — AI-generated for OneStep Studio.</p></details>
@@ -139,9 +138,9 @@ def main():
         text=re.sub(r'<div class="game-details">(.*?)</div>\s*</main>', r'<template data-game-archive>\1</template>\n  </main>', text, flags=re.S)
         text=re.sub(r'\s*<a href="#(?:storybook|features|gallery|stores)"[^>]*>.*?</a>', '', text[:text.index('<main')], flags=re.S)+text[text.index('<main'):]
         text=re.sub(r'/map-panels.js\?v=map-\d+', '/map-panels.js?v=map-3', text)
-        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-30', text)
+        text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-31', text)
         text=re.sub(r'/courtyard-life.js\?v=life-\d+', '/courtyard-life.js?v=life-2', text)
-        text=re.sub(r'/reader\.css\?v=reader-\d+', '/reader.css?v=reader-5', text)
+        text=re.sub(r'/reader\.css\?v=reader-\d+', '/reader.css?v=reader-6', text)
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''

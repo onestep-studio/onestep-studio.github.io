@@ -4,9 +4,9 @@
   if (!world) return;
   const lang = ['ko', 'en', 'ja'].includes(document.documentElement.lang) ? document.documentElement.lang : 'ko';
   const copy = {
-    ko: { on:'소리 켜기', off:'소리 끄기', pause:'움직임 멈추기', move:'움직임 재생', old:'노인', prologue:'프롤로그', scene:'장면', fullTitle:'그다음 이야기도 펼칠까요?', spoiler:'이제부터 사계절의 기억과 결말까지 이어집니다. 게임에서 직접 만나고 싶다면 여기서 책을 덮어 두세요.', full:'전체 이야기 읽기', back:'도입부로 돌아가기', close:'성 안으로', next:'다음 장', loading:'책을 펼치고 있어요…', error:'이야기를 불러오지 못했어요. 다시 시도해 주세요.', retry:'다시 불러오기', audioError:'소리를 재생하지 못했어요. 소리 켜기를 다시 눌러 주세요.', game:'게임에서 여정 이어가기', continue:'이어서 읽기', saved:'읽던 곳을 기억해 둘게요.' },
-    en: { on:'Sound on', off:'Sound off', pause:'Pause motion', move:'Resume motion', old:'Old man', prologue:'Prologue', scene:'Scene', fullTitle:'Turn to the rest of the story?', spoiler:'The following pages include the seasonal memories and the ending. Close the book here if you would rather discover it in the game.', full:'Read the full story', back:'Back to the opening', close:'Courtyard', next:'Next', loading:'Opening the book…', error:'The story could not be loaded. Please try again.', retry:'Try again', audioError:'Audio could not start. Select Sound on to try again.', game:'Continue the journey in the game', continue:'Continue reading', saved:'Your place in the book is saved.' },
-    ja: { on:'音をオン', off:'音をオフ', pause:'動きを止める', move:'動きを再開', old:'老人', prologue:'プロローグ', scene:'場面', fullTitle:'物語の続きを開きますか？', spoiler:'この先は四季の記憶と結末まで描かれています。ゲームで出会いたい方は、ここで本を閉じてください。', full:'物語をすべて読む', back:'冒頭に戻る', close:'城の中へ', next:'次のページ', loading:'本を開いています…', error:'物語を読み込めませんでした。もう一度お試しください。', retry:'再読み込み', audioError:'音を再生できませんでした。音をオンにして、もう一度お試しください。', game:'ゲームで旅を続ける', continue:'続きから読む', saved:'読んだ場所を覚えておきます。' }
+    ko: { on:'소리 켜기', off:'소리 끄기', pause:'움직임 멈추기', move:'움직임 재생', old:'노인', prologue:'프롤로그', scene:'장면', fullTitle:'이야기 계속 읽기', spoiler:'이후 이야기에는 결말이 포함됩니다.', full:'계속 읽기', back:'돌아가기', close:'닫기', next:'다음', loading:'책을 펼치고 있어요…', error:'이야기를 불러오지 못했어요. 다시 시도해 주세요.', retry:'다시 불러오기', audioError:'소리를 재생하지 못했어요. 소리 켜기를 다시 눌러 주세요.', game:'게임으로 이어가기', continue:'이어서 읽기', saved:'읽던 곳을 기억해 둘게요.' },
+    en: { on:'Sound on', off:'Sound off', pause:'Pause motion', move:'Resume motion', old:'Old man', prologue:'Prologue', scene:'Scene', fullTitle:'Read on', spoiler:'The following pages reveal the ending.', full:'Continue reading', back:'Go back', close:'Close', next:'Next', loading:'Opening the book…', error:'The story could not be loaded. Please try again.', retry:'Try again', audioError:'Audio could not start. Select Sound on to try again.', game:'Continue in the game', continue:'Continue reading', saved:'Your place in the book is saved.' },
+    ja: { on:'音をオン', off:'音をオフ', pause:'動きを止める', move:'動きを再開', old:'老人', prologue:'プロローグ', scene:'場面', fullTitle:'物語の続きを読む', spoiler:'この先の物語には結末が含まれます。', full:'続きを読む', back:'戻る', close:'閉じる', next:'次へ', loading:'本を開いています…', error:'物語を読み込めませんでした。もう一度お試しください。', retry:'再読み込み', audioError:'音を再生できませんでした。音をオンにして、もう一度お試しください。', game:'ゲームで続ける', continue:'続きから読む', saved:'読んだ場所を覚えておきます。' }
   }[lang];
   const $ = (selector) => document.querySelector(selector);
   const dialog = $('#story-reader');
@@ -15,6 +15,7 @@
   const next = $('[data-story-next]');
   const prev = $('[data-story-prev]');
   const contents = $('#story-contents');
+  const readerSettings = $('.reader-settings');
   const gate = $('[data-story-gate]');
   const lines = $('[data-story-lines]');
   const storyCopy = document.createElement('div'); storyCopy.className = 'story-copy'; storyCopy.id = 'story-copy';
@@ -149,6 +150,7 @@
     $('[data-resume-story]').hidden = index === 0;
   }
   function contentsState(open) {
+    if (open) readerSettings.open = false;
     contents.hidden = !open;
     $('[data-contents]').setAttribute('aria-expanded',String(open));
   }
@@ -197,14 +199,15 @@
   }
   function render(save = true) {
     const data = story.pages[index];
+    readerSettings.open = false;
     showingGate = false;
     gate.hidden = true; gate.replaceChildren(); lines.hidden = false; lines.replaceChildren();
     title.textContent = data.title;
     const chapter = String(data.chapter).padStart(2,'0');
     $('.reader-kicker').textContent = `TINY DEFENSE / CHAPTER ${chapter}`;
     $('.art-chapter b').textContent = chapter;
-    $('[data-page-kicker]').textContent = (data.sourceId === 'prologue' ? copy.prologue : data.sourceId === 'morning' ? story.books[String(data.chapter)] : `${story.books[String(data.chapter)]} / ${copy.scene} ${String(data.scene).padStart(2,'0')}`) + (data.parts > 1 ? ` · ${data.part}/${data.parts}` : '');
-    if (data.kind === 'interlude') $('[data-page-kicker]').textContent = story.books[String(data.chapter)];
+    const chapterLabel = data.sourceId === 'prologue' ? '' : story.books[String(data.chapter)];
+    $('[data-page-kicker]').textContent = chapterLabel === data.title ? '' : chapterLabel;
     const illustrated = Boolean(story.pages[index].art);
     spread.classList.toggle('text-spread', !illustrated);
     textState(illustrated); storyCopy.scrollTop = 0; page.scrollTop = 0;
@@ -215,7 +218,7 @@
     $('[data-left-title]').textContent = data.title;
     $('[data-left-kicker]').textContent = $('[data-page-kicker]').textContent;
     title.hidden = !illustrated;
-    $('[data-page-kicker]').hidden = !illustrated;
+    $('[data-page-kicker]').hidden = !illustrated || !$('[data-page-kicker]').textContent;
     $('[data-folio-left]').textContent = String(index * 2 + 1).padStart(2, '0');
     $('[data-folio-right]').textContent = String(index * 2 + 2).padStart(2, '0');
     const readingLines = [...(data.before || []).map(text => ({speaker:0,text})), ...data.lines, ...(data.after || []).map(text => ({speaker:0,text}))];
@@ -232,8 +235,11 @@
         const speaker=document.createElement('span'); speaker.className='speaker';
         speaker.textContent=story.speakers[String(line.speaker)];
         p.append(speaker);
+        const dialogue=document.createElement('span'); dialogue.className='dialogue-text';
+        dialogue.textContent=line.text; p.append(dialogue);
       } else p.className='narration';
-      p.append(document.createTextNode(line.text)); (lineIndex < split ? leftLines : lines).append(p);
+      if (!line.speaker) p.append(document.createTextNode(line.text));
+      (lineIndex < split ? leftLines : lines).append(p);
     });
     prev.disabled = index === 0;
     next.disabled = false;
@@ -250,12 +256,13 @@
     }
   }
   function spoilerGate(target) {
+    readerSettings.open=false;
     pending = target; showingGate=true;
     $('[data-reader-pages]').scrollTop=0; storyCopy.scrollTop=0; page.scrollTop=0;
     textState(true, true);
-    title.hidden=false; $('[data-page-kicker]').hidden=false;
+    title.hidden=false; $('[data-page-kicker]').hidden=true;
     title.textContent=copy.fullTitle;
-    $('[data-page-kicker]').textContent='CHAPTER 01–05';
+    $('[data-page-kicker]').textContent='';
     lines.hidden=true; gate.hidden=false; gate.replaceChildren();
     const p=document.createElement('p'); p.textContent=copy.spoiler; gate.append(p);
     gate.append(makeButton(copy.full, () => { allowed=true; navigate(pending); }));
@@ -352,6 +359,7 @@
   }
   function closeBook() { dialog.close(); }
   dialog.addEventListener('close', () => {
+    readerSettings.open=false;
     document.dispatchEvent(new CustomEvent('courtyard:book', {detail:{open:false}}));
     ++openEpoch;
     entrance?.cancel(); opening=false; dialog.classList.remove('book-arriving','arrival-ready');
@@ -372,10 +380,15 @@
   window.addEventListener('hashchange',openLinkedStory);
   openLinkedStory();
   $('[data-contents]').addEventListener('click', () => { if(story) contentsState(contents.hidden); });
+  readerSettings.addEventListener('toggle', () => { if(readerSettings.open) contentsState(false); });
+  document.addEventListener('pointerdown', event => { if(!readerSettings.contains(event.target)) readerSettings.open=false; });
   prev.addEventListener('click', () => navigate(showingGate ? story.previewCount-1:index-1));
   next.addEventListener('click', () => navigate(index+1));
   dialog.addEventListener('keydown',event => {
-    if (event.target.matches('input,select,textarea') || !contents.hidden || showingGate) return;
+    if (event.key==='Escape' && readerSettings.open) {
+      event.preventDefault(); readerSettings.open=false; readerSettings.querySelector('summary').focus(); return;
+    }
+    if (event.target.matches('input,select,textarea') || readerSettings.open || !contents.hidden || showingGate) return;
     if(event.key==='ArrowRight') { event.preventDefault(); navigate(index+1); }
     if(event.key==='ArrowLeft') { event.preventDefault(); navigate(index-1); }
   });

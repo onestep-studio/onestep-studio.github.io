@@ -5,6 +5,7 @@ const {spawn}=require('node:child_process');
 const assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),out=path.join(root,'output/qa/story-layout');
 const before=process.argv.includes('--before');
+const stories=JSON.parse(fs.readFileSync(path.join(root,'assets/world/story.json'),'utf8'));
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.webp':'image/webp','.woff2':'font/woff2'};
 let server,chrome,socket;
@@ -74,6 +75,7 @@ async function main() {
     await ready("Boolean(document.querySelector('[data-world-controls]') && !document.querySelector('[data-world-controls]').hidden)");
     await click('[data-open-story]');await ready("document.querySelector('[data-page-progress]').textContent.startsWith('01')");
     await evaluate("document.querySelector('[data-story-art]').decode()");
+    await evaluate('document.fonts.ready');
     const first=await metrics();
     await click('[data-story-next]');await ready("document.querySelector('[data-page-progress]').textContent.startsWith('02')");
     await evaluate("document.querySelector('[data-story-art]').decode()");
@@ -90,13 +92,41 @@ async function main() {
     if(width<700){assert.ok(second.image.paintHeight>=height*.22);checks++;}
     if(lang==='ko' && width===1920)await screenshot('after-desktop.png');
     if(lang==='ko' && width===390)await screenshot('after-mobile.png');
+    assert.equal(await evaluate('document.fonts.check(\'400 20px "Story Sans"\', "기사 Pawn 騎士")'),true,'local reading font loads');checks++;
+    assert.equal(await evaluate("document.querySelector('[data-page-kicker]').hidden"),true,'prologue does not repeat its title');checks++;
+    assert.deepEqual(await evaluate("[...document.querySelectorAll('[data-story-lines] .dialogue-text')].map(p=>p.textContent)"),stories[lang].pages[1].lines.map(line=>line.text),'all dialogue is preserved');checks++;
+    assert.equal(await evaluate("[...document.querySelectorAll('[data-story-lines] p[data-speaker]')].every(p=>{const name=p.querySelector('.speaker').getBoundingClientRect(),text=p.querySelector('.dialogue-text').getBoundingClientRect();return name.right<text.x && p.scrollWidth<=p.clientWidth;})"),true,'speaker and dialogue have separate, unclipped columns');checks++;
+    await click('.reader-settings summary');await ready("document.querySelector('.reader-settings').open");
+    assert.ok(Math.abs((await metrics()).pages.height-second.pages.height)<2,'settings must not resize the illustration');checks++;
+    assert.equal(await evaluate("(()=>{const r=document.querySelector('.reader-settings-panel').getBoundingClientRect();return r.x>=0 && r.right<=innerWidth && r.y>=0 && r.bottom<innerHeight;})()"),true,'settings stays within the viewport');checks++;
+    if(lang==='ko' && width===390)await screenshot('after-settings-mobile.png');
+    await call('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+    await call('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+    assert.equal(await evaluate("!document.querySelector('.reader-settings').open && document.querySelector('#story-reader').open"),true,'Escape closes settings and preserves reading');checks++;
     await click('[data-contents]');const withContents=await metrics();
     assert.ok(Math.abs(withContents.pages.height-second.pages.height)<2,'contents popover must not resize the illustration');checks++;
     await click('[data-contents]');await click('[data-story-next]');await ready("document.querySelector('[data-page-progress]').textContent.startsWith('03')");
+    await evaluate("document.querySelector('[data-story-art]').decode()");
+    if(lang==='ko' && width===1920)await screenshot('after-dialogue-desktop.png');
+    if(lang==='ko' && width===390)await screenshot('after-dialogue-mobile.png');
     await evaluate("document.querySelector('.book-page').scrollTop=10000");
     assert.equal(await evaluate("(()=>{const p=document.querySelector('.book-page');return p.scrollTop+p.clientHeight>=p.scrollHeight-2;})()"),true,'long dialogue remains scrollable');checks++;
     await click('[data-story-prev]');await ready("document.querySelector('[data-page-progress]').textContent.startsWith('02')");
     assert.ok((await metrics()).pages.height>=first.pages.height-footerGrowth-2);checks++;
+    if(width===1920) {
+      for(let index=2;index<stories[lang].pages.length;index++) {
+        await click('[data-story-next]');
+        if(index===stories[lang].previewCount) {
+          await ready("!document.querySelector('[data-story-gate]').hidden && document.querySelector('[data-story-next]').disabled");
+          assert.match(await evaluate("document.querySelector('[data-story-gate] p').textContent"),/결말|ending|結末/,'short warning preserves spoiler consent');checks++;
+          await click('[data-story-gate] button:not(.secondary)');
+        }
+        const current=stories[lang].pages[index];
+        await ready(`!document.querySelector('[data-story-lines]').hidden && document.querySelector('[data-page-title]').textContent===${JSON.stringify(current.title)} && document.querySelector('[data-page-progress]').textContent.startsWith(${JSON.stringify(String(index+1).padStart(2,'0'))})`);
+        const expected=[...(current.before||[]),...current.lines.map(line=>line.text),...(current.after||[])];
+        assert.deepEqual(await evaluate("[...document.querySelectorAll('[data-story-lines]>p')].map(p=>p.querySelector('.dialogue-text')?.textContent||p.textContent)"),expected,'complete story survives the new text layout');checks++;
+      }
+    }
     await click('[data-close-story]');
   }
   assert.deepEqual(errors,[],'no browser exceptions');checks++;
