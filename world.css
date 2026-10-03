@@ -621,26 +621,23 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 .text-spread .story-gate button.secondary { color:#51432e; }
 .world-marker:focus-visible .marker-point { outline:3px solid #ffe0a1; outline-offset:4px; }
 
-/* Scenery itself is the destination; labels appear on intentional interaction. */
+/* The title remains readable; selection lights the scenery without opening a tooltip. */
 .world-marker.scenery-target { display:block; transform:none; cursor:pointer; outline:none; }
-.world-marker .marker-name { color:#fff0ce; font:600 15px/1.4 var(--reading-font,system-ui,sans-serif); text-shadow:0 1px 3px #07131d,0 0 6px #07131d,1px 0 2px #07131d,-1px 0 2px #07131d; pointer-events:none; }
-.scenery-target .marker-name { position:absolute; top:calc(50% - 68px); left:50%; transform:translateX(-50%); padding:3px 6px; }
-@media(max-width:599px) {
- .world-marker .marker-name { font-size:12px; }
- .scenery-target .marker-name { top:calc(50% - 58px); }
-}
-.scenery-target .marker-point,.scenery-target .marker-label { position:absolute; left:50%; opacity:0; transform:translate(-50%,6px); pointer-events:none; transition:opacity .18s ease,transform .18s ease; }
-.scenery-target .marker-point { top:calc(50% - 38px); animation:none; }
-.scenery-target .marker-label { top:calc(50% + 14px); }
+.world-marker .marker-name { color:#fff3d8; font:600 15px/1.4 var(--reading-font,system-ui,sans-serif); background:rgb(8 23 33 / 78%); border:1px solid #e1c59266; border-radius:5px; box-shadow:0 2px 8px #0004; text-shadow:0 1px 2px #0009; pointer-events:none; transition:background .18s,border-color .18s,box-shadow .18s,scale .18s; }
+.scenery-target .marker-name { position:absolute; top:calc(50% - 68px); left:50%; transform:translateX(-50%); padding:7px 10px; }
+.scenery-target .marker-point,.scenery-target .marker-label { display:none; }
+.scenery-selection { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; opacity:0; transition:opacity .18s ease; filter:drop-shadow(0 0 7px #ffd279aa); }
+.scenery-selection polygon { fill:#ffe3a12e; stroke:#fff0bf; stroke-width:2; stroke-linejoin:round; }
 .world .scenery-target:focus-visible { z-index:4; outline:none; }
-.scenery-target:focus-visible .marker-point,.scenery-target:focus-visible .marker-label { opacity:1; transform:translate(-50%,0); }
+.scenery-target:focus-visible .scenery-selection,.scenery-target:active .scenery-selection { opacity:1; }
+.world .scenery-target:focus-visible .marker-name,.world .scenery-target:active .marker-name { background:rgb(38 42 36 / 92%); border-color:#ffe0a1; box-shadow:0 0 0 2px #e8bf6850,0 0 16px #e8bf6855; scale:1.06; }
 @media (hover:hover) and (pointer:fine) {
  .scenery-target:hover { z-index:4; }
- .scenery-target:hover .marker-point,.scenery-target:hover .marker-label { opacity:1; transform:translate(-50%,0); }
+ .scenery-target:hover .scenery-selection { opacity:1; }
+ .world .scenery-target:hover .marker-name { background:rgb(38 42 36 / 92%); border-color:#ffe0a1; box-shadow:0 0 0 2px #e8bf6850,0 0 16px #e8bf6855; scale:1.06; }
 }
-@media (prefers-reduced-motion:reduce) {
- .scenery-target .marker-point,.scenery-target .marker-label { transition:none; }
-}
+@media(max-width:699px) { .scenery-selection { display:none; } }
+@media(prefers-reduced-motion:reduce) { .scenery-selection,.world-marker .marker-name { transition:none; } }
 .guide-scene p:not(.world-eyebrow),.map-popup .studio-summary-copy,.world-intro { font-family:var(--reading-font); }
 .map-panel-toolbar>div { min-width:0; }
 .map-panel-toolbar h2 { overflow-wrap:anywhere; text-wrap:balance; }

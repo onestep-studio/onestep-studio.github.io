@@ -105,6 +105,14 @@
   // at every aspect ratio, including the narrower mobile crop.
   const landscape = $('.world-landscape');
   const actors = $('.courtyard-actors');
+  const selectionContours = {
+    forest:'174,515 186,505 275,544 280,562 265,590 294,589 306,611 299,683 272,698 190,685 181,611 190,587 236,577 233,553',
+    gate:'748,566 748,402 760,352 791,310 833,280 881,264 951,267 1005,291 1048,333 1073,385 1075,574 986,558 986,336 946,313 887,308 841,334 841,555',
+    fire:'554,748 579,716 619,704 638,622 655,617 741,635 759,724 799,723 824,748 821,788 787,812 724,824 611,817 567,793',
+    guard:'612,192 711,188 715,205 703,214 705,333 667,379 626,341 625,212 614,210',
+    book:'1115,733 1130,711 1289,697 1380,816 1370,843 1383,874 1302,892 1241,891 1229,903 1214,899 1207,887 1170,890 1146,861',
+    gallery:'1241,419 1241,361 1247,340 1262,325 1278,322 1295,329 1307,347 1310,420'
+  };
   // Contours are baked into the background; transparent links follow its cover crop.
   const sceneryTargets = [
     ['forest', [170,501,310,704]],
@@ -116,6 +124,13 @@
   ].map(([name, box]) => {
     const link = $(`.marker-${name}`);
     if (!link) return null;
+    const [x,y,right,bottom] = box;
+    const highlight = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    highlight.classList.add('scenery-selection');
+    highlight.setAttribute('viewBox',`${x} ${y} ${right-x} ${bottom-y}`);
+    highlight.setAttribute('aria-hidden','true');
+    highlight.innerHTML = `<polygon points="${selectionContours[name]}" vector-effect="non-scaling-stroke"/>`;
+    link.prepend(highlight);
     link.classList.add('scenery-target');
     return {link,box};
   }).filter(Boolean);
