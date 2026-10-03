@@ -140,7 +140,7 @@ def main():
         text=re.sub(r'/map-panels.js\?v=map-\d+', '/map-panels.js?v=map-3', text)
         text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-32', text)
         text=re.sub(r'/courtyard-life.js\?v=life-\d+', '/courtyard-life.js?v=life-2', text)
-        text=re.sub(r'/reader\.css\?v=reader-\d+', '/reader.css?v=reader-7', text)
+        text=re.sub(r'/reader\.css\?v=reader-\d+', '/reader.css?v=reader-8', text)
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''

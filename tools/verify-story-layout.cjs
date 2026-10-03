@@ -90,6 +90,7 @@ async function main() {
     assert.equal(second.overflow,false);checks++;
     assert.equal(second.heading.y,first.heading.y,'heading stays at the same top position');checks++;
     assert.equal(second.title.y,first.title.y,'title keeps its position even without chapter metadata');checks++;
+    assert.ok(second.heading.height<=(width<700 || height<=500?88:96),'compact header leaves room for dialogue');checks++;
     assert.equal(await evaluate("getComputedStyle(document.querySelector('.story-page-heading')).borderBottomWidth"),'2px','visible divider separates the fixed header');checks++;
     assert.ok(second.footer.bottom<=height && second.settings.bottom<=height+1,'navigation stays on screen');checks++;
     if(width>=1000){assert.ok(second.image.paintWidth>=width*.40,'illustration uses the large left pane');checks++;assert.ok(second.image.paintHeight>=height*.48);checks++;}
