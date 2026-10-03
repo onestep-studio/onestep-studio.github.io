@@ -476,7 +476,7 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 }
 @media(prefers-reduced-motion:reduce) { .map-popup * { transition:none !important; } }
 
-.courtyard-page .game-details { --paper:#f9f8f3; --ink:#172033; --muted:#5f6672; --line:#d8d9d5; background:var(--paper); color:var(--ink); }
+.courtyard-page .game-details { display:none; }
 .courtyard-page.world-ready .bgm-player { display:none; }
 
 .mobile-hint { display:none; }
@@ -796,3 +796,49 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 .reader-actions button { border-radius:8px; min-height:44px; }
 .story-contents h3 { grid-column:1/-1; margin:12px 0 0; font-size:15px; color:#f0ce91; }
 .story-contents button { text-align:left; }
+
+/* The courtyard is the only entry surface; content opens from its scenery. */
+.courtyard-page .world-bottom,.courtyard-page .story-invitation { display:none; }
+.marker-gallery { left:85%; top:34%; }
+.guide-scene > img { display:block; width:100%; max-height:65dvh; object-fit:contain; background:#08151b; border-radius:12px; }
+.map-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.map-gallery figure { margin:0; }
+.map-gallery img { display:block; width:100%; height:auto; border-radius:8px; }
+.map-gallery figcaption { padding:10px 0; color:#e6dcc7; text-align:center; }
+.life-popup .courtyard-life { margin:0; padding:20px; }
+.life-popup { overflow:auto; }
+.reader-resume { align-self:center; margin:0 0 8px; padding:8px 18px; }
+@media(max-width:699px) {
+ .courtyard-page .world { padding-top:16px; }
+ .courtyard-page .world-heading { gap:12px; padding-bottom:14px; }
+ .courtyard-page .world-controls { display:flex; flex-wrap:wrap; gap:6px; }
+ .courtyard-page .time-switch { flex:1; }
+ .courtyard-page .time-switch button { min-height:44px; padding:6px 10px; font-size:16px; }
+ .courtyard-page .quiet-button { font-size:15px; min-height:44px; padding:8px 12px; }
+ .courtyard-page .motion-button { width:44px; }
+ .courtyard-page .world-landscape { aspect-ratio:1.03; }
+ .courtyard-page .world-marker { display:flex; gap:5px; }
+ .courtyard-page .marker-point { width:44px; height:44px; font-size:21px; }
+ .courtyard-page .marker-label { max-width:94px; white-space:normal; text-align:center; padding:4px 6px; font-size:13px; line-height:1.35; word-break:keep-all; }
+ .courtyard-page .marker-forest { left:16%; top:60%; }
+ .courtyard-page .marker-gate { left:57%; top:21%; }
+ .courtyard-page .marker-guard { left:53%; top:49%; }
+ .courtyard-page .marker-fire { left:43%; top:82%; }
+ .courtyard-page .marker-book { left:83%; top:79%; }
+ .courtyard-page .marker-gallery { left:84%; top:32%; }
+ .courtyard-page .world-landscape .world-familiar { left:27%; top:32%; }
+ .guide-scene > img { max-height:48dvh; }
+ .map-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+ .map-gallery figcaption { font-size:14px; }
+}
+
+@media(max-width:699px) {
+ .courtyard-page .world-marker.scenery-target { width:auto!important; height:auto!important; transform:translate(-50%,-50%); }
+ .courtyard-page .scenery-target .scenery-resource { display:none; }
+ .courtyard-page .scenery-target .marker-point,.courtyard-page .scenery-target .marker-label { position:static; opacity:1; transform:none; }
+ .courtyard-page .marker-forest { left:16%!important; top:60%!important; }
+ .courtyard-page .marker-gate { left:57%!important; top:21%!important; }
+ .courtyard-page .marker-guard { left:53%!important; top:49%!important; }
+ .courtyard-page .marker-fire { left:43%!important; top:82%!important; }
+ .courtyard-page .marker-book { left:83%!important; top:79%!important; }
+}

@@ -36,7 +36,9 @@ def render(lang, c, revision):
             style = f'--x1:{x1}%;--y1:{y1}%;--x2:{x2}%;--y2:{y2}%;--x3:{x3}%;--y3:{y3}%;--delay:{scene*28}s;--facing:{facing};--enter:{1 if x2>x1 else -1};--leave:{1 if x3>x2 else -1};z-index:{y2}'
             bubble = f'<p class="courtyard-bubble"{" data-reply" if turn else ""}>{escape(dialogue[ident])}</p>'
             walkers += f'<div class="courtyard-walker" data-character="{ident}" data-scene="{scene}" style="{style}"><div class="walker-facing"><div class="walker-motion"><div class="walker-sprite" style="background-image:url(/assets/world/cast/{ident}.webp?v=2)"></div></div><div class="walker-rest"><div class="walker-idle" style="background-image:url(/assets/world/cast/{ident}-idle.webp?v=2)"></div></div></div>{bubble}</div>'
-    mobile_hint = {'ko':'아래 메뉴에서 성 안을 둘러보세요.', 'en':'Explore the courtyard using the menu below.', 'ja':'下のメニューから城を巡ってみましょう。'}[lang]
+    mobile_hint = c['hint']
+    gallery_label = {'ko':'모험의 풍경', 'en':'Adventure gallery', 'ja':'冒険の風景'}[lang]
+    life_label = {'ko':'성 안의 친구들', 'en':'Friends in the courtyard', 'ja':'城の仲間たち'}[lang]
     return f'''<!-- WORLD EXPERIENCE START -->
     <section class="world" id="top" aria-labelledby="world-title" data-world data-time="day" data-story-revision="{revision}">
       <div class="world-heading">
@@ -61,21 +63,21 @@ def render(lang, c, revision):
           <a class="world-marker marker-fire" href="{game}#features" data-map-open="day"><span class="marker-point" aria-hidden="true">☀</span><span class="marker-label">{m['day']}</span></a>
           <a class="world-marker marker-guard" href="{game}#features" data-map-open="night"><span class="marker-point" aria-hidden="true">☾</span><span class="marker-label">{m['night']}</span></a>
           <a class="world-marker marker-book" href="#storybook" data-open-story><span class="marker-point" aria-hidden="true">＋</span><span class="marker-label">{c['book']}</span></a>
+          <a class="world-marker marker-gallery" href="#gallery" data-map-open="gallery"><span class="marker-point" aria-hidden="true">▧</span><span class="marker-label">{gallery_label}</span></a>
         </div>
         <div class="world-caption"><span class="world-place">TINY DEFENSE <span aria-hidden="true">/</span> ONESTEP STUDIO</span><span class="desktop-hint">{c['hint']}</span><span class="mobile-hint">{mobile_hint}</span></div>
       </div>
-      {encounters(lang)}
-      <nav class="world-bottom" aria-label="Tiny Defense"><a href="{game}#features" data-map-open="day"><span>{m['day']}</span></a><a href="{game}#features" data-map-open="night"><span>{m['night']}</span></a><a href="#storybook" data-open-story><span>{c['book']}</span></a><a href="/games/tiny-defense/play/" data-map-open="game"><span>{c['forest']}</span></a><a href="{game}#stores" data-map-open="stores"><span>{m['stores']}</span></a><button class="resume-link" data-resume-story hidden>{c['resume']}</button></nav>
+      <dialog class="map-popup life-popup" data-life-dialog aria-label="{life_label}"><header class="map-panel-toolbar"><h2>{life_label}</h2><button type="button" data-life-close aria-label="{m['close']}">✕</button></header>{encounters(lang)}</dialog>
       <p class="world-notice" data-world-notice role="status"></p>
     </section>
-    <section class="story-invitation" id="storybook" aria-labelledby="invitation-title">
+    <section class="story-invitation" id="storybook" aria-labelledby="invitation-title" hidden>
       <div class="invitation-art"><img src="/assets/world/revised_supplies.webp?v={revision}" alt="" loading="lazy" width="1024" height="1024"></div>
       <div class="invitation-copy"><p class="world-eyebrow">{c['chapter']} <span aria-hidden="true">—</span> STORYBOOK</p><h2 id="invitation-title">{c['booktitle']}</h2><p>{c['bookdesc']}</p><a class="book-cta" href="{base}/story/" data-open-story>{c['open']} <span aria-hidden="true">↗</span></a></div>
     </section>
     <dialog class="story-reader" id="story-reader" aria-labelledby="reader-title">
       <div class="reader-shell">
         <header class="reader-toolbar"><div class="reader-title-group"><span class="reader-familiar-slot" data-reader-familiar hidden></span><span class="reader-kicker">TINY DEFENSE / CHAPTER 01</span><h2 id="reader-title">{c['booktitle']}</h2></div><div class="reader-actions"><button type="button" class="reader-sound" data-sound aria-pressed="false">♫ <span>{c['sound']}</span></button><button type="button" data-contents aria-expanded="false" aria-controls="story-contents">{c['contents']}</button><button type="button" data-close-story aria-label="{c['close']}">✕</button></div></header>
-        <nav class="story-contents" id="story-contents" aria-label="{c['contents']}" hidden></nav>
+        <nav class="story-contents" id="story-contents" aria-label="{c['contents']}" hidden></nav><button class="resume-link reader-resume" data-resume-story hidden>{c['resume']}</button>
         <div class="reader-pages" data-reader-pages>
         <div class="book-spread" data-book-spread>
           <div class="book-left" data-book-left><div class="book-illustration"><img data-story-art src="/assets/world/revised_last_gate.webp?v={revision}" width="1024" height="1024" alt=""><div class="story-art-shade"></div><span class="art-chapter">CHAPTER <b>01</b></span></div><article class="book-page left-page" data-left-page hidden><p class="page-eyebrow" data-left-kicker></p><h3 data-left-title></h3><div class="story-lines" data-left-lines></div></article><span class="folio" data-folio-left></span></div>
@@ -130,6 +132,12 @@ def main():
         if '/map-panels.js' not in text:
             text=text.replace('</head>', '<script defer src="/map-panels.js?v=map-1"></script>\n</head>')
         text=re.sub(r'href="#(games|studio)"(?: data-map-open="[^"]*")*', lambda m: 'href="#'+m[1]+'" data-map-open="'+('day' if m[1]=='games' else 'studio')+'"', text)
+        # Keep legacy source markup inert: it is never a scrollable second homepage.
+        text=re.sub(r'<div class="game-details">(.*?)</div>\s*</main>', r'<template data-game-archive>\1</template>\n  </main>', text, flags=re.S)
+        text=re.sub(r'\s*<a href="#(?:storybook|features|gallery|stores)"[^>]*>.*?</a>', '', text[:text.index('<main')], flags=re.S)+text[text.index('<main'):]
+        text=re.sub(r'/map-panels.js\?v=map-\d+', '/map-panels.js?v=map-3', text)
+        text=re.sub(r'/world.css\?v=world-\d+', '/world.css?v=world-23', text)
+        text=re.sub(r'/courtyard-life.js\?v=life-\d+', '/courtyard-life.js?v=life-2', text)
         file.write_text(text,encoding='utf-8')
         story=stories[lang]
         content=''

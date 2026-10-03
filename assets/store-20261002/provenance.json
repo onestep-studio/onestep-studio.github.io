@@ -1,0 +1,166 @@
+{
+  "campaign": "StorePromoSkillsFull20261002",
+  "video": "StoreVideo20261001 final 2026-10-02 captures",
+  "files": [
+    {
+      "output": "wood.mp4",
+      "source": "StoreVideo20261001\\player\\Screenshots\\promo_video_ko_1080x1920\\wood.mp4",
+      "source_sha256": "3e88f06b41213e116eff5a7e31361dabe6b7973914d0ca428790b0e490dc26d6"
+    },
+    {
+      "output": "iron.mp4",
+      "source": "StoreVideo20261001\\player\\Screenshots\\promo_video_ko_1080x1920\\iron.mp4",
+      "source_sha256": "293b8c9a606ddba204d646fe13db9d91241047d86f42b62974e8f65168e6b82f"
+    },
+    {
+      "output": "spirit.mp4",
+      "source": "StoreVideo20261001\\player\\Screenshots\\promo_video_ko_1080x1920\\spirit.mp4",
+      "source_sha256": "4807486f824a17a486da6872eea0d6393d5c73202f4049405d5d8a3fd257135f"
+    },
+    {
+      "output": "wisps.mp4",
+      "source": "StoreVideo20261001\\player\\Screenshots\\promo_video_ko_1080x1920\\wisps.mp4",
+      "source_sha256": "994bd1726446f58c56bb339dd65516c5f8c83bcc8630ced67710167ae74794b2"
+    },
+    {
+      "output": "relic.mp4",
+      "source": "StoreVideo20261001\\player\\Screenshots\\promo_video_ko_1080x1920\\relic.mp4",
+      "source_sha256": "ad9c882b8e753fc97f42561cce8db15e2205136dde33443997c60f8b485e4198"
+    },
+    {
+      "output": "defense-build.mp4",
+      "source": "StoreVideo20261001\\player\\Screenshots\\promo_video_ko_1080x1920\\defense-build.mp4",
+      "source_sha256": "58d01a71c4861d88d62c8149c75c143cc512f2528fe5773d94f6f60aa5ad4841"
+    },
+    {
+      "output": "defense-battle.mp4",
+      "source": "StoreVideo20261001\\player\\Screenshots\\promo_video_ko_1080x1920\\defense-battle.mp4",
+      "source_sha256": "dbd85a5791fa2a42383720951d529478e7b4cd0ee43f2cd8b35ba761a826ed1e"
+    },
+    {
+      "output": "berserker.mp4",
+      "source": "StoreVideo20261001\\player-skin\\Screenshots\\promo_video_ko_1080x1920\\berserker.mp4",
+      "source_sha256": "8e0d7423fb69d1fe5ea17d00946d9cfb1c37b19e4a1486ab4ace5385ab4f2334"
+    },
+    {
+      "output": "ko/01_day.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ko\\01_day.jpg",
+      "source_sha256": "6dd311a5d7d563093ce5049f794e07201d98a9fa96405f381b5a667620907848"
+    },
+    {
+      "output": "ko/02_gather.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ko\\02_gather.jpg",
+      "source_sha256": "460de39e3064866ce858eccc1f4182b4ac30606e9d1fe28d89dc8f3e2872c133"
+    },
+    {
+      "output": "ko/03_wall_assembly.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ko\\03_wall_assembly.png",
+      "source_sha256": "9fe0ae4a576665e2a16bded32bafa61f9e9d2cf6e2f587e74b5b9e13f418027a"
+    },
+    {
+      "output": "ko/04_archmage_frontline.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ko\\04_archmage_frontline.png",
+      "source_sha256": "005659b112cee5e9fda89d3a66bea9094791fb902323b1fde36dbff8b2399bed"
+    },
+    {
+      "output": "ko/05_duel.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ko\\05_duel.jpg",
+      "source_sha256": "6350c6a2f5636e7aaa94dc7abeadf2052fa4d18547057dedab38f6317f01fea6"
+    },
+    {
+      "output": "ko/06_spirit.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ko\\06_spirit.jpg",
+      "source_sha256": "0e18e6d7d1027cce49f776c90298b4a923a227dc4d7251f01adc35da67e4ca6d"
+    },
+    {
+      "output": "ko/07_relic.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ko\\07_relic.jpg",
+      "source_sha256": "868bdc85e52a9ef951ddc57de6b932a015cd863e78f4293dabcd82524b501e53"
+    },
+    {
+      "output": "ko/08_seasons.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ko\\08_seasons.jpg",
+      "source_sha256": "118e2719515efd41dcd53b8b7b365d6d4da4bec62659af1fec0dffb6aa47ee01"
+    },
+    {
+      "output": "en/01_day.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\en\\01_day.jpg",
+      "source_sha256": "e49e0e253ad7d385e4c7000b09b0d0328f436a2dfa47064c6dfbb9b2ebe5f96a"
+    },
+    {
+      "output": "en/02_gather.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\en\\02_gather.jpg",
+      "source_sha256": "7663a031a03332219e49161b570381a2573d4258b5e2f0fe7f0a7e6ba64e1bf1"
+    },
+    {
+      "output": "en/03_wall_assembly.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\en\\03_wall_assembly.png",
+      "source_sha256": "bd87f4c4f2aa38b7f262ea0419ee7e485bfd2071c3964d4a7bf8b46508608cd4"
+    },
+    {
+      "output": "en/04_archmage_frontline.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\en\\04_archmage_frontline.png",
+      "source_sha256": "95ed9b0249f30f7823b9c773d9bbfa31dbf064df04eb1b72609a1128ad66c5e7"
+    },
+    {
+      "output": "en/05_duel.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\en\\05_duel.jpg",
+      "source_sha256": "2db38dd9456e2249216f0ae5f9d7fcd821c74923764fdff314c6f3fd509cec70"
+    },
+    {
+      "output": "en/06_spirit.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\en\\06_spirit.jpg",
+      "source_sha256": "637c8034cdc35d7fc077d1ecccb2ad3a94643967a2f6a1ce8dd718f17a25c356"
+    },
+    {
+      "output": "en/07_relic.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\en\\07_relic.jpg",
+      "source_sha256": "0990e2c3fa97cb8c9b301b4f25726de96f0f9fcf4b3513116b34ffe111c9449c"
+    },
+    {
+      "output": "en/08_seasons.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\en\\08_seasons.jpg",
+      "source_sha256": "efe4c754565226da944406d09bc67811c6be35740b86b431697d95b815de0acf"
+    },
+    {
+      "output": "ja/01_day.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ja\\01_day.jpg",
+      "source_sha256": "f986091c604e0d8d22130d91ec9b297feea22293060f060bce60462fe6d36d81"
+    },
+    {
+      "output": "ja/02_gather.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ja\\02_gather.jpg",
+      "source_sha256": "3f2b8aadee0fe1c4f1081232f88b677839466dad0b701f903debd8252af8564f"
+    },
+    {
+      "output": "ja/03_wall_assembly.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ja\\03_wall_assembly.png",
+      "source_sha256": "d3c6f2eabe2b6d539922de415c864ee9f8d269feec58840abacc4ce5674087fa"
+    },
+    {
+      "output": "ja/04_archmage_frontline.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ja\\04_archmage_frontline.png",
+      "source_sha256": "5fe866e340b9ca293cfda0560e215958d9cfd2a345ad4d678aa29b3aad478576"
+    },
+    {
+      "output": "ja/05_duel.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ja\\05_duel.jpg",
+      "source_sha256": "3f28d1b311fb0d802667c832c36ce39756be8c47880d21c357c2915c1105f09c"
+    },
+    {
+      "output": "ja/06_spirit.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ja\\06_spirit.jpg",
+      "source_sha256": "70d8176847990fc45432f88dd3dab842ced479b5cc2a039baac66db09208d37c"
+    },
+    {
+      "output": "ja/07_relic.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ja\\07_relic.jpg",
+      "source_sha256": "9097d494df25d8d9f6a8f4a7b5be3bbff35cdd7ae2c21f144ecb941089b251ec"
+    },
+    {
+      "output": "ja/08_seasons.webp",
+      "source": "StorePromoSkillsFull20261002\\google-play\\ja\\08_seasons.jpg",
+      "source_sha256": "4d9155f3ff69cb3e9442654221f987036158aacd07fe2804498f46a636964da1"
+    }
+  ]
+}

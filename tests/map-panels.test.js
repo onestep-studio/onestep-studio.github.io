@@ -4,20 +4,26 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 
-test('map panels preserve all ten localized game descriptions and defer media loading', () => {
+test('map panels use the latest store campaign and leave scrollable content inert', () => {
   for (const base of ['', 'en/', 'ja/']) {
     const home = fs.readFileSync(path.join(root, base, 'games/tiny-defense/index.html'), 'utf8');
     const source = fs.readFileSync(path.join(root, base, 'games/tiny-defense/index.html'), 'utf8');
-    const original = [...source.matchAll(/<li class="daynight-item">([\s\S]*?)<\/li>/g)];
+    const lang=base ? base.slice(0,-1) : 'ko';
+    const campaign=require('../assets/store-20261002/content.json')[lang];
     const guides = [...home.matchAll(/<template data-map-template="(?:day|night)"[\s\S]*?<\/template>/g)].map(m => m[0]).join('');
-    assert.equal(original.length, 10);
     assert.equal((guides.match(/data-guide-scene/g) || []).length, 10);
-    for (const [,row] of original) {
-      assert.ok(guides.includes(row.match(/<h3>.*?<\/h3>/)[0]));
-      assert.ok(guides.includes(row.match(/<p>.*?<\/p>/)[0]));
+    for (const row of campaign.scenes) {
+      assert.ok(guides.includes(row.title));
+      assert.ok(guides.includes(row.body));
     }
+    assert.match(home, /<template data-game-archive>/);
+    assert.doesNotMatch(home, /<div class="game-details">|<nav class="world-bottom"/);
+    assert.equal((guides.match(/<video /g)||[]).length,8);
+    assert.equal((guides.match(/<img /g)||[]).length,2);
+    assert.match(home, /class="world-marker marker-gallery"/);
+    assert.match(home, /data-life-dialog/);
     assert.doesNotMatch(guides, /<video[^>]*\ssrc=/);
-    for (const [,url] of guides.matchAll(/(?:poster|data-src)="([^"]+)"/g)) {
+    for (const [,url] of guides.matchAll(/(?:poster|data-src|src)="([^"]+)"/g)) {
       assert.ok(fs.existsSync(path.join(root,url)), `${base}: missing ${url}`);
     }
     for (const kind of ['day','night','stores','game']) assert.match(home,new RegExp(`data-map-open="${kind}"`));
