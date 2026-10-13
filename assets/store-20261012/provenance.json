@@ -1,0 +1,171 @@
+{
+  "campaign": "store-promo-20261012 (google-play)",
+  "video": "store-video-20261012 native 1080x1920 captures",
+  "files": [
+    {
+      "output": "gather.mp4",
+      "source": "Build\\Work\\scratch\\store-refresh-20261012\\Build\\StorePlayer\\Screenshots\\promo_video_ko_1080x1920\\gather.mp4",
+      "source_sha256": "54a30bfc86b6c9fb86b102eb23821ad8306f27d9a51f3885a3abc0e23716934b"
+    },
+    {
+      "output": "soldier-train.mp4",
+      "source": "Build\\Work\\scratch\\store-refresh-20261012\\Build\\StorePlayer\\Screenshots\\promo_video_ko_1080x1920\\soldier-train.mp4",
+      "source_sha256": "e457b13618b66fc7add9a25aa799ebf5f458d768d4f92b39892e035869341e85"
+    },
+    {
+      "output": "hero-train.mp4",
+      "source": "Build\\Work\\scratch\\store-refresh-20261012\\Build\\StorePlayer\\Screenshots\\promo_video_ko_1080x1920\\hero-train.mp4",
+      "source_sha256": "96d5dfe03ff6f2f19326a3bf93eda6de5c4b72cf90c504f510200c600a43756f"
+    },
+    {
+      "output": "tower-upgrade.mp4",
+      "source": "Build\\Work\\scratch\\store-refresh-20261012\\Build\\StorePlayer\\Screenshots\\promo_video_ko_1080x1920\\tower-upgrade.mp4",
+      "source_sha256": "991246fe2cb091cd0735dd5d91f5b9d475244df35a5fd81a22e3f3bbdbe38011"
+    },
+    {
+      "output": "spirit.mp4",
+      "source": "Build\\Work\\scratch\\store-refresh-20261012\\Build\\StorePlayer\\Screenshots\\promo_video_ko_1080x1920\\spirit.mp4",
+      "source_sha256": "fcd3dad6b87ff95a6bc50b35a59e74d30cf4f64b1508dbfcc08f66273616d67f"
+    },
+    {
+      "output": "defense-build.mp4",
+      "source": "Build\\Work\\scratch\\store-refresh-20261012\\Build\\StorePlayer\\Screenshots\\promo_video_ko_1080x1920\\defense-build.mp4",
+      "source_sha256": "0357852a95f1c367f81503e07c91cf090d97d31c8525db2922d74fa3ff900c5f"
+    },
+    {
+      "output": "defense-battle.mp4",
+      "source": "Build\\Work\\scratch\\store-refresh-20261012\\Build\\StorePlayer\\Screenshots\\promo_video_ko_1080x1920\\defense-battle.mp4",
+      "source_sha256": "be4d176a506450628a8062851e3b86cbdd67f694ca951460538b04165956146c"
+    },
+    {
+      "output": "berserker.mp4",
+      "source": "Build\\Work\\scratch\\store-refresh-20261012\\Build\\StorePlayer\\Screenshots\\promo_video_ko_1080x1920\\berserker.mp4",
+      "source_sha256": "7f1cdfe158928391506f3b3bf25f1c7db677eb3eb1be2b803a1e68d841de5f02"
+    },
+    {
+      "output": "relic.mp4",
+      "source": "Build\\Work\\scratch\\store-refresh-20261012\\Build\\StorePlayer\\Screenshots\\promo_video_ko_1080x1920\\relic.mp4",
+      "source_sha256": "c54574dd2bc649e8d4c5dc0690760b3e5946b25b462251eff4cd496f8aafb16a"
+    },
+    {
+      "output": "ko/01_gathering.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ko\\01_gathering.png",
+      "source_sha256": "a8e58e47b4781c0a6d96d478bc6d21ed4ade57267cddf20999e566d2c6da982a"
+    },
+    {
+      "output": "ko/02_training.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ko\\02_training.png",
+      "source_sha256": "e4d7cf5d2c3b703b4f8cb67791b4c38e2bab695482df327f2579fb0463e70445"
+    },
+    {
+      "output": "ko/03_tower_upgrade.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ko\\03_tower_upgrade.png",
+      "source_sha256": "9b8a70e2ee52488e24f525eda30b29fda36f508722d346adbcf022db407ba938"
+    },
+    {
+      "output": "ko/04_wall_assembly.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ko\\04_wall_assembly.png",
+      "source_sha256": "f0d5884d674afb40940f0a88538c6a703c502361b334db2e9934fdcaf48cc918"
+    },
+    {
+      "output": "ko/05_hero_choice.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ko\\05_hero_choice.png",
+      "source_sha256": "058da1350ab53b60412c101ca597024e9e51425bd36f3c2b2e7d96d07ccc6521"
+    },
+    {
+      "output": "ko/06_duel.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ko\\06_duel.png",
+      "source_sha256": "6eba84167ac3b648c870e7c251cfbbaeb40f7e3c1c78fa61b8744176afabfd73"
+    },
+    {
+      "output": "ko/07_relic.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ko\\07_relic.png",
+      "source_sha256": "0dd5cd6999ffbd646446e9bad45e93bd6c1bf89a8826595d950aca72fc2c677f"
+    },
+    {
+      "output": "ko/08_seasons.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ko\\08_seasons.png",
+      "source_sha256": "b9b01f79055778f2f640ec84180a72fb058862d4960243e8e068ceb05724f6cc"
+    },
+    {
+      "output": "en/01_gathering.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\en\\01_gathering.png",
+      "source_sha256": "cab102b6a185e9a0fa059730a8e726848c968f69551158c6a3ee0bceb08cf667"
+    },
+    {
+      "output": "en/02_training.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\en\\02_training.png",
+      "source_sha256": "1d65d92b0c150e3a7ad4344663f3b30bdbf6aeb42729524dc4b808b8c0881baf"
+    },
+    {
+      "output": "en/03_tower_upgrade.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\en\\03_tower_upgrade.png",
+      "source_sha256": "5798b6f08a8142833e9c4c20245e96b47e4acd12ecff2d29833594f3399e3e8a"
+    },
+    {
+      "output": "en/04_wall_assembly.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\en\\04_wall_assembly.png",
+      "source_sha256": "4ffbdbe9b32a00d7e698d4cf6f37018bdb1d74d349f062164396c135955991cc"
+    },
+    {
+      "output": "en/05_hero_choice.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\en\\05_hero_choice.png",
+      "source_sha256": "638c27d69206751fc262a2d0c0e0169a0b9dd9f2a65b25993b6656648f371d18"
+    },
+    {
+      "output": "en/06_duel.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\en\\06_duel.png",
+      "source_sha256": "e1ed4421e9ebaee8c34174ad42536eccb3de901109eed51cae287e69b23fdc0a"
+    },
+    {
+      "output": "en/07_relic.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\en\\07_relic.png",
+      "source_sha256": "cfa95b6d0142fe7131a0cdd8c43f2132656435b6329c2f49f474162da81b4527"
+    },
+    {
+      "output": "en/08_seasons.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\en\\08_seasons.png",
+      "source_sha256": "4205d34db9853ec3a83855f0cd180bb63aa2462a43ab33f630e8a01230bb7f0c"
+    },
+    {
+      "output": "ja/01_gathering.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ja\\01_gathering.png",
+      "source_sha256": "47745686f3b449bb1323c8b4a045250ec0f158af308f198db6b0bd80f904cc19"
+    },
+    {
+      "output": "ja/02_training.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ja\\02_training.png",
+      "source_sha256": "4f0531f6b8183e0ccd29af48ddd48ef8d5532a80ef4addee35b802dd8c5b61db"
+    },
+    {
+      "output": "ja/03_tower_upgrade.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ja\\03_tower_upgrade.png",
+      "source_sha256": "95ea97d9747fd34aeb711a4939462e82bb6971ce5a609b7452b4e704de6594a0"
+    },
+    {
+      "output": "ja/04_wall_assembly.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ja\\04_wall_assembly.png",
+      "source_sha256": "991b0241fb33fda5d1fd1add6b50b1938b38d4c59808901a8acfa8afe75fbe27"
+    },
+    {
+      "output": "ja/05_hero_choice.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ja\\05_hero_choice.png",
+      "source_sha256": "9eade075fb72979883bf4e140e6a2f716187edac11c621e6f6cff36872df6ff3"
+    },
+    {
+      "output": "ja/06_duel.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ja\\06_duel.png",
+      "source_sha256": "54cc20e605a7f01bcf2b4ee9245fc02ed84911f32d2211cafd2524e8d04785e7"
+    },
+    {
+      "output": "ja/07_relic.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ja\\07_relic.png",
+      "source_sha256": "59161dd1e024f7a7854f3c92c2e13a37cec4a9d6e161585cd3a6b23894a211b7"
+    },
+    {
+      "output": "ja/08_seasons.webp",
+      "source": "Build\\Work\\generated\\store-promo-20261012\\google-play\\ja\\08_seasons.png",
+      "source_sha256": "3c9d50aa0aa8b535faa30bd6b1d58648631094984558a41d2b0f74e4a1627399"
+    }
+  ]
+}

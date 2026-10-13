@@ -9,7 +9,7 @@ test('map panels use the latest store campaign and leave scrollable content iner
     const home = fs.readFileSync(path.join(root, base, 'games/tiny-defense/index.html'), 'utf8');
     const source = fs.readFileSync(path.join(root, base, 'games/tiny-defense/index.html'), 'utf8');
     const lang=base ? base.slice(0,-1) : 'ko';
-    const campaign=require('../assets/store-20261002/content.json')[lang];
+    const campaign=require('../assets/store-20261012/content.json')[lang];
     const guides = [...home.matchAll(/<template data-map-template="(?:day|night)"[\s\S]*?<\/template>/g)].map(m => m[0]).join('');
     assert.equal((guides.match(/data-guide-scene/g) || []).length, 10);
     for (const row of campaign.scenes) {
@@ -18,8 +18,9 @@ test('map panels use the latest store campaign and leave scrollable content iner
     }
     assert.match(home, /<template data-game-archive>/);
     assert.doesNotMatch(home, /<div class="game-details">|<nav class="world-bottom"/);
-    assert.equal((guides.match(/<video /g)||[]).length,8);
-    assert.equal((guides.match(/<img /g)||[]).length,2);
+    assert.equal((guides.match(/<video /g)||[]).length,campaign.scenes.filter(row => row.clip).length);
+    assert.equal((guides.match(/<img /g)||[]).length,campaign.scenes.filter(row => !row.clip).length);
+    assert.doesNotMatch(home, /store-20261002/);
     assert.match(home, /class="world-marker marker-gallery"/);
     assert.match(home, /data-life-dialog/);
     assert.doesNotMatch(guides, /<video[^>]*\ssrc=/);

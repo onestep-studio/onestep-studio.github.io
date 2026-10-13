@@ -1,0 +1,74 @@
+{
+  "ko": {
+    "scenes": [
+      {"kind": "day", "clip": "gather", "image": "01_gathering", "title": "탭 한 번으로 채집", "body": "나무나 돌 앞에서 채집 버튼을 누르면 폰이 알아서 자원을 모읍니다. 하루 행동력을 어디에 쓸지 정해 밤을 준비하세요."},
+      {"kind": "day", "clip": "soldier-train", "image": "02_training", "title": "병사 훈련", "body": "막사에서 병사를 강화하면 훈련장에서 달라진 실력을 바로 보여줍니다."},
+      {"kind": "day", "clip": "hero-train", "image": "02_training", "title": "영웅 훈련", "body": "각인의 성소에서 영웅을 강화하면 훈련장에서 기술을 선보입니다. 다크나이트의 검기로 강해진 힘을 확인하세요."},
+      {"kind": "day", "clip": "tower-upgrade", "image": "03_tower_upgrade", "title": "타워 상판 강화", "body": "타워 공방에서 새 상판을 올리면 타워의 체력과 화력이 한 단계 오릅니다."},
+      {"kind": "day", "clip": "spirit", "image": "05_hero_choice", "title": "함께 자라는 정령", "body": "몬스터 영혼으로 내 정령의 공격력·체력·공격 속도를 키워 든든한 동료로 만드세요."},
+      {"kind": "night", "clip": "defense-build", "image": "04_wall_assembly", "title": "나만의 방어선", "body": "성벽과 타워를 배치해 적이 지나갈 길을 바꾸세요. 낮에 준비한 병력이 이 길 위에서 싸웁니다."},
+      {"kind": "night", "clip": "defense-battle", "image": "04_wall_assembly", "title": "함께 지키는 성", "body": "밤이 되면 몰려오는 적을 병사와 영웅이 함께 막아냅니다. 낮에 준비한 방어선이 시험받는 시간입니다."},
+      {"kind": "night", "clip": "berserker", "image": "05_hero_choice", "title": "전세를 바꾸는 영웅", "body": "영웅의 기술로 몰려오는 적을 상대하세요. 광전사의 회전베기가 전열의 적을 휩씁니다."},
+      {"kind": "night", "clip": null, "image": "06_duel", "title": "보스와 정면 승부", "body": "보스와 일대일로 맞붙습니다. 화살표 방향으로 밀거나 탭해 입력을 맞추고 승부를 가르세요."},
+      {"kind": "night", "clip": "relic", "image": "07_relic", "title": "승리 뒤의 선택", "body": "밤을 이겨내면 유물 하나를 골라 다음 전투에 힘을 더합니다. 효과를 비교해 내 방어에 맞는 유물을 고르세요."}
+    ],
+    "gallery": [
+      {"image": "01_gathering", "title": "낮의 자원 채집"},
+      {"image": "02_training", "title": "병사와 영웅 훈련"},
+      {"image": "03_tower_upgrade", "title": "타워 상판 강화"},
+      {"image": "04_wall_assembly", "title": "나만의 방어선"},
+      {"image": "05_hero_choice", "title": "영웅 선택"},
+      {"image": "06_duel", "title": "보스 일기토"},
+      {"image": "07_relic", "title": "유물 선택"},
+      {"image": "08_seasons", "title": "사계절"}
+    ]
+  },
+  "en": {
+    "scenes": [
+      {"kind": "day", "clip": "gather", "image": "01_gathering", "title": "Gather with one tap", "body": "Tap Gather beside a tree or rock, and Pawn collects resources automatically. Decide how to spend the day’s stamina before night falls."},
+      {"kind": "day", "clip": "soldier-train", "image": "02_training", "title": "Troop Training", "body": "Upgrade your troops at the Barracks and watch them show off their new skills on the training ground."},
+      {"kind": "day", "clip": "hero-train", "image": "02_training", "title": "Hero Training", "body": "Upgrade a hero at the Rune Shrine to see their skills on the training ground, like the Dark Knight’s sword wave."},
+      {"kind": "day", "clip": "tower-upgrade", "image": "03_tower_upgrade", "title": "Tower top upgrades", "body": "Fit a new top at the Tower Forge to raise your tower’s health and firepower."},
+      {"kind": "day", "clip": "spirit", "image": "05_hero_choice", "title": "A spirit that grows with you", "body": "Spend monster souls to raise your spirit’s attack, health and attack speed, and fight side by side."},
+      {"kind": "night", "clip": "defense-build", "image": "04_wall_assembly", "title": "Your own defense", "body": "Place walls and towers to reshape the enemy’s path. The troops you prepared by day hold this line."},
+      {"kind": "night", "clip": "defense-battle", "image": "04_wall_assembly", "title": "Defend the castle together", "body": "Soldiers and heroes fight together when enemies arrive at night. Put the defenses you built by day to the test."},
+      {"kind": "night", "clip": "berserker", "image": "05_hero_choice", "title": "Heroes who turn the tide", "body": "Meet the oncoming enemies with hero skills. The Berserker’s spinning attack sweeps through the front line."},
+      {"kind": "night", "clip": null, "image": "06_duel", "title": "Face the boss", "body": "Duel the boss one on one. Swipe the way the arrows point or tap to match each input and win the exchange."},
+      {"kind": "night", "clip": "relic", "image": "07_relic", "title": "Choose after victory", "body": "Survive the night and pick a relic to strengthen your next battle. Compare the effects to find one that suits your defense."}
+    ],
+    "gallery": [
+      {"image": "01_gathering", "title": "Gathering by day"},
+      {"image": "02_training", "title": "Troop and hero training"},
+      {"image": "03_tower_upgrade", "title": "Tower top upgrade"},
+      {"image": "04_wall_assembly", "title": "Your own defense"},
+      {"image": "05_hero_choice", "title": "Choose your hero"},
+      {"image": "06_duel", "title": "Boss duel"},
+      {"image": "07_relic", "title": "Relic choice"},
+      {"image": "08_seasons", "title": "Four seasons"}
+    ]
+  },
+  "ja": {
+    "scenes": [
+      {"kind": "day", "clip": "gather", "image": "01_gathering", "title": "タップひとつで採集", "body": "木や石の前で採集ボタンを押すと、ポーンが自動で資源を集めます。一日の行動力をどう使うか決めて、夜に備えましょう。"},
+      {"kind": "day", "clip": "soldier-train", "image": "02_training", "title": "兵士の訓練", "body": "兵舎で兵士を強化すると、訓練場で上達した腕前をすぐに見せてくれます。"},
+      {"kind": "day", "clip": "hero-train", "image": "02_training", "title": "英雄の訓練", "body": "刻印堂で英雄を強化すると、訓練場で技を披露します。ダークナイトの剣気で強くなった力を確かめましょう。"},
+      {"kind": "day", "clip": "tower-upgrade", "image": "03_tower_upgrade", "title": "塔の上部強化", "body": "塔工房で新しい上部を載せると、塔の耐久力と火力が一段上がります。"},
+      {"kind": "day", "clip": "spirit", "image": "05_hero_choice", "title": "共に育つ精霊", "body": "モンスターの魂で精霊の攻撃力・体力・攻撃速度を高め、頼れる仲間に育てましょう。"},
+      {"kind": "night", "clip": "defense-build", "image": "04_wall_assembly", "title": "自分だけの防衛線", "body": "城壁と塔を配置して、敵の進路を変えましょう。昼に整えた兵力がこの道で戦います。"},
+      {"kind": "night", "clip": "defense-battle", "image": "04_wall_assembly", "title": "みんなで守る城", "body": "夜に押し寄せる敵を、兵士と英雄が力を合わせて迎え撃ちます。昼に築いた守りが試されます。"},
+      {"kind": "night", "clip": "berserker", "image": "05_hero_choice", "title": "戦況を変える英雄", "body": "英雄の技で迫る敵に立ち向かいましょう。狂戦士の回転斬りが前線の敵を薙ぎ払います。"},
+      {"kind": "night", "clip": null, "image": "06_duel", "title": "ボスと一騎打ち", "body": "ボスと一対一の勝負です。矢印の方向へのスワイプやタップを合わせて、競り勝ちましょう。"},
+      {"kind": "night", "clip": "relic", "image": "07_relic", "title": "勝利のあとの選択", "body": "夜を乗り越えたら遺物をひとつ選び、次の戦いの力にしましょう。効果を見比べて、自分の守りに合うものを選べます。"}
+    ],
+    "gallery": [
+      {"image": "01_gathering", "title": "昼の資源採集"},
+      {"image": "02_training", "title": "兵士と英雄の訓練"},
+      {"image": "03_tower_upgrade", "title": "塔の上部強化"},
+      {"image": "04_wall_assembly", "title": "自分だけの防衛線"},
+      {"image": "05_hero_choice", "title": "英雄を選ぶ"},
+      {"image": "06_duel", "title": "ボスとの一騎打ち"},
+      {"image": "07_relic", "title": "遺物の選択"},
+      {"image": "08_seasons", "title": "四季"}
+    ]
+  }
+}

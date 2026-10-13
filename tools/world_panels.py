@@ -15,14 +15,15 @@ def panels(lang):
     c = LABELS[lang]
     base = ROOT if lang == 'ko' else ROOT / lang
     source = (base / 'games/tiny-defense/index.html').read_text(encoding='utf-8')
-    campaign = json.loads((ROOT/'assets/store-20261002/content.json').read_text(encoding='utf-8'))[lang]
+    campaign = json.loads((ROOT/'assets/store-20261012/content.json').read_text(encoding='utf-8'))[lang]
     scenes = campaign['scenes']
     result = []
-    for kind, rows in [('day', scenes[:5]), ('night', scenes[5:])]:
+    for kind in ('day', 'night'):
+        rows = [row for row in scenes if row['kind'] == kind]
         buttons, articles = [], []
         for i, row in enumerate(rows):
             title, body = escape(row['title']), escape(row['body'])
-            root = '/assets/store-20261002/'
+            root = '/assets/store-20261012/'
             if row['clip']:
                 media = f'<video controls muted loop playsinline preload="none" poster="{root}{row["clip"]}.webp" data-src="{root}{row["clip"]}.mp4" aria-label="{escape(row["title"], quote=True)}"></video>'
             else:
@@ -33,10 +34,10 @@ def panels(lang):
           <div class="guide-tabs"><button type="button" data-map-switch="day" aria-pressed="{str(kind == 'day').lower()}">☀ {c['day']}</button><button type="button" data-map-switch="night" aria-pressed="{str(kind == 'night').lower()}">☾ {c['night']}</button></div>
           <div class="guide-scenes">{''.join(articles)}</div>
           <nav class="guide-index" aria-label="{c[kind]}">{''.join(buttons)}</nav>
-          <div class="guide-navigation"><button type="button" data-guide-prev>← {c['prev']}</button><span data-guide-progress role="status">1 / 5</span><button type="button" data-guide-next>{c['next']} →</button></div>
+          <div class="guide-navigation"><button type="button" data-guide-prev>← {c['prev']}</button><span data-guide-progress role="status">1 / {len(rows)}</span><button type="button" data-guide-next>{c['next']} →</button></div>
         </template>''')
     gallery_title = {'ko':'모험의 풍경', 'en':'Scenes from the adventure', 'ja':'冒険の風景'}[lang]
-    pictures = ''.join(f'<figure><img src="/assets/store-20261002/{lang}/{p["image"]}.webp" width="720" height="1280" loading="lazy" alt="{escape(p["title"], quote=True)}"><figcaption>{escape(p["title"])}</figcaption></figure>' for p in campaign['gallery'])
+    pictures = ''.join(f'<figure><img src="/assets/store-20261012/{lang}/{p["image"]}.webp" width="720" height="1280" loading="lazy" alt="{escape(p["title"], quote=True)}"><figcaption>{escape(p["title"])}</figcaption></figure>' for p in campaign['gallery'])
     result.append(f'<template data-map-template="gallery" data-title="{gallery_title}"><div class="map-gallery">{pictures}</div></template>')
     stores = re.search(r'<ul class="store-grid">.*?</ul>', source, re.S).group(0)
     result.append(f'''<template data-map-template="stores" data-title="{c['storetitle']}"><div class="store-banner"><img src="/assets/app-icon.webp" width="96" height="96" alt=""><div><p class="world-eyebrow">TINY DEFENSE</p><p>{c['storeintro']}</p></div></div>{stores}</template>''')
