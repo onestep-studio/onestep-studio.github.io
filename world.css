@@ -19,7 +19,7 @@
 .world { max-width:1600px; margin:0 auto; padding:48px 48px 0; }
 .world-heading { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; padding:0 0 30px; }
 .world-eyebrow { font-size:12px; font-weight:600; letter-spacing:.19em; color:#d6b77c; margin:0 0 12px; }
-.world h1 { font-family:Georgia,'Noto Serif KR','Batang','Yu Mincho',serif; font-size:clamp(30px,3.4vw,52px); font-weight:400; line-height:1.3; letter-spacing:-.035em; margin:0; }
+.world .world-title { font-family:Georgia,'Noto Serif KR','Batang','Yu Mincho',serif; font-size:clamp(30px,3.4vw,52px); font-weight:400; line-height:1.3; letter-spacing:-.035em; margin:0; }
 .world-intro { font-size:15px; color:#aabbbd; margin:12px 0 0; }
 .world-controls { display:flex; align-items:center; gap:8px; flex-shrink:0; }
 [hidden] { display:none !important; }
@@ -186,7 +186,7 @@ body:has(.story-reader[open]) { overflow:hidden; }
 @media(max-width:1000px) { .world { padding:32px 24px 0; } .world-heading { align-items:flex-start; flex-direction:column; gap:20px; } .world-landscape { aspect-ratio:1.6; } .marker-forest { top:59%; } .marker-gate { top:39%; } .marker-book { top:77%; } .story-invitation { padding:48px 32px; gap:40px; } .book-page { padding:30px 26px; } .book-spread { min-height:560px; } .book-page h3 { font-size:27px; } .world-caption { flex-wrap:wrap; } }
 @media(max-width:699px) {
  .courtyard-page .primary-nav { background:#0c1c27; border-color:#304047; }
- .world { padding:28px 16px 0; } .world h1 { font-size:30px; } .world-eyebrow { font-size:10px; letter-spacing:.12em; } .world-intro { font-size:14px; max-width:29em; }
+ .world { padding:28px 16px 0; } .world .world-title { font-size:30px; } .world-eyebrow { font-size:10px; letter-spacing:.12em; } .world-intro { font-size:14px; max-width:29em; }
  .world-heading { padding-bottom:22px; } .world-controls { width:100%; gap:7px; } .time-switch button { padding:7px 14px; } .quiet-button { font-size:13px; padding:8px 12px; } .motion-button { margin-left:auto; width:44px; }
  .world-stage { margin:0 -16px; border-left:0; border-right:0; } .world-landscape { aspect-ratio:1.25; } .courtyard { object-fit:cover; object-position:52% 50%; }
  .marker-forest { left:10%; top:61%; } .marker-gate { left:61%; top:38%; } .marker-book { left:86%; top:79%; } .marker-label { font-size:12px; padding:4px 8px; } .marker-point { width:40px; height:40px; font-size:20px; } .world-marker { gap:6px; }
@@ -316,7 +316,7 @@ body:has(.story-reader[open]) .world * { animation-play-state:paused !important;
 }
 
 /* Match the game's typeface, including book text and its cover. */
-.world h1,.invitation-copy h2,.book-page h3,.story-lines,
+.world .world-title,.invitation-copy h2,.book-page h3,.story-lines,
 .story-lines .speaker,.story-text-page h1,.story-text-page h2,
 .arrival-cover span,.art-chapter b,.folio { font-family:var(--game-font); font-weight:400; font-style:normal; }
 .story-lines { line-height:1.8; }
@@ -349,7 +349,7 @@ body:has(.story-reader[open]) .world * { animation-play-state:paused !important;
  .book-gesture-hint { font-size:13px; }
  .arrival-cover,.arrival-leaf { max-height:calc(100dvh - 155px); }
  .world-controls { flex-wrap:wrap; }
- .world h1 { font-size:32px; }
+ .world .world-title { font-size:32px; }
  .world-intro { font-size:16px; }
  .marker-point { width:44px; height:44px; }
  .marker-label { font-size:14px; }
@@ -492,7 +492,7 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
  .world { padding:24px 18px 0; }
  .world-heading { gap:18px; padding-bottom:18px; }
  .world-eyebrow { font-size:12px; letter-spacing:.08em; line-height:1.6; }
- .world h1 { font-size:clamp(27px,7.5vw,34px); line-height:1.35; word-break:keep-all; }
+ .world .world-title { font-size:clamp(27px,7.5vw,34px); line-height:1.35; word-break:keep-all; }
  .world-intro { font-size:17px; line-height:1.65; margin-top:10px; color:#c4d1d0; }
  .world-controls { display:grid; grid-template-columns:1fr 48px; width:100%; gap:10px; }
  .time-switch { grid-column:1/-1; display:flex; padding:4px; border-radius:14px; }
@@ -570,7 +570,7 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 @media(max-width:359px) {
  .world { padding-inline:14px; }
  .world-stage { margin-inline:-14px; }
- .world h1 { font-size:26px; }
+ .world .world-title { font-size:26px; }
  .reader-toolbar { padding-inline:10px; }
  .reader-toolbar h2 { font-size:16px; }
  .reader-actions { gap:4px; }
@@ -739,7 +739,7 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 /* Revised story: artwork and dialogue have separate, predictable space. */
 .world { max-width:1320px; padding-top:32px; }
 .world-heading { padding-bottom:22px; align-items:center; }
-.world h1 { font-size:clamp(28px,3vw,42px); }
+.world .world-title { font-size:clamp(28px,3vw,42px); }
 .world-eyebrow { letter-spacing:.08em; }
 .world-landscape { aspect-ratio:1.85; }
 .world-caption { padding-block:12px; }
@@ -771,7 +771,7 @@ body:has(.map-popup[open]) .world * { animation-play-state:paused !important; }
 @media(max-width:699px) {
  .world { padding:24px 18px 0; }
  .world-heading { gap:18px; padding-bottom:18px; }
- .world h1 { font-size:28px; }
+ .world .world-title { font-size:28px; }
  .world-intro { font-size:15px; line-height:1.7; margin-top:10px; }
  .world-eyebrow { font-size:10px; margin-bottom:10px; }
  .world-controls { display:flex; flex-wrap:nowrap; width:100%; gap:8px; }

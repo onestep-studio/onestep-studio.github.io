@@ -1,0 +1,63 @@
+{
+  "brand": "tiny_defense original A brand, adopted 2026-10-14",
+  "sources": {
+    "lobby": {
+      "path": "Assets/Resources/TinyDefense/UI/LobbyBackground.png",
+      "sha256": "65ae89c9a5ceb88156d3455024f1b939bb623443841e4531be6402e4d90e7554"
+    },
+    "title": {
+      "path": "Assets/Resources/TinyDefense/UI/LobbyTitle.png",
+      "sha256": "359c25da7b075f7a1f6e6b110061797be634e4e214e7a51d8e85d8890e3a9e76"
+    },
+    "icon": {
+      "path": "Assets/TinyDefense/AppIcon.png",
+      "sha256": "87d73e534b210b5e48506de997b27182676930c65883682ede7c6fc0de5466f0"
+    },
+    "wide": {
+      "path": "docs/art/sources/brand-exploration-20261014/renders/a-original-wide.png",
+      "sha256": "27004b8413b8e59706d7f818e87cbaf61ac361c7d6bf6929b4fc95e92582e2bf"
+    }
+  },
+  "outputs": {
+    "assets/brand-20261014/lobby-1080.webp": [
+      1080,
+      1920
+    ],
+    "assets/brand-20261014/lobby-720.webp": [
+      720,
+      1280
+    ],
+    "assets/brand-20261014/title-1200.webp": [
+      1200,
+      596
+    ],
+    "assets/brand-20261014/title-640.webp": [
+      640,
+      318
+    ],
+    "assets/brand-20261014/keyart-wide.webp": [
+      1007,
+      578
+    ],
+    "assets/app-icon.webp": [
+      512,
+      512
+    ],
+    "assets/apple-touch-icon.png": [
+      180,
+      180
+    ],
+    "assets/favicon.png": [
+      48,
+      48
+    ],
+    "assets/hero-wide.webp": [
+      1024,
+      500
+    ],
+    "assets/og-image.jpg": [
+      1200,
+      630
+    ]
+  }
+}

@@ -8,11 +8,39 @@ from world_panels import panels, LABELS
 from world_life import familiar, encounters
 
 ROOT = Path(__file__).resolve().parents[1]
+with Image.open(ROOT/'assets/brand-20261014/title-1200.webp') as _title:
+    TITLE_HEIGHT = _title.height
 COPY = {
  'ko': dict(kicker='TINY DEFENSE · 작은 세계로의 초대',title='잠시, 성 안에 머물러요.',intro='숲에서 나무를 모으고, 밤에는 함께 성을 지키는 곳.',day='낮',night='밤',sound='소리 켜기',motion='움직임 멈추기',book='이야기 읽기',forest='도끼질 체험',gate='게임 만나기',hint='빛나는 표식을 눌러 둘러보세요.',chapter='CHAPTER 01–05',booktitle='사계절의 기억',bookdesc='폰과 꼬마 정령, 계절의 비석에 남은 기억을 따라가는 이야기.',open='책 펼치기',resume='이어서 읽기',close='책 덮기',contents='목차',prev='이전',next='다음',volume='음량',credits='음악과 리소스',home='성 안으로',old='노인',read='글로 읽기',settings='읽기 설정'),
  'en': dict(kicker='TINY DEFENSE · A SMALL WORLD AWAITS',title='Stay a while, within the walls.',intro='Gather wood in the forest. Stand together when night falls.',day='Day',night='Night',sound='Sound on',motion='Pause motion',book='Read the story',forest='Try woodcutting',gate='Discover the game',hint='Follow the glowing markers to explore.',chapter='CHAPTER 01–05',booktitle='Seasonal Memories',bookdesc='Follow Pawn and the little spirits through the memories held in the seasonal waystones.',open='Open the book',resume='Continue reading',close='Close book',contents='Contents',prev='Previous',next='Next',volume='Volume',credits='Music & assets',home='Courtyard',old='Old man',read='Read as text',settings='Reading settings'),
  'ja': dict(kicker='TINY DEFENSE · 小さな世界へ',title='城の中で、ひと休み。',intro='森で木を集め、夜にはみんなで城を守る場所。',day='昼',night='夜',sound='音をオン',motion='動きを止める',book='物語を読む',forest='薪割り体験',gate='ゲームを見る',hint='光る目印を押して、城を巡ってみましょう。',chapter='CHAPTER 01–05',booktitle='四季の記憶',bookdesc='ポーンと小さな精霊たちが、季節の石碑に残された記憶をたどる物語。',open='本を開く',resume='続きから読む',close='本を閉じる',contents='目次',prev='前へ',next='次へ',volume='音量',credits='音楽と素材',home='城の中へ',old='老人',read='文章で読む',settings='読書設定'),
 }
+
+HERO = {
+ 'ko': dict(eyebrow='한 손으로 즐기는 무한 생존 디펜스', tagline='낮을 준비하고, 밤을 버텨라.', intro='숲에서 자원을 모아 병사와 영웅을 키우고, 밤마다 몰려오는 적으로부터 성을 지키세요.', enter='성 안으로 들어가기', alt='밤의 성을 지키는 소년 영웅과 정령, 그 너머의 거대한 돌 트롤'),
+ 'en': dict(eyebrow='Endless survival defense for one hand', tagline='Prepare by day. Survive the night.', intro='Gather resources in the forest, train your troops and heroes, and defend your castle from the monsters that arrive each night.', enter='Enter the courtyard', alt='A young hero and a spirit guarding a castle at night, with a giant stone troll beyond'),
+ 'ja': dict(eyebrow='片手で遊べるエンドレスサバイバルディフェンス', tagline='昼は備え、夜を生き抜け。', intro='森で資源を集めて兵士と英雄を鍛え、毎晩押し寄せるモンスターから城を守りましょう。', enter='城の中へ入る', alt='夜の城を守る少年の英雄と精霊、その向こうの巨大な岩のトロール'),
+}
+STORES = [('Google Play', 'https://play.google.com/store/apps/details?id=com.onestep.tinydefense'), ('App Store', 'https://apps.apple.com/app/id6785383234'), ('ONE store', 'https://m.onestore.co.kr/v2/ko-kr/app/0001007324')]
+
+def brand_hero(lang):
+    h, root = HERO[lang], '/assets/brand-20261014/'
+    stores = ''.join(f'<li><a href="{url}" target="_blank" rel="noopener">{name} <span aria-hidden="true">↗</span></a></li>' for name, url in STORES)
+    return f'''<section class="brand-hero" aria-labelledby="brand-title">
+      <img class="brand-hero-backdrop" src="{root}lobby-720.webp" alt="" width="720" height="1280" loading="lazy" aria-hidden="true">
+      <div class="brand-hero-inner">
+        <figure class="brand-hero-art"><img src="{root}lobby-720.webp" srcset="{root}lobby-720.webp 720w, {root}lobby-1080.webp 1080w" sizes="(max-width: 820px) 100vw, 46vh" width="1080" height="1920" alt="{h['alt']}" fetchpriority="high"></figure>
+        <div class="brand-hero-copy">
+          <h1 id="brand-title"><img src="{root}title-640.webp" srcset="{root}title-640.webp 640w, {root}title-1200.webp 1200w" sizes="(max-width: 820px) 78vw, 520px" width="1200" height="{TITLE_HEIGHT}" alt="Tiny Defense"></h1>
+          <p class="brand-eyebrow">{h['eyebrow']}</p>
+          <p class="brand-tagline">{h['tagline']}</p>
+          <p class="brand-intro">{h['intro']}</p>
+          <ul class="brand-stores" aria-label="{LABELS[lang]['stores']}">{stores}</ul>
+          <a class="brand-enter" href="#top">{h['enter']} <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </section>
+    '''
 
 def render(lang, c, revision):
     base = '' if lang=='ko' else '/'+lang
@@ -41,9 +69,9 @@ def render(lang, c, revision):
     gallery_label = {'ko':'모험의 풍경', 'en':'Adventure gallery', 'ja':'冒険の風景'}[lang]
     life_label = {'ko':'성 안의 친구들', 'en':'Friends in the courtyard', 'ja':'城の仲間たち'}[lang]
     return f'''<!-- WORLD EXPERIENCE START -->
-    <section class="world" id="top" aria-labelledby="world-title" data-world data-time="day" data-story-revision="{revision}">
+    {brand_hero(lang)}<section class="world" id="top" aria-labelledby="world-title" data-world data-time="day" data-story-revision="{revision}">
       <div class="world-heading">
-        <div><p class="world-eyebrow">{c['kicker']}</p><h1 id="world-title">{c['title']}</h1><p class="world-intro">{c['intro']}</p></div>
+        <div><p class="world-eyebrow">{c['kicker']}</p><h2 class="world-title" id="world-title">{c['title']}</h2><p class="world-intro">{c['intro']}</p></div>
         <div class="world-controls" data-world-controls hidden>
           <div class="time-switch" role="group" aria-label="{c['day']} / {c['night']}"><button type="button" data-time-choice="day" aria-pressed="true">☀ <span>{c['day']}</span></button><button type="button" data-time-choice="night" aria-pressed="false">☾ <span>{c['night']}</span></button></div>
           <button class="quiet-button" type="button" data-sound aria-pressed="false">♫ <span>{c['sound']}</span></button>
@@ -119,6 +147,9 @@ def main():
             text=text.replace('</head>', '<script defer src="/courtyard-life.js?v=life-1"></script>\n</head>')
         if '/courtyard-life.css' not in text:
             text=text.replace('</head>', '<link rel="stylesheet" href="/courtyard-life.css?v=life-1">\n</head>')
+        if '/brand-hero.css' not in text:
+            text=text.replace('</head>', '<link rel="stylesheet" href="/brand-hero.css?v=brand-1">\n</head>')
+        text=re.sub(r'(og:image:alt" content=")[^"]*', lambda m: m[1]+'Tiny Defense — '+HERO[lang]['alt'], text)
         if '/courtyard-combat.js' not in text:
             text=text.replace('</head>', '<script defer src="/courtyard-combat.js?v=combat-1"></script>\n</head>')
         if '/courtyard-audio.js' not in text:

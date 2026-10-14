@@ -23,7 +23,7 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="『Tiny Defense』の昼と夜、城とモンスターを描いたピクセルアート">
+  <meta property="og:image:alt" content="Tiny Defense — 夜の城を守る少年の英雄と精霊、その向こうの巨大な岩のトロール">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tiny Defense | OneStep Studio">
@@ -71,6 +71,7 @@
 <script defer src="/courtyard-life.js?v=life-2"></script>
 <link rel="stylesheet" href="/courtyard-life.css?v=life-1">
 <script defer src="/courtyard-combat.js?v=combat-1"></script>
+<link rel="stylesheet" href="/brand-hero.css?v=brand-1">
 </head>
 <body class="game-page courtyard-page">
   <a class="skip-link" href="#main">メインコンテンツへ</a>
@@ -101,9 +102,23 @@
 
   <main id="main">
     <!-- WORLD EXPERIENCE START -->
+    <section class="brand-hero" aria-labelledby="brand-title">
+      <img class="brand-hero-backdrop" src="/assets/brand-20261014/lobby-720.webp" alt="" width="720" height="1280" loading="lazy" aria-hidden="true">
+      <div class="brand-hero-inner">
+        <figure class="brand-hero-art"><img src="/assets/brand-20261014/lobby-720.webp" srcset="/assets/brand-20261014/lobby-720.webp 720w, /assets/brand-20261014/lobby-1080.webp 1080w" sizes="(max-width: 820px) 100vw, 46vh" width="1080" height="1920" alt="夜の城を守る少年の英雄と精霊、その向こうの巨大な岩のトロール" fetchpriority="high"></figure>
+        <div class="brand-hero-copy">
+          <h1 id="brand-title"><img src="/assets/brand-20261014/title-640.webp" srcset="/assets/brand-20261014/title-640.webp 640w, /assets/brand-20261014/title-1200.webp 1200w" sizes="(max-width: 820px) 78vw, 520px" width="1200" height="596" alt="Tiny Defense"></h1>
+          <p class="brand-eyebrow">片手で遊べるエンドレスサバイバルディフェンス</p>
+          <p class="brand-tagline">昼は備え、夜を生き抜け。</p>
+          <p class="brand-intro">森で資源を集めて兵士と英雄を鍛え、毎晩押し寄せるモンスターから城を守りましょう。</p>
+          <ul class="brand-stores" aria-label="ゲームを入手"><li><a href="https://play.google.com/store/apps/details?id=com.onestep.tinydefense" target="_blank" rel="noopener">Google Play <span aria-hidden="true">↗</span></a></li><li><a href="https://apps.apple.com/app/id6785383234" target="_blank" rel="noopener">App Store <span aria-hidden="true">↗</span></a></li><li><a href="https://m.onestore.co.kr/v2/ko-kr/app/0001007324" target="_blank" rel="noopener">ONE store <span aria-hidden="true">↗</span></a></li></ul>
+          <a class="brand-enter" href="#top">城の中へ入る <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </section>
     <section class="world" id="top" aria-labelledby="world-title" data-world data-time="day" data-story-revision="rewind-7ea92e746903">
       <div class="world-heading">
-        <div><p class="world-eyebrow">TINY DEFENSE · 小さな世界へ</p><h1 id="world-title">城の中で、ひと休み。</h1><p class="world-intro">森で木を集め、夜にはみんなで城を守る場所。</p></div>
+        <div><p class="world-eyebrow">TINY DEFENSE · 小さな世界へ</p><h2 class="world-title" id="world-title">城の中で、ひと休み。</h2><p class="world-intro">森で木を集め、夜にはみんなで城を守る場所。</p></div>
         <div class="world-controls" data-world-controls hidden>
           <div class="time-switch" role="group" aria-label="昼 / 夜"><button type="button" data-time-choice="day" aria-pressed="true">☀ <span>昼</span></button><button type="button" data-time-choice="night" aria-pressed="false">☾ <span>夜</span></button></div>
           <button class="quiet-button" type="button" data-sound aria-pressed="false">♫ <span>音をオン</span></button>
