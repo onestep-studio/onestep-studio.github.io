@@ -1,0 +1,148 @@
+{
+  "project": "amhaeng-eosa",
+  "note": "Existing game assets, resized for the website. Source hashes identify the exported revision.",
+  "assets": [
+    {
+      "file": "lobby.webp",
+      "source": "Assets/Resources/Eosa/Art/lobby-night.png",
+      "sha256": "895812951110b2d27955ca370c2a6caf35460370402bec3718cbf9d34eaab9f6",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "lobby-mobile.webp",
+      "source": "Assets/Resources/Eosa/Art/lobby-night-mobile.png",
+      "sha256": "54912e8acb7538e13cc04637286f690d9013f055c774e799085892208f781af1",
+      "width": 900,
+      "height": 1350
+    },
+    {
+      "file": "title.webp",
+      "source": "Assets/Resources/Eosa/Art/title-v2.png",
+      "sha256": "2b5132eb6ee2f892e30d8a33c0de2f36060b0863fb42a0ccf96a66f98b19f808",
+      "width": 1000,
+      "height": 375
+    },
+    {
+      "file": "village.webp",
+      "source": "Assets/Resources/Eosa/Art/village.png",
+      "sha256": "bbf4a3f827ecba48e7d1ec59b3f14ab4e014d6c02ba1a2f34b92c1837935ed4b",
+      "width": 627,
+      "height": 627
+    },
+    {
+      "file": "room.webp",
+      "source": "Assets/Resources/Eosa/Art/inn-room.png",
+      "sha256": "f29411688838e26e9296791af799429328299d9986f594c7ebe5e642a9bdfca2",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "file": "river.webp",
+      "source": "Assets/Resources/Eosa/Art/river.png",
+      "sha256": "082efbea8e39a3b5ee7da526de6e383e60e3f35f3bf580bc139dfcf73f29a198",
+      "width": 627,
+      "height": 627
+    },
+    {
+      "file": "court.webp",
+      "source": "Assets/Resources/Eosa/Art/court.png",
+      "sha256": "c7da4d8e951682c1e07a9518a7e84b2ddc3da046ce88892944226f28a4a3fec7",
+      "width": 1440,
+      "height": 960
+    },
+    {
+      "file": "journey.webp",
+      "source": "Assets/Resources/Eosa/Art/Maps/journey.png",
+      "sha256": "771a5889a2b143b66fa63e4e56b89fd6575cf59fe3084d2e9ae1ed69652bcd9b",
+      "width": 1000,
+      "height": 1000
+    },
+    {
+      "file": "yunseo.webp",
+      "source": "Assets/Resources/Eosa/Art/Portraits/yunseo.png",
+      "sha256": "43afc37fdd834d53528d9f344ff2302371761c4f867714f6ee1a420e7ca7842d",
+      "width": 640,
+      "height": 680
+    },
+    {
+      "file": "dogyeom.webp",
+      "source": "Assets/Resources/Eosa/Art/Portraits/dogyeom.png",
+      "sha256": "008782f451b6b2f28da7ef7e222c1a659440b8d0df18fdfdb82eabd5115eab63",
+      "width": 640,
+      "height": 680
+    },
+    {
+      "file": "paper.webp",
+      "source": "Assets/Resources/Eosa/Art/UI/V3/paper.png",
+      "sha256": "b53f5723f54da39f3521b651ec897ec608566c0f27108ace79d8a246fe4edeb3",
+      "width": 241,
+      "height": 237
+    },
+    {
+      "file": "receipt.webp",
+      "source": "Assets/Resources/Eosa/Art/Evidence/receipt.png",
+      "sha256": "3edbc9590db9ce2b48920d337fb11de9a34273693213ffe233de5139d7443558",
+      "width": 177,
+      "height": 205
+    },
+    {
+      "file": "first-slip.webp",
+      "source": "Assets/Resources/Eosa/Art/Evidence/first-slip.png",
+      "sha256": "0622dd232cb0c316cc8109f96f3f810a001dd2cc3dcfe32309b7e63cca6fbb69",
+      "width": 400,
+      "height": 399
+    },
+    {
+      "file": "gate.webp",
+      "source": "Assets/Resources/Eosa/Art/Evidence/gate.png",
+      "sha256": "a5bc3338c0dc01e2d17cdfd7d8cf1bebf6e736f5968fe7b0d8e2e78aefd877b7",
+      "width": 194,
+      "height": 216
+    },
+    {
+      "file": "debt.webp",
+      "source": "Assets/Resources/Eosa/Art/Evidence/debt.png",
+      "sha256": "3a571b47be175ae63572fdf036001506fb8d0b2e1856f92c7192089118681be9",
+      "width": 202,
+      "height": 202
+    },
+    {
+      "file": "footprints.webp",
+      "source": "Assets/Resources/Eosa/Art/Evidence/footprints.png",
+      "sha256": "3d511e46dca42b88326b56f796d4d318688235ef9f84ab6d950688f799e2daae",
+      "width": 400,
+      "height": 415
+    },
+    {
+      "file": "cover.webp",
+      "source": "Assets/Resources/Eosa/Art/lobby-night.png",
+      "sha256": "895812951110b2d27955ca370c2a6caf35460370402bec3718cbf9d34eaab9f6",
+      "transform": "1200x720 crop, centered at 50% x 42%"
+    },
+    {
+      "file": "social.jpg",
+      "source": "Assets/Resources/Eosa/Art/lobby-night.png",
+      "sha256": "895812951110b2d27955ca370c2a6caf35460370402bec3718cbf9d34eaab9f6",
+      "transform": "1200x720 crop, centered at 50% x 42%"
+    },
+    {
+      "file": "EosaBatang.woff2",
+      "source": "Assets/Resources/Eosa/Fonts/GowunBatang-Regular.ttf",
+      "sha256": "466c593e7147412e748af4856d5ad14709b5a860bdf62b9c2546f2c5874e9849",
+      "transform": "WOFF2 subset for the three localized website pages"
+    },
+    {
+      "file": "EosaSans.woff2",
+      "source": "Assets/Resources/Eosa/Fonts/Pretendard-Regular.ttf",
+      "sha256": "6d0af5258997aec7354a6e340fc2325ba321c410ca48b3af858c8c3d6e92a324",
+      "transform": "WOFF2 subset for the three localized website pages"
+    },
+    {
+      "file": "title.mp3",
+      "source": "Assets/Resources/Eosa/Audio/title.wav",
+      "sha256": "e67541e83a4d75ce7862ebd82e880660e0674e4a986440f85a2d4ac361ff2291",
+      "transform": "MP3, 160 kbps; original game title theme, no new audio generated"
+    }
+  ]
+}
