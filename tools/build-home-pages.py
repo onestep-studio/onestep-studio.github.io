@@ -69,7 +69,7 @@ def build(lang,c):
     head=re.sub(r'<meta name="color-scheme" content="[^"]*">','<meta name="color-scheme" content="dark">',head)
     head=re.sub(r'\s*<link[^>]+href="/home\.css[^>]*>','',head)
     head=re.sub(r'\s*<link[^>]+href="/assets/studio/StudioSans[^>]*>','',head)
-    head=head.replace('</head>','  <link rel="preload" as="font" href="/assets/studio/StudioSans-Semibold.woff2" type="font/woff2" crossorigin>\n  <link rel="stylesheet" href="/home.css?v=studio-cards-3">\n</head>')
+    head=head.replace('</head>','  <link rel="preload" as="font" href="/assets/studio/StudioSans-Semibold.woff2" type="font/woff2" crossorigin>\n  <link rel="stylesheet" href="/home.css?v=studio-hover-4">\n</head>')
     switches=''.join(f'<a href="{url}" lang="{code}"'+(' aria-current="page"' if lang==code else '')+f'>{label}</a>' for code,url,label in [('ko','/','KO'),('en','/en/','EN'),('ja','/ja/','日本語')])
     eosaFull=c['eosaName']+': '+c['eosaSub']
     body=f'''<body class="home-page" data-studio-home="2">
