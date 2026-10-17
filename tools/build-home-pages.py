@@ -13,7 +13,7 @@ DOWN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6
 COPY = {
  'ko': {
   'skip':'본문 바로가기','home':'OneStep Studio 홈','nav':'주요 메뉴','games':'게임','studio':'스튜디오','contact':'문의','languages':'언어 선택','open':'메뉴 열기','close':'메뉴 닫기',
-  'intro':'작은 선택이 쌓여<br>오래 기억되는 세계를 만듭니다.',
+  'intro':'조금 느리더라도,<br>더 나은 게임을 향해<br>꾸준히 한 걸음씩 나아갑니다.',
   'explore':'게임 둘러보기','gamesHeading':'우리의 게임','gameLink':'게임 페이지 보기',
   'tinyStatus':'지금 플레이 가능','tinyGenre':'생존 디펜스','tinyText':'낮에는 모으고, 밤에는 지킨다.<br>작은 성에서 시작되는 끝없는 도전.',
   'tinyAlt':'성을 지키는 소년 영웅과 정령, 거대한 돌 트롤이 있는 Tiny Defense의 밤',
@@ -28,7 +28,7 @@ COPY = {
  },
  'en': {
   'skip':'Skip to content','home':'OneStep Studio home','nav':'Main navigation','games':'Games','studio':'Studio','contact':'Contact','languages':'Choose language','open':'Open menu','close':'Close menu',
-  'intro':'We build worlds that stay with you,<br>one small choice at a time.',
+  'intro':'Even if it takes a little longer,<br>we keep moving toward better games.',
   'explore':'Explore our games','gamesHeading':'Our games','gameLink':'View game',
   'tinyStatus':'Available now','tinyGenre':'Survival defense','tinyText':'Gather by day. Defend by night.<br>An endless challenge in a little castle.',
   'tinyAlt':'A young hero and spirit defend a castle against a giant stone troll in Tiny Defense',
@@ -43,7 +43,7 @@ COPY = {
  },
  'ja': {
   'skip':'本文へ移動','home':'OneStep Studio ホーム','nav':'メインメニュー','games':'ゲーム','studio':'スタジオ','contact':'お問い合わせ','languages':'言語を選択','open':'メニューを開く','close':'メニューを閉じる',
-  'intro':'小さな選択を積み重ね、<br>いつまでも心に残る世界をつくります。',
+  'intro':'少しゆっくりでも、<br>よりよいゲームを目指して、<br>一歩ずつ進み続けます。',
   'explore':'ゲームを見る','gamesHeading':'私たちのゲーム','gameLink':'ゲームページへ',
   'tinyStatus':'配信中','tinyGenre':'サバイバルディフェンス','tinyText':'昼は集め、夜は守る。<br>小さな城から始まる、終わりなき挑戦。',
   'tinyAlt':'城を守る少年の英雄と精霊、巨大な岩のトロールがいる Tiny Defense の夜',
@@ -69,7 +69,7 @@ def build(lang,c):
     head=re.sub(r'<meta name="color-scheme" content="[^"]*">','<meta name="color-scheme" content="dark">',head)
     head=re.sub(r'\s*<link[^>]+href="/home\.css[^>]*>','',head)
     head=re.sub(r'\s*<link[^>]+href="/assets/studio/StudioSans[^>]*>','',head)
-    head=head.replace('</head>','  <link rel="preload" as="font" href="/assets/studio/StudioSans-Semibold.woff2" type="font/woff2" crossorigin>\n  <link rel="stylesheet" href="/home.css?v=studio-hover-4">\n</head>')
+    head=head.replace('</head>','  <link rel="preload" as="font" href="/assets/studio/StudioSans-Semibold.woff2?v=studio-voice-5" type="font/woff2" crossorigin>\n  <link rel="stylesheet" href="/home.css?v=studio-voice-5">\n</head>')
     switches=''.join(f'<a href="{url}" lang="{code}"'+(' aria-current="page"' if lang==code else '')+f'>{label}</a>' for code,url,label in [('ko','/','KO'),('en','/en/','EN'),('ja','/ja/','日本語')])
     eosaFull=c['eosaName']+': '+c['eosaSub']
     body=f'''<body class="home-page" data-studio-home="2">
@@ -87,7 +87,7 @@ def build(lang,c):
   <main id="main">
     <section class="studio-intro" id="top" aria-labelledby="studio-home-title">
       <div class="container studio-intro-inner">
-        <h1 id="studio-home-title"><span>Small worlds,</span><span>one step <br class="studio-mobile-break">at a time.</span></h1>
+        <h1 id="studio-home-title"><span>Better games,</span><span>one step <br class="studio-mobile-break">at a time.</span></h1>
         <div class="studio-intro-note"><p>{c['intro']}</p><a class="studio-explore" href="#games"><span class="studio-explore-text">{c['explore']}</span><span class="studio-explore-icon">{DOWN}</span></a></div>
       </div>
     </section>
@@ -133,7 +133,7 @@ def build(lang,c):
   </main>
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div class="studio-footer-brand"><a class="wordmark wordmark-footer" href="#top" aria-label="{c['top']}"><img class="wordmark-logo" src="/assets/onestep-logo.webp" alt="" width="512" height="512" loading="lazy"><span>onestep studio</span></a><p>Small worlds, one step at a time.</p></div>
+      <div class="studio-footer-brand"><a class="wordmark wordmark-footer" href="#top" aria-label="{c['top']}"><img class="wordmark-logo" src="/assets/onestep-logo.webp" alt="" width="512" height="512" loading="lazy"><span>onestep studio</span></a><p>Better games, one step at a time.</p></div>
       <div class="studio-footer-meta"><nav aria-label="{c['legal']}"><a href="https://notedays.github.io/tinydefense-legal/privacy-policy.html">{c['privacy']}</a><a href="https://notedays.github.io/tinydefense-legal/terms-of-service.html">{c['terms']}</a></nav><p>© <span data-year>2026</span> OneStep Studio. All rights reserved.</p></div>
     </div>
   </footer>
