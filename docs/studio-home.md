@@ -3,11 +3,12 @@
 2026-10-17. 한국어·영어·일본어 홈페이지의 개선 범위다. 각 게임 소개 페이지의 세계관과 플레이 요소는 유지한다.
 
 - 첫 화면은 기존 문장 ‘Small worlds, one step at a time.’와 두 게임의 채택 원화를 중심으로 구성한다. 큰 로고와 중복 영문 라벨·장식용 번호는 덜고, 게임이 첫 화면 안으로 들어오게 한다.
-- 스튜디오 바탕 `#f6f7f9`, 글자 `#182b35`, 보조 글자 `#576773`, 구분선 `#d5dde2`. 하단 스튜디오 소개만 `#152e3a`로 전환한다. 게임 아트가 색을 담당한다.
+- 사용자 다크 테마 지시에 따라 스튜디오 바탕은 `#0b1218`, 글자는 `#e6ecef`, 보조 글자는 `#a2b2bd`, 구분선은 `#293944`다. 하단 소개는 `#101e28`로 옅게 분리한다. 제목의 크기와 상단 여백도 줄여 게임 원화가 더 일찍 보이게 한다. 로고·메뉴·상태 표시·키보드 포커스·건너뛰기 링크도 어두운 배경에 맞춘다.
 - 제목과 본문은 기존 게임 프로젝트의 Pretendard를 웹용으로 서브셋한 Studio Sans를 사용한다. 큰 제목 600, 본문 400. 일본어 글리프는 일본어 시스템 서체로 보완한다. `assets/studio/font-sources.json`에 원본 해시를 보존한다.
 - 두 게임의 이미지가 목록 자체다. PC는 나란한 두 작품을 약간 다른 너비와 높이로 배치하고, 모바일에서는 한 작품씩 읽는다. 실제 제목과 출시 상태를 유지하고 전체 작품 영역이 해당 언어 게임 페이지로 연결된다.
-- 타이니 디펜스 이미지는 `assets/brand-20261014/keyart-wide.webp`의 채택 원화다. 암행어사는 기존 `assets/amhaeng-eosa/cover.webp`, `title.webp`를 재사용한다. 새로운 그림·영상·음악은 생성하지 않는다.
-- 마우스 또는 키보드 포커스에만 이미지 확대와 진입 화살표로 반응한다. 자동 슬라이드·숨겨진 콘텐츠·반복 등장 연출은 없다. 움직임 줄이기를 존중한다.
+- 타이니 디펜스는 `assets/brand-20261014/keyart-wide.webp`의 채택 원화다. 암행어사 홈 키아트는 배포관리의 `C:/OneStep/amhaeng-eosa/deploy-project.json` → `banner` → `docs/art/manager-keyart-20261017.png`가 기준이다. 이 PNG는 생성 원본과 SHA-256이 동일하다. `tools/build-home-keyart.py`가 크롭·축소 없이 1536×1024 전체를 무손실 WebP로 내보내고 디코딩된 RGBA 픽셀의 동일성까지 확인한다. 원본·출력 해시와 처리 내역은 `assets/amhaeng-eosa/manager-keyart-source.json`에 보존한다.
+- 암행어사 이미지는 3:2와 `object-fit:contain`으로 표시한다. 그림 안의 제목을 그대로 사용하며 별도 로고·명암 그라데이션을 덮지 않는다. 마우스를 올렸을 때도 확대해 자르지 않는다. 게임 전용 페이지의 로비·조사 화면은 별도 자료로 유지한다.
+- 타이니 디펜스 확대와 공통 진입 화살표는 마우스 또는 키보드 포커스에만 반응한다. 자동 슬라이드·숨겨진 콘텐츠·반복 등장 연출은 없다. 움직임 줄이기를 존중한다.
 - 언어 선택은 모바일에서도 헤더에서 바로 찾을 수 있다. 메뉴는 기존 `script.js`의 열기·닫기·Escape·이동 시 닫힘을 그대로 사용한다.
 
-홈 마크업은 `tools/build-home-pages.py`, 스타일은 홈에서만 로드하는 `home.css`가 소유한다. `tools/build-eosa-pages.py`는 `data-studio-home="2"` 표식을 확인해 새 홈을 이전 카드로 덮어쓰지 않는다. 글꼴 원문을 추가하면 `tools/build-home-fonts.py`를 실행하고, 정적 미리보기·배포 준비는 `tools/build-static.py`로 한다.
+홈 마크업은 `tools/build-home-pages.py`, 스타일은 홈에서만 로드하는 `home.css`가 소유한다. `tools/build-eosa-pages.py`는 `data-studio-home="2"` 표식을 확인해 새 홈을 이전 카드로 덮어쓰지 않는다. 키아트는 `tools/build-home-keyart.py`, 글꼴 원문을 추가하면 `tools/build-home-fonts.py`를 실행하고, 정적 미리보기·배포 준비는 `tools/build-static.py`로 한다.

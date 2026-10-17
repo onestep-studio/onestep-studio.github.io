@@ -19,7 +19,7 @@ COPY = {
   'tinyAlt':'성을 지키는 소년 영웅과 정령, 거대한 돌 트롤이 있는 Tiny Defense의 밤',
   'eosaName':'암행어사','eosaSub':'먹으로 남긴 이름','eosaStatus':'출시 예정','eosaGenre':'조선 추리 어드벤처',
   'eosaText':'신분을 숨기고, 사람들의 말을 듣다.<br>작은 증거로 밝혀내는 사건의 진실.',
-  'eosaAlt':'밤의 주막에서 기록을 살피는 암행어사 윤서와 수행 서리 도겸',
+  'eosaAlt':'마패를 든 윤서와 기록을 품은 도겸, 관아의 인물이 함께 그려진 암행어사 전체 키아트',
   'studioHeading':'한 걸음씩,<br>오래 남을 세계로.',
   'studioLead':'OneStep Studio는 작은 선택이<br>큰 이야기가 되는 게임을 만듭니다.',
   'studioText':'Tiny Defense의 작은 성에서 암행어사의 잠행길까지. 저마다의 선택과 이야기가 살아 있는 세계를 차근차근 만들고 있습니다.',
@@ -34,7 +34,7 @@ COPY = {
   'tinyAlt':'A young hero and spirit defend a castle against a giant stone troll in Tiny Defense',
   'eosaName':'Amhaeng Eosa','eosaSub':'A Name Written in Ink','eosaStatus':'Coming soon','eosaGenre':'A Joseon mystery adventure',
   'eosaText':'Hide your identity. Listen closely.<br>Follow small clues to uncover the truth.',
-  'eosaAlt':'Royal inspector Yunseo and clerk Dogyeom reading their records at an inn after dark',
+  'eosaAlt':'The complete Amhaeng Eosa key art, with Yunseo holding his royal seal, Dogyeom carrying records, and a county official',
   'studioHeading':'One step closer.<br>A world that stays.',
   'studioLead':'At OneStep Studio, small choices<br>become stories worth remembering.',
   'studioText':'From the little castle of Tiny Defense to the undercover roads of Amhaeng Eosa, we build worlds shaped by your choices and the stories they leave behind.',
@@ -49,7 +49,7 @@ COPY = {
   'tinyAlt':'城を守る少年の英雄と精霊、巨大な岩のトロールがいる Tiny Defense の夜',
   'eosaName':'暗行御史','eosaSub':'墨に残した名','eosaStatus':'発売予定','eosaGenre':'朝鮮を舞台にした推理アドベンチャー',
   'eosaText':'身分を隠し、人々の話を聞く。<br>小さな証拠から、事件の真実を探る。',
-  'eosaAlt':'夜の宿で記録を調べる暗行御史ユンソと書吏トギョム',
+  'eosaAlt':'馬牌を掲げるユンソ、記録を抱えるトギョム、役人を描いた暗行御史のキービジュアル全景',
   'studioHeading':'一歩ずつ、<br>心に残る世界へ。',
   'studioLead':'小さな選択が、<br>大きな物語になるゲームを。',
   'studioText':'『Tiny Defense』の小さな城から『暗行御史』の潜行の道まで。それぞれの選択と物語が息づく世界を、一歩ずつ形にしています。',
@@ -65,10 +65,11 @@ def build(lang,c):
     target=ROOT/base.lstrip('/')/'index.html'
     source=target.read_text('utf-8')
     head=source.split('<body',1)[0]
-    head=re.sub(r'<meta name="theme-color" content="[^"]*">','<meta name="theme-color" content="#f6f7f9">',head)
+    head=re.sub(r'<meta name="theme-color" content="[^"]*">','<meta name="theme-color" content="#0b1218">',head)
+    head=re.sub(r'<meta name="color-scheme" content="[^"]*">','<meta name="color-scheme" content="dark">',head)
     head=re.sub(r'\s*<link[^>]+href="/home\.css[^>]*>','',head)
     head=re.sub(r'\s*<link[^>]+href="/assets/studio/StudioSans[^>]*>','',head)
-    head=head.replace('</head>','  <link rel="preload" as="font" href="/assets/studio/StudioSans-Semibold.woff2" type="font/woff2" crossorigin>\n  <link rel="stylesheet" href="/home.css?v=studio-1">\n</head>')
+    head=head.replace('</head>','  <link rel="preload" as="font" href="/assets/studio/StudioSans-Semibold.woff2" type="font/woff2" crossorigin>\n  <link rel="stylesheet" href="/home.css?v=studio-dark-2">\n</head>')
     switches=''.join(f'<a href="{url}" lang="{code}"'+(' aria-current="page"' if lang==code else '')+f'>{label}</a>' for code,url,label in [('ko','/','KO'),('en','/en/','EN'),('ja','/ja/','日本語')])
     eosaFull=c['eosaName']+': '+c['eosaSub']
     body=f'''<body class="home-page" data-studio-home="2">
@@ -109,8 +110,7 @@ def build(lang,c):
           </a>
           <a class="game-card game-card-eosa reveal" href="{base}games/amhaeng-eosa/" aria-label="{esc(eosaFull)}, {c['gameLink']}">
             <div class="game-card-media game-card-eosa-media">
-              <img class="game-card-eosa-art" src="/assets/amhaeng-eosa/cover.webp" alt="{c['eosaAlt']}" width="1200" height="720">
-              <img class="game-card-eosa-title" src="/assets/amhaeng-eosa/title.webp" alt="" width="1000" height="375">
+              <img class="game-card-eosa-art" src="/assets/amhaeng-eosa/manager-keyart-original.webp" alt="{c['eosaAlt']}" width="1536" height="1024">
               <span class="game-status is-coming"><span aria-hidden="true"></span>{c['eosaStatus']}</span>
               <span class="studio-art-enter" aria-hidden="true">{ARROW}</span>
             </div>

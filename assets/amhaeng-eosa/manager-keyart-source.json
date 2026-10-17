@@ -1,0 +1,12 @@
+{
+  "file": "manager-keyart-original.webp",
+  "project": "amhaeng-eosa",
+  "source": "docs/art/manager-keyart-20261017.png",
+  "sourceSelection": "deploy-project.json: banner",
+  "sourceSha256": "108ed3ea225e973672aef612e14f6265d4e13d0496e017f0f48537feccd82060",
+  "outputSha256": "c1e567d33b89400920187a27ef291e1357b1a6fae071d414322c7365b4905a08",
+  "width": 1536,
+  "height": 1024,
+  "processing": "Lossless WebP encoding only; no resize, crop, paint, overlay or colour change.",
+  "decodedPixelsEqual": true
+}

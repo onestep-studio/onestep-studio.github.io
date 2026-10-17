@@ -1,62 +1,63 @@
 /* Studio chrome stays quiet; the games supply the colour and illustration. */
 @font-face{font-family:Studio Sans;src:url('/assets/studio/StudioSans-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:Studio Sans;src:url('/assets/studio/StudioSans-Semibold.woff2') format('woff2');font-weight:600 900;font-style:normal;font-display:swap}
-.home-page{--studio-bg:#f6f7f9;--studio-ink:#182b35;--studio-muted:#576773;--studio-line:#d5dde2;--header-height:86px;background:var(--studio-bg);color:var(--studio-ink);font-family:'Studio Sans','Hiragino Kaku Gothic ProN','Yu Gothic','Malgun Gothic',sans-serif;line-height:1.75;scrollbar-color:#9aabb5 var(--studio-bg)}
+.home-page{--studio-bg:#0b1218;--studio-ink:#e6ecef;--studio-muted:#a2b2bd;--studio-line:#293944;--header-height:86px;background:var(--studio-bg);color:var(--studio-ink);color-scheme:dark;font-family:'Studio Sans','Hiragino Kaku Gothic ProN','Yu Gothic','Malgun Gothic',sans-serif;line-height:1.75;scrollbar-color:#59717f var(--studio-bg)}
 .home-page:lang(ja){font-family:'Studio Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif}
 .home-page :is(h1,h2,h3,p,figure){margin:0}
-.home-page ::selection{background:#c5dbdf;color:#142a34}
-.home-page :focus-visible{outline:2px solid #287183;outline-offset:6px}
+.home-page ::selection{background:#a9cad6;color:#10212a}
+.home-page :focus-visible{outline:2px solid #9bc6d7;outline-offset:6px}
+.home-page .skip-link{background:#19313f;border-color:#8fb5c7;color:#eef6fa}
 .home-page .container{width:min(1280px,calc(100% - 112px))}
 .home-page .site-header{height:var(--header-height);background:var(--studio-bg);border:0;backdrop-filter:none;-webkit-backdrop-filter:none;position:relative}
 .home-page .header-inner{width:min(1280px,calc(100% - 112px));border-bottom:1px solid var(--studio-line)}
 .home-page .wordmark{font-family:'Studio Sans',sans-serif;font-weight:600;font-size:1.35rem;letter-spacing:-.035em;gap:9px;color:var(--studio-ink)}
-.home-page .wordmark-logo{width:32px;height:32px}
-.home-page .wordmark-studio{font-weight:400;color:#596f7a}
+.home-page .wordmark-logo{width:32px;height:32px;filter:brightness(0) invert(1)}
+.home-page .wordmark-studio{font-weight:400;color:#a4b5bf}
 .studio-header-actions{display:flex;align-items:center;gap:45px}
 .home-page .primary-nav{gap:30px}
-.home-page .primary-nav a{font-size:.86rem;font-weight:400;color:#344e5b;padding:12px 0}
+.home-page .primary-nav a{font-size:.86rem;font-weight:400;color:#bbc8d1;padding:12px 0}
 .home-page .primary-nav a:after{height:1px;background:var(--studio-ink)}
 .studio-languages{display:flex;align-items:center;gap:2px}
-.studio-languages a{display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:8px 9px;font-size:.75rem;color:#596f7c}
+.studio-languages a{display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:8px 9px;font-size:.75rem;color:#99afbd}
 .studio-languages a[aria-current]{color:var(--studio-ink);font-weight:600;text-decoration:underline;text-underline-offset:6px}
 .studio-languages a:hover{color:var(--studio-ink)}
-.home-page .studio-intro{display:block;height:auto;min-height:0;max-height:none;background:transparent;border:0;padding:70px 0 62px}
+.home-page .studio-intro{display:block;height:auto;min-height:0;max-height:none;background:transparent;border:0;padding:58px 0 50px}
 .home-page .studio-intro-inner{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);gap:55px;align-items:end;text-align:left;max-width:none}
-.home-page .studio-intro h1{font-size:clamp(3.5rem,6.2vw,5.8rem);line-height:1.04;font-weight:600;letter-spacing:-.04em;text-wrap:initial;margin:0}
+.home-page .studio-intro h1{font-size:clamp(3.5rem,5.6vw,5.3rem);line-height:1.04;font-weight:600;letter-spacing:-.04em;text-wrap:initial;color:#d9e2e8;margin:0}
 .studio-intro h1>span{display:block}
 .studio-mobile-break{display:none}
 .studio-intro-note{padding-bottom:6px}
-.home-page .studio-intro-note>p{font-size:1rem;line-height:1.9;color:#526875;word-break:keep-all}
+.home-page .studio-intro-note>p{font-size:1rem;line-height:1.9;color:#a3b5c0;word-break:keep-all}
 .studio-explore{display:inline-flex;align-items:center;gap:15px;margin-top:25px;font-size:.85rem;font-weight:600;min-height:44px}
-.studio-explore-icon{display:grid;width:32px;height:32px;place-items:center;border-radius:50%;background:#e4eaee;transition:background .2s}
+.studio-explore-icon{display:grid;width:32px;height:32px;place-items:center;border-radius:50%;background:#23343f;transition:background .2s}
 .studio-explore svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5}
-.studio-explore:hover .studio-explore-icon{background:#cfdee4}
+.studio-explore:hover .studio-explore-icon{background:#354e5e}
 .home-page .game-library{background:transparent;padding:0 0 105px;scroll-margin-top:30px}
 .home-page .game-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:38px;align-items:start}
 .home-page .game-card{display:block;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none;transform:none;transition:none;min-width:0}
-.home-page .game-card-eosa{margin-top:68px}
+.home-page .game-card-eosa{margin-top:45px}
 .home-page .game-card-media{display:block;position:relative;aspect-ratio:1007/578;overflow:hidden;border-radius:4px;isolation:isolate;background:#102b38}
 .home-page .game-card-media>img:first-child{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
-.home-page .game-card-eosa-media>img:first-child{object-position:50% 42%}
-.home-page .game-card-eosa-title{width:40%;left:5%;bottom:5%;z-index:1}
-.home-page .game-card-eosa-media:after{background:linear-gradient(0deg,#081c27b3,transparent 65%)}
-.home-page .game-status{position:absolute;top:18px;right:18px;z-index:2;padding:6px 11px;border-radius:3px;gap:7px;background:#f7fbf6;color:#294936;font-size:.75rem;line-height:1.5;font-weight:600;box-shadow:none}
-.home-page .game-status>span{width:5px;height:5px;background:#477f55;border-radius:50%;box-shadow:none}
-.home-page .game-status.is-coming{color:#775525;background:#fff0d7}
-.home-page .game-status.is-coming>span{background:#956d30}
-.studio-art-enter{display:grid;place-items:center;position:absolute;z-index:2;right:18px;bottom:18px;width:42px;height:42px;border-radius:50%;background:#f6f7f9;color:var(--studio-ink);opacity:0;transform:translate(-5px,5px);transition:opacity .2s,transform .35s cubic-bezier(.16,1,.3,1)}
+.home-page .game-card-eosa .game-card-media{aspect-ratio:3/2}
+.home-page .game-card-eosa-media>img:first-child{object-fit:contain;object-position:center}
+.home-page .game-card-eosa-media:after{display:none}
+.home-page .game-status{position:absolute;top:18px;right:18px;z-index:2;padding:6px 11px;border-radius:3px;gap:7px;background:#112c25f2;color:#c9e2cd;font-size:.75rem;line-height:1.5;font-weight:600;box-shadow:none}
+.home-page .game-status>span{width:5px;height:5px;background:#9cc7a4;border-radius:50%;box-shadow:none}
+.home-page .game-status.is-coming{color:#edd5a8;background:#30291ef2}
+.home-page .game-status.is-coming>span{background:#d9b87e}
+.studio-art-enter{display:grid;place-items:center;position:absolute;z-index:2;right:18px;bottom:18px;width:42px;height:42px;border-radius:50%;background:#172a35;color:#e6ecef;opacity:0;transform:translate(-5px,5px);transition:opacity .2s,transform .35s cubic-bezier(.16,1,.3,1)}
 .studio-art-enter svg,.home-page .game-card-link svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5}
 .home-page .game-card-body{display:block;padding:24px 0 0;min-height:0;position:relative}
 .home-page .game-card-body>p{font-family:inherit;font-weight:400;line-height:1.85}
-.home-page .game-card-body>.studio-game-genre{font-size:.75rem;margin:0 0 9px;color:#5b717e}
+.home-page .game-card-body>.studio-game-genre{font-size:.75rem;margin:0 0 9px;color:var(--studio-muted)}
 .home-page .game-card h3{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 13px;font-family:'Studio Sans',sans-serif;font-weight:600;font-size:clamp(1.55rem,2.2vw,2rem);letter-spacing:-.025em;line-height:1.3;margin:0;word-break:keep-all}
-.studio-game-subtitle{font-size:.49em;font-weight:400;letter-spacing:-.01em;color:#536c79;line-height:1.5}
-.home-page .game-card-body>.studio-game-description{font-size:.88rem;color:#576c78;margin:16px 0 0;word-break:keep-all}
-.home-page .game-card-link{font-size:.75rem;font-weight:600;color:#1a3947;margin-top:20px;display:inline-flex;gap:10px;line-height:1.5;min-height:32px;align-items:center}
+.studio-game-subtitle{font-size:.49em;font-weight:400;letter-spacing:-.01em;color:#adbdc7;line-height:1.5}
+.home-page .game-card-body>.studio-game-description{font-size:.88rem;color:#a7b8c3;margin:16px 0 0;word-break:keep-all}
+.home-page .game-card-link{font-size:.75rem;font-weight:600;color:#d7e5ec;margin-top:20px;display:inline-flex;gap:10px;line-height:1.5;min-height:32px;align-items:center}
 .home-page .game-card-link svg{width:15px;height:15px;transition:transform .2s}
-.home-page .game-card:hover .game-card-link{color:#1a3947}
+.home-page .game-card:hover .game-card-link{color:#ffffff}
 .home-page .reveal,.home-page .reveal.is-visible{opacity:1;transform:none;transition:none}
-.home-page .studio-summary{padding:88px 0 82px;background:#152e3a;color:#eff5f6}
+.home-page .studio-summary{padding:88px 0 82px;background:#101e28;color:#eff5f6;border-top:1px solid #22343f;border-bottom:1px solid #22343f}
 .home-page .studio-summary-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:80px;align-items:start}
 .studio-summary-mark{width:44px;height:44px;filter:brightness(0) invert(1);margin-bottom:35px!important}
 .home-page .studio-summary h2{font-family:'Studio Sans','Yu Gothic',sans-serif;font-size:clamp(2.1rem,3.7vw,3.4rem);font-weight:600;line-height:1.4;letter-spacing:-.035em;word-break:keep-all}
@@ -70,14 +71,14 @@
 .home-page .site-footer{border:0;background:var(--studio-bg);color:var(--studio-ink)}
 .home-page .footer-inner{display:flex;justify-content:space-between;align-items:start;gap:40px;padding:45px 0 38px;min-height:0}
 .home-page .wordmark-footer{font-size:1.25rem}
-.home-page .wordmark-footer .wordmark-logo{filter:none;width:28px;height:28px}
-.home-page .studio-footer-brand>p{font-size:.72rem;color:#5b717e;margin:14px 0 0}
+.home-page .wordmark-footer .wordmark-logo{filter:brightness(0) invert(1);width:28px;height:28px}
+.home-page .studio-footer-brand>p{font-size:.72rem;color:var(--studio-muted);margin:14px 0 0}
 .studio-footer-meta{text-align:right}
 .home-page .footer-inner nav{gap:20px;flex-wrap:wrap}
-.home-page .footer-inner nav a{font-size:.75rem;color:#5c7380;min-height:44px}
-.home-page .footer-inner nav a:hover{color:#163543}
-.home-page .studio-footer-meta>p{font-size:.7rem;color:#5b717e;margin-top:12px}
-@media(hover:hover) and (pointer:fine){.home-page .game-card:hover .game-card-media>img:first-child{transform:scale(1.025)}.home-page .game-card:hover .studio-art-enter{opacity:1;transform:none}.home-page .game-card:hover .game-card-link svg{transform:translate(2px,-2px)}}
+.home-page .footer-inner nav a{font-size:.75rem;color:#adbfcb;min-height:44px}
+.home-page .footer-inner nav a:hover{color:#ffffff}
+.home-page .studio-footer-meta>p{font-size:.7rem;color:var(--studio-muted);margin-top:12px}
+@media(hover:hover) and (pointer:fine){.home-page .game-card:hover .game-card-media>img:first-child{transform:scale(1.025)}.home-page .game-card-eosa:hover .game-card-media>img:first-child{transform:none}.home-page .game-card:hover .studio-art-enter{opacity:1;transform:none}.home-page .game-card:hover .game-card-link svg{transform:translate(2px,-2px)}}
 .home-page .game-card:focus-visible .studio-art-enter{opacity:1;transform:none}
 @media(max-width:1100px){.home-page .container,.home-page .header-inner{width:calc(100% - 72px)}.studio-header-actions{gap:30px}.home-page .studio-intro-inner{gap:25px;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr)}.home-page .studio-intro-note>p{font-size:.86rem}.home-page .game-grid{gap:28px}.home-page .studio-summary-grid{gap:50px}.wordmark-studio{display:none}}
 @media(max-width:899px){
