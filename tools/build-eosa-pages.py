@@ -252,6 +252,10 @@ def build(lang, c):
 def integrate_home(lang,c):
     target=ROOT/('index.html' if lang=='ko' else lang+'/index.html')
     source=target.read_text('utf-8')
+    # The redesigned studio surface has its own generator. Do not replace its
+    # artwork, release badges or layout with the earlier home card template.
+    if 'data-studio-home="2"' in source:
+        return
     label={'ko':'게임 페이지 보기','en':'View game','ja':'ゲームページへ'}[lang]
     desc={
       'ko':'신분을 숨기고 사건을 조사해, 증거로 거짓을 가리고 직접 판결하는 조선 수사극.',

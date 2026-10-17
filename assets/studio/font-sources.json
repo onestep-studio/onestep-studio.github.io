@@ -1,0 +1,18 @@
+[
+  {
+    "file": "StudioSans-Regular.woff2",
+    "family": "Pretendard",
+    "weight": 400,
+    "source": "amhaeng-eosa/Assets/Resources/Eosa/Fonts/Pretendard-Regular.ttf",
+    "sha256": "6d0af5258997aec7354a6e340fc2325ba321c410ca48b3af858c8c3d6e92a324",
+    "transform": "WOFF2 subset for the localized studio home pages"
+  },
+  {
+    "file": "StudioSans-Semibold.woff2",
+    "family": "Pretendard",
+    "weight": 600,
+    "source": "amhaeng-eosa/Assets/Resources/Eosa/Fonts/Pretendard-SemiBold.ttf",
+    "sha256": "5e1c548732af70873103066c16e1369b9a8a871f0b38c321a1d5bc73e43cea2d",
+    "transform": "WOFF2 subset for the localized studio home pages"
+  }
+]
