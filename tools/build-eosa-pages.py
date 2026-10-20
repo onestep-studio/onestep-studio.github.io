@@ -3,6 +3,7 @@ import html
 import json
 import re
 from pathlib import Path
+from site_analytics import add_analytics
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSET = '/assets/amhaeng-eosa/'
@@ -246,7 +247,7 @@ def build(lang, c):
 '''
     target=ROOT/route(lang).strip('/')/'index.html'
     target.parent.mkdir(parents=True,exist_ok=True)
-    target.write_text(result,encoding='utf-8')
+    target.write_text(add_analytics(result),encoding='utf-8')
     print('Built',target.relative_to(ROOT))
 
 def integrate_home(lang,c):

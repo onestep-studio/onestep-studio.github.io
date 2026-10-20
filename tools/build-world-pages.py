@@ -2,6 +2,7 @@
 import json
 import re
 from pathlib import Path
+from site_analytics import add_analytics, TAG as ANALYTICS_TAG
 from PIL import Image
 from html import escape
 from world_panels import panels, LABELS
@@ -172,7 +173,7 @@ def main():
         text=re.sub(r'/world\.(css|js)\?v=world-\d+', r'/world.\1?v=world-32', text)
         text=re.sub(r'/courtyard-life.js\?v=life-\d+', '/courtyard-life.js?v=life-2', text)
         text=re.sub(r'/reader\.css\?v=reader-\d+', '/reader.css?v=reader-8', text)
-        file.write_text(text,encoding='utf-8')
+        file.write_text(add_analytics(text),encoding='utf-8')
         story=stories[lang]
         content=''
         chapter = None
@@ -193,7 +194,7 @@ def main():
         skip={'ko':'본문 바로가기','en':'Skip to story','ja':'本文へ移動'}[lang]
         chapters=list(story['books'].values())
         chapter_links=''.join(f'<a href="#chapter-{i}">{label}</a>' for i,label in enumerate(chapters,1))
-        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1c24"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=ui-2"><link rel="stylesheet" href="/world.css?v=world-22"><meta name="robots" content="noindex"></head><body class="story-text-page"><a class="skip-link" href="#main">{skip}</a><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–05 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><nav class="reading-nav" aria-label="{c['contents']}"><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a>{chapter_links}</nav><main id="main">{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
+        (route/'index.html').write_text(f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1c24"><title>{c['booktitle']} | Tiny Defense</title><link rel="stylesheet" href="/styles.css?v=ui-2"><link rel="stylesheet" href="/world.css?v=world-22"><meta name="robots" content="noindex">{ANALYTICS_TAG}</head><body class="story-text-page"><a class="skip-link" href="#main">{skip}</a><header><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a><p>CHAPTER 01–05 · TINY DEFENSE</p><h1>{c['booktitle']}</h1></header><nav class="reading-nav" aria-label="{c['contents']}"><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a>{chapter_links}</nav><main id="main">{content}</main><footer><a href="{prefix}/games/tiny-defense/#storybook">← {c['home']}</a></footer></body></html>''',encoding='utf-8')
         game=base/'games/tiny-defense/index.html'
         html=game.read_text(encoding='utf-8')
         if '#storybook' not in html:

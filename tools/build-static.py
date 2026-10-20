@@ -1,12 +1,14 @@
 """Stage the existing static website for Sites without changing GitHub Pages routes."""
 from pathlib import Path
 import shutil
+from site_analytics import install
 
 root=Path(__file__).resolve().parents[1]
 out=root/'dist'
 out.mkdir(exist_ok=True)
-for name in ['index.html','404.html','styles.css','home.css','script.js','brand-hero.css','world.css','reader.css','world.js','courtyard-audio.js','courtyard-life.js','courtyard-life.css','courtyard-combat.js','book-turn.js','map-panels.js','robots.txt','sitemap.xml','app-ads.txt','notice.json','version.json','.nojekyll']:
+for name in ['index.html','404.html','styles.css','home.css','script.js','analytics.js','brand-hero.css','world.css','reader.css','world.js','courtyard-audio.js','courtyard-life.js','courtyard-life.css','courtyard-combat.js','book-turn.js','map-panels.js','robots.txt','sitemap.xml','app-ads.txt','notice.json','version.json','.nojekyll']:
     shutil.copy2(root/name,out/name)
 for name in ['assets','games','en','ja','story']:
     shutil.copytree(root/name,out/name,dirs_exist_ok=True)
+install(out)
 print('Static site staged in dist/ (existing routes preserved).')

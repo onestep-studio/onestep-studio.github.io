@@ -6,6 +6,7 @@ entrance, preserving the existing head metadata and links when regenerating.
 from pathlib import Path
 import html
 import re
+from site_analytics import add_analytics
 
 ROOT = Path(__file__).resolve().parents[1]
 ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg>'
@@ -140,7 +141,7 @@ def build(lang,c):
 </body>
 </html>
 '''
-    target.write_text(head+body,'utf-8')
+    target.write_text(add_analytics(head+body),'utf-8')
     print('Built',target.relative_to(ROOT))
 
 if __name__=='__main__':
